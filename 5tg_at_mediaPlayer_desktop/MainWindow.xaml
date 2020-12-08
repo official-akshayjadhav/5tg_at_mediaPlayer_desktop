@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
 
 
 	<Window.Resources>
@@ -186,47 +186,458 @@
 	</Window.Resources>
 
 	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-		<Grid>
+		<!--// Background Color //-->
+		<Grid Background="White">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width=".1*"></ColumnDefinition>
+				<ColumnDefinition Width="10*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
 
-			<!--// Background Color //-->
 
-			<Grid Background="White">
+			<!--// Navigation Panel //-->
 
-				<!--// Background Image //-->
+			<Grid   x:Name="nav_pnl"
+                    HorizontalAlignment="Left"
+                    Width="70"
+                    Background="Orange">
+				<StackPanel x:Name="st_pnl">
+					<!--// Grid for the Menu Toggle Button //-->
+					<Grid Height="90">
+						<!--// Menu title text //-->
+						<TextBlock  Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="73,-20,0,0"
+                                    Text="B R O W S E  M U S I C"
+                                    Foreground="Black"
+                                    FontSize="15"
+                                    Background="Transparent"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource font_style}">
+                            
+                            <!--// Shadow Effect //-->
 
-				<Grid x:Name="BG" 
-					  Margin="65,0,0,0"
-					  PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown">
+							<TextBlock.Effect>
 
-					<Grid.Background>
+								<DropShadowEffect  BlurRadius="3"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="Black"/>
 
-						<ImageBrush x:Name="img_bg"
-                                ImageSource="Assets/background.jpg"
-                                Stretch="Fill"/>
-					</Grid.Background>
+							</TextBlock.Effect>
 
+						</TextBlock>
+
+						<!--// Toggle Button //-->
+
+						<ToggleButton x:Name="Tg_Btn"
+                                      Grid.Column="0"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      Margin="18,-20,0,0"
+                                      Height="30"
+                                      Width="30"
+                                      BorderThickness="0"
+                                      Style="{StaticResource tb_style}" Unchecked="Tg_Btn_Unchecked" Checked="Tg_Btn_Checked">
+
+							<!--// Toggle button default background image //-->
+
+							<ToggleButton.Background>
+
+								<ImageBrush ImageSource="Assets/tgBtn_default.png"
+                                            Stretch="None"/>
+
+							</ToggleButton.Background>
+
+							<!--// Toggle Button - Checked, Unchecked events //-->
+
+							<ToggleButton.Triggers>
+
+								<EventTrigger RoutedEvent="ToggleButton.Unchecked">
+
+									<BeginStoryboard>
+
+										<Storyboard x:Name="HideStackPanel">
+
+											<DoubleAnimation    
+                                                
+                                                Storyboard.TargetName="nav_pnl"
+                                                Storyboard.TargetProperty="Width"
+                                                BeginTime="0:0:0"
+                                                From="230" To="65"
+                                                Duration="0:0:0.2">
+
+											</DoubleAnimation>
+
+										</Storyboard>
+
+									</BeginStoryboard>
+
+								</EventTrigger>
+
+								<EventTrigger RoutedEvent="ToggleButton.Checked">
+
+									<BeginStoryboard>
+
+										<Storyboard x:Name="ShowStackPanel">
+
+											<DoubleAnimation
+                                                
+                                                Storyboard.TargetName="nav_pnl"
+                                                Storyboard.TargetProperty="Width"
+                                                BeginTime="0:0:0"
+                                                From="65" To="230"
+                                                Duration="0:0:0.3">
+
+											</DoubleAnimation>
+
+										</Storyboard>
+
+									</BeginStoryboard>
+
+								</EventTrigger>
+
+							</ToggleButton.Triggers>
+
+
+						</ToggleButton>
+
+					</Grid>
+
+					<!--// ListView with menu list items //-->
+
+					<ListView  x:Name="LV"
+                               Background="Transparent"
+                               BorderBrush="Transparent"
+                               ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+						<!--// Home //-->
+
+						<ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                                      >
+
+							<StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+								<Image Source="Assets/pl.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+
+								<TextBlock Text="Playlist"
+                                           Margin="25,0,0,0"
+										   Foreground="Black"
+                                           Style="{StaticResource font_style}"/>
+
+							</StackPanel>
+
+							<!--// Tooltip //-->
+
+							<ListViewItem.ToolTip>
+
+								<ToolTip x:Name="tt_playlist"
+                                         Content="Playlist"
+                                         Style="{StaticResource tt_style}"/>
+
+							</ListViewItem.ToolTip>
+
+						</ListViewItem>
+
+						<!--// Contacts //-->
+
+						<ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                                      >
+
+							<StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+								<Image Source="Assets/pl.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+
+								<TextBlock Text="All Songs"
+                                           Margin="25,0,0,0"
+										   Foreground="Black"
+                                           Style="{StaticResource font_style}"/>
+
+							</StackPanel>
+
+							<!--// Tooltip //-->
+
+							<ListViewItem.ToolTip>
+
+								<ToolTip x:Name="tt_allsongs"
+                                         Content="All Songs"
+                                         Style="{StaticResource tt_style}"/>
+
+							</ListViewItem.ToolTip>
+
+						</ListViewItem>
+
+						<!--// Messages //-->
+
+						<ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                                      >
+
+							<StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+								<Image Source="Assets/pl.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+
+								<TextBlock Text="Audio Routing"
+                                           Margin="25,0,0,0"
+										   Foreground="Black"
+                                           Style="{StaticResource font_style}"/>
+
+							</StackPanel>
+
+							<!--// Tooltip //-->
+
+							<ListViewItem.ToolTip>
+
+								<ToolTip x:Name="tt_audiorouting"
+                                         Content="Audio Routing"
+                                         Style="{StaticResource tt_style}"/>
+
+							</ListViewItem.ToolTip>
+
+						</ListViewItem>
+
+						<!--// Maps //-->
+
+						<ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                                      >
+
+							<StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+								<Image Source="Assets/pl.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+
+								<TextBlock Text="Streaming"
+                                           Margin="25,0,0,0"
+										   Foreground="Black"
+                                           Style="{StaticResource font_style}"/>
+
+							</StackPanel>
+
+							<!--// Tooltip //-->
+
+							<ListViewItem.ToolTip>
+
+								<ToolTip x:Name="tt_streaming"
+                                         Content="Streaming"
+                                         Style="{StaticResource tt_style}"/>
+
+							</ListViewItem.ToolTip>
+
+						</ListViewItem>
+
+						<!--// Settings //-->
+
+						<ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                                      >
+
+							<StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+								<Image Source="Assets/pl.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+
+								<TextBlock Text="Features"
+                                           Margin="25,0,0,0"
+										   Foreground="Black"
+                                           Style="{StaticResource font_style}"/>
+
+							</StackPanel>
+
+							<!--// Tooltip //-->
+
+							<ListViewItem.ToolTip>
+
+								<ToolTip x:Name="tt_features"
+                                         Content="Features"
+                                         Style="{StaticResource tt_style}"/>
+
+							</ListViewItem.ToolTip>
+
+						</ListViewItem>
+
+						<!---//Commands//-->
+
+						<ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                                      >
+
+							<StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+								<Image Source="Assets/pl.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+
+								<TextBlock Text="Commands"
+                                           Margin="25,0,0,0"
+										   Foreground="Black"
+                                           Style="{StaticResource font_style}"/>
+
+							</StackPanel>
+
+							<!--// Tooltip //-->
+
+							<ListViewItem.ToolTip>
+
+								<ToolTip x:Name="tt_commands"
+                                         Content="Commands"
+                                         Style="{StaticResource tt_style}"/>
+
+							</ListViewItem.ToolTip>
+
+						</ListViewItem>
+
+						<!--// Log History //-->
+
+						<ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                                      >
+
+							<StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+								<Image Source="Assets/pl.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+
+								<TextBlock Text="Log History"
+                                           Margin="25,0,0,0"
+										   Foreground="Black"
+                                           Style="{StaticResource font_style}"/>
+
+							</StackPanel>
+
+							<!--// Tooltip //-->
+
+							<ListViewItem.ToolTip>
+
+								<ToolTip x:Name="tt_loghistory"
+                                         Content="Log History"
+                                         Style="{StaticResource tt_style}"/>
+
+							</ListViewItem.ToolTip>
+
+						</ListViewItem>
+
+						<!--// Listview items style template //-->
+
+						<ListView.ItemContainerStyle>
+
+							<Style TargetType="ListViewItem">
+
+								<Setter Property="Template">
+
+									<Setter.Value>
+
+										<ControlTemplate TargetType="{x:Type ListViewItem}">
+
+											<Border x:Name="Bd"
+                                                    Height="50"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    Background="{TemplateBinding Background}"
+                                                    Padding="{TemplateBinding Padding}"
+                                                    SnapsToDevicePixels="True">
+
+												<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+											</Border>
+
+											<ControlTemplate.Triggers>
+
+												<MultiTrigger>
+
+													<MultiTrigger.Conditions>
+
+														<Condition Property="IsMouseOver" Value="True"/>
+
+													</MultiTrigger.Conditions>
+
+													<Setter Property="Background"
+                                                            TargetName="Bd"
+                                                            Value="#404D5B"/>
+
+													<Setter Property="BorderBrush"
+                                                            TargetName="Bd"
+                                                            Value="#404D5B"/>
+
+												</MultiTrigger>
+
+											</ControlTemplate.Triggers>
+
+										</ControlTemplate>
+
+									</Setter.Value>
+
+								</Setter>
+
+							</Style>
+
+						</ListView.ItemContainerStyle>
+
+					</ListView>
+
+				</StackPanel>
+
+
+			</Grid>
+
+			<!---Remaining rows without nav-bar-->
+			<Grid
+				Grid.Column="1">
+				<Grid.RowDefinitions>
+					<RowDefinition Height=".1*"></RowDefinition>
+					<RowDefinition Height="8*"></RowDefinition>
+					<RowDefinition Height="1*"></RowDefinition>
+				</Grid.RowDefinitions>
+
+				<!---Search bar and App close button-->
+				<Grid
+					Grid.Column="1"
+					Grid.Row="0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="10*"></ColumnDefinition>
+						<ColumnDefinition Width="1*"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<!---// Search Bar //-->
 					<Grid x:Name="searchbar"
-						  Height="30px"
-						  Opacity="50" Margin="30,40,30,384"
-						 
-						  >
-
+							  Opacity="50"
+						      Grid.Column="0"
+							  Background="Aquamarine">
 						<!---Search overlay-->
-						<Grid Grid.ColumnSpan="3">
+						<Grid Grid.ColumnSpan="1">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto"></ColumnDefinition>
 								<ColumnDefinition Width="*"></ColumnDefinition>
 							</Grid.ColumnDefinitions>
 							<!---Seach box-->
-							<Image Source="Assets/search1.png">
-
-							</Image>
+							<Image Source="Assets/search1.png"></Image>
 							<TextBox 
-								Style="{StaticResource placeHolder}" 
-								Tag="  Search . . .  "
-								Grid.Column="1"
-								FontSize="14px"
-								>
+									Style="{StaticResource placeHolder}" 
+									Tag="  Search . . .  "
+									Grid.Column="1"
+									FontSize="20px"
+									Height="30"
+									VerticalAlignment="Center"
+									>
 								<TextBox.Background>
 									<ImageBrush ImageSource="Assets/user.png" Stretch="Uniform" AlignmentX="Right">
 										<ImageBrush.Transform>
@@ -243,458 +654,121 @@
 						</Grid>
 					</Grid>
 
+					<!--// App Close Button //-->
+
+					<Grid
+						Grid.Column="1"
+						Background="AntiqueWhite">
+						<Button x:Name="CloseBtn"
+							Height="40"
+							Width="40"
+							BorderThickness="0"
+							Style="{StaticResource Close_btn}" 
+							Click="CloseBtn_Click" >
+							<Button.Background>
+								<ImageBrush ImageSource="Assets/closeBtn_default.png"/>
+							</Button.Background>
+						</Button>
+					</Grid>
 				</Grid>
 
-				<!--// App Close Button //-->
-
-				<Grid>
-
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="60"/>
-						<ColumnDefinition Width="30"/>
-					</Grid.ColumnDefinitions>
-
+				<!--// Background Image //-->
+				<Grid x:Name="BG"
+						  PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown"
+						  Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,0"
+					  >
 					<Grid.RowDefinitions>
-						<RowDefinition Height="30"/>
-						<RowDefinition Height="60"/>
-						<RowDefinition Height="*"/>
+						<RowDefinition Height="8*"></RowDefinition>
+						<RowDefinition Height="1*"></RowDefinition>
 					</Grid.RowDefinitions>
+					<Grid
+						Grid.Row="0">
+						<Grid.Background>
+							<ImageBrush x:Name="img_bg"
+										ImageSource="Assets/background.jpg"
+										Stretch="Fill"/>
+						</Grid.Background>
+					</Grid>
+					<Grid
+						Grid.Row="1">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="1*"></ColumnDefinition>
+							<ColumnDefinition Width="1*"></ColumnDefinition>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition></RowDefinition>
+						</Grid.RowDefinitions>
+						<!---All Playlist -->
+						<Grid
+							Grid.Row="0"
+							Grid.Column="0">
 
-					<Button x:Name="CloseBtn"
-                        Grid.Column="1"
-                        Height="40"
-                        Width="40"
-                        BorderThickness="0"
-                        Style="{StaticResource Close_btn}" Click="CloseBtn_Click" Grid.ColumnSpan="2" Margin="40,10,10,40" Grid.RowSpan="2">
-
-						<Button.Background>
-
-							<ImageBrush ImageSource="Assets/closeBtn_default.png"/>
-
-						</Button.Background>
-
-					</Button>
-
+							<TextBlock Name="all_playlist" Text="All Playlist" FontSize="24px" FontStyle="Italic" FontWeight="Bold" HorizontalAlignment="Left" Margin="20,20,0,124"></TextBlock>
+							<TextBlock Name="listen_playlist" Text="Listen Playlist" FontSize="20px" FontStyle="Oblique" FontWeight="DemiBold" HorizontalAlignment="Left" Margin="18,55,0,92"></TextBlock>
+							<Button Name="view_all_playlist" Content="View All" Background="Orange" Foreground="White" HorizontalAlignment="Left" Margin="199,55,0,0" VerticalAlignment="Top" Width="75" Height="27"/>
+							<Separator Height="5" Foreground="Black" Margin="0,87"></Separator>
+							<ListBox HorizontalAlignment="Left" Height="25" Margin="20,99,0,0" VerticalAlignment="Top" Width="254">
+								<ListBoxItem Content="Playlist 1"></ListBoxItem>
+								<ListBoxItem Content="Playlist 2"></ListBoxItem>
+								<ListBoxItem Content="Playlist 3"></ListBoxItem>
+							</ListBox>
+						</Grid>
+						
+						<!---Song Details-->
+						<Grid
+							Grid.Row="0"
+							Grid.Column="1">
+							<TextBlock Name="song_name" Text="Song Name" FontSize="24px" FontStyle="Italic" FontWeight="Bold" HorizontalAlignment="Left" Margin="20,20,0,116"></TextBlock>
+							<TextBlock Name="song_details" Text="Song Details " FontSize="20px" FontStyle="Oblique" FontWeight="DemiBold" HorizontalAlignment="Left" Margin="18,63,0,83"></TextBlock>
+							<TextBlock Name="song_details1" Text="Song Details 2" FontSize="20" FontStyle="Oblique" FontWeight="DemiBold" HorizontalAlignment="Left" Margin="18,96,0,52"></TextBlock>
+							
+						</Grid>
+					</Grid>
 				</Grid>
 
+				<!---// Media Control//-->
+				<Grid
+					Grid.Row="2">
+					<StackPanel Background="Blue" VerticalAlignment="Center">
 
-				<!--// Navigation Panel //-->
+						<!-- To interactively stop, pause, and play the media, the LoadedBehavior 
+           property of the MediaElement must be set to "Manual". -->
 
-				<Grid   x:Name="nav_pnl"
-                    HorizontalAlignment="Left"
-                    Width="65"
-                    Background="Orange">
+						<MediaElement Source="Assets\1st.mp3" x:Name="myMediaElement" 
+								Height="0" Width="0" LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="Fill" 
+								MediaOpened="MyMediaElement_MediaOpened" MediaEnded="MyMediaElement_MediaEnded" />
 
-					<StackPanel x:Name="st_pnl">
+						<StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
 
-						<!--// Grid for the Menu Toggle Button //-->
+							<Image Source="Assets\play.png" x:Name="PlayMedia" MouseLeftButtonDown="PlayMedia_MouseLeftButtonDown" Margin="5" />
 
-						<Grid Height="90">
+							<Image Source="Assets\pause1.png" x:Name="PauseMedia" MouseDown="PauseMedia_MouseDown" Margin="5" />
 
-							<!--// Menu title text //-->
+							<Image Source="Assets\stop.png" x:Name="StopMedia" MouseDown="StopMedia_MouseDown" Margin="5" />
 
-							<TextBlock  Grid.Row="1"
-                                    Grid.Column="0"
-                                    Margin="73,-20,0,0"
-                                    Text="B R O W S E  M U S I C"
-                                    Foreground="Black"
-                                    FontSize="15"
-                                    Background="Transparent"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"
-                                    Style="{StaticResource font_style}">
-                            
-                            <!--// Shadow Effect //-->
+							<!-- Volume slider. This slider allows a Volume range between 0 and 1. -->
+							<TextBlock Foreground="White" VerticalAlignment="Center" Margin="5"  ><Run Text="Volume"/></TextBlock>
+							<Slider x:Name="volumeSlider" VerticalAlignment="Center" ValueChanged="VolumeSlider_ValueChanged" 
+       Minimum="0" Maximum="1" Value="0.5" Width="70"/>
 
-								<TextBlock.Effect>
+							<!-- Volume slider. This slider allows you to change the speed of the media playback. -->
+							<TextBlock Foreground="White" Margin="5"  VerticalAlignment="Center"><Run Text="Speed"/></TextBlock>
+							<Slider x:Name="speedRatioSlider" VerticalAlignment="Center" ValueChanged="SpeedRatioSlider_ValueChanged" 
+       Value="1" Width="70" />
 
-									<DropShadowEffect  BlurRadius="3"
-                                                   ShadowDepth="1"
-                                                   Direction="-90"
-                                                   Color="Black"/>
+							<!-- Seek to slider. Ths slider allows you to jump to different parts of the media playback. -->
+							<TextBlock Foreground="White" Margin="5"  VerticalAlignment="Center"><Run Text="Seek To"/></TextBlock>
+							<Slider x:Name="timelineSlider" Margin="5" ValueChanged="TimelineSlider_ValueChanged" VerticalAlignment="Center" Width="70"/>
 
-								</TextBlock.Effect>
-
-							</TextBlock>
-
-							<!--// Toggle Button //-->
-
-							<ToggleButton x:Name="Tg_Btn"
-                                      Grid.Column="0"
-                                      VerticalAlignment="Center"
-                                      HorizontalAlignment="Left"
-                                      Margin="18,-20,0,0"
-                                      Height="30"
-                                      Width="30"
-                                      BorderThickness="0"
-                                      Style="{StaticResource tb_style}" Unchecked="Tg_Btn_Unchecked" Checked="Tg_Btn_Checked">
-
-								<!--// Toggle button default background image //-->
-
-								<ToggleButton.Background>
-
-									<ImageBrush ImageSource="Assets/tgBtn_default.png"
-                                            Stretch="None"/>
-
-								</ToggleButton.Background>
-
-								<!--// Toggle Button - Checked, Unchecked events //-->
-
-								<ToggleButton.Triggers>
-
-									<EventTrigger RoutedEvent="ToggleButton.Unchecked">
-
-										<BeginStoryboard>
-
-											<Storyboard x:Name="HideStackPanel">
-
-												<DoubleAnimation    
-                                                
-                                                Storyboard.TargetName="nav_pnl"
-                                                Storyboard.TargetProperty="Width"
-                                                BeginTime="0:0:0"
-                                                From="230" To="65"
-                                                Duration="0:0:0.2">
-
-												</DoubleAnimation>
-
-											</Storyboard>
-
-										</BeginStoryboard>
-
-									</EventTrigger>
-
-									<EventTrigger RoutedEvent="ToggleButton.Checked">
-
-										<BeginStoryboard>
-
-											<Storyboard x:Name="ShowStackPanel">
-
-												<DoubleAnimation
-                                                
-                                                Storyboard.TargetName="nav_pnl"
-                                                Storyboard.TargetProperty="Width"
-                                                BeginTime="0:0:0"
-                                                From="65" To="230"
-                                                Duration="0:0:0.3">
-
-												</DoubleAnimation>
-
-											</Storyboard>
-
-										</BeginStoryboard>
-
-									</EventTrigger>
-
-								</ToggleButton.Triggers>
-
-
-							</ToggleButton>
-
-						</Grid>
-
-						<!--// ListView with menu list items //-->
-
-						<ListView  x:Name="LV"
-                               Background="Transparent"
-                               BorderBrush="Transparent"
-                               ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
-							<!--// Home //-->
-
-							<ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
-
-								<StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-									<Image Source="Assets/pl.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-									<TextBlock Text="Playlist"
-                                           Margin="25,0,0,0"
-										   Foreground="Black"
-                                           Style="{StaticResource font_style}"/>
-
-								</StackPanel>
-
-								<!--// Tooltip //-->
-
-								<ListViewItem.ToolTip>
-
-									<ToolTip x:Name="tt_playlist"
-                                         Content="Playlist"
-                                         Style="{StaticResource tt_style}"/>
-
-								</ListViewItem.ToolTip>
-
-							</ListViewItem>
-
-							<!--// Contacts //-->
-
-							<ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
-
-								<StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-									<Image Source="Assets/pl.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-									<TextBlock Text="All Songs"
-                                           Margin="25,0,0,0"
-										   Foreground="Black"
-                                           Style="{StaticResource font_style}"/>
-
-								</StackPanel>
-
-								<!--// Tooltip //-->
-
-								<ListViewItem.ToolTip>
-
-									<ToolTip x:Name="tt_allsongs"
-                                         Content="All Songs"
-                                         Style="{StaticResource tt_style}"/>
-
-								</ListViewItem.ToolTip>
-
-							</ListViewItem>
-
-							<!--// Messages //-->
-
-							<ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
-
-								<StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-									<Image Source="Assets/pl.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-									<TextBlock Text="Audio Routing"
-                                           Margin="25,0,0,0"
-										   Foreground="Black"
-                                           Style="{StaticResource font_style}"/>
-
-								</StackPanel>
-
-								<!--// Tooltip //-->
-
-								<ListViewItem.ToolTip>
-
-									<ToolTip x:Name="tt_audiorouting"
-                                         Content="Audio Routing"
-                                         Style="{StaticResource tt_style}"/>
-
-								</ListViewItem.ToolTip>
-
-							</ListViewItem>
-
-							<!--// Maps //-->
-
-							<ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
-
-								<StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-									<Image Source="Assets/pl.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-									<TextBlock Text="Streaming"
-                                           Margin="25,0,0,0"
-										   Foreground="Black"
-                                           Style="{StaticResource font_style}"/>
-
-								</StackPanel>
-
-								<!--// Tooltip //-->
-
-								<ListViewItem.ToolTip>
-
-									<ToolTip x:Name="tt_streaming"
-                                         Content="Streaming"
-                                         Style="{StaticResource tt_style}"/>
-
-								</ListViewItem.ToolTip>
-
-							</ListViewItem>
-
-							<!--// Settings //-->
-
-							<ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
-
-								<StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-									<Image Source="Assets/pl.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-									<TextBlock Text="Features"
-                                           Margin="25,0,0,0"
-										   Foreground="Black"
-                                           Style="{StaticResource font_style}"/>
-
-								</StackPanel>
-
-								<!--// Tooltip //-->
-
-								<ListViewItem.ToolTip>
-
-									<ToolTip x:Name="tt_features"
-                                         Content="Features"
-                                         Style="{StaticResource tt_style}"/>
-
-								</ListViewItem.ToolTip>
-
-							</ListViewItem>
-
-							<!---//Commands//-->
-
-							<ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
-
-								<StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-									<Image Source="Assets/pl.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-									<TextBlock Text="Commands"
-                                           Margin="25,0,0,0"
-										   Foreground="Black"
-                                           Style="{StaticResource font_style}"/>
-
-								</StackPanel>
-
-								<!--// Tooltip //-->
-
-								<ListViewItem.ToolTip>
-
-									<ToolTip x:Name="tt_commands"
-                                         Content="Commands"
-                                         Style="{StaticResource tt_style}"/>
-
-								</ListViewItem.ToolTip>
-
-							</ListViewItem>
-
-							<!--// Log History //-->
-
-							<ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
-
-								<StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-									<Image Source="Assets/pl.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-									<TextBlock Text="Log History"
-                                           Margin="25,0,0,0"
-										   Foreground="Black"
-                                           Style="{StaticResource font_style}"/>
-
-								</StackPanel>
-
-								<!--// Tooltip //-->
-
-								<ListViewItem.ToolTip>
-
-									<ToolTip x:Name="tt_loghistory"
-                                         Content="Log History"
-                                         Style="{StaticResource tt_style}"/>
-
-								</ListViewItem.ToolTip>
-
-							</ListViewItem>
-
-							<!--// Listview items style template //-->
-
-							<ListView.ItemContainerStyle>
-
-								<Style TargetType="ListViewItem">
-
-									<Setter Property="Template">
-
-										<Setter.Value>
-
-											<ControlTemplate TargetType="{x:Type ListViewItem}">
-
-												<Border x:Name="Bd"
-                                                    Height="50"
-                                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                                    Background="{TemplateBinding Background}"
-                                                    Padding="{TemplateBinding Padding}"
-                                                    SnapsToDevicePixels="True">
-
-													<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-
-												</Border>
-
-												<ControlTemplate.Triggers>
-
-													<MultiTrigger>
-
-														<MultiTrigger.Conditions>
-
-															<Condition Property="IsMouseOver" Value="True"/>
-
-														</MultiTrigger.Conditions>
-
-														<Setter Property="Background"
-                                                            TargetName="Bd"
-                                                            Value="#404D5B"/>
-
-														<Setter Property="BorderBrush"
-                                                            TargetName="Bd"
-                                                            Value="#404D5B"/>
-
-													</MultiTrigger>
-
-												</ControlTemplate.Triggers>
-
-											</ControlTemplate>
-
-										</Setter.Value>
-
-									</Setter>
-
-								</Style>
-
-							</ListView.ItemContainerStyle>
-
-						</ListView>
-
+						</StackPanel>
 					</StackPanel>
 
-
 				</Grid>
 
+
 			</Grid>
-
-
 		</Grid>
 	</ScrollViewer>
-	
+
 
 </Window>

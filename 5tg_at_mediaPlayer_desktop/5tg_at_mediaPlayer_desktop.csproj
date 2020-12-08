@@ -96,6 +96,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\pause.png" />
+    <Resource Include="Assets\play.png" />
+    <Resource Include="Assets\stop.png" />
+    <Resource Include="Assets\pause1.png" />
+    <Content Include="Assets\1st.mp3" />
+    <Content Include="Assets\test.mkv" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>
