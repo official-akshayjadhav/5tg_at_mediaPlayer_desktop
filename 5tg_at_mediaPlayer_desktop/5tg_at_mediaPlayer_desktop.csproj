@@ -55,6 +55,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Center_Playlist\Center_Playlist.xaml.cs">
+      <DependentUpon>Center_Playlist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Top_search_bar\Top_Search_Bar.xaml.cs">
+      <DependentUpon>Top_Search_Bar.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Bottom_Media_Control\Bottom_Media_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Center_Playlist\Center_Playlist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,12 +77,26 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Bottom_Media_Control\Bottom_Media_Control.xaml.cs">
+      <DependentUpon>Bottom_Media_Control.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Navigation_Bar\Navigation_Bar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Top_search_bar\Top_Search_Bar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Navigation_Bar\Navigation_Bar.xaml.cs">
+      <DependentUpon>Navigation_Bar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -96,12 +124,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Top_search_bar\Assets\closeBtn_default.png" />
+    <Resource Include="Top_search_bar\Assets\closeBtn_MouseOver.png" />
+    <Resource Include="Top_search_bar\Assets\search1.png" />
+    <Resource Include="Top_search_bar\Assets\user.png" />
     <Resource Include="Assets\pause.png" />
     <Resource Include="Assets\play.png" />
     <Resource Include="Assets\stop.png" />
     <Resource Include="Assets\pause1.png" />
     <Content Include="Assets\1st.mp3" />
     <Content Include="Assets\test.mkv" />
+    <Resource Include="Navigation_Bar\Assets\pl.png" />
+    <Resource Include="Navigation_Bar\Assets\tgBtn_default.png" />
+    <Resource Include="Navigation_Bar\Assets\tgBtn_MouseOver.png" />
+    <Resource Include="Bottom_Media_Control\Assets\pause1.png" />
+    <Resource Include="Bottom_Media_Control\Assets\play.png" />
+    <Resource Include="Bottom_Media_Control\Assets\stop.png" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>
@@ -124,5 +162,6 @@
     <Resource Include="Assets\tgBtn_MouseOver.png" />
     <Resource Include="Assets\user.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

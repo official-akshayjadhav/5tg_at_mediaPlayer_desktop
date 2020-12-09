@@ -13,22 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _5tg_at_mediaPlayer_desktop
+namespace _5tg_at_mediaPlayer_desktop.Navigation_Bar
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Navigation_Bar.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Navigation_Bar : UserControl
     {
-      
-        public MainWindow()
+        public Navigation_Bar()
         {
             InitializeComponent();
         }
-
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
             // Set tooltip visibility
+
             if (Tg_Btn.IsChecked == true)
             {
                 tt_playlist.Visibility = Visibility.Collapsed;
@@ -50,20 +49,18 @@ namespace _5tg_at_mediaPlayer_desktop
                 tt_loghistory.Visibility = Visibility.Visible;
             }
         }
-
+        private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Tg_Btn.IsChecked = false;
+        }
         private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
         {
-            img_bg.Opacity = 1;
+            //img_bg.Opacity = 1;
         }
 
         private void Tg_Btn_Checked(object sender, RoutedEventArgs e)
         {
-            img_bg.Opacity = 0.3;
-        }
-
-        private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Tg_Btn.IsChecked = false;
+            //img_bg.Opacity = 0.3;
         }
 
     }
