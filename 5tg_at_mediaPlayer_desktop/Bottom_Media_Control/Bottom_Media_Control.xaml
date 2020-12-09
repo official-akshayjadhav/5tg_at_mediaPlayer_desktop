@@ -16,6 +16,12 @@
 								Height="0" Width="0" LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="Fill" 
 								MediaOpened="MyMediaElement_MediaOpened" MediaEnded="MyMediaElement_MediaEnded" />
 
+			<StatusBarItem>
+				<TextBlock Foreground="White" Name="lblProgressStatus">00:00:00</TextBlock>
+			</StatusBarItem>
+			<StatusBarItem HorizontalContentAlignment="Stretch">
+				<Slider Name="sliProgress" Thumb.DragStarted="SliProgress_DragStarted"  Thumb.DragCompleted="SliProgress_DragCompleted" ValueChanged="SliProgress_ValueChanged" />
+			</StatusBarItem>
 			<StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
 
 				<Image Source="Assets\play.png" x:Name="PlayMedia" MouseLeftButtonDown="PlayMedia_MouseLeftButtonDown" Margin="5" />
@@ -40,6 +46,5 @@
 
 			</StackPanel>
 		</StackPanel>
-
 	</Grid>
 </UserControl>
