@@ -543,25 +543,28 @@
 				</Grid>
 
 				<!--// Background Image //-->
-				<Grid x:Name="BG"
-						  PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown"
-						  Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,0"
-					  >
+				<Grid 
+					Grid.Row="1"
+					x:Name="BG"
+					PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown">
+					<!--
 					<Grid.RowDefinitions>
 						<RowDefinition Height="8*"></RowDefinition>
-						<RowDefinition Height="1*"></RowDefinition>
 					</Grid.RowDefinitions>
+					-->
+					<!---
 					<Grid
 						Grid.Row="0">
-						<Grid.Background>
+							<Grid.Background>
 							<ImageBrush x:Name="img_bg"
 										ImageSource="Assets/background.jpg"
 										Stretch="Fill"/>
 						</Grid.Background>
+					
 					</Grid>
+					-->
 					<!---Center part of Software-->
-					<Grid
-						Grid.Row="1">
+					<Grid>
 						<Center_part:Center_Playlist></Center_part:Center_Playlist>
 					</Grid>
 				</Grid>
