@@ -105,7 +105,7 @@
 									Grid.Column="1"
 									FontSize="20px"
 									Height="30"
-									VerticalAlignment="Center"
+									VerticalAlignment="Center" Text="search song, playlist"
 									>
 					<TextBox.Background>
 						<ImageBrush ImageSource="Assets/user.png" Stretch="Uniform" AlignmentX="Right">

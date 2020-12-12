@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 	<Grid>
-		<StackPanel Background="Blue" VerticalAlignment="Center">
+		<StackPanel Background="Brown"  VerticalAlignment="Center">
 
 			<!-- To interactively stop, pause, and play the media, the LoadedBehavior 
            property of the MediaElement must be set to "Manual". -->
