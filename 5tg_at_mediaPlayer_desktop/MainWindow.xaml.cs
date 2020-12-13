@@ -20,10 +20,17 @@ namespace _5tg_at_mediaPlayer_desktop
     /// </summary>
     public partial class MainWindow : Window
     {
-      
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Center_Playlist_Loaded();
+            //LoadAllSong();
+            //Center_Playlist.Center_Playlist playlist = new Center_Playlist.Center_Playlist();
+            //playlist.LoadAllSong();
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
@@ -75,5 +82,6 @@ namespace _5tg_at_mediaPlayer_desktop
         {
 
         }
+
     }
 }
