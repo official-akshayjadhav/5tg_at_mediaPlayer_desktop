@@ -4,9 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Center_Playlist"
+             xmlns:core="clr-namespace:System;assembly=mscorlib"
+xmlns:tempLocal="clr-namespace:_5tg_at_mediaPlayer_desktop.connection"
              mc:Ignorable="d" 
 			 Background="AliceBlue"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <!--<UserControl.Resources>
+        --><!--Create list of enumeration values--><!--
+        <ObjectDataProvider x:Key="myEnum" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local:OrderStatus"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -47,9 +57,9 @@
                         <ColumnDefinition Width="13*"/>
                         <ColumnDefinition Width="235*"/>
                     </Grid.ColumnDefinitions>
-                    <Button FontSize="14" Name="create" Content="Create Playlist" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="101" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="10,19,0,0"/>
-                    <!--<Button FontSize="16" Name="sort" Content="Sort" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="98" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="57,19,0,0" Grid.Column="1"/>
-                    -->
+                    <Button FontSize="14" Name="create" Content="Create Playlist" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="10,19,0,0" Click="Create_Click" />
+                    <Button FontSize="14" Name="AddTrack" Content="Add Track" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="100,19,0,0" Click="Create_Click" />
+                    
                     <Label Content="Sort By" Margin="183,-12,227.333,43" Grid.ColumnSpan="3"/>
                     <ComboBox Margin="183,19,154.333,0" VerticalAlignment="Top" Height="27" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0" Grid.ColumnSpan="3">
                         <ComboBoxItem Content="name"></ComboBoxItem>
@@ -58,10 +68,10 @@
                         <ComboBoxItem Content="date added"></ComboBoxItem>
 
                     </ComboBox>
+
                 </Grid>
-                <Grid
-					Grid.Row="1">
-                    <DataGrid Name="playlistnames" CanUserResizeColumns="True" AutoGenerateColumns="False" Margin="10,-72,0.333,10.333" Foreground="White">
+                <Grid Grid.Row="1">
+                    <!--<DataGrid Name="playlistnames" CanUserResizeColumns="True" AutoGenerateColumns="False" Margin="10,-72,0.333,10.333" Foreground="White">
 
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -76,14 +86,46 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="1*"></DataGridTextColumn>
-                            <DataGridTextColumn MinWidth="70" Header="ID" Binding="{Binding ID}" Width="1*"></DataGridTextColumn>
-                            <DataGridTextColumn MinWidth="70" Header="Name" Binding="{Binding name}" Width="1*"></DataGridTextColumn>
-                            <DataGridTextColumn MinWidth="70" Header="Songs" Binding="{Binding songs}" Width="1*"></DataGridTextColumn>
-                            <DataGridTextColumn MinWidth="80" Header="Controls" Binding="{Binding controls}" Width="1*"></DataGridTextColumn>
-                        </DataGrid.Columns>
+                            <DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding ID}" Width="1*"></DataGridTextColumn>
+                            <DataGridTextColumn MinWidth="70" Header="Cart ID" Binding="{Binding UID}" Width="1*"></DataGridTextColumn>
+                            <DataGridTextColumn MinWidth="70" Header="Name" Binding="{Binding Title}" Width="1*"></DataGridTextColumn>
+                            <DataGridTextColumn MinWidth="70" Header="Songs" Binding="{Binding Title}" Width="1*"></DataGridTextColumn>
+                            <DataGridTextColumn MinWidth="80" Header="Duration" Binding="{Binding Duration}" Width="1*"></DataGridTextColumn>
+                            <DataGridComboBoxColumn MinWidth="80" Header="ctrl" Width="1*" DisplayMemberPath="name" x:Name="comboBoxControls"  
+                                                    SelectedItemBinding="{Binding status}"                                                    
+                                                    ItemsSource="{Binding Source={StaticResource myEnum}}">
 
-                    </DataGrid>
+                            </DataGridComboBoxColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>-->
+
+                    <ListView Name="playlistnames" Margin="10,-72,0.333,10.333" Foreground="Black">
+                        <ListView.Resources>
+                            <ContextMenu x:Key="myContextMenu">
+                                <!--<MenuItem Header="Header Text" Click="column_No_Click"/>-->
+                            </ContextMenu>
+                        </ListView.Resources>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Sr No." Width="50" x:Name="Sr_no" DisplayMemberBinding="{Binding ID}" />
+                                <GridViewColumn Header="Cart ID" Width="50" x:Name="UID" DisplayMemberBinding="{Binding UID}" />
+                                <GridViewColumn Header="Title" Width="50" x:Name="Title" DisplayMemberBinding="{Binding Title}" />
+                                <GridViewColumn Header="Duration" Width="50" x:Name="Duration" DisplayMemberBinding="{Binding Duration}" />
+                                <GridViewColumn Header="Controls" Width="50" x:Name="column_Edit"  >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox Name="EditComboBox" SelectionChanged="ComboBox_SelectionChanged_1" Tag="{Binding}">
+                                                <ComboBoxItem HorizontalContentAlignment="Center">Update</ComboBoxItem>
+                                                <ComboBoxItem HorizontalContentAlignment="Center">Dalete</ComboBoxItem>
+                                                <ComboBoxItem HorizontalContentAlignment="Center">Add to playlist</ComboBoxItem>
+                                            </ComboBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
             </Grid>
         </Grid>

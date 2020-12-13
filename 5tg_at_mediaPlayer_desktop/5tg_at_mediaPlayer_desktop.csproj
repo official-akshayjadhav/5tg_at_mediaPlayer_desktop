@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>_5tg_at_mediaPlayer_desktop</RootNamespace>
     <AssemblyName>5tg_at_mediaPlayer_desktop</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -29,6 +29,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,7 +51,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ATL">
+      <HintPath>..\..\..\..\My\ATL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,6 +77,16 @@
     </ApplicationDefinition>
     <Compile Include="Center_Playlist\Center_Playlist.xaml.cs">
       <DependentUpon>Center_Playlist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="connection\ConnectionClass.cs" />
+    <Compile Include="connection\DbModel.cs" />
+    <Compile Include="connection\Global_Log.cs" />
+    <Compile Include="connection\PlayBack.cs" />
+    <Compile Include="Popup\Add_Playlist.xaml.cs">
+      <DependentUpon>Add_Playlist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\Track_Metadata.xaml.cs">
+      <DependentUpon>Track_Metadata.xaml</DependentUpon>
     </Compile>
     <Compile Include="Top_search_bar\Top_Search_Bar.xaml.cs">
       <DependentUpon>Top_Search_Bar.xaml</DependentUpon>
@@ -100,6 +115,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Navigation_Bar\Navigation_Bar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popup\Add_Playlist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popup\Track_Metadata.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,13 +180,6 @@
     <Resource Include="Bottom_Media_Control\Assets\pause1.png" />
     <Resource Include="Bottom_Media_Control\Assets\play.png" />
     <Resource Include="Bottom_Media_Control\Assets\stop.png" />
-    <Content Include="Database1.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database1_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>
@@ -198,5 +214,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
