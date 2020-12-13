@@ -8,7 +8,7 @@
 		xmlns:Top_Seach_Bar="clr-namespace:_5tg_at_mediaPlayer_desktop.Top_search_bar"
         xmlns:Center_part="clr-namespace:_5tg_at_mediaPlayer_desktop.Center_Playlist"
 		mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="650" Width="1000">
 
 
 	<Window.Resources>

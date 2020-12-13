@@ -146,17 +146,18 @@
     <Resource Include="Top_search_bar\Assets\search1.png" />
     <Resource Include="Top_search_bar\Assets\user.png" />
     <Resource Include="Assets\pause.png" />
-    <Resource Include="Assets\play.png" />
-    <Resource Include="Assets\stop.png" />
-    <Resource Include="Assets\pause1.png" />
     <Content Include="Assets\1st.mp3" />
     <Content Include="Assets\test.mkv" />
     <Resource Include="Navigation_Bar\Assets\pl.png" />
     <Resource Include="Navigation_Bar\Assets\tgBtn_default.png" />
     <Resource Include="Navigation_Bar\Assets\tgBtn_MouseOver.png" />
-    <Resource Include="Bottom_Media_Control\Assets\pause1.png" />
+    <Resource Include="Bottom_Media_Control\Assets\next.png" />
+    <Resource Include="Bottom_Media_Control\Assets\pause.png" />
     <Resource Include="Bottom_Media_Control\Assets\play.png" />
+    <Resource Include="Bottom_Media_Control\Assets\previous.png" />
+    <Resource Include="Bottom_Media_Control\Assets\repeat.png" />
     <Resource Include="Bottom_Media_Control\Assets\stop.png" />
+    <Resource Include="Bottom_Media_Control\Assets\volume.png" />
     <Content Include="Database1.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -198,5 +199,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

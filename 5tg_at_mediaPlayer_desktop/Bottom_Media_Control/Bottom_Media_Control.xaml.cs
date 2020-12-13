@@ -29,6 +29,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             InitializeComponent();
             Uri music = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
             mediaPlayer.Open(music);
+            song.Text = music.ToString();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
@@ -36,13 +37,20 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         }
         //play the media
 
-        private void PlayMedia_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        /*private void PlayMedia_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
             mediaPlayer.Play();
             InitializePropertyValues();
         }
-
-        private void PauseMedia_MouseDown(object sender, MouseButtonEventArgs e)
+        */
+        /*private void PlayMedia_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            //mediaPlayer.Pause();
+        }
+        */
+       
+        
+        /*private void PauseMedia_MouseDown(object sender, MouseButtonEventArgs e)
         {
             mediaPlayer.Pause();
         }
@@ -51,7 +59,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         {
             mediaPlayer.Stop();
         }
-
+        */
         private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             mediaPlayer.Volume = (double)volumeSlider.Value;
@@ -74,6 +82,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         {
             mediaPlayer.Volume = (double)volumeSlider.Value;
             mediaPlayer.SpeedRatio = (double)speedRatioSlider.Value;
+           
         }
 
         private void MyMediaElement_MediaOpened(object sender, RoutedEventArgs e)
@@ -113,6 +122,45 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                 sliProgress.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
                 sliProgress.Value = mediaPlayer.Position.TotalSeconds;
             }
+        }
+
+        /*private void PlayMedia_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            mediaPlayer.Play();
+            InitializePropertyValues();
+        }*/
+
+
+        private void PlayPreviousMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+        private void PlayMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            mediaPlayer.Play();
+            InitializePropertyValues();
+            
+        }
+
+        private void PauseMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            mediaPlayer.Pause();
+        }
+
+        private void StopMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            mediaPlayer.Stop();
+        }
+
+        private void PlayNextMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void PlayRepeatMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            mediaPlayer.Position = TimeSpan.Zero;
+            mediaPlayer.Play();
         }
     }
 }

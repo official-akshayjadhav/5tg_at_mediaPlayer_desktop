@@ -98,17 +98,18 @@
 					<ColumnDefinition Width="*"></ColumnDefinition>
 				</Grid.ColumnDefinitions>
 				<!---Seach box-->
-				<Image Source="Assets/search1.png"></Image>
+				<!--<Image Source="Assets/search1.png"></Image>-->
 				<TextBox 
 									Style="{StaticResource placeHolder}" 
-									Tag="  Search . . .  "
+									Tag="  Search Song and Playlist . . .  "
 									Grid.Column="1"
 									FontSize="20px"
 									Height="30"
-									VerticalAlignment="Center" Text="search song, playlist"
+									Margin="30,0,0,0"
+									VerticalAlignment="Center" Text=""
 									>
 					<TextBox.Background>
-						<ImageBrush ImageSource="Assets/user.png" Stretch="Uniform" AlignmentX="Right">
+						<ImageBrush ImageSource="Assets/search1.png" Stretch="Uniform" AlignmentX="Right">
 							<ImageBrush.Transform>
 								<TransformGroup>
 									<ScaleTransform/>
@@ -123,11 +124,11 @@
 			</Grid>
 		</Grid>
 		<!--// App Close Button //-->
-
+		<!---User Button-->
 		<Grid
 						Grid.Column="1"
 						Background="AntiqueWhite">
-			<Button x:Name="CloseBtn"
+			<!--<Button x:Name="CloseBtn"
 							Height="40"
 							Width="40"
 							BorderThickness="0"
@@ -137,6 +138,36 @@
 					<ImageBrush ImageSource="Assets/closeBtn_default.png"/>
 				</Button.Background>
 			</Button>
+			-->
+			<Button x:Name="UserBtn"
+					Height="40"
+					Width="40"
+					BorderThickness="0"
+					Click="UserBtn_Click">
+				<Button.Style>
+					<Style TargetType="{x:Type Button}">
+						<Setter Property="Background" Value="White"></Setter>
+						<Setter Property="Template">
+							<Setter.Value>
+								<ControlTemplate TargetType="{x:Type Button}">
+									<Border Background="{TemplateBinding Background}">
+										<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+									</Border>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+						<Style.Triggers>
+							<Trigger Property="IsMouseOver" Value="true">
+								<Setter Property="Opacity" Value=".10"></Setter>
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</Button.Style>
+				<Button.Background>
+					<ImageBrush ImageSource="Assets/user.png"/>
+				</Button.Background>
+			</Button>
+
 		</Grid>
 	</Grid>
 

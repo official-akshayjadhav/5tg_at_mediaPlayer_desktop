@@ -28,5 +28,10 @@ namespace _5tg_at_mediaPlayer_desktop.Top_search_bar
         {
             System.Windows.Application.Current.Shutdown();
         }
+
+        private void UserBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

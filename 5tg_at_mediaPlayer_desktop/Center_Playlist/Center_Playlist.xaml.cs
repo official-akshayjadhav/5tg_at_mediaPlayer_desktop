@@ -46,7 +46,6 @@ namespace _5tg_at_mediaPlayer_desktop.Center_Playlist
             {
                 con.Close();
             }*/
-
         }
 
         private void Playlistnames_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
@@ -70,6 +69,12 @@ namespace _5tg_at_mediaPlayer_desktop.Center_Playlist
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+        private void Show_Click(object sender, RoutedEventArgs e) {
+            MyPopup.IsOpen = true;
+        }
+        private void Hide_Click(object sender, RoutedEventArgs e) {
+            MyPopup.IsOpen = false;
         }
     }
 }
