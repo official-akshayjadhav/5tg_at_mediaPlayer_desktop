@@ -7,7 +7,7 @@
 			 mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel Background="Brown"  VerticalAlignment="Center">
+        <StackPanel Background="White" VerticalAlignment="Center">
 
             <!-- To interactively stop, pause, and play the media, the LoadedBehavior 
            property of the MediaElement must be set to "Manual". -->
@@ -15,7 +15,7 @@
             <MediaElement Source="Assets\1st.mp3" x:Name="myMediaElement" 
 								Height="0" Width="0" LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="Fill" 
 								MediaOpened="MyMediaElement_MediaOpened" MediaEnded="MyMediaElement_MediaEnded" />
-            <TextBlock TextWrapping="Wrap" Name="song" Height="20" Foreground="White"></TextBlock>
+            <TextBlock TextWrapping="Wrap" Name="song" Height="20" Foreground="Black"></TextBlock>
 
             <StatusBarItem Margin="0,0,742,0" RenderTransformOrigin="0.5,0.5">
                 <StatusBarItem.RenderTransform>
@@ -25,11 +25,13 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </StatusBarItem.RenderTransform>
-                <TextBlock Foreground="White" Name="lblProgressStatus">00:00:00</TextBlock>
+                <TextBlock Foreground="Black" Name="lblProgressStatus">00:00:00</TextBlock>
             </StatusBarItem>
 
             <StatusBarItem HorizontalContentAlignment="Stretch">
-                <Slider Name="sliProgress" Thumb.DragStarted="SliProgress_DragStarted"  Thumb.DragCompleted="SliProgress_DragCompleted" ValueChanged="SliProgress_ValueChanged" />
+				<Slider Name="sliProgress" Thumb.DragStarted="SliProgress_DragStarted"  Thumb.DragCompleted="SliProgress_DragCompleted" ValueChanged="SliProgress_ValueChanged"
+						>
+				</Slider>
             </StatusBarItem>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
 				<Button x:Name="PlayPreviousMedia"
@@ -215,17 +217,85 @@
 					</Button.Background>
 				</Button>
                 <!-- Volume slider. This slider allows a Volume range between 0 and 1. -->
-                <TextBlock Foreground="White" VerticalAlignment="Center" Margin="5"  ><Run Text="Volume"/></TextBlock>
-                <Slider x:Name="volumeSlider" VerticalAlignment="Center" ValueChanged="VolumeSlider_ValueChanged" 
-       Minimum="0" Maximum="1" Value="0.5" Width="70"/>
+                <!--<TextBlock Foreground="Black" VerticalAlignment="Center" Margin="5"  ><Run Text="Volume"/></TextBlock>
+				-->
+				<Slider x:Name="volumeSlider" VerticalAlignment="Center" ValueChanged="VolumeSlider_ValueChanged" 
+       Minimum="0" Maximum="1" Value="0.5" Width="70">
+					<Slider.Style>
+					<Style TargetType="{x:Type Slider}">
+						<Setter Property="Background" Value="SlateBlue"/>
+						<Setter Property="Height" Value="20"/>
+						<Setter Property="Template">
+							<Setter.Value>
+								<ControlTemplate TargetType="{x:Type Slider}">
+									<ControlTemplate.Resources>
+										<Style TargetType="{x:Type RepeatButton}">
+											<Setter Property="OverridesDefaultStyle" Value="true"/>
+											<Setter Property="IsTabStop" Value="false"/>
+											<Setter Property="Focusable" Value="false"/>
+											<Setter Property="Template">
+												<Setter.Value>
+													<ControlTemplate TargetType="{x:Type RepeatButton}">
+														<Border Background="{TemplateBinding Background}"/>
+													</ControlTemplate>
+												</Setter.Value>
+											</Setter>
+										</Style>
+										<PathGeometry x:Key="Triangle">
+											<PathFigure StartPoint="0,1">
+												<LineSegment Point="1,1"/>
+												<LineSegment Point="1,0"/>
+												<LineSegment Point="0,1"/>
+											</PathFigure>
+										</PathGeometry>
+									</ControlTemplate.Resources>
+									<Grid>
+										<Grid>
+											<Grid.OpacityMask>
+												<DrawingBrush>
+													<DrawingBrush.Drawing>
+														<GeometryDrawing Brush="Black" Geometry="{StaticResource Triangle}"/>
+													</DrawingBrush.Drawing>
+												</DrawingBrush>
+											</Grid.OpacityMask>
+											<Track Name="PART_Track" Value="{TemplateBinding Value}">
+												<Track.Thumb>
+													<Thumb Width="10" Background="{TemplateBinding Background}">
+														<Thumb.Template>
+															<ControlTemplate TargetType="{x:Type Thumb}">
+																<Border Background="{TemplateBinding Background}"/>
+															</ControlTemplate>
+														</Thumb.Template>
+													</Thumb>
+												</Track.Thumb>
+												<Track.DecreaseRepeatButton>
+													<RepeatButton Background="{TemplateBinding Background}" Command="Slider.DecreaseLarge"/>
+												</Track.DecreaseRepeatButton>
+												<Track.IncreaseRepeatButton>
+													<RepeatButton Background="Transparent" Command="Slider.IncreaseLarge"/>
+												</Track.IncreaseRepeatButton>
+											</Track>
+										</Grid>
+										<Path
+                        Data="{StaticResource Triangle}"
+                        Stretch="Fill"
+                        Stroke="Black"
+                        StrokeThickness="1"/>
+									</Grid>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+					</Style>
+					</Slider.Style>
+				</Slider>
 
                 <!-- Volume slider. This slider allows you to change the speed of the media playback. -->
-                <TextBlock Foreground="White" Margin="5"  VerticalAlignment="Center"><Run Text="Speed"/></TextBlock>
+                <TextBlock Foreground="Black" Margin="5"  VerticalAlignment="Center"><Run Text="Speed"/></TextBlock>
                 <Slider x:Name="speedRatioSlider" VerticalAlignment="Center" ValueChanged="SpeedRatioSlider_ValueChanged" 
        Value="1" Width="70" />
 
                 <!-- Seek to slider. Ths slider allows you to jump to different parts of the media playback. -->
-                <TextBlock Foreground="White" Margin="5"  VerticalAlignment="Center"><Run Text="Seek To"/></TextBlock>
+                <TextBlock Foreground="Black" Margin="5"  VerticalAlignment="Center"><Run Text="Seek To"/></TextBlock>
                 <Slider x:Name="timelineSlider" Margin="5" ValueChanged="TimelineSlider_ValueChanged" VerticalAlignment="Center" Width="70"/>
 
             </StackPanel>

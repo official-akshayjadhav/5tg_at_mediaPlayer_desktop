@@ -19,14 +19,19 @@
                                                 UpdateSourceTrigger=PropertyChanged}"
                                  x:Name="textSource" 
                                  Background="Transparent" 
-                                 Panel.ZIndex="2" />
+                                 Panel.ZIndex="2" 
+								 FontSize="14"
+								 VerticalContentAlignment="Center"
+								 HorizontalContentAlignment="Left"
+								 Foreground="White"/>
 							<TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
 								<TextBox.Style>
 									<Style TargetType="{x:Type TextBox}">
 										<Setter Property="Foreground" Value="Transparent"/>
 										<Style.Triggers>
 											<DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
-												<Setter Property="Foreground" Value="Gray"/>
+												<Setter Property="Foreground" Value="White"/>
+												<Setter Property="FontSize" Value="14"></Setter>
 												<Setter Property="HorizontalContentAlignment" Value="Left"/>
 												<Setter Property="VerticalContentAlignment" Value="Center"/>
 											</DataTrigger>
@@ -90,7 +95,7 @@
 		<Grid x:Name="searchbar"
 							  Opacity="50"
 						      Grid.Column="0"
-							  Background="Aquamarine">
+							  Background="SlateBlue">
 			<!---Search overlay-->
 			<Grid Grid.ColumnSpan="1">
 				<Grid.ColumnDefinitions>
@@ -109,7 +114,7 @@
 									VerticalAlignment="Center" Text=""
 									>
 					<TextBox.Background>
-						<ImageBrush ImageSource="Assets/search1.png" Stretch="Uniform" AlignmentX="Right">
+						<ImageBrush ImageSource="Assets/search.png" Stretch="Uniform" AlignmentX="Right">
 							<ImageBrush.Transform>
 								<TransformGroup>
 									<ScaleTransform/>
@@ -127,7 +132,7 @@
 		<!---User Button-->
 		<Grid
 						Grid.Column="1"
-						Background="AntiqueWhite">
+						Background="#2a1b3d">
 			<!--<Button x:Name="CloseBtn"
 							Height="40"
 							Width="40"
@@ -164,7 +169,7 @@
 					</Style>
 				</Button.Style>
 				<Button.Background>
-					<ImageBrush ImageSource="Assets/user.png"/>
+					<ImageBrush ImageSource="Assets/user1.png"/>
 				</Button.Background>
 			</Button>
 

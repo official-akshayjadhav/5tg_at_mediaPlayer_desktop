@@ -248,9 +248,9 @@
 							<StackPanel Orientation="Horizontal"
                                         Width="230">
 
-								<Image Source="Assets/pl.png"
+								<Image Source="Assets/playlist.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>
+                                       Margin="12,0,0,0" Height="30" Width="30"/>
 
 								<TextBlock Text="Playlist"
                                            Margin="25,0,0,0"
@@ -282,7 +282,7 @@
 
 								<Image Source="Assets/pl.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>
+                                       Margin="12,0,0,0" Height="30" Width="30"/>
 
 								<TextBlock Text="All Songs"
                                            Margin="25,0,0,0"
@@ -312,9 +312,9 @@
 							<StackPanel Orientation="Horizontal"
                                         Width="230">
 
-								<Image Source="Assets/pl.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
+								<Image Source="Assets/audiorouting.png"
+                                       
+                                       Margin="12,0,0,0" Height="30" Width="30"/>
 
 								<TextBlock Text="Audio Routing"
                                            Margin="25,0,0,0"
@@ -344,9 +344,9 @@
 							<StackPanel Orientation="Horizontal"
                                         Width="230">
 
-								<Image Source="Assets/pl.png"
+								<Image Source="Assets/streaming.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>
+                                       Margin="12,0,0,0" Width="30" Height="30"/>
 
 								<TextBlock Text="Streaming"
                                            Margin="25,0,0,0"
@@ -376,9 +376,9 @@
 							<StackPanel Orientation="Horizontal"
                                         Width="230">
 
-								<Image Source="Assets/pl.png"
+								<Image Source="Assets/features.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>
+                                       Margin="12,0,0,0" Height="30" Width="30"/>
 
 								<TextBlock Text="Features"
                                            Margin="25,0,0,0"
@@ -408,9 +408,8 @@
 							<StackPanel Orientation="Horizontal"
                                         Width="230">
 
-								<Image Source="Assets/pl.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
+								<Image Source="Assets/commands.png"
+                                       Margin="12,0,0,0" Height="30" Width="30"/>
 
 								<TextBlock Text="Commands"
                                            Margin="25,0,0,0"
@@ -440,9 +439,8 @@
 							<StackPanel Orientation="Horizontal"
                                         Width="230">
 
-								<Image Source="Assets/pl.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
+								<Image Source="Assets/loghistory.png"
+                                       Margin="12,0,0,0" Height="30" Width="30"/>
 
 								<TextBlock Text="Log History"
                                            Margin="25,0,0,0"

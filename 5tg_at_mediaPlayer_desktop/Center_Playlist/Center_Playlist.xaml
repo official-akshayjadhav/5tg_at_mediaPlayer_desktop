@@ -7,143 +7,165 @@
              mc:Ignorable="d" 
 			 Background="AliceBlue"
              d:DesignHeight="450" d:DesignWidth="800">
-	<Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="2*"></ColumnDefinition>
-			<ColumnDefinition Width="1.5*"></ColumnDefinition>
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition></RowDefinition>
-		</Grid.RowDefinitions>
-		<!---All Playlist -->
-		<Grid
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!---All Playlist -->
+        <Grid
 				Grid.Row="0"
 				Grid.Column="0">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="1*"></RowDefinition>
-				<RowDefinition Height="3*"></RowDefinition>
-			</Grid.RowDefinitions>
-			<Grid>
-				<TextBlock Name="all_playlist" Text="All Playlist" FontSize="24px" HorizontalAlignment="Left" FontWeight="DemiBold" Margin="10,10,0,-10"></TextBlock>
-				<!---
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid>
+                <TextBlock Name="all_playlist" Text="All Playlist" FontSize="24px" HorizontalAlignment="Left" FontWeight="DemiBold" Margin="10,10,0,-10"></TextBlock>
+                <!---
 				<ListBox HorizontalAlignment="Left" Height="25" Margin="20,99,0,0" VerticalAlignment="Top" Width="254">
 					<ListBoxItem Content="Playlist 1"></ListBoxItem>
 					<ListBoxItem Content="Playlist 2"></ListBoxItem>
 					<ListBoxItem Content="Playlist 3"></ListBoxItem>
 				</ListBox>
 				-->
-				<!---<Button FontSize="14" Name="create" Content="Create Playlist" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="101" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="10,60,0,0"/>-->
-				<!--<Button FontSize="16" Name="sort" Content="Sort" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="98" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="57,19,0,0" Grid.Column="1"/>
+                <!---<Button FontSize="14" Name="create" Content="Create Playlist" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="101" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="10,60,0,0"/>-->
+                <!--<Button FontSize="16" Name="sort" Content="Sort" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="98" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="57,19,0,0" Grid.Column="1"/>
                     -->
-				<Grid Margin="10">
+                <Grid Margin="10">
 
-					<Button FontSize="14" Name="create2" Click="Show_Click" Content="Create Playlist" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="101" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="10,60,0,0"/>
-					<Popup Name="MyPopup"
+                    <!--<Button FontSize="14" Name="create2" Click="Show_Click" Content="Create Playlist" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="101" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="10,60,0,0"/>
+					-->
+                    <Border Margin="10" Width="101" Height="27" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="SlateBlue" Padding="5" CornerRadius="20">
+                        <Button BorderBrush="SlateBlue" Height="27" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold" Background="Transparent" Content="Create Playlist" Foreground="White">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="false">
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Opacity" Value=".6"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                    <Popup Name="MyPopup"
 						   Placement="Mouse"
 						   HorizontalOffset="00"
 						   VerticalOffset="100"
 						   AllowsTransparency="True">
-						<Grid>
-							<Rectangle Width="400" Height="200" Fill="Tomato"></Rectangle>
-								<TextBlock Margin="20" Foreground="White" FontSize="18">Playlist Name</TextBlock>
-								<TextBox Margin="20" Foreground="Black" FontSize="18" Height="30"></TextBox>
-							<Button Click="Hide_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Width="100" FontSize="15" Foreground="White" Background="Orange">Create</Button>
-						</Grid>
-					</Popup>
-				</Grid>
-			</Grid>
-			
-			<!---Show Playlist-->
-			<Grid
+                        <Grid>
+                            <Rectangle Width="400" Height="200" Fill="Tomato"></Rectangle>
+                            <TextBlock Margin="20" Foreground="White" FontSize="18">Playlist Name</TextBlock>
+                            <TextBox Margin="20" Foreground="Black" FontSize="18" Height="30"></TextBox>
+                            <Button Click="Hide_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Width="100" FontSize="15" Foreground="White" Background="Orange">Create</Button>
+                        </Grid>
+                    </Popup>
+                </Grid>
+            </Grid>
+
+            <!---Show Playlist-->
+            <Grid
 				Grid.Row="1">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="1*"></RowDefinition>
-					<!--<RowDefinition Height="5*"></RowDefinition>-->
-				</Grid.RowDefinitions>
-				<Grid
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <!--<RowDefinition Height="5*"></RowDefinition>-->
+                </Grid.RowDefinitions>
+                <Grid
 					Grid.Row="0" Margin="0,-73,0.333,72">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="209*"/>
-						<ColumnDefinition Width="13*"/>
-						<ColumnDefinition Width="235*"/>
-					</Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="209*"/>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="235*"/>
+                    </Grid.ColumnDefinitions>
 
-					<Label Content="Sort By" Margin="72,-10,103,320" Grid.Column="2"/>
-					<ComboBox Margin="72,19,43,0" VerticalAlignment="Top" Height="27" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0" Grid.Column="2">
-						<ComboBoxItem Content="Name"></ComboBoxItem>
-						<ComboBoxItem Content="Duration"></ComboBoxItem>
-						<ComboBoxItem Content="Last Modified"></ComboBoxItem>
-						<ComboBoxItem Content="Date added"></ComboBoxItem>
+                    <Label Content="Sort By" Margin="72,-10,103,320" Grid.Column="2"/>
+                    <ComboBox Margin="72,19,43,0" VerticalAlignment="Top" Height="27" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0" Grid.Column="2">
+                        <ComboBoxItem Content="Name"></ComboBoxItem>
+                        <ComboBoxItem Content="Duration"></ComboBoxItem>
+                        <ComboBoxItem Content="Last Modified"></ComboBoxItem>
+                        <ComboBoxItem Content="Date added"></ComboBoxItem>
 
-					</ComboBox>
-				</Grid>
-				<Grid
+                    </ComboBox>
+                </Grid>
+                <Grid
 					Grid.Row="1">
-					<DataGrid Name="playlistnames" CanUserResizeColumns="True" AutoGenerateColumns="False" Margin="10,10,10,10" Foreground="White">
+                    <DataGrid Name="playlistnames" CanUserResizeColumns="True" AutoGenerateColumns="False" Margin="10,10,10,10" Foreground="White">
 
-						<DataGrid.Resources>
-							<Style TargetType="{x:Type DataGridColumnHeader}">
-								<Setter Property="Background" Value="Tomato"></Setter>
-								<Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
-								<Setter Property="FontSize" Value="20"></Setter>
-								<Setter Property="Height" Value="auto"></Setter>
-								<Setter Property="BorderBrush" Value="Azure"></Setter>
-							</Style>
-							<Style TargetType="{x:Type DataGridCell}">
-								<Setter Property="Background" Value="SandyBrown"></Setter>
-							</Style>
-						</DataGrid.Resources>
-						<DataGrid.Columns>
-							<DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="1*"></DataGridTextColumn>
-							<DataGridTextColumn MinWidth="70" Header="ID" Binding="{Binding ID}" Width="1*"></DataGridTextColumn>
-							<DataGridTextColumn MinWidth="70" Header="Name" Binding="{Binding name}" Width="1*"></DataGridTextColumn>
-							<DataGridTextColumn MinWidth="70" Header="Songs" Binding="{Binding songs}" Width="1*"></DataGridTextColumn>
-							<DataGridTextColumn MinWidth="80" Header="Controls" Binding="{Binding controls}" Width="1*"></DataGridTextColumn>
-						</DataGrid.Columns>
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="SlateBlue"></Setter>
+                                <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
+                                <Setter Property="FontSize" Value="20"></Setter>
+                                <Setter Property="Height" Value="auto"></Setter>
+                                <Setter Property="BorderBrush" Value="Azure"></Setter>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="Background" Value="SandyBrown"></Setter>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="1*"></DataGridTextColumn>
+                            <DataGridTextColumn MinWidth="70" Header="ID" Binding="{Binding ID}" Width="1*"></DataGridTextColumn>
+                            <DataGridTextColumn MinWidth="70" Header="Name" Binding="{Binding name}" Width="1*"></DataGridTextColumn>
+                            <DataGridTextColumn MinWidth="70" Header="Songs" Binding="{Binding songs}" Width="1*"></DataGridTextColumn>
+                            <DataGridTextColumn MinWidth="80" Header="Controls" Binding="{Binding controls}" Width="1*"></DataGridTextColumn>
+                        </DataGrid.Columns>
 
-					</DataGrid>
-				</Grid>
-			</Grid>
-		</Grid>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+        </Grid>
 
-		<!---Song Details-->
-		<Grid
+        <!---Song Details-->
+        <Grid
 			Grid.Row="0"
 			Grid.Column="1">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="1*"></RowDefinition>
-				<RowDefinition Height="6*"></RowDefinition>
-			</Grid.RowDefinitions>
-			<Grid
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid
 				Grid.Row="0">
-				<TextBlock Padding="15" Name="song_name" Text="Songs" FontSize="24px" FontWeight="DemiBold"></TextBlock>
-			</Grid>
-			<Grid
+                <TextBlock Padding="15" Name="song_name" Text="Songs" FontSize="24px" FontWeight="DemiBold"></TextBlock>
+            </Grid>
+            <Grid
 				Grid.Row="1">
+				
+                <DataGrid Name="songs" CanUserResizeColumns="True" Margin="10,10,10,10" Foreground="White">
 
-				<DataGrid Name="songs" CanUserResizeColumns="True" Margin="10,10,10,10" Foreground="White">
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="SlateBlue"></Setter>
+                            <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
+                            <Setter Property="FontSize" Value="20"></Setter>
+                            <Setter Property="Height" Value="28"></Setter>
+                            <Setter Property="BorderBrush" Value="Azure"></Setter>
+                        </Style>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="Background" Value="SandyBrown"></Setter>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" ></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="70" Header="Songs" Binding="{Binding songs}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="100" Header="Controls" Binding="{Binding controls}" ></DataGridTextColumn>
+                    </DataGrid.Columns>
 
-					<DataGrid.Resources>
-						<Style TargetType="{x:Type DataGridColumnHeader}">
-							<Setter Property="Background" Value="Tomato"></Setter>
-							<Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
-							<Setter Property="FontSize" Value="20"></Setter>
-							<Setter Property="Height" Value="28"></Setter>
-							<Setter Property="BorderBrush" Value="Azure"></Setter>
-						</Style>
-						<Style TargetType="{x:Type DataGridCell}">
-							<Setter Property="Background" Value="SandyBrown"></Setter>
-						</Style>
-					</DataGrid.Resources>
-					<DataGrid.Columns>
-						<DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" ></DataGridTextColumn>
-						<DataGridTextColumn MinWidth="70" Header="Songs" Binding="{Binding songs}"></DataGridTextColumn>
-						<DataGridTextColumn MinWidth="100" Header="Controls" Binding="{Binding controls}" ></DataGridTextColumn>
-					</DataGrid.Columns>
+                </DataGrid>
 
-				</DataGrid>
-
-			</Grid>
-		</Grid>
-	</Grid>
+            </Grid>
+        </Grid>
+    </Grid>
 </UserControl>

@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 namespace _5tg_at_mediaPlayer_desktop.Center_Playlist
 {
+
     /// <summary>
     /// Interaction logic for Center_Playlist.xaml
     /// </summary>
