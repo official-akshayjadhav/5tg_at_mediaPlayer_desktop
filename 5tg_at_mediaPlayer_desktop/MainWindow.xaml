@@ -127,7 +127,7 @@
 			<Grid   x:Name="nav_pnl"
                     HorizontalAlignment="Left"
                     Width="70"
-                    Background="Orange">
+                    Background="Azure">
 				<StackPanel x:Name="st_pnl">
 					<!--// Grid for the Menu Toggle Button //-->
 					<Grid Height="90">
@@ -563,7 +563,9 @@
 					-->
 					<!---Center part of Software-->
 					<Grid>
-						<Center_part:Center_Playlist Loaded="Center_Playlist_Loaded"></Center_part:Center_Playlist>
+						<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+							<Center_part:Center_Playlist Loaded="Center_Playlist_Loaded"></Center_part:Center_Playlist>
+						</ScrollViewer>
 					</Grid>
 				</Grid>
 

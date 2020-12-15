@@ -116,11 +116,11 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="1*"></DataGridTextColumn>
-                            <DataGridTextColumn MinWidth="70" Header="ID" Binding="{Binding ID}" Width="1*"></DataGridTextColumn>
-                            <DataGridTextColumn MinWidth="70" Header="Name" Binding="{Binding name}" Width="1*"></DataGridTextColumn>
-                            <DataGridTextColumn MinWidth="70" Header="Songs" Binding="{Binding songs}" Width="1*"></DataGridTextColumn>
-                            <DataGridTextColumn MinWidth="80" Header="Controls" Binding="{Binding controls}" Width="1*"></DataGridTextColumn>
+                            <DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="2*"></DataGridTextColumn>
+							<DataGridTextColumn MinWidth="70" Header="ID" Binding="{Binding ID}" Width="1*"></DataGridTextColumn>
+							<DataGridTextColumn MinWidth="80" Header="Name" Binding="{Binding name}" Width="2*"></DataGridTextColumn>
+							<DataGridTextColumn MinWidth="90" Header="Songs" Binding="{Binding songs}" Width="2*"></DataGridTextColumn>
+							<DataGridTextColumn MinWidth="90" Header="Controls" Binding="{Binding controls}" Width="2*"></DataGridTextColumn>
                         </DataGrid.Columns>
 
                     </DataGrid>
@@ -158,9 +158,9 @@
                         </Style>
                     </DataGrid.Resources>
                     <DataGrid.Columns>
-                        <DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" ></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="70" Header="Songs" Binding="{Binding songs}"></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="100" Header="Controls" Binding="{Binding controls}" ></DataGridTextColumn>
+						<DataGridTextColumn MinWidth="70" Width="*" Header="Sr.No." Binding="{Binding srno}" ></DataGridTextColumn>
+						<DataGridTextColumn MinWidth="100" Width="*" Header="Songs" Binding="{Binding songs}"></DataGridTextColumn>
+						<DataGridTextColumn MinWidth="100" Width="*" Header="Controls" Binding="{Binding controls}" ></DataGridTextColumn>
                     </DataGrid.Columns>
 
                 </DataGrid>
