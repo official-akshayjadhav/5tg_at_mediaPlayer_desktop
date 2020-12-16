@@ -132,6 +132,7 @@
 					  x:Name="datagrid"
 					  AlternationCount="2"
 					  AlternatingRowBackground="Azure"
+					  AutoGenerateColumns="False"
 						>
 				<DataGrid.Columns>
 					<DataGridTemplateColumn Width=".5*">
@@ -141,18 +142,24 @@
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>
 					</DataGridTemplateColumn>
-					<DataGridTextColumn Width="1*" Header="AirTime" Binding="{Binding AirTime}"></DataGridTextColumn>
-					<DataGridTextColumn Width="1*" Header="Cart Id" Binding="{Binding CartID}"></DataGridTextColumn>
-					<DataGridTextColumn Width="1*" Header="Item" Binding="{Binding Item}"></DataGridTextColumn>
-					<DataGridTextColumn Width="1*" Header="Duration" Binding="{Binding Duration}"></DataGridTextColumn>
-					<DataGridTextColumn Width="1*" Header="Chain" Binding="{Binding Chain}"></DataGridTextColumn>
-					<DataGridTextColumn Width="1*" Header="" Binding="{Binding Dot}"></DataGridTextColumn>
+					<DataGridTextColumn MinWidth="70" Width="1*" Header="UID" Binding="{Binding UID}"></DataGridTextColumn>
+					<DataGridTextColumn MinWidth="70" Width="1*" Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
+					<DataGridTextColumn MinWidth="100" Width="1*" Header="FileName" Binding="{Binding FileName}"></DataGridTextColumn>
+					<DataGridTextColumn MinWidth="70" Width="1*" Header="Filesize" Binding="{Binding Filesize}"></DataGridTextColumn>
+					<DataGridTextColumn MinWidth="70" Width="1*" Header="Filetype" Binding="{Binding Filetype}"></DataGridTextColumn>
+					<DataGridTextColumn MinWidth="70" Width="1*" Header="Filepath" Binding="{Binding Filepath}"></DataGridTextColumn>
+					<DataGridTextColumn MinWidth="70" Width="1*" Header="Duration" Binding="{Binding Duration}"></DataGridTextColumn>
+
+					<DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_Start" Binding="{Binding Trim_Start}"></DataGridTextColumn>
+					<DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_End" Binding="{Binding Trim_End}"></DataGridTextColumn>
 				</DataGrid.Columns>
+				<!--
 				<DataGrid.RowDetailsTemplate>
 					<DataTemplate>
 						<TextBlock Text="{Binding Details}"></TextBlock>
 					</DataTemplate>
 				</DataGrid.RowDetailsTemplate>
+				-->
 				<!--
 				<local:songs AirTime="abc" CartID="abc" Item="abc" Duration="abc" Chain="abc"></local:songs>
 

@@ -23,7 +23,7 @@ namespace _5tg_at_mediaPlayer_desktop
         public MainWindow()
         {
             InitializeComponent();
-           // playlist.Visibility = Visibility.Hidden;
+            playlist.Visibility = Visibility.Visible;
            // allSongs.Visibility = Visibility.Visible;
         }
 
@@ -89,13 +89,13 @@ namespace _5tg_at_mediaPlayer_desktop
         
         private void OpenPlaylist(object sender, MouseButtonEventArgs e)
         {
-            //playlist.Visibility = Visibility.Visible;
-            //allSongs.Visibility = Visibility.Hidden;
+            allSongs.Visibility = Visibility.Collapsed;
+            playlist.Visibility = Visibility.Visible;
         }
         private void OpenSongs(object sender, MouseButtonEventArgs e)
         {
-            //playlist.Visibility = Visibility.Hidden;
-            //allSongs.Visibility = Visibility.Visible;
+            playlist.Visibility = Visibility.Collapsed;
+            allSongs.Visibility = Visibility.Visible;
         }
     }
 }
