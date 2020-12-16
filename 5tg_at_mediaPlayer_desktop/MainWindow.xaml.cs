@@ -23,6 +23,8 @@ namespace _5tg_at_mediaPlayer_desktop
         public MainWindow()
         {
             InitializeComponent();
+           // playlist.Visibility = Visibility.Hidden;
+           // allSongs.Visibility = Visibility.Visible;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -45,7 +47,7 @@ namespace _5tg_at_mediaPlayer_desktop
                 tt_features.Visibility = Visibility.Collapsed;
                 tt_commands.Visibility = Visibility.Collapsed;
                 tt_loghistory.Visibility = Visibility.Collapsed;
-            }
+            } 
             else
             {
                 tt_playlist.Visibility = Visibility.Visible;
@@ -55,7 +57,9 @@ namespace _5tg_at_mediaPlayer_desktop
                 tt_features.Visibility = Visibility.Visible;
                 tt_commands.Visibility = Visibility.Visible;
                 tt_loghistory.Visibility = Visibility.Visible;
+                
             }
+
         }
 
         private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
@@ -82,6 +86,16 @@ namespace _5tg_at_mediaPlayer_desktop
         {
 
         }
-
+        
+        private void OpenPlaylist(object sender, MouseButtonEventArgs e)
+        {
+            //playlist.Visibility = Visibility.Visible;
+            //allSongs.Visibility = Visibility.Hidden;
+        }
+        private void OpenSongs(object sender, MouseButtonEventArgs e)
+        {
+            //playlist.Visibility = Visibility.Hidden;
+            //allSongs.Visibility = Visibility.Visible;
+        }
     }
 }

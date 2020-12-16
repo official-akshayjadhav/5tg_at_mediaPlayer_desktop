@@ -50,7 +50,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ATL, Version=3.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\5tg_at_mediaPlayer_desktop\5tg_at_mediaPlayer_desktop\5tg_at_mediaPlayer_desktop\bin\Debug\ATL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -77,6 +83,22 @@
     </Compile>
     <Compile Include="Center_Playlist\Center_Playlist.xaml.cs">
       <DependentUpon>Center_Playlist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="connection\connectionClass.cs" />
+    <Compile Include="connection\DbModel.cs" />
+    <Compile Include="connection\Global_Log.cs" />
+    <Compile Include="connection\PlayBack.cs" />
+    <Compile Include="Playlist\Add_To_Playlist.xaml.cs">
+      <DependentUpon>Add_To_Playlist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Playlist\Create_Playlist.xaml.cs">
+      <DependentUpon>Create_Playlist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Playlist\Playlist.xaml.cs">
+      <DependentUpon>Playlist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\Track_Metadata.xaml.cs">
+      <DependentUpon>Track_Metadata.xaml</DependentUpon>
     </Compile>
     <Compile Include="Top_search_bar\Top_Search_Bar.xaml.cs">
       <DependentUpon>Top_Search_Bar.xaml</DependentUpon>
@@ -109,6 +131,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Navigation_Bar\Navigation_Bar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Playlist\Add_To_Playlist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Playlist\Create_Playlist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Playlist\Playlist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popup\Track_Metadata.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -215,6 +253,25 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="ATLLib">
+      <Guid>{44EC0535-400F-11D0-9DCD-00A0C90391D3}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

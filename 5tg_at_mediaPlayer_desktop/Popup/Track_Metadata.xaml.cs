@@ -16,23 +16,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace _5tg_at_mediaPlayer_desktop
+namespace _5tg_at_mediaPlayer_desktop.Popup
 {
     /// <summary>
     /// Interaction logic for Track_Metadata.xaml
     /// </summary>
-    public partial class Track_Metadata : Window
+   public partial class Track_Metadata : Window
     {
         public Track_Metadata()
         {
             InitializeComponent();
-            HeaderText.Text = "ADD Music";
+            HeaderText.Text = "Add Music";
         }
 
         Track track = null;
         List<Audio> audioList = null;
-        public static Audio audio = null;
-
+        
         private void Browse_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -51,7 +50,6 @@ namespace _5tg_at_mediaPlayer_desktop
 
                 byte[] fileDataBytes = File.ReadAllBytes(System.IO.Path.GetFullPath(openFileDialog.FileNames[0]));
                 String fileDataBase64 = Convert.ToBase64String(fileDataBytes);
-
 
                 fileName.Text = fileNames;
                 Song_Name.Text = title;
@@ -81,6 +79,7 @@ namespace _5tg_at_mediaPlayer_desktop
         {
             try
             {
+                Audio audio = null;
                 if (HeaderText.Text == "Add Music")
                 {
                     audio = audioList[0];
@@ -105,6 +104,15 @@ namespace _5tg_at_mediaPlayer_desktop
             setEnabling(true);
             Browse.IsEnabled = false;
             HeaderText.Text = "Update Music";
+
+            fileName.Text = Global_Log.audio.Title;
+            Song_Name.Text = Global_Log.audio.Title;
+            Start_Time.Text = Global_Log.audio.Trim_Start.ToString();
+            End_Time.Text = Global_Log.audio.Trim_End.ToString();
+
+            File_Type.Text = Global_Log.audio.Filetype.ToString();
+            File_Size.Text = Global_Log.audio.Filesize.ToString();
+            Duration.Text = Global_Log.audio.Duration.ToString();
 
             this.ShowDialog();
         }

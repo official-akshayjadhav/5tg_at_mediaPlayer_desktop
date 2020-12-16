@@ -1,10 +1,9 @@
-﻿using _5tg_at_mediaPlayer_desktop.Center_Playlist;
+﻿using _5tg_at_mediaPlayer_desktop.All_Songs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static _5tg_at_mediaPlayer_desktop.Center_Playlist.Center_Playlist;
 
 namespace _5tg_at_mediaPlayer_desktop.connection
 {
@@ -28,5 +27,20 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         //public List<string> controls { get; set; }
         //public OrderStatus status { get; set; }
     }
-    
+
+    public class Playlists
+    {
+        public int PID { get; set; }
+        public string Name { get; set; }
+        public string Date { get; set; }
+        public int TotalSong { get; set; }
+    }
+
+    public class PlaylistData
+    {
+        public int PID { get; set; }
+        public string Name { get; set; }
+        public string Text { get; set; }
+        public bool IsChecked { get; set; }
+    }
 }

@@ -7,6 +7,9 @@
 		xmlns:Media_Player="clr-namespace:_5tg_at_mediaPlayer_desktop.Bottom_Media_Control"
 		xmlns:Top_Seach_Bar="clr-namespace:_5tg_at_mediaPlayer_desktop.Top_search_bar"
         xmlns:Center_part="clr-namespace:_5tg_at_mediaPlayer_desktop.Center_Playlist"
+		xmlns:All_Songs ="clr-namespace:_5tg_at_mediaPlayer_desktop.All_Songs"
+		xmlns:CP ="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
+		xmlns:Center_Playlist ="clr-namespace:_5tg_at_mediaPlayer_desktop.Center_Playlist"
 		mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1000">
 
@@ -246,7 +249,7 @@
                                       >
 
 							<StackPanel Orientation="Horizontal"
-                                        Width="230">
+                                        Width="230" MouseDown="OpenPlaylist">
 
 								<Image Source="Assets/playlist.png"
                                        Stretch="None"
@@ -278,7 +281,7 @@
                                       >
 
 							<StackPanel Orientation="Horizontal"
-                                        Width="230">
+                                        Width="230" MouseDown="OpenSongs">
 
 								<Image Source="Assets/pl.png"
                                        Stretch="None"
@@ -562,10 +565,18 @@
 					</Grid>
 					-->
 					<!---Center part of Software-->
-					<Grid>
-						<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-							<Center_part:Center_Playlist Loaded="Center_Playlist_Loaded"></Center_part:Center_Playlist>
-						</ScrollViewer>
+					<!--<Grid>
+						
+						<Center_part:Center_Playlist Loaded="Center_Playlist_Loaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							></Center_part:Center_Playlist>
+
+					</Grid>
+					-->
+					<Grid Name="navigation">
+						<!--<All_Songs:All_Songs x:Name="allSongs" Loaded="Center_Playlist_Loaded" Visibility="Visible"></All_Songs:All_Songs>
+						<CP:Playlist x:Name="playlist" Visibility="Visible"></CP:Playlist>
+						-->
+						<Center_Playlist:Center_Playlist x:Name="playlist" Visibility="Visible"></Center_Playlist:Center_Playlist>
 					</Grid>
 				</Grid>
 

@@ -16,8 +16,13 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public static ConnectionClass connectionClass = new ConnectionClass();
         public static FileStream LOG_fileStream;
         public static StreamWriter LOGstreamWriter;
+        public static Audio audio;
+        public static Playlists playlists;
 
         public static string cartId;
+
+        public static int pID;
+        public static string playlistName;
 
         public static string ActiveDir = Directory.GetCurrentDirectory();
         readonly static string LogFolderPath = ActiveDir + "\\MultiMedia\\Log";

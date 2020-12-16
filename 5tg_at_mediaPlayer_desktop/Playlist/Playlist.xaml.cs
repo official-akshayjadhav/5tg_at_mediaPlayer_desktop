@@ -1,25 +1,31 @@
 ﻿using _5tg_at_mediaPlayer_desktop.connection;
-using _5tg_at_mediaPlayer_desktop.Playlist;
-using _5tg_at_mediaPlayer_desktop.Popup;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
-namespace _5tg_at_mediaPlayer_desktop.Center_Playlist
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace _5tg_at_mediaPlayer_desktop.Playlist
 {
-
     /// <summary>
-    /// Interaction logic for Center_Playlist.xaml
+    /// Interaction logic for Playlist.xaml
     /// </summary>
-    public partial class Center_Playlist : UserControl
+    public partial class Playlist : UserControl
     {
-
-        public Center_Playlist()
+        public Playlist()
         {
             InitializeComponent();
+
             loadPlaylist();
         }
 
@@ -53,7 +59,7 @@ namespace _5tg_at_mediaPlayer_desktop.Center_Playlist
                     catch (Exception ex)
                     { }
                 }
-                playlistnames.ItemsSource = list_Playlists;
+                allPlaylist.ItemsSource = list_Playlists;
             }
             catch (Exception ex)
             { }
@@ -87,45 +93,6 @@ namespace _5tg_at_mediaPlayer_desktop.Center_Playlist
                 }
             }
             loadPlaylist();
-        }
-
-        //public object ConfigurationManager { get; private set; }
-
-        private void View_all_playlist_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-
-        private void Playlistnames_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
-        {
-            /*DataTable dt = new DataTable();
-            dt.Columns.Add("Sr. No.", typeof(String));
-            dt.Columns.Add("ID", typeof(String));
-            dt.Columns.Add("Name", typeof(String));
-            dt.Columns.Add("Count",typeof(String));
-            dt.Columns.Add("Controls",typeof(String));
-            dt.Rows.Add("1","PLS1","PLNAME","15","-");
-            dt.Rows.Add("2", "PLS1", "PLNAME", "15", "-");
-            //Dictionary<string, string, string, string, string> dictMapping = new Dictionary<>();
-            playlistnames.ItemsSource = dt.DefaultView;
-            foreach (DataGridViewColumn col in playlistnames.Columns)
-            {
-            }*/
-
-        }
-
-        
-        private void Show_Click(object sender, RoutedEventArgs e) {
-            //MyPopup.IsOpen = true;
-            /*Track_Metadata addMusic = new Track_Metadata();
-            addMusic.ShowDialog();
-            */
-            Create_Playlist createplaylist = new Create_Playlist();
-            createplaylist.ShowDialog();
-            //LoadAllSong();
-        }
-        private void Hide_Click(object sender, RoutedEventArgs e) {
-            MyPopup.IsOpen = false;
         }
     }
 }

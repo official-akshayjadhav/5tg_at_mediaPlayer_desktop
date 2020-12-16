@@ -1,0 +1,30 @@
+﻿<Window x:Class="_5tg_at_mediaPlayer_desktop.Playlist.Add_To_Playlist"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
+        mc:Ignorable="d"
+        Title="Add_To_Playlist" Height="450" Width="800">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="80*"></RowDefinition>
+			<RowDefinition Height="20*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0">
+			<Grid>
+				<!--<RadioButton GroupName="playlist"
+                         Content="{Binding Text}" 
+                         IsChecked="{Binding IsChecked, Mode=TwoWay}" Checked="RadioButton_Checked"/>-->
+				<StackPanel Name="stackpanal_Playlist" Orientation="Vertical" Margin="10">
+
+				</StackPanel>
+
+			</Grid>
+		</Grid>
+		<Grid Grid.Row="1">
+			<Button Height="23" HorizontalAlignment="Center" Name="AddPlaylist" Content="Add_to_Playlist"
+                    VerticalAlignment="Center" Width="104" Click="AddPlaylist_Click" />
+		</Grid>
+	</Grid>
+</Window>

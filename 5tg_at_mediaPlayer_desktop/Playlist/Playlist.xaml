@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="_5tg_at_mediaPlayer_desktop.Playlist.Playlist"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<Grid>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="25*"></RowDefinition>
+				<RowDefinition Height="75*"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Grid Grid.Row="0">
+				<Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Content="Add Playlist"
+                   Foreground="White" FontStyle="Italic"/>
+			</Grid>
+			<Grid Grid.Row="1">
+				<ListView Name="allPlaylist" Margin="10" Foreground="Black" HorizontalContentAlignment="Center">
+					<ListView.View>
+						<GridView>
+							<GridViewColumn Header="ID" Width="50" x:Name="Sr_no" DisplayMemberBinding="{Binding PID}" />
+							<GridViewColumn Header="Name" Width="160" x:Name="UID" DisplayMemberBinding="{Binding Name}" />
+							<GridViewColumn Header="createdDate" Width="150" x:Name="Title" DisplayMemberBinding="{Binding Date}" />
+							<GridViewColumn Header="TotalSong" Width="150" x:Name="Duration" DisplayMemberBinding="{Binding TotalSong}" />
+							<GridViewColumn Header="Controls" Width="150" x:Name="column_Edit">
+								<GridViewColumn.CellTemplate>
+									<DataTemplate>
+										<ComboBox Name="EditComboBox" SelectionChanged="ComboBox_SelectionChanged" Tag="{Binding}" Width="125">
+											<ComboBoxItem HorizontalContentAlignment="Center">Update</ComboBoxItem>
+											<ComboBoxItem HorizontalContentAlignment="Center">Dalete</ComboBoxItem>
+										</ComboBox>
+									</DataTemplate>
+								</GridViewColumn.CellTemplate>
+							</GridViewColumn>
+						</GridView>
+					</ListView.View>
+				</ListView>
+			</Grid>
+		</Grid>
+	</Grid>
+</UserControl>

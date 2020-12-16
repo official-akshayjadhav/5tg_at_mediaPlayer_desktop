@@ -17,6 +17,7 @@
         </Grid.RowDefinitions>
         <!---All Playlist -->
         <Grid
+			Background="LightBlue"
 				Grid.Row="0"
 				Grid.Column="0">
             <Grid.RowDefinitions>
@@ -40,7 +41,7 @@
                     <!--<Button FontSize="14" Name="create2" Click="Show_Click" Content="Create Playlist" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="101" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="10,60,0,0"/>
 					-->
                     <Border Margin="10" Width="101" Height="27" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="SlateBlue" Padding="5" CornerRadius="20">
-                        <Button BorderBrush="SlateBlue" Height="27" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold" Background="Transparent" Content="Create Playlist" Foreground="White">
+                        <Button BorderBrush="SlateBlue" Height="27" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold" Background="Transparent" Content="Create Playlist" Foreground="White" Click="Show_Click">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Style.Triggers>
@@ -108,19 +109,22 @@
                                 <Setter Property="Background" Value="SlateBlue"></Setter>
                                 <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
                                 <Setter Property="FontSize" Value="20"></Setter>
-                                <Setter Property="Height" Value="auto"></Setter>
-                                <Setter Property="BorderBrush" Value="Azure"></Setter>
+								<Setter Property="Height" Value="auto"></Setter>
+								<!--<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                --><Setter Property="BorderBrush" Value="Azure"></Setter>
                             </Style>
                             <Style TargetType="{x:Type DataGridCell}">
-                                <Setter Property="Background" Value="SandyBrown"></Setter>
+                                <Setter Property="Background" Value="White"></Setter>
+								<Setter Property="Foreground" Value="Black"></Setter>
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="2*"></DataGridTextColumn>
-							<DataGridTextColumn MinWidth="70" Header="ID" Binding="{Binding ID}" Width="1*"></DataGridTextColumn>
-							<DataGridTextColumn MinWidth="80" Header="Name" Binding="{Binding name}" Width="2*"></DataGridTextColumn>
-							<DataGridTextColumn MinWidth="90" Header="Songs" Binding="{Binding songs}" Width="2*"></DataGridTextColumn>
-							<DataGridTextColumn MinWidth="90" Header="Controls" Binding="{Binding controls}" Width="2*"></DataGridTextColumn>
+                            <!--<DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="2*"></DataGridTextColumn>
+							-->
+							<DataGridTextColumn MinWidth="70" Header="ID" Binding="{Binding PID}" Width="1*"></DataGridTextColumn>
+							<DataGridTextColumn MinWidth="150" Header="Name" Binding="{Binding Name}" Width="2*"></DataGridTextColumn>
+							<DataGridTextColumn MinWidth="150" Header="Songs" Binding="{Binding TotalSong}" Width="2*"></DataGridTextColumn>
+							<DataGridTextColumn MinWidth="100" Header="Controls" Binding="{Binding Date}" Width="2*"></DataGridTextColumn>
                         </DataGrid.Columns>
 
                     </DataGrid>
