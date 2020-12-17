@@ -104,6 +104,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                             //Track = dr.ItemArray[8].ToString(),
                             Trim_Start = (TimeSpan)dr.ItemArray[9],
                             Trim_End = (TimeSpan)dr.ItemArray[10],
+
                         });
                     }
                     catch (Exception ex)
@@ -150,6 +151,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
 
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
+            
             var image = e.AddedItems[0] as ComboBoxItem;
             string currentOperation = image.Content.ToString();
             { }

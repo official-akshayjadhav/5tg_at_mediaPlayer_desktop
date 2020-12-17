@@ -102,7 +102,9 @@
                 </Grid>
                 <Grid
 					Grid.Row="1">
-                    <DataGrid Name="playlistnames" CanUserResizeColumns="True" AutoGenerateColumns="False" Margin="10,10,10,10" Foreground="White">
+                    <DataGrid Name="playlistnames" CanUserResizeColumns="True" 
+							  AutoGenerateColumns="False" Margin="10,10,10,10" 
+							  Foreground="White" CanUserAddRows="False">
 
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridColumnHeader}">
