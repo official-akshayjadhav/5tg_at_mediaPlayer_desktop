@@ -88,6 +88,9 @@
     <Compile Include="connection\DbModel.cs" />
     <Compile Include="connection\Global_Log.cs" />
     <Compile Include="connection\PlayBack.cs" />
+    <Compile Include="FM\FM.xaml.cs">
+      <DependentUpon>FM.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Playlist\Add_To_Playlist.xaml.cs">
       <DependentUpon>Add_To_Playlist.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Center_Playlist\Center_Playlist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FM\FM.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -194,6 +201,9 @@
     <Resource Include="Top_search_bar\Assets\closeBtn_MouseOver.png" />
     <Resource Include="Assets\pause.png" />
     <Resource Include="All_Songs\Assets\play.png" />
+    <Resource Include="..\..\..\..\..\Downloads\back1.jpeg">
+      <Link>FM\Assets\back1.jpeg</Link>
+    </Resource>
     <Content Include="Assets\1st.mp3" />
     <Resource Include="Assets\playlist.png" />
     <Resource Include="Assets\features.png" />
@@ -219,6 +229,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <Resource Include="FM\Assets\back.jpg" />
+    <Resource Include="FM\Assets\back1.jpg" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>
@@ -273,5 +285,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

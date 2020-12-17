@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop"
 			
-             StartupUri="MainWindow.xaml">
+             StartupUri="FM/FM.xaml">
     <Application.Resources>
          
     </Application.Resources>
