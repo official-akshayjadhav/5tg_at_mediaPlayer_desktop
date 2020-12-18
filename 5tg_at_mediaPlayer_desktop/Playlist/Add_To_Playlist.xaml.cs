@@ -73,7 +73,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                     string playlistEntry = "insert into playlist(PID, AID) values(" + PIDValue + "," + Global_Log.audio.ID + ")";
                     { }
                     Global_Log.connectionClass.insertData(totalSongItem);
-
+                    Global_Log.connectionClass.insertData(playlistEntry);
                     MessageBox.Show("Playlist is updated");
                 }
             }

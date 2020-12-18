@@ -35,6 +35,12 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             timer.Tick += timer_Tick;
             timer.Start();
         }
+
+        public void PlayMediaFunction() {
+            mediaPlayer.Play();
+            InitializePropertyValues();
+        }
+
         //play the media
 
         /*private void PlayMedia_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
@@ -135,7 +141,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         {
             
         }
-        private void PlayMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        public void PlayMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             mediaPlayer.Play();
             InitializePropertyValues();

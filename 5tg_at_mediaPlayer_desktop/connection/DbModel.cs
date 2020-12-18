@@ -43,4 +43,19 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public string Text { get; set; }
         public bool IsChecked { get; set; }
     }
+
+    public class ConvertFileDetails //For Opus Conversion
+    {
+        public string InputFilePath { get; set; }
+        public string OutputFilePath { get; set; }
+    }
+
+    public class PlaylistAudio
+    {
+        public int AID { get; set; }
+        public int PID { get; set; }
+        public string Name { get; set; }
+        public string track { get; set; }
+        public TimeSpan Duration { get; set; }
+    }
 }

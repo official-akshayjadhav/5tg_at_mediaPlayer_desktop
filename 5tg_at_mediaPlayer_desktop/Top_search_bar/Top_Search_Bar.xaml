@@ -132,7 +132,7 @@
 		<!---User Button-->
 		<Grid
 						Grid.Column="1"
-						Background="#2a1b3d">
+						Background="SlateBlue">
 			<!--<Button x:Name="CloseBtn"
 							Height="40"
 							Width="40"

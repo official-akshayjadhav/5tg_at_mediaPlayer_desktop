@@ -23,6 +23,14 @@ namespace _5tg_at_mediaPlayer_desktop.FM
         public FM()
         {
             InitializeComponent();
+
+        }
+
+        private void Live_assist_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            
         }
     }
 }

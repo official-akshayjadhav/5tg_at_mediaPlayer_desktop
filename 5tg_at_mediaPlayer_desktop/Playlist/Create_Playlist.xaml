@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
         mc:Ignorable="d"
-        Title="Create_Playlist" Height="450" Width="800">
+        Title="Create_Playlist" Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 	<Grid>
-		<TextBlock Name="HeaderText" Height="23" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
+		<TextBlock Name="HeaderText" Height="23" HorizontalAlignment="Left" Margin="10" Text="Create Playlist" VerticalAlignment="Top" Width="77" />
 		<TextBlock Height="23" HorizontalAlignment="Left" Margin="66,42,0,0" Name="textBlock1" Text="Song" VerticalAlignment="Top" Width="67" Visibility="Hidden"/>
 		<TextBlock Height="23" HorizontalAlignment="Left" Margin="28,43,0,0" Name="textBlock2" Text="Playlist Name" VerticalAlignment="Top" Width="77" />
 		<TextBox Height="23" HorizontalAlignment="Left" Margin="118,37,0,0" Name="txtSong" VerticalAlignment="Top" Width="247" Visibility="Hidden" />

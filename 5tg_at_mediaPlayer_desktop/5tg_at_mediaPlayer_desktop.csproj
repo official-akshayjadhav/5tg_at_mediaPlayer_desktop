@@ -81,9 +81,6 @@
     <Compile Include="All_Songs\All_Songs.xaml.cs">
       <DependentUpon>All_Songs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Center_Playlist\Center_Playlist.xaml.cs">
-      <DependentUpon>Center_Playlist.xaml</DependentUpon>
-    </Compile>
     <Compile Include="connection\connectionClass.cs" />
     <Compile Include="connection\DbModel.cs" />
     <Compile Include="connection\Global_Log.cs" />
@@ -111,10 +108,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Bottom_Media_Control\Bottom_Media_Control.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Center_Playlist\Center_Playlist.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

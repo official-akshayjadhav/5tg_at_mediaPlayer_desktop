@@ -120,7 +120,7 @@
 			<Grid
 				Grid.Column="3">
 				
-				<Button Name="ViewAll" Margin="20 0 20 0" Content="View All" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Right" 
+				<Button Name="ViewAll" Margin="20 0 20 0" Content="Refresh" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Right" 
                    Foreground="White" Style="{DynamicResource RoundCorner}" PreviewMouseLeftButtonDown="AddSong_PreviewMouseLeftButtonDown" />
 			</Grid>
 

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
         mc:Ignorable="d"
-        Title="Add_To_Playlist" Height="450" Width="800">
+        Title="Add_To_Playlist" Height="450" Width="800" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Loaded="Window_Loaded">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="80*"></RowDefinition>

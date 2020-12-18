@@ -151,7 +151,6 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
 
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            
             var image = e.AddedItems[0] as ComboBoxItem;
             string currentOperation = image.Content.ToString();
             { }
@@ -172,19 +171,17 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                     //Global_Log.audio = audio;
                     addMusic.updateSong();
                 }
-                else if (currentOperation == "Dalete")
+                else if (currentOperation == "Delete")
                 {
                     Global_Log.playBack.DeleteSong(audio.UID);
                 }
-                else if (currentOperation == "Add to playlist")
+                else if (currentOperation == "Add to Playlist")
                 {
                     Add_To_Playlist add_To_Playlist = new Add_To_Playlist();
                     add_To_Playlist.ShowDialog();
                 }
             }
             LoadAllSong();
-
-
         }
 
         private void AddTrack_Click(object sender, RoutedEventArgs e)

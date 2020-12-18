@@ -25,7 +25,6 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             InitializeComponent();
             //SetProperty("");
         }
-
         string query = "";
         private void button1_Click(object sender, RoutedEventArgs e)
         {
@@ -38,7 +37,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             if (value == "")
             {
                 this.Title = "Create Playlist";
-                HeaderText.Text = "New Playlist:";
+                HeaderText.Text = "Create Playlist:";
                 txtPlaylist.Text = "";
                 button1.Content = "Create Playlist";
             }
@@ -61,7 +60,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 //Global_Log.playlistName = playlists.Name;
 
                 int count = 0;
-                if (HeaderText.Text == "New Playlist:")
+                if (HeaderText.Text == "Create Playlist")
                 {
                     string get = "GETDATE()";
                     query = "insert into playlists(name, createdDate, TotalSong) values('" + txtPlaylist.Text + "'," + get + "," + count + ")";
@@ -80,7 +79,6 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             catch (Exception ex)
             {
                 Global_Log.EXC_WriteIn_LOGfile(ex.StackTrace);
-                
             }
 
             this.Close();
