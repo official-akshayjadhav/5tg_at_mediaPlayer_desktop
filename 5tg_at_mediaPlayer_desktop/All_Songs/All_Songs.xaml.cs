@@ -38,8 +38,8 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
 
         private void View_all_playlist_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Track_Metadata addMusic = new Track_Metadata();
-            addMusic.ShowDialog();
+            //Track_Metadata addMusic = new Track_Metadata();
+            //addMusic.ShowDialog();
 
             LoadAllSong();
 
@@ -173,7 +173,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                 }
                 else if (currentOperation == "Delete")
                 {
-                    Global_Log.playBack.DeleteSong(audio.UID);
+                    Global_Log.playBack.DeleteSong(audio.ID);
                 }
                 else if (currentOperation == "Add to Playlist")
                 {

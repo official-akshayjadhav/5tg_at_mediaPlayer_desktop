@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace _5tg_at_mediaPlayer_desktop.Popup
 {
     /// <summary>
@@ -23,6 +24,39 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
     /// </summary>
    public partial class Track_Metadata : Window
     {
+        
+        public static readonly DependencyProperty MinProperty = DependencyProperty.Register("Min", typeof(double), typeof(MainWindow), new PropertyMetadata(0d));
+        public static readonly DependencyProperty MaxProperty = DependencyProperty.Register("Max", typeof(double), typeof(MainWindow), new PropertyMetadata(100d));
+        public static readonly DependencyProperty StartProperty = DependencyProperty.Register("Start", typeof(double), typeof(MainWindow), new PropertyMetadata(20d));
+        public static readonly DependencyProperty EndProperty = DependencyProperty.Register("End", typeof(double), typeof(MainWindow), new PropertyMetadata(85d));
+
+        public double Max
+        {
+            get => (double)GetValue(MaxProperty);
+            set => SetValue(MaxProperty, value);
+
+        }
+
+        public double Min
+        {
+            get => (double)GetValue(MinProperty);
+            set => SetValue(MinProperty, value);
+        }
+
+        public double Start
+        {
+            get => (double)GetValue(StartProperty);
+            set => SetValue(StartProperty, value);
+        }
+
+        public double End
+        {
+            get => (double)GetValue(EndProperty);
+            set => SetValue(EndProperty, value);
+        }
+
+
+
         public Track_Metadata()
         {
             InitializeComponent();
@@ -56,9 +90,10 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 File_Type.Text = " audio/mpeg ";
                 File_Size.Text = fileSize.ToString();
                 Duration.Text = times;
-                Start_Time.Text = TimeSpan.FromSeconds(0).ToString();
-                End_Time.Text = TimeSpan.FromSeconds(track.Duration).ToString();
-
+                //Start_Time.Text = TimeSpan.FromSeconds(0).ToString();
+                //End_Time.Text = TimeSpan.FromSeconds(track.Duration).ToString();
+                
+               
                 audioList.Add(new Audio()
                 {
                     UID = "000",
@@ -88,7 +123,12 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 }
                 else if (HeaderText.Text == "Update Music")
                 {
-                    Global_Log.playBack.insertSong(audio, false);
+                    audio = Global_Log.audio;                    
+                    audio.FileName = fileName.Text;
+                    audio.Title = Song_Name.Text;
+                    //audio.Trim_Start = Start_Time.Text;
+                    //audio.Trim_End = End_Time.Text;
+                    Global_Log.playBack.insertSong(audio, false);                    
                 }
             }
             catch (Exception ex)
@@ -104,11 +144,12 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
             setEnabling(true);
             Browse.IsEnabled = false;
             HeaderText.Text = "Update Music";
+            AddSong.Content = "Update Audio";
 
             fileName.Text = Global_Log.audio.Title;
             Song_Name.Text = Global_Log.audio.Title;
-            Start_Time.Text = Global_Log.audio.Trim_Start.ToString();
-            End_Time.Text = Global_Log.audio.Trim_End.ToString();
+            //Start_Time.Text = Global_Log.audio.Trim_Start.ToString();
+            //End_Time.Text = Global_Log.audio.Trim_End.ToString();
 
             File_Type.Text = Global_Log.audio.Filetype.ToString();
             File_Size.Text = Global_Log.audio.Filesize.ToString();
@@ -129,8 +170,30 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
         {
             fileName.IsEnabled = boolValue;
             Song_Name.IsEnabled = boolValue;
-            Start_Time.IsEnabled = boolValue;
-            End_Time.IsEnabled = boolValue;
+            //Start_Time.IsEnabled = boolValue;
+            //End_Time.IsEnabled = boolValue;
         }
+
+        /*private void RangeSlider_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void RangeSlider_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is FunwayControls.RangeSlider rs)
+            {
+                //start.Text = rs.Start.ToString();
+                //end.Text = rs.End.ToString();
+            }
+            //Start_Time.Text = sender.;
+        }
+        private static void OnDragStartedEvent(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
+        {
+            if (sender is FunwayControls.RangeSlider rs)
+            {
+                //rs.OnDragStartedEvent(e);
+            }
+        }*/
     }
 }

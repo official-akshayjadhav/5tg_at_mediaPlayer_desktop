@@ -34,6 +34,7 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public string Name { get; set; }
         public string Date { get; set; }
         public int TotalSong { get; set; }
+        public int SortId { get; set; }
     }
 
     public class PlaylistData
@@ -54,8 +55,18 @@ namespace _5tg_at_mediaPlayer_desktop.connection
     {
         public int AID { get; set; }
         public int PID { get; set; }
+        public int SortId { get; set; }
         public string Name { get; set; }
         public string track { get; set; }
         public TimeSpan Duration { get; set; }
+    }
+
+    public class AudioIE
+    {
+        public int ID { get; set; }
+        public int AID { get; set; }
+        public string AName { get; set; }
+        public int PID { get; set; }
+        public string PName { get; set; }
     }
 }

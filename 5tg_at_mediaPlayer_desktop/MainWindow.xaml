@@ -9,7 +9,9 @@
         xmlns:All_Songs ="clr-namespace:_5tg_at_mediaPlayer_desktop.All_Songs"
 		xmlns:CP ="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
 		mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1000">
+        WindowState="Maximized"
+        
+        Title="MainWindow" Height="768" Width="1366">
 
 
 	<Window.Resources>

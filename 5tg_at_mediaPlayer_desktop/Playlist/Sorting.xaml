@@ -1,0 +1,20 @@
+﻿<Window x:Class="_5tg_at_mediaPlayer_desktop.Playlist.Sorting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
+        mc:Ignorable="d"
+        Title="Sorting" Height="300" Width="394">
+    <Grid>
+        <TextBlock Name="HeaderText" Height="23" HorizontalAlignment="Left" Margin="10" Text="Update Data" VerticalAlignment="Top" Width="77" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="28,43,0,0" Name="textBlock2" Text="Sort Number" VerticalAlignment="Top" Width="77" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="115,43,0,0" Name="txtSortNumber" VerticalAlignment="Top" Width="247" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="28,85,0,0" Name="textBlock3" Text="Set Type" VerticalAlignment="Top" Width="77" />
+        <TextBox Height="23" HorizontalAlignment="Left" IsEnabled="False" Margin="115,85,0,0" Name="txttype" VerticalAlignment="Top" Width="247" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="28,125,0,0" Name="textBlock4" Text="Set Command" VerticalAlignment="Top" Width="77" />
+        <TextBox Height="23" HorizontalAlignment="Left" IsEnabled="False" Margin="115,125,0,0" Name="txtCMD" VerticalAlignment="Top" Width="247" />
+
+        <Button Content="Update Data" Height="23" HorizontalAlignment="Left" Margin="119,180,0,0" Name="btnUpdate" VerticalAlignment="Top" Width="104" Click="BtnUpdate_Click" />
+    </Grid>
+</Window>

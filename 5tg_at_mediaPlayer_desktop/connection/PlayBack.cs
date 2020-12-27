@@ -32,9 +32,10 @@ namespace _5tg_at_mediaPlayer_desktop.connection
                 }
                 else
                 {
-                    currentSong = "update Audio set title='" + audio.Title + "',Trim_Start='" + audio.Trim_Start + "'" +
-                        ",Trim_End='" + audio.Trim_End + "' where UID='" + audio.UID + "'";
-
+                    //currentSong = "update Audio set title='" + audio.Title + "',Trim_Start='" + audio.Trim_Start + "'" +
+                    //    ",Trim_End='" + audio.Trim_End + "' where ID=" + audio.ID;
+                    currentSong = "update Audio set Title='" + audio.Title + "',trimStart='" + audio.Trim_Start + "'" +
+                        ",trimEnd='" + audio.Trim_End + "' where ID=" + audio.ID;
                     getStatus = connectionClass.insertData(currentSong);
                 }
             }
@@ -44,11 +45,11 @@ namespace _5tg_at_mediaPlayer_desktop.connection
             }
         }
 
-        public void DeleteSong(string UID)
+        public void DeleteSong(int ID)
         {
             try
             {
-                currentSong = "delete from audio where UID='" + UID + "'";
+                currentSong = "delete from Audio where ID=" + ID;
                 getStatus = connectionClass.insertData(currentSong);
             }
             catch (Exception ex)

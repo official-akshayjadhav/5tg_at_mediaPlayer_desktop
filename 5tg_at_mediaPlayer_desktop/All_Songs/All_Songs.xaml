@@ -121,7 +121,7 @@
 				Grid.Column="3">
 				
 				<Button Name="ViewAll" Margin="20 0 20 0" Content="Refresh" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Right" 
-                   Foreground="White" Style="{DynamicResource RoundCorner}" PreviewMouseLeftButtonDown="AddSong_PreviewMouseLeftButtonDown" />
+                   Foreground="White" Style="{DynamicResource RoundCorner}" PreviewMouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" />
 			</Grid>
 
 		</Grid>
@@ -134,9 +134,11 @@
 					  AlternatingRowBackground="Azure"
 					  AutoGenerateColumns="False"
 					  CanUserAddRows="False"
-					  
-						>
+                      CanUserResizeColumns="True"
+                      >
+        
 				<DataGrid.Columns>
+                    
 					<DataGridTemplateColumn Width=".5*">
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
@@ -144,18 +146,19 @@
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>
 					</DataGridTemplateColumn>
+                    
 					<DataGridTextColumn MinWidth="70" Width="1*" Header="UID" Binding="{Binding UID}"></DataGridTextColumn>
-					<DataGridTextColumn MinWidth="70" Width="1*" Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
-					<DataGridTextColumn MinWidth="100" Width="1*" Header="FileName" Binding="{Binding FileName}"></DataGridTextColumn>
-					<DataGridTextColumn MinWidth="70" Width="1*" Header="Filesize" Binding="{Binding Filesize}"></DataGridTextColumn>
-					<DataGridTextColumn MinWidth="70" Width="1*" Header="Filetype" Binding="{Binding Filetype}"></DataGridTextColumn>
-					<DataGridTextColumn MinWidth="70" Width="1*" Header="Filepath" Binding="{Binding Filepath}"></DataGridTextColumn>
-					<DataGridTextColumn MinWidth="70" Width="1*" Header="Duration" Binding="{Binding Duration}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="180" Width="1*" Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="180" Width="1*" Header="FileName" Binding="{Binding FileName}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="70" Width="1*" Header="Filesize" Binding="{Binding Filesize}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="70" Width="1*" Header="Filetype" Binding="{Binding Filetype}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="180" Width="1*" Header="Filepath" Binding="{Binding Filepath}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="70" Width="1*" Header="Duration" Binding="{Binding Duration}"></DataGridTextColumn>
 
-					<DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_Start" Binding="{Binding Trim_Start}"></DataGridTextColumn>
-					<DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_End" Binding="{Binding Trim_End}"></DataGridTextColumn>
-					
-					<DataGridTemplateColumn Header="Controls" x:Name="column_Edit" MinWidth="100" Width="1*">
+                    <DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_Start" Binding="{Binding Trim_Start}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_End" Binding="{Binding Trim_End}"></DataGridTextColumn>
+
+                    <DataGridTemplateColumn  Header="Controls" x:Name="column_Edit" MinWidth="100" Width="1*">
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
 								<ComboBox Name="EditComboBox" Text="Action" SelectionChanged="ComboBox_SelectionChanged_1" Tag="{Binding}">
