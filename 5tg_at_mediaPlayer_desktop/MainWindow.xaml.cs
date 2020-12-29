@@ -90,12 +90,24 @@ namespace _5tg_at_mediaPlayer_desktop
         private void OpenPlaylist(object sender, MouseButtonEventArgs e)
         {
             allSongs.Visibility = Visibility.Collapsed;
+            loghistory.Visibility = Visibility.Collapsed;
             playlist.Visibility = Visibility.Visible;
         }
         private void OpenSongs(object sender, MouseButtonEventArgs e)
         {
             playlist.Visibility = Visibility.Collapsed;
+            loghistory.Visibility = Visibility.Collapsed;
             allSongs.Visibility = Visibility.Visible;
+
         }
+
+        private void openloghistory(object sender, MouseButtonEventArgs e)
+        {
+            playlist.Visibility = Visibility.Collapsed;
+            allSongs.Visibility = Visibility.Collapsed;
+            loghistory.Visibility = Visibility.Visible;
+        }
+
+
     }
 }

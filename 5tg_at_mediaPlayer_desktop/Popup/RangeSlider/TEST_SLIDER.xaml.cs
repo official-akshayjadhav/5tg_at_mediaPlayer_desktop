@@ -4,9 +4,12 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
-
-namespace _5tg_at_mediaPlayer_desktop.Popup
+namespace _5tg_at_mediaPlayer_desktop.Popup.RangeSlider
 {
+    /// <summary>
+    /// Interaction logic for TEST_SLIDER.xaml
+    /// </summary>
+    /// 
     public class RangeSlider : Control
     {
         FrameworkElement SliderContainer;
@@ -267,6 +270,42 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
 
         private void OnDragCompletedEvent(DragCompletedEventArgs e)
         {
+        }
+    }
+    public partial class TEST_SLIDER : Window
+    {
+
+        public static readonly DependencyProperty MinProperty = DependencyProperty.Register("Min", typeof(double), typeof(MainWindow), new PropertyMetadata(0d));
+        public static readonly DependencyProperty MaxProperty = DependencyProperty.Register("Max", typeof(double), typeof(MainWindow), new PropertyMetadata(100d));
+        public static readonly DependencyProperty StartProperty = DependencyProperty.Register("Start", typeof(double), typeof(MainWindow), new PropertyMetadata(20d));
+        public static readonly DependencyProperty EndProperty = DependencyProperty.Register("End", typeof(double), typeof(MainWindow), new PropertyMetadata(85d));
+       
+        public double Max
+        {
+            get => (double)GetValue(MaxProperty);
+            set => SetValue(MaxProperty, value);
+        }
+
+        public double Min
+        {
+            get => (double)GetValue(MinProperty);
+            set => SetValue(MinProperty, value);
+        }
+
+        public double Start
+        {
+            get => (double)GetValue(StartProperty);
+            set => SetValue(StartProperty, value);
+        }
+
+        public double End
+        {
+            get => (double)GetValue(EndProperty);
+            set => SetValue(EndProperty, value);
+        }
+        public TEST_SLIDER()
+        {
+            InitializeComponent();
         }
     }
 }

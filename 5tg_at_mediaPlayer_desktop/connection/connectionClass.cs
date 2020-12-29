@@ -31,6 +31,25 @@ namespace _5tg_at_mediaPlayer_desktop.connection
                 con.Open();
         }
 
+        public String getsongfilepath(String query) {
+            String filepath = "";
+            try
+            {
+                cmd = new SqlCommand(query, con);
+                checkConnection();
+                //String var1 = cmd.ExecuteNonQuery();
+                cmd.CommandType = CommandType.Text;
+                //cmd.Parameters.AddWithValue();
+                var sqlreturnfilepath = cmd.ExecuteScalar();
+                if (filepath!=null) {
+                    filepath = sqlreturnfilepath.ToString();
+                }
+                checkConnection();
+            }
+            catch { }
+            return filepath;
+        }
+
         public int insertData(String quary)
         {
             count = 0;

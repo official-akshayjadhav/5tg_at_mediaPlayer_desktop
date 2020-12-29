@@ -111,11 +111,14 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             string query = "";
             if (isSort)
             {
-                query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
+                ///query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
+                query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
             }
             else
             {
-                query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
+                //query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
+
+                query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
             }
             DataTable dt = Global_Log.connectionClass.retriveData(query, "Audio");
 
@@ -166,6 +169,11 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 if (currentOperation == "Play")
                 {
                     //create_Playlist.SetProperty(playlists.Name.ToString());
+                    //String query = "select fillepath from Audio where ID ="+PlaylistAudio.AID; 
+                    Bottom_Media_Control.Bottom_Media_Control obj = new Bottom_Media_Control.Bottom_Media_Control(PlaylistAudio.AID.ToString());
+                    obj.PlayMediaFunction();
+                    //obj.GetURIOfSong(Convert.ToInt32(PlaylistAudio.AID));
+                    //Bottom_Media_Control.Bottom_Media_Control(Convert.ToInt32(PlaylistAudio.AID));
                 }
                 else if (currentOperation == "Delete")
                 {
@@ -233,6 +241,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 String s = s1 + "," + s2 + "," + s3 + "," + s4 + "," + s5 + Environment.NewLine;
                 File.AppendAllText(strFilePath, s);
             }
+            MessageBox.Show("All Songs Export");
         }
         
         private void btnImport_Click(object sender, RoutedEventArgs e)

@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Bottom_Media_Control"
 			 mc:Ignorable="d" 
+             x:Name="mediacontrol"
+             x:FieldModifier="public"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel Background="White" VerticalAlignment="Center">

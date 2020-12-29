@@ -4,10 +4,6 @@
              xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop"
              StartupUri="FM/FM.xaml">
     <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Popup/Themes/RangeSlider.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+       
     </Application.Resources>
 </Application>

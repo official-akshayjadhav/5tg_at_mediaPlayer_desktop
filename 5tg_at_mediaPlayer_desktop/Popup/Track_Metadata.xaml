@@ -8,8 +8,10 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Track_Metadata" Height="450" Width="800">
-	<Window.Resources>
-		<Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+
+    <Window.Resources>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            
 			<Setter Property="HorizontalContentAlignment" Value="Center"/>
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
 			<Setter Property="Padding" Value="1"/>
@@ -69,7 +71,9 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
-	</Window.Resources>
+
+    </Window.Resources>
+   
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="10*"></RowDefinition>
@@ -108,10 +112,10 @@
             
             <TextBlock Text="Minimum: " Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
             <TextBlock Text="Maximum: " Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-
+<!---
             <TextBlock Text="Start Time: " Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
 			<TextBlock Text="End Time  : " Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-
+-->
 			<Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="50*"></ColumnDefinition>
@@ -125,39 +129,16 @@
 			<TextBlock  IsEnabled="False" Width="240" Name="File_Type"  Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
 			<TextBlock  IsEnabled="False" Width="240" Name="File_Size"  Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
 			<TextBlock  IsEnabled="False" Width="240" Name="Duration"   Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-			<!--<TextBox    IsEnabled="False" Width="240" Name="Start_Time" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+			<TextBox    IsEnabled="False" Width="240" Name="Start_Time" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
 			<TextBox    IsEnabled="False" Width="240" Name="End_Time"   Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-            -->
+            
             <!--
             <TextBox Grid.Row="5"  Width="200" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Min, RelativeSource={RelativeSource AncestorType=Window}}"/>
             <TextBox Grid.Row="6"  Width="200" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Max, RelativeSource={RelativeSource AncestorType=Window}}"/>
--->
-            <!--<TextBox Grid.Row="7"  Width="200" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Start, RelativeSource={RelativeSource AncestorType=Window}}"/>
-            --><!--<TextBox Grid.Row="8"  Width="200" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding End, RelativeSource={RelativeSource AncestorType=Window}}"/>
--->
-            <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding Min, RelativeSource={RelativeSource AncestorType=Window}}"/>
-            <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding Max, RelativeSource={RelativeSource AncestorType=Window}}"/>
-            <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Start, RelativeSource={RelativeSource AncestorType=Window}}"/>
-            <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding End, RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-
-            <Border Grid.Row="9"
-                Grid.Column="2"
-                Background="#7B1FA2"
-                Height="2"
-                Margin="8"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"/>
-            <local:RangeSlider Grid.Row="9" 
-                           Grid.Column="2" 
-                           Orientation="Horizontal" 
-                           Height="25"
-                           Margin="8"
-                           Maximum="{Binding Max, RelativeSource={RelativeSource AncestorType=Window}}"
-                           Minimum="{Binding Min, RelativeSource={RelativeSource AncestorType=Window}}"
-                           Start="{Binding Start, RelativeSource={RelativeSource AncestorType=Window}}"
-                           End="{Binding End, RelativeSource={RelativeSource AncestorType=Window}}"
-                               />
+            <TextBox Grid.Row="7"  Width="200" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Start, RelativeSource={RelativeSource AncestorType=Window}}"/>
+            <TextBox Grid.Row="8"  Width="200" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding End, RelativeSource={RelativeSource AncestorType=Window}}"/>
+           -->
 
         
         </Grid>

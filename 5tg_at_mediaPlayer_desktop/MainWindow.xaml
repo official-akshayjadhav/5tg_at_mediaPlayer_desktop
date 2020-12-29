@@ -8,6 +8,7 @@
 		xmlns:Top_Seach_Bar="clr-namespace:_5tg_at_mediaPlayer_desktop.Top_search_bar"
         xmlns:All_Songs ="clr-namespace:_5tg_at_mediaPlayer_desktop.All_Songs"
 		xmlns:CP ="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
+        xmlns:LogHistory="clr-namespace:_5tg_at_mediaPlayer_desktop.LogHistory"
 		mc:Ignorable="d"
         WindowState="Maximized"
         
@@ -440,7 +441,7 @@
                                       >
 
 							<StackPanel Orientation="Horizontal"
-                                        Width="230">
+                                        Width="230" MouseDown="openloghistory">
 
 								<Image Source="Assets/loghistory.png"
                                        Margin="12,0,0,0" Height="30" Width="30"/>
@@ -555,6 +556,7 @@
 						<Center_Playlist:Center_Playlist x:Name="playlist" Visibility="Collapsed"></Center_Playlist:Center_Playlist>
 						-->
 						<CP:Playlist x:Name="playlist" Visibility="Collapsed"></CP:Playlist>
+                        <LogHistory:LogHistory x:Name="loghistory" Visibility="Collapsed"></LogHistory:LogHistory>
 					</Grid>
 				</Grid>
 

@@ -103,6 +103,9 @@
     <Compile Include="FM\FM.xaml.cs">
       <DependentUpon>FM.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LogHistory\LogHistory.xaml.cs">
+      <DependentUpon>LogHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Playlist\Add_To_Playlist.xaml.cs">
       <DependentUpon>Add_To_Playlist.xaml</DependentUpon>
     </Compile>
@@ -115,7 +118,9 @@
     <Compile Include="Playlist\Sorting.xaml.cs">
       <DependentUpon>Sorting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Popup\RangeSlider.cs" />
+    <Compile Include="Popup\RangeSlider\TEST_SLIDER.xaml.cs">
+      <DependentUpon>TEST_SLIDER.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Popup\Track_Metadata.xaml.cs">
       <DependentUpon>Track_Metadata.xaml</DependentUpon>
     </Compile>
@@ -134,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FM\FM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogHistory\LogHistory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,13 +181,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Popup\Themes\Generic.xaml">
+    <Page Include="Popup\RangeSlider\TEST_SLIDER.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Popup\Themes\RangeSlider.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Popup\Track_Metadata.xaml">
       <SubType>Designer</SubType>

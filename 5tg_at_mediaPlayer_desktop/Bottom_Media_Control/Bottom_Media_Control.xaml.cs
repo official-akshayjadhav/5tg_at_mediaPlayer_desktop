@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _5tg_at_mediaPlayer_desktop.connection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,19 +24,73 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
     {
         private MediaPlayer mediaPlayer = new MediaPlayer();
         private bool userIsDraggingSlider = false;
-       
-        public Bottom_Media_Control()
-        {
-            InitializeComponent();
-            Uri music = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
+
+
+        /*public void GetURIOfSong(int AID) {
+            string getfilepath = "Select filepath from Audio where ID ="+AID;
+            String songpath = Global_Log.connectionClass.getsongfilepath(getfilepath);
+            
+            Uri music = new Uri(songpath);
             mediaPlayer.Open(music);
             song.Text = music.ToString();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
+            PlayMediaFunction();
         }
+        */
 
+        public Bottom_Media_Control()
+        {
+            InitializeComponent();
+            /*if (AID != null)
+            {
+                //AID = Convert.ToInt32(AID);
+
+                string getfilepath = "Select filepath from Audio where ID =" + AID;
+                String songpath = Global_Log.connectionClass.getsongfilepath(getfilepath);
+
+                Uri music = new Uri(songpath);
+                mediaPlayer.Open(music);
+                song.Text = music.ToString();
+                DispatcherTimer timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(1);
+                timer.Tick += timer_Tick;
+                timer.Start();
+            }
+            else*/
+            {
+                //PlayMediaFunction();
+                Uri music = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
+
+                mediaPlayer.Open(music);
+                song.Text = music.ToString();
+                DispatcherTimer timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(1);
+                timer.Tick += timer_Tick;
+                timer.Start();
+            }
+        }
+        public Bottom_Media_Control(String AID) {
+            InitializeComponent();
+            if (AID != null)
+            {
+                //AID = Convert.ToInt32(AID);
+
+                string getfilepath = "Select filepath from Audio where ID =" + AID;
+                String songpath = Global_Log.connectionClass.getsongfilepath(getfilepath);
+
+                Uri music = new Uri(songpath);
+                mediaPlayer.Open(music);
+                //song.Text = music.ToString();
+                DispatcherTimer timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(1);
+                timer.Tick += timer_Tick;
+                timer.Start();
+            }
+            //InitializePropertyValues();
+        }
         public void PlayMediaFunction() {
             mediaPlayer.Play();
             InitializePropertyValues();
