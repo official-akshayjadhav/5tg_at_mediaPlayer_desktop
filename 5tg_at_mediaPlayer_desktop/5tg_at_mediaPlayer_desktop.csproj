@@ -52,7 +52,7 @@
   <ItemGroup>
     <Reference Include="ATL, Version=3.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Desktop\5tg_at_mediaPlayer_desktop\5tg_at_mediaPlayer_desktop\5tg_at_mediaPlayer_desktop\bin\Debug\ATL.dll</HintPath>
+      <HintPath>bin\Debug\ATL.dll</HintPath>
     </Reference>
     <Reference Include="CsvHelper, Version=18.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.18.0.0\lib\net47\CsvHelper.dll</HintPath>
@@ -87,6 +87,10 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit.Extended, Version=1.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -120,6 +124,9 @@
     </Compile>
     <Compile Include="Popup\RangeSlider\TEST_SLIDER.xaml.cs">
       <DependentUpon>TEST_SLIDER.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\Schedular.xaml.cs">
+      <DependentUpon>Schedular.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popup\Track_Metadata.xaml.cs">
       <DependentUpon>Track_Metadata.xaml</DependentUpon>
@@ -185,6 +192,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Popup\Schedular.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Popup\Track_Metadata.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -237,9 +248,6 @@
     <Resource Include="Top_search_bar\Assets\closeBtn_MouseOver.png" />
     <Resource Include="Assets\pause.png" />
     <Resource Include="All_Songs\Assets\play.png" />
-    <Resource Include="..\..\..\..\..\Downloads\back1.jpeg">
-      <Link>FM\Assets\back1.jpeg</Link>
-    </Resource>
     <Content Include="Assets\1st.mp3" />
     <Resource Include="Assets\playlist.png" />
     <Resource Include="Assets\features.png" />
@@ -258,13 +266,6 @@
     <Resource Include="Bottom_Media_Control\Assets\repeat.png" />
     <Resource Include="Bottom_Media_Control\Assets\stop.png" />
     <Resource Include="Bottom_Media_Control\Assets\volume.png" />
-    <Content Include="Database1.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database1_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
     <Resource Include="FM\Assets\back.jpg" />
     <Resource Include="FM\Assets\back1.jpg" />
     <Content Include="ReleaseNotes.css" />
@@ -302,15 +303,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="ATLLib">
-      <Guid>{44EC0535-400F-11D0-9DCD-00A0C90391D3}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="stdole">
       <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -321,6 +313,8 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

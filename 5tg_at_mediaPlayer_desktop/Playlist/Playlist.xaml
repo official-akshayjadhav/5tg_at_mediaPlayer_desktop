@@ -195,6 +195,8 @@
                                             <ComboBoxItem HorizontalContentAlignment="Center">Update</ComboBoxItem>
                                             <ComboBoxItem HorizontalContentAlignment="Center">Delete</ComboBoxItem>
                                             <ComboBoxItem HorizontalContentAlignment="Center">View</ComboBoxItem>
+                                            <ComboBoxItem HorizontalContentAlignment="Center">Schedule</ComboBoxItem>
+                                            
                                         </ComboBox>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -249,8 +251,9 @@
                         </Style>
                     </DataGrid.Resources>
                     <DataGrid.Columns>
-                        <DataGridTextColumn MinWidth="70" Width="*" Header="PID" x:Name="PID" Binding="{Binding PID}" ></DataGridTextColumn>
+                        <!--<DataGridTextColumn MinWidth="70" Width="*" Header="PID" x:Name="PID" Binding="{Binding PID}" ></DataGridTextColumn>-->
                         <DataGridTextColumn MinWidth="70" Width="*" Header="AID" x:Name="AID" Binding="{Binding AID}" ></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="150" Width="*" Header="AirTime" x:Name="AirTime" Binding="{Binding AirTime}" ></DataGridTextColumn>
                         <DataGridTextColumn MinWidth="100" Width="*" Header="Name" x:Name="Name" Binding="{Binding Name}"></DataGridTextColumn>
                         <DataGridTextColumn MinWidth="100" Width="*" Header="Duration" x:Name="Duration" Binding="{Binding Duration}" ></DataGridTextColumn>
                         <DataGridTemplateColumn Header="Controls" MinWidth="100" Width="1*">

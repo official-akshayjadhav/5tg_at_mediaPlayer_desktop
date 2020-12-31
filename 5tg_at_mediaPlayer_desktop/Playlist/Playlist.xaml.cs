@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using Microsoft.VisualBasic.FileIO;
 using System.IO;
 using CsvHelper;
+using _5tg_at_mediaPlayer_desktop.Popup;
 
 namespace _5tg_at_mediaPlayer_desktop.Playlist
 {
@@ -43,6 +44,10 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             List<Playlists> list_Playlists = new List<Playlists>();
             try
             {
+                if (Global_Log.connectionClass == null)
+                {
+                    Global_Log.connectionClass = new ConnectionClass();
+                }
                 DataTable dt = Global_Log.connectionClass.retriveData("select PID,name,CAST(createdDate as date), TotalSong from playlists", "playlists");
 
                 int count = dt.Rows.Count;
@@ -63,7 +68,8 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                     catch (Exception ex)
                     { }
                 }
-                allPlaylist.ItemsSource = list_Playlists;
+                if (allPlaylist != null)
+                    allPlaylist.ItemsSource = list_Playlists;
             }
             catch (Exception ex)
             { }
@@ -101,6 +107,13 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
 
                     loadPlaylistSong(Global_Log.pID, playlists.SortId);
                 }
+                else if (currentOperation == "Schedule")
+                {
+                    currentPlaylist = playlists.PID;
+                    Schedular schedular = new Schedular();
+                    schedular.ShowDialog();
+                    //loadPlaylistSong(Global_Log.pID, playlists.SortId);
+                }
             }
             loadPlaylist();
         }
@@ -112,32 +125,52 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             if (isSort)
             {
                 ///query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
-                query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
+                //query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
+                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track from Audio a inner join playlist p on " +
+                    "a.ID=p.AID inner join playlists ps on ps.PID = p.PID where p.PID =" + playlistID;
+
             }
             else
             {
                 //query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
+                //query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
 
-                query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
+                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track from Audio a inner join playlist p on " +
+                    "a.ID=p.AID inner join playlists ps on ps.PID = p.PID where p.PID =" + playlistID;
+
             }
             DataTable dt = Global_Log.connectionClass.retriveData(query, "Audio");
 
             int count = dt.Rows.Count;
             Playlists playlists = new Playlists();
+            string time = "";
+            if (dt != null)
+            {
+                time = dt.Rows[0][1].ToString();
+                
+                
+            }
             for (int i = 0; i < count; i++)
             {
                 DataRow dr = dt.Rows[i];
                 try
                 {
+                    DateTime date1 = (DateTime)dr[1];
+                    TimeSpan time1 = (TimeSpan)dr[3];
+                    
                     playlistAudio.Add(new PlaylistAudio()
                     {
                         AID = Convert.ToInt32(dr[0]),
+                        AirTime = time,
                         PID = playlistID,
                         SortId = Sorts,
-                        Name = dr[1].ToString(),
-                        track = dr[3].ToString(),
-                        Duration = (TimeSpan)dr[2]
+                        Name = dr[2].ToString(),
+                        track = dr[4].ToString(),
+                        Duration = (TimeSpan)dr[3]
                     });
+
+                    DateTime combined = date1.Add(time1);
+                    time = combined.ToString();
                 }
                 catch (Exception ex)
                 { }
@@ -192,7 +225,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
         }
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            Create_Playlist createPlaylist = new Create_Playlist(); 
+            Create_Playlist createPlaylist = new Create_Playlist();
             createPlaylist.ShowDialog();
             loadPlaylist();
         }
@@ -243,7 +276,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             }
             MessageBox.Show("All Songs Export");
         }
-        
+
         private void btnImport_Click(object sender, RoutedEventArgs e)
         {
             string strFilePath = Global_Log.ActiveDir + "\\playlist.csv";

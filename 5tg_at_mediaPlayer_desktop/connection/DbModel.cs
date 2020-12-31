@@ -55,6 +55,7 @@ namespace _5tg_at_mediaPlayer_desktop.connection
     {
         public int AID { get; set; }
         public int PID { get; set; }
+        public string AirTime { get; set; }
         public int SortId { get; set; }
         public string Name { get; set; }
         public string track { get; set; }
