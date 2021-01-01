@@ -266,6 +266,7 @@
     <Resource Include="Bottom_Media_Control\Assets\stop.png" />
     <Resource Include="Bottom_Media_Control\Assets\volume.png" />
     <Resource Include="FM\Assets\back.jpg" />
+    <Resource Include="Extras\Extra Notification.txt" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>
