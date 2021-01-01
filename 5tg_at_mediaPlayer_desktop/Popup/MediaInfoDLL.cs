@@ -230,6 +230,20 @@ namespace MediaInfoLib
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public class MediaInfoList
     {
         //Import of DLL functions. DO NOT USE until you know what you do (MediaInfo DLL do NOT use CoTaskMemAlloc to allocate memory)
