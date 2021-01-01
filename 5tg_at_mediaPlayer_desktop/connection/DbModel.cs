@@ -70,4 +70,14 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public int PID { get; set; }
         public string PName { get; set; }
     }
+
+    public class Log
+    {
+        public int LogID { get; set; }
+        public int CartId { get; set; }
+        public string AirTime { get; set; }
+        public string Title { get; set; }
+        public string PlaylistName { get; set; }
+        public TimeSpan Duration { get; set; }
+    }
 }
