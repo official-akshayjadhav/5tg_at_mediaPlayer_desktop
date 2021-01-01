@@ -266,7 +266,6 @@
     <Resource Include="Bottom_Media_Control\Assets\stop.png" />
     <Resource Include="Bottom_Media_Control\Assets\volume.png" />
     <Resource Include="FM\Assets\back.jpg" />
-    <Resource Include="FM\Assets\back1.jpg" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>
@@ -315,5 +314,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

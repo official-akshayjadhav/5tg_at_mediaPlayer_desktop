@@ -17,8 +17,7 @@ using System.Windows.Shapes;
 namespace _5tg_at_mediaPlayer_desktop.FM
 {
     /// <summary>
-    /// Interaction logic for FM.xaml
-    /// </summary>
+    /// Interaction logic for FM.xaml    /// </summary>
     public partial class FM : UserControl
     {
         public FM()
