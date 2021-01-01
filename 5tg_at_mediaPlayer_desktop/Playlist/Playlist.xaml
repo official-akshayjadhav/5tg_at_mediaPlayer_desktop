@@ -101,29 +101,8 @@
                     -->
                 <Grid Margin="10">
 
-                    <!--<Button FontSize="14" Name="create2" Click="Show_Click" Content="Create Playlist" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="101" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="10,60,0,0"/>
-					-->
-                    <Border Margin="10" Width="101" Height="27" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="SlateBlue" Padding="5" CornerRadius="20">
-                        <Button BorderBrush="SlateBlue" Height="27" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold" Background="Transparent" Content="Create Playlist" Foreground="White" PreviewMouseLeftButtonDown="Create_Click">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="false">
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-                        <Border.Style>
-                            <Style TargetType="{x:Type Border}">
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="true">
-                                        <Setter Property="Opacity" Value=".6"></Setter>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Border.Style>
-                    </Border>
+                    <Button Name="create" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Content="Create Playlist" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                   Foreground="White" Style="{DynamicResource RoundCorner}" Click="Create_Click" />
 
                 </Grid>
             </Grid>
@@ -142,7 +121,7 @@
                         <ColumnDefinition Width="13*"/>
                         <ColumnDefinition Width="235*"/>
                     </Grid.ColumnDefinitions>
-
+                    <!--
                     <Label Content="Sort By" Margin="72,-10,103,320" Grid.Column="2"/>
                     <ComboBox Margin="72,19,43,0" VerticalAlignment="Top" Height="27" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0" Grid.Column="2">
                         <ComboBoxItem Content="Name"></ComboBoxItem>
@@ -151,34 +130,36 @@
                         <ComboBoxItem Content="Date added"></ComboBoxItem>
 
                     </ComboBox>
+                    -->
                 </Grid>
                 <Grid
 					Grid.Row="1">
-                    <DataGrid Name="allPlaylist" CanUserResizeColumns="True" 
+                    <DataGrid Name="allPlaylist" CanUserResizeColumns="True"
+                              HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"
 							  AutoGenerateColumns="False" Margin="10,10,10,10" 
-							  Foreground="White" CanUserAddRows="False"
+							  CanUserAddRows="False"
                               AlternationCount="2"
                               AlternatingRowBackground="Azure">
 
-                        <DataGrid.Resources>
+                        <!--<DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridColumnHeader}">
                                 <Setter Property="Background" Value="SlateBlue"></Setter>
                                 <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
                                 <Setter Property="FontSize" Value="20"></Setter>
                                 <Setter Property="Height" Value="auto"></Setter>
-                                <!--<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                --><!--<Setter Property="HorizontalAlignment" Value="Center"></Setter>
                                 -->
-                                <Setter Property="BorderBrush" Value="Azure"></Setter>
+                                <!--<Setter Property="BorderBrush" Value="Azure"></Setter>
                             </Style>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Setter Property="Background" Value="White"></Setter>
                                 <Setter Property="Foreground" Value="Black"></Setter>
                             </Style>
-                        </DataGrid.Resources>
+                        </DataGrid.Resources>-->
                         <DataGrid.Columns>
                             <!--<DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="2*"></DataGridTextColumn>
 							-->
-                            <DataGridTextColumn MinWidth="70" Header="PID" Binding="{Binding PID}" Width="1*"></DataGridTextColumn>
+                            <DataGridTextColumn MinWidth="70" Header="PID" Binding="{Binding PID}" Width="2*"></DataGridTextColumn>
                             <DataGridTextColumn MinWidth="150" Header="Name" Binding="{Binding Name}" Width="2*"></DataGridTextColumn>
                             <DataGridTextColumn MinWidth="150" Header="Total Songs" Binding="{Binding TotalSong}" Width="2*"></DataGridTextColumn>
                             <DataGridTextColumn MinWidth="100" Header="Date Created" Binding="{Binding Date}" Width="2*"></DataGridTextColumn>
@@ -232,10 +213,10 @@
                 </Grid.ColumnDefinitions>
 
                 <DataGrid Name="PlaylistSong" AutoGenerateColumns="False" CanUserResizeColumns="True" 
-                          CanUserAddRows="False" Margin="10,10,10,10" Foreground="White"
+                          CanUserAddRows="False" Margin="10,10,10,10"
                           AlternationCount="2" AlternatingRowBackground="Azure" Grid.ColumnSpan="2">
 
-                    <DataGrid.Resources>
+                    <!--<DataGrid.Resources>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="SlateBlue"></Setter>
                             <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
@@ -247,7 +228,7 @@
                             <Setter Property="Background" Value="White"></Setter>
                             <Setter Property="Foreground" Value="Black"></Setter>
                         </Style>
-                    </DataGrid.Resources>
+                    </DataGrid.Resources>-->
                     <DataGrid.Columns>
                         <DataGridTextColumn MinWidth="70" Width="*" Header="PID" x:Name="PID" Binding="{Binding PID}" ></DataGridTextColumn>
                         <DataGridTextColumn MinWidth="70" Width="*" Header="AID" x:Name="AID" Binding="{Binding AID}" ></DataGridTextColumn>

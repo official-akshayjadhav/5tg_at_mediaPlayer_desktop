@@ -1,20 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.902
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5tg_at_mediaPlayer_desktop", "5tg_at_mediaPlayer_desktop\5tg_at_mediaPlayer_desktop.csproj", "{7F3FB6AC-8D73-43EF-B0E5-8A12A816124E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7F3FB6AC-8D73-43EF-B0E5-8A12A816124E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F3FB6AC-8D73-43EF-B0E5-8A12A816124E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F3FB6AC-8D73-43EF-B0E5-8A12A816124E}.Debug|x64.ActiveCfg = Debug|x64
+		{7F3FB6AC-8D73-43EF-B0E5-8A12A816124E}.Debug|x64.Build.0 = Debug|x64
 		{7F3FB6AC-8D73-43EF-B0E5-8A12A816124E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F3FB6AC-8D73-43EF-B0E5-8A12A816124E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F3FB6AC-8D73-43EF-B0E5-8A12A816124E}.Release|x64.ActiveCfg = Release|x64
+		{7F3FB6AC-8D73-43EF-B0E5-8A12A816124E}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
