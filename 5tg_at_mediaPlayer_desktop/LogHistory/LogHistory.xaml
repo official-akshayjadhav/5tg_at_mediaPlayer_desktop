@@ -78,8 +78,8 @@
         <Grid
 			Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -93,11 +93,11 @@
 
             <Grid
 				Grid.Column="1">
-                <ComboBox VerticalAlignment="Center" Background="SlateBlue" Margin="20" Height="27" SelectionChanged="ComboBox_SelectionChanged" FontSize="16" SelectedIndex="0" HorizontalContentAlignment="Center">
+                <!--<ComboBox VerticalAlignment="Center" Background="SlateBlue" Margin="20" Height="27" SelectionChanged="ComboBox_SelectionChanged" FontSize="16" SelectedIndex="0" HorizontalContentAlignment="Center">
                     <ComboBox.Resources>
-                        <!-- color of ComboBoxItem -->
+                        <!- color of ComboBoxItem ->
                         <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="White" />
-                        <!-- Mouse over color of ComboBoxItem -->
+                        <!- Mouse over color of ComboBoxItem ->
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
                     </ComboBox.Resources>
                     <ComboBoxItem Content="Sort By" IsEnabled="False"></ComboBoxItem>
@@ -106,7 +106,7 @@
                     <ComboBoxItem Content="Last Modified"></ComboBoxItem>
                     <ComboBoxItem Content="Date added"></ComboBoxItem>
 
-                </ComboBox>
+                </ComboBox>-->
             </Grid>
 
             <Grid

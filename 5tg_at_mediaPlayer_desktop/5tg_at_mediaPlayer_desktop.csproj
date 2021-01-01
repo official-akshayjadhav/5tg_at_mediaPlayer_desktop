@@ -50,9 +50,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ATL, Version=3.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\ATL.dll</HintPath>
+    <Reference Include="ATL">
+      <HintPath>..\..\..\..\..\Desktop\ATL.dll</HintPath>
     </Reference>
     <Reference Include="CsvHelper, Version=18.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.18.0.0\lib\net47\CsvHelper.dll</HintPath>
@@ -87,9 +86,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFToolkit.Extended, Version=1.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\WPFToolkit.Extended.dll</HintPath>
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>..\..\..\..\..\Desktop\WPFToolkit.Extended.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +120,7 @@
     <Compile Include="Playlist\Sorting.xaml.cs">
       <DependentUpon>Sorting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Popup\MediaInfoDLL.cs" />
     <Compile Include="Popup\RangeSlider\TEST_SLIDER.xaml.cs">
       <DependentUpon>TEST_SLIDER.xaml</DependentUpon>
     </Compile>
@@ -267,7 +266,6 @@
     <Resource Include="Bottom_Media_Control\Assets\stop.png" />
     <Resource Include="Bottom_Media_Control\Assets\volume.png" />
     <Resource Include="FM\Assets\back.jpg" />
-    <Resource Include="FM\Assets\back1.jpg" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>
@@ -316,5 +314,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,19 +1,11 @@
 ﻿using _5tg_at_mediaPlayer_desktop.connection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
+
 
 namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
 {
@@ -44,25 +36,9 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         public Bottom_Media_Control()
         {
             InitializeComponent();
-            /*if (AID != null)
+            
             {
-                //AID = Convert.ToInt32(AID);
-
-                string getfilepath = "Select filepath from Audio where ID =" + AID;
-                String songpath = Global_Log.connectionClass.getsongfilepath(getfilepath);
-
-                Uri music = new Uri(songpath);
-                mediaPlayer.Open(music);
-                song.Text = music.ToString();
-                DispatcherTimer timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromSeconds(1);
-                timer.Tick += timer_Tick;
-                timer.Start();
-            }
-            else*/
-            {
-                //PlayMediaFunction();
-                Uri music = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
+                /*Uri music = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
 
                 mediaPlayer.Open(music);
                 song.Text = music.ToString();
@@ -70,7 +46,97 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                 timer.Interval = TimeSpan.FromSeconds(1);
                 timer.Tick += timer_Tick;
                 timer.Start();
+                */
             }
+
+
+            /*var mediaInfo = new MediaInfo.DotNetWrapper.MediaInfo();
+            mediaInfo.Open("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
+           // MediaFile uploadedFile = new MediaFile("C:\\Users\\jpmcfeely\\Desktop\\Videos\\Quarry.mp4");
+           // string duration = uploadedFile.General.DurationString.ToString();
+           // String duration = mediaInfo.Option;
+            text += "\r\n\r\nInform with Complete=true\r\n";
+            mediaInfo.Option("Complete");
+            text += mediaInfo.Inform();
+            Console.WriteLine(text);
+            string text;
+            using (var mediaInfo = new MediaInfo())
+            {
+                text = mediaInfo.Option("Info_Version");
+
+                //Information about MediaInfo
+                text += "\r\n\r\nInfo_Parameters\r\n";
+                text += mediaInfo.Option("Info_Parameters");
+
+                text += "\r\n\r\nInfo_Capacities\r\n";
+                text += mediaInfo.Option("Info_Capacities");
+
+                text += "\r\n\r\nInfo_Codecs\r\n";
+                text += mediaInfo.Option("Info_Codecs");
+            }
+            */
+            /*String text;
+            using (var mediaInfo = new MediaInfo())
+            {
+                text = mediaInfo.Option("Info_Version");
+
+                //Information about MediaInfo
+                text += "\r\n\r\nInfo_Parameters\r\n";
+                text += mediaInfo.Option("Info_Parameters");
+
+                text += "\r\n\r\nInfo_Capacities\r\n";
+                text += mediaInfo.Option("Info_Capacities");
+
+                text += "\r\n\r\nInfo_Codecs\r\n";
+                text += mediaInfo.Option("Info_Codecs");
+            }
+
+            // An example of how to use the library
+            foreach (string filename in new[]
+            {
+                "Example.ogg",
+
+            })
+            {
+                using (var mediaInfo = new MediaInfo())
+                {
+                    text += "\r\n\r\nOpen\r\n";
+                    mediaInfo.Open(filename);
+
+                    text += "\r\n\r\nInform with Complete=false\r\n";
+                    mediaInfo.Option("Complete");
+                    text += mediaInfo.Inform();
+
+                    text += "\r\n\r\nInform with Complete=true\r\n";
+                    mediaInfo.Option("Complete", "1");
+                    text += mediaInfo.Inform();
+
+                    text += "\r\n\r\nCustom Inform\r\n";
+                    mediaInfo.Option("Inform", "General;File size is %FileSize% bytes");
+                    text += mediaInfo.Inform();
+
+                    foreach (string param in new[] { "BitRate", "BitRate/String", "BitRate_Mode" })
+                    {
+                        text += "\r\n\r\nGet with Stream=Audio and Parameter='" + param + "'\r\n";
+                        text += mediaInfo.Get(StreamKind.Audio, 0, param);
+                    }
+
+                    text += "\r\n\r\nGet with Stream=General and Parameter=46\r\n";
+                    text += mediaInfo.Get(StreamKind.General, 0, 46);
+
+                    text += "\r\n\r\nCount_Get with StreamKind=Stream_Audio\r\n";
+                    text += mediaInfo.CountGet(StreamKind.Audio);
+
+                    text += "\r\n\r\nGet with Stream=General and Parameter='AudioCount'\r\n";
+                    text += mediaInfo.Get(StreamKind.General, 0, "AudioCount");
+
+                    text += "\r\n\r\nGet with Stream=Audio and Parameter='StreamCount'\r\n";
+                    text += mediaInfo.Get(StreamKind.Audio, 0, "StreamCount");
+                }
+
+                Console.WriteLine(text);
+            }*/
+
         }
         public Bottom_Media_Control(String AID) {
             InitializeComponent();

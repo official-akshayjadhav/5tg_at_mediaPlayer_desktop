@@ -6,7 +6,7 @@
 			 mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 	<UserControl.Background>
-		<ImageBrush ImageSource="Assets/back1.jpg" Opacity=".95"></ImageBrush>
+		<ImageBrush ImageSource="Assets/back.jpg" Opacity=".95"></ImageBrush>
 	</UserControl.Background>
 	
 	<UserControl.Resources>
@@ -14,14 +14,14 @@
 			<Setter Property="HorizontalContentAlignment" Value="Center"/>
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
 			<Setter Property="Padding" Value="1"/>
-			<Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="Foreground" Value="#409d4b"></Setter>
 			<Setter Property="Margin" Value="15"></Setter>
 			<Setter Property="FontSize" Value="14"></Setter>
  			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="{x:Type Button}">
 						<Grid x:Name="grid">
-							<Border x:Name="border" CornerRadius="8" BorderBrush="Blue" BorderThickness="2">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="#709f81" BorderThickness="2">
 								<Border.Background>
 									<RadialGradientBrush GradientOrigin="0.496,1.052">
 										<RadialGradientBrush.RelativeTransform>
@@ -31,9 +31,10 @@
 												<TranslateTransform X="0.02" Y="0.3"/>
 											</TransformGroup>
 										</RadialGradientBrush.RelativeTransform>
-										<GradientStop Offset="1" Color="Red"/>
-										<GradientStop Offset="0.3" Color="SlateBlue"/>
-
+                                        <GradientStop Offset="1" Color="#182c1f"></GradientStop>
+                                        <GradientStop Offset="0.3" Color="#182c1f"/>
+    
+                                        
 										<!--<GradientStop Offset="1" Color="#00000000"/>
                                             <GradientStop Offset="0.3" Color="#FFFFFFFF"/>-->
 									</RadialGradientBrush>
@@ -101,14 +102,14 @@
 			</Grid.RowDefinitions>
 			<Grid
 				Grid.Row="1">
-				<TextBlock Text="STATUS" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+				<TextBlock Text="" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
 			</Grid>
 
 			<Grid
 				Grid.Row="2">
-				<Border Background="LightGreen" Margin="4" Opacity=".40">
+				<Border Background="Transparent" Margin="4" Opacity=".40">
 				</Border>
-				<Button Name="stream"  Content="STREAM" Style="{DynamicResource RoundCorner}"/>
+				<Button Name="chain"  Content="CHAIN" Style="{DynamicResource RoundCorner}"/>
 			</Grid>
 
 			<Grid
@@ -117,30 +118,30 @@
 					<ColumnDefinition Width="54*"/>
 					<ColumnDefinition Width="19*"/>
 				</Grid.ColumnDefinitions>
-				<Border Background="LightGreen" Margin="4" Opacity=".40" Grid.ColumnSpan="2">
+				<Border Background="Transparent" Margin="4" Opacity=".40" Grid.ColumnSpan="2">
 				</Border>
-				<Button Name="synchronicity"  Content="SYNCHRONICITY" Style="{DynamicResource RoundCorner}" Grid.ColumnSpan="2" />
+				<Button Name="play"  Content="PLAY" Style="{DynamicResource RoundCorner}" Grid.ColumnSpan="2" />
 			</Grid>
 
 			<Grid
 				Grid.Row="4">
-				<Border Background="LightGreen" Margin="4" Opacity=".40">
+				<Border Background="Transparent" Margin="4" Opacity=".40">
 				</Border>
-				<Button Name="now"  Content="NOW:" Style="{DynamicResource RoundCorner}" />
+				<Button Name="pause"  Content="PAUSE" Style="{DynamicResource RoundCorner}" />
 			</Grid>
 
 			<Grid
 				Grid.Row="5">
-				<Border Background="LightGreen" Margin="4" Opacity=".40">
+				<Border Background="Transparent" Margin="4" Opacity=".40">
 				</Border>
-				<Button Name="music"  Content="MUSIC" Style="{DynamicResource RoundCorner}" />
+                <Button Name="live_assist" Click="Live_assist_Click" Content="LIVE ASSIST" Style="{DynamicResource RoundCorner}" />
 			</Grid>
 
 			<Grid
 				Grid.Row="6">
-				<Border Background="LightGreen" Margin="4" Opacity=".40">
+				<Border Background="Transparent" Margin="4" Opacity=".40">
 				</Border>
-				<Button Name="traffic" Content="TRAFFIC" Style="{DynamicResource RoundCorner}" />
+				<Button Name="stop" Content="STOP" Style="{DynamicResource RoundCorner}" />
 			</Grid>
 		</Grid>
 
@@ -155,7 +156,7 @@
 
 			<Grid
 				Grid.Row="0">
-				<TextBlock Text="KKGY FM" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"></TextBlock>
+                <TextBlock Text="SYNCHRONICITY AI" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"></TextBlock>
 			</Grid>
 
 			<Grid
@@ -261,12 +262,12 @@
 					</Canvas>
 				
 				</Grid>
-				<TextBlock Text="02:30 REMAINING" Foreground="White" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
+				<TextBlock Text="REMAINING Time 3:35" Foreground="White" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
 			</Grid>
 
 			<Grid
 				Grid.Row="2">
-				<Border BorderThickness="1" Margin="40,0,40,30" BorderBrush="White" CornerRadius="18" Background="Green" Opacity=".3">
+				<Border BorderThickness="1" Margin="40,0,40,30" BorderBrush="White" CornerRadius="18" Background="Gray" Opacity=".3">
 				</Border>
 				<Grid Margin="40,0,40,30">
 					<TextBlock Text="Playing : Joe Walsh - Life's been good : 32/4.35" Margin="0,0,0,0" FontSize="14" Foreground="White" HorizontalAlignment="Center"></TextBlock>
@@ -298,14 +299,14 @@
 			</Grid.RowDefinitions>
 			<Grid
 				Grid.Row="1">
-				<TextBlock Text="CONTROL" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+				<TextBlock Text="" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
 			</Grid>
 
 			<Grid
 				Grid.Row="2">
-				<Border Background="LightGreen" Margin="4" Opacity=".40">
+				<Border Background="Transparent" Margin="4" Opacity=".40">
 				</Border>
-				<Button Name="chain"  Content="CHAIN" Style="{DynamicResource RoundCorner}" />
+				<Button Name="config"  Content="CONFIG" Style="{DynamicResource RoundCorner}" />
 			</Grid>
 
 			<Grid
@@ -314,30 +315,27 @@
 					<ColumnDefinition Width="54*"/>
 					<ColumnDefinition Width="19*"/>
 				</Grid.ColumnDefinitions>
-				<Border Background="LightGreen" Margin="4" Opacity=".40" Grid.ColumnSpan="2">
+				<Border Background="Transparent" Margin="4" Opacity=".40" Grid.ColumnSpan="2">
 				</Border>
-				<Button Name="play"  Content="PLAY" Style="{DynamicResource RoundCorner}" Grid.ColumnSpan="2" />
+                <Button Name="synchronicity"  Content="SYNCHRONICITY" Style="{DynamicResource RoundCorner}" Grid.ColumnSpan="2" />
 			</Grid>
 
 			<Grid
 				Grid.Row="4">
-				<Border Background="LightGreen" Margin="4" Opacity=".40">
-				</Border>
-				<Button Name="pause"  Content="PAUSE" Style="{DynamicResource RoundCorner}" />
+                <Border Background="Transparent" Margin="4" Opacity=".40"></Border>
+				<Button Name="weather"  Content="WEATHER" Style="{DynamicResource RoundCorner}" />
 			</Grid>
 
 			<Grid
 				Grid.Row="5">
-				<Border Background="LightGreen" Margin="4" Opacity=".40">
-				</Border>
-				<Button Name="live_assist" Click="Live_assist_Click"  Content="LIVE ASSIST" Style="{DynamicResource RoundCorner}" />
+                <Border Background="Transparent" Margin="4" Opacity=".40"></Border>
+				<Button Name="music"  Content="MUSIC" Style="{DynamicResource RoundCorner}" />
 			</Grid>
 
 			<Grid
 				Grid.Row="6">
-				<Border Background="LightGreen" Margin="4" Opacity=".40">
-				</Border>
-				<Button Name="stop" Content="STOP" Style="{DynamicResource RoundCorner}" />
+                <Border Background="Transparent" Margin="4" Opacity=".40"></Border>
+				<Button Name="traffic" Content="TRAFFIC" Style="{DynamicResource RoundCorner}" />
 			</Grid>
 		</Grid>
 
