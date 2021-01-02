@@ -128,16 +128,15 @@
 		<Grid
 			Grid.Row="1">
 
-			<DataGrid Margin="20" 
+            <DataGrid Margin="20" 
 					  x:Name="datagrid"
 					  AlternationCount="2"
 					  AlternatingRowBackground="Azure"
 					  AutoGenerateColumns="False"
 					  CanUserAddRows="False"
-                      CanUserResizeColumns="True"
-                      >
-        
-				<DataGrid.Columns>
+                      CanUserResizeColumns="True">
+                
+                <DataGrid.Columns>
                     
 					<DataGridTemplateColumn Width=".5*">
 						<DataGridTemplateColumn.CellTemplate>

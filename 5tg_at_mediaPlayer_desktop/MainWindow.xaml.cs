@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using _5tg_at_mediaPlayer_desktop.FM;
+using _5tg_at_mediaPlayer_desktop.Popup;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace _5tg_at_mediaPlayer_desktop
 {
@@ -47,6 +38,7 @@ namespace _5tg_at_mediaPlayer_desktop
                 tt_features.Visibility = Visibility.Collapsed;
                 tt_commands.Visibility = Visibility.Collapsed;
                 tt_loghistory.Visibility = Visibility.Collapsed;
+                tt_addmusic.Visibility = Visibility.Collapsed;
             } 
             else
             {
@@ -57,7 +49,7 @@ namespace _5tg_at_mediaPlayer_desktop
                 tt_features.Visibility = Visibility.Visible;
                 tt_commands.Visibility = Visibility.Visible;
                 tt_loghistory.Visibility = Visibility.Visible;
-                
+                tt_addmusic.Visibility = Visibility.Visible;
             }
 
         }
@@ -108,6 +100,17 @@ namespace _5tg_at_mediaPlayer_desktop
             loghistory.Visibility = Visibility.Visible;
         }
 
+        private void OpenHome(object sender, MouseButtonEventArgs e)
+        {
+            FM_Custom obj = new FM_Custom();
+            obj.Show();
+            this.Close();
+        }
 
+        private void addmusic_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Track_Metadata addMusic = new Track_Metadata();
+            addMusic.ShowDialog();
+        }
     }
 }

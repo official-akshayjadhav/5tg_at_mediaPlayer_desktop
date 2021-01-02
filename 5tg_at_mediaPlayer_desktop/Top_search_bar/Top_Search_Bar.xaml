@@ -88,14 +88,27 @@
 					Grid.Column="1"
 					Grid.Row="0">
 		<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
 			<ColumnDefinition Width="10*"></ColumnDefinition>
 			<ColumnDefinition Width="1*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
+        
+        
 		<!---// Search Bar //-->
-		<Grid x:Name="searchbar"
-							  Opacity="50"
-						      Grid.Column="0"
-							  Background="SlateBlue">
+        <Grid
+            Grid.Column="0">
+            <Border Background="SlateBlue" CornerRadius="10,0,0,10" ></Border>
+            <Image Source="Assets/search.png" Stretch="Uniform" Width="30" Height="30"></Image>
+        </Grid>
+        
+        <Grid x:Name="searchbar"
+              Grid.Column="1"
+							  Opacity="50">
+
+            <Border
+                Background="SlateBlue" Grid.Column="0" CornerRadius="0">
+                
+            </Border>
 			<!---Search overlay-->
 			<Grid Grid.ColumnSpan="1">
 				<Grid.ColumnDefinitions>
@@ -106,21 +119,23 @@
 				<!--<Image Source="Assets/search1.png"></Image>-->
 				<TextBox 
 									Style="{StaticResource placeHolder}" 
-									Tag="  Search Song and Playlist . . .  "
+									Tag="Search Song and Playlist . . .  "
 									Grid.Column="1"
 									FontSize="20px"
 									Height="30"
-									Margin="30,0,0,0"
+                                    Padding="200,20,20,20"
+                                    BorderBrush="#00000000" CaretBrush="#FF6C6C6C"
+                                    BorderThickness="0"
 									VerticalAlignment="Center" Text=""
 									>
 					<TextBox.Background>
-						<ImageBrush ImageSource="Assets/search.png" Stretch="Uniform" AlignmentX="Right">
+						<ImageBrush Stretch="Uniform" AlignmentX="Left">
 							<ImageBrush.Transform>
 								<TransformGroup>
 									<ScaleTransform/>
 									<SkewTransform/>
 									<RotateTransform/>
-									<TranslateTransform X="-3"/>
+									<TranslateTransform X="0"/>
 								</TransformGroup>
 							</ImageBrush.Transform>
 						</ImageBrush>
@@ -131,8 +146,8 @@
 		<!--// App Close Button //-->
 		<!---User Button-->
 		<Grid
-						Grid.Column="1"
-						Background="SlateBlue">
+						Grid.Column="2"
+						>
 			<!--<Button x:Name="CloseBtn"
 							Height="40"
 							Width="40"
@@ -144,6 +159,7 @@
 				</Button.Background>
 			</Button>
 			-->
+            <Border Background="SlateBlue" Grid.Column="1" CornerRadius="0,10,10,0"></Border>
 			<Button x:Name="UserBtn"
 					Height="40"
 					Width="40"
