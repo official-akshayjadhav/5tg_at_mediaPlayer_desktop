@@ -108,8 +108,8 @@
     <Compile Include="connection\DbModel.cs" />
     <Compile Include="connection\Global_Log.cs" />
     <Compile Include="connection\PlayBack.cs" />
-    <Compile Include="FM\FM.xaml.cs">
-      <DependentUpon>FM.xaml</DependentUpon>
+    <Compile Include="FM\FM_Custom.xaml.cs">
+      <DependentUpon>FM_Custom.xaml</DependentUpon>
     </Compile>
     <Compile Include="LogHistory\LogHistory.xaml.cs">
       <DependentUpon>LogHistory.xaml</DependentUpon>
@@ -150,7 +150,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FM\FM.xaml">
+    <Page Include="FM\FM_Custom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -253,14 +253,6 @@
     <Resource Include="Top_search_bar\Assets\closeBtn_MouseOver.png" />
     <Resource Include="Assets\pause.png" />
     <Resource Include="All_Songs\Assets\play.png" />
-    <Content Include="Assets\1st.mp3" />
-    <Resource Include="Assets\playlist.png" />
-    <Resource Include="Assets\features.png" />
-    <Resource Include="Assets\loghistory.png" />
-    <Resource Include="Assets\streaming.png" />
-    <Resource Include="Assets\audiorouting.png" />
-    <Resource Include="Assets\commands.png" />
-    <Content Include="Assets\test.mkv" />
     <Resource Include="Navigation_Bar\Assets\pl.png" />
     <Resource Include="Navigation_Bar\Assets\tgBtn_default.png" />
     <Resource Include="Navigation_Bar\Assets\tgBtn_MouseOver.png" />
@@ -272,6 +264,12 @@
     <Resource Include="Bottom_Media_Control\Assets\stop.png" />
     <Resource Include="Bottom_Media_Control\Assets\volume.png" />
     <Resource Include="FM\Assets\back.jpg" />
+    <Resource Include="Assets\home.png" />
+    <Resource Include="Assets\youtube.png" />
+    <Resource Include="Assets\audiorouting.png" />
+    <Resource Include="Assets\streaming.png" />
+    <Resource Include="Assets\features.png" />
+    <Resource Include="Assets\commands.png" />
     <Resource Include="Extras\Extra Notification.txt" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
@@ -288,12 +286,10 @@
     <Resource Include="Assets\img_message.png" />
     <Resource Include="Assets\img_setting.png" />
     <Resource Include="Assets\img_signout.png" />
-    <Resource Include="Assets\pl.png" />
     <Resource Include="Assets\search.png" />
     <Resource Include="Assets\search1.png" />
     <Resource Include="Assets\tgBtn_default.png" />
     <Resource Include="Assets\tgBtn_MouseOver.png" />
-    <Resource Include="Assets\user.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

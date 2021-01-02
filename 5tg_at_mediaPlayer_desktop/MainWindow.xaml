@@ -27,7 +27,7 @@
 		<Style x:Key="font_style" TargetType="TextBlock">
 
 			<Setter Property="FontFamily"
-                    Value="Fonts/Roboto-Light.ttf #Roboto"/>
+                    Value="sans-serif"/>
 
 			<Setter Property="VerticalAlignment"
                     Value="Center"/>
@@ -39,7 +39,7 @@
                     Value="White"/>
 
 			<Setter Property="FontSize"
-                    Value="20"/>
+                    Value="14"/>
 
 		</Style>
 
@@ -51,11 +51,11 @@
 			<Setter Property="Height" Value="40"/>
 			<Setter Property="Width" Value="100"/>
 			<Setter Property="Margin" Value="20,0,0,0"/>
-			<Setter Property="Background" Value="#4A5668"/>
-			<Setter Property="BorderBrush" Value="Transparent"/>
+			<Setter Property="Background" Value="Indigo"/>
+			<Setter Property="BorderBrush" Value="Indigo"/>
 			<Setter Property="Foreground" Value="White"/>
-			<Setter Property="FontFamily" Value="Fonts/Roboto-Light.ttf #Roboto"/>
-			<Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="sans-serif"/>
+			<Setter Property="FontSize" Value="12"/>
 			<Setter Property="PlacementRectangle" Value="60,0,0,0"/>
 			<Setter Property="HorizontalOffset" Value="15"/>
 			<Setter Property="VerticalOffset" Value="6"/>
@@ -85,6 +85,7 @@
 
 								<Setter Property="Background"
                                         TargetName="border"
+                                        
                                         Value="{StaticResource tb_mouse_over}"/>
 
 								<Setter Property="BorderBrush"
@@ -131,7 +132,7 @@
 			<Grid   x:Name="nav_pnl"
                     HorizontalAlignment="Left"
                     Width="70"
-                    Background="Azure">
+                    Background="#f8f9fa">
 				<StackPanel x:Name="st_pnl">
 					<!--// Grid for the Menu Toggle Button //-->
 					<Grid Height="90">
@@ -141,7 +142,8 @@
                                     Margin="73,-20,0,0"
                                     Text="B R O W S E  M U S I C"
                                     Foreground="Black"
-                                    FontSize="15"
+                                    FontSize="13"
+                                    FontFamily="Open Sans"
                                     Background="Transparent"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
@@ -154,7 +156,7 @@
 								<DropShadowEffect  BlurRadius="3"
                                                    ShadowDepth="1"
                                                    Direction="-90"
-                                                   Color="Black"/>
+                                                   Color="#753fdc"/>
 
 							</TextBlock.Effect>
 
@@ -246,19 +248,19 @@
 						<!--// Home //-->
 
 						<ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
 
 							<StackPanel Orientation="Horizontal"
-                                        Width="230" MouseDown="OpenPlaylist">
+                                        Width="230" MouseDown="OpenHome">
 
-								<Image Source="Assets/playlist.png"
+								<Image Source="Assets/home.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0" Height="30" Width="30"/>
+                                       Margin="12,0,0,0"/>
 
-								<TextBlock Text="Playlist"
+								<TextBlock Text="Home"
                                            Margin="25,0,0,0"
 										   Foreground="Black"
+                                           FontFamily="sans-serif"
                                            Style="{StaticResource font_style}"/>
 
 							</StackPanel>
@@ -267,7 +269,7 @@
 
 							<ListViewItem.ToolTip>
 
-								<ToolTip x:Name="tt_playlist"
+								<ToolTip x:Name="tt_home"
                                          Content="Playlist"
                                          Style="{StaticResource tt_style}"/>
 
@@ -275,16 +277,50 @@
 
 						</ListViewItem>
 
-						<!--// Contacts //-->
+
+                        <!--// Home //-->
+
+                        <ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                                      >
+
+                            <StackPanel Orientation="Horizontal"
+                                        Width="230" MouseDown="OpenPlaylist">
+
+                                <Image Source="Assets/home.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+
+                                <TextBlock Text="Playlist"
+                                           Margin="25,0,0,0"
+										   Foreground="Black"
+                                           FontFamily="sans-serif"
+                                           Style="{StaticResource font_style}"/>
+
+                            </StackPanel>
+
+                            <!--// Tooltip //-->
+
+                            <ListViewItem.ToolTip>
+
+                                <ToolTip x:Name="tt_playlist"
+                                         Content="Playlist"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </ListViewItem.ToolTip>
+
+                        </ListViewItem>
+
+                        <!--// Contacts //-->
 
 						<ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                                      Margin="0,0,0,15"
                                       >
 
 							<StackPanel Orientation="Horizontal"
                                         Width="230" MouseDown="OpenSongs">
 
-								<Image Source="Assets/pl.png"
+								<Image Source="Assets/youtube.png"
                                        Stretch="None"
                                        Margin="12,0,0,0" Height="30" Width="30"/>
 
@@ -443,7 +479,7 @@
 							<StackPanel Orientation="Horizontal"
                                         Width="230" MouseDown="openloghistory">
 
-								<Image Source="Assets/loghistory.png"
+								<Image Source="Assets/features.png"
                                        Margin="12,0,0,0" Height="30" Width="30"/>
 
 								<TextBlock Text="Log History"
@@ -465,7 +501,40 @@
 
 						</ListViewItem>
 
-						<!--// Listview items style template //-->
+                        <!--// Add Music //-->
+
+                        <ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15"  Name="addmusic" MouseLeftButtonDown="addmusic_MouseLeftButtonDown"
+                                      >
+
+                            <StackPanel Orientation="Horizontal"
+                                        Background="Red" MouseDown="addmusic_MouseLeftButtonDown"
+                                        Width="230">
+
+                                <Image Source="Assets/commands.png"
+                                       Margin="12,0,0,0" Height="30" Width="30"/>
+
+                                <TextBlock Text="ADD MUSIC"
+                                           Margin="25,0,0,0"
+										   Foreground="Black"
+                                           Style="{StaticResource font_style}"/>
+
+                            </StackPanel>
+
+                            <!--// Tooltip //-->
+
+                            <ListViewItem.ToolTip>
+
+                                <ToolTip x:Name="tt_addmusic"
+                                         Content="Add Music"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </ListViewItem.ToolTip>
+
+                        </ListViewItem>
+
+
+                        <!--// Listview items style template //-->
 
 						<ListView.ItemContainerStyle>
 
@@ -540,7 +609,7 @@
 				</Grid.RowDefinitions>
 
 				<!---Search bar and App close button-->
-				<Grid>
+				<Grid Margin="20">
                     <Top_Seach_Bar:Top_Search_Bar></Top_Seach_Bar:Top_Search_Bar>
 				</Grid>
 
