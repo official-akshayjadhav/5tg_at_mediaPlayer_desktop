@@ -1,0 +1,12 @@
+﻿
+Logs File Table schema / Query
+=>
+
+create Table Logs(LID int identity(1,1) primary key, LogTime dateTime default current_timestamp, AID int references Audio(ID), PID int references playlists(PID))
+
+
+insert into Logs(AID,PID) values(19,5)
+select * from Logs
+
+select lg.LID, lg.LogTime, a.ID, a.UID, a.Title, a.duration, ps.name  from Logs lg inner join Audio a on lg.AID=a.ID
+inner join playlists ps on ps.PID=lg.PID

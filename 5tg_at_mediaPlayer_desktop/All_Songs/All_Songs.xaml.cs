@@ -1,7 +1,6 @@
 ﻿using _5tg_at_mediaPlayer_desktop.connection;
 using _5tg_at_mediaPlayer_desktop.Playlist;
 using _5tg_at_mediaPlayer_desktop.Popup;
-using ATL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -33,7 +32,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
 
         //public object ConfigurationManager { get; private set; }
 
-        Track track = null;
+        //Track track = null;
         List<Audio> audioList = null;
 
         private void View_all_playlist_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
