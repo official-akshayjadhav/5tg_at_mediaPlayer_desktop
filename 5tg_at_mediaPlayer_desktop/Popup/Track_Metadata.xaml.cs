@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
-using MediaInfo.DotNetWrapper.Enumerations;
+using MediaInfo;
 
 
 namespace _5tg_at_mediaPlayer_desktop.Popup
@@ -33,7 +33,7 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
             if (openFileDialog.ShowDialog() == true)
             {
                 audioList = new List<Audio>();
-                MediaInfo.DotNetWrapper.MediaInfoWrapper track = new MediaInfo.DotNetWrapper.MediaInfoWrapper(openFileDialog.FileName);
+                MediaInfo.MediaInfoWrapper track = new MediaInfo.MediaInfoWrapper(openFileDialog.FileName);
 
                 string title = track.Tags.Title;
                 string fileNames = openFileDialog.FileName;
