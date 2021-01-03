@@ -1,14 +1,15 @@
-﻿using _5tg_at_mediaPlayer_desktop.connection;
-using _5tg_at_mediaPlayer_desktop.Playlist;
-using _5tg_at_mediaPlayer_desktop.Popup;
-using ATL;
+﻿using ATL;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
+using System.Data.SqlClient;
+using System.Windows.Controls;
+using System.Collections.Generic;
+using _5tg_at_mediaPlayer_desktop.Popup;
+using _5tg_at_mediaPlayer_desktop.Playlist;
+using _5tg_at_mediaPlayer_desktop.connection;
+using _5tg_at_mediaPlayer_desktop.Bottom_Media_Control;
 
 namespace _5tg_at_mediaPlayer_desktop.All_Songs
 {
@@ -101,7 +102,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                             Filetype = dr.ItemArray[5].ToString(),
                             Filepath = dr.ItemArray[6].ToString(),
                             Duration = (TimeSpan)dr.ItemArray[7],
-                            //Track = dr.ItemArray[8].ToString(),
+                            Track = dr.ItemArray[8].ToString(),
                             Trim_Start = (TimeSpan)dr.ItemArray[9],
                             Trim_End = (TimeSpan)dr.ItemArray[10],
 
@@ -180,6 +181,16 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                     Add_To_Playlist add_To_Playlist = new Add_To_Playlist();
                     add_To_Playlist.ShowDialog();
                 }
+                else if (currentOperation == "Play Song")
+                {
+                    if(Global_Log.bottom_Media_Control==null)
+                    {
+                        Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+                    }
+                    Global_Log.bottom_Media_Control.playSong(Global_Log.audio.Track, Global_Log.audio.Title);
+
+                }
+
             }
             LoadAllSong();
         }
@@ -198,6 +209,11 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
             addMusic.ShowDialog();
 
             LoadAllSong();
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

@@ -180,7 +180,6 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             PlaylistSong.ItemsSource = playlistAudio;
         }
 
-
         private void PlaylistSongEdit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var image = e.AddedItems[0] as ComboBoxItem;
@@ -192,7 +191,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             {
                 PlaylistAudio = (PlaylistAudio)ttp.Tag;
             }
-            { }
+
             if (PlaylistAudio != null)
             {
                 Create_Playlist create_Playlist = new Create_Playlist();
@@ -201,12 +200,11 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
 
                 if (currentOperation == "Play")
                 {
-                    //create_Playlist.SetProperty(playlists.Name.ToString());
-                    //String query = "select fillepath from Audio where ID ="+PlaylistAudio.AID; 
-                    Bottom_Media_Control.Bottom_Media_Control obj = new Bottom_Media_Control.Bottom_Media_Control(PlaylistAudio.AID.ToString());
-                    obj.PlayMediaFunction();
-                    //obj.GetURIOfSong(Convert.ToInt32(PlaylistAudio.AID));
-                    //Bottom_Media_Control.Bottom_Media_Control(Convert.ToInt32(PlaylistAudio.AID));
+                    if (Global_Log.bottom_Media_Control == null)
+                    {
+                        Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+                    }
+                    Global_Log.bottom_Media_Control.playSong(PlaylistAudio.track, PlaylistAudio.Name);
                 }
                 else if (currentOperation == "Delete")
                 {
@@ -223,6 +221,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             }
             loadPlaylistSong(PlaylistAudio.PID, PlaylistAudio.SortId);
         }
+
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             Create_Playlist createPlaylist = new Create_Playlist();
