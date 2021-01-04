@@ -1,11 +1,11 @@
 ﻿using _5tg_at_mediaPlayer_desktop.connection;
-using ATL;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
-using MediaInfoLib;
+using MediaInfo;
+
 
 namespace _5tg_at_mediaPlayer_desktop.Popup
 {
@@ -18,131 +18,13 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
         public Track_Metadata()
         {
             InitializeComponent();
-            HeaderText.Text = "Add Music";
-            /*String path = "C:\\Users\\shubh\\Desktop\\part time\\1st.mp3";
-            String ToDisplay;
-            MediaInfo MI = new MediaInfo();
-
-            ToDisplay = MI.Option("Info_Version", "0.7.0.0;MediaInfoDLL_Example_CS;0.7.0.0");
-            if (ToDisplay.Length == 0)
-            {
-                richTextBox1.Text = "MediaInfo.Dll: this version of the DLL is not compatible";
-                return;
-            }
-
-            //Information about MediaInfo
-            ToDisplay += "\r\n\r\nInfo_Parameters\r\n";
-            ToDisplay += MI.Option("Info_Parameters");
-
-            ToDisplay += "\r\n\r\nInfo_Capacities\r\n";
-            ToDisplay += MI.Option("Info_Capacities");
-
-            ToDisplay += "\r\n\r\nInfo_Codecs\r\n";
-            ToDisplay += MI.Option("Info_Codecs");
-
-            //An example of how to use the library
-            ToDisplay += "\r\n\r\nOpen\r\n";
-            MI.Open(path);
-
-            ToDisplay += "\r\n\r\nInform with Complete=false\r\n";
-            MI.Option("Complete");
-            ToDisplay += MI.Inform();
-
-            ToDisplay += "\r\n\r\nInform with Complete=true\r\n";
-            MI.Option("Complete", "1");
-            ToDisplay += MI.Inform();
-
-            ToDisplay += "\r\n\r\nCustom Inform\r\n";
-            MI.Option("Inform", "General;File size is %FileSize% bytes");
-            ToDisplay += MI.Inform();
-
-            ToDisplay += "\r\n\r\nGet with Stream=General and Parameter='FileSize'\r\n";
-            ToDisplay += MI.Get(0, 0, "FileSize");
-
-            ToDisplay += "\r\n\r\nGet with Stream=General and Parameter=46\r\n";
-            ToDisplay += MI.Get(0, 0, 46);
-
-            ToDisplay += "\r\n\r\nCount_Get with StreamKind=Stream_Audio\r\n";
-            ToDisplay += MI.Count_Get(StreamKind.Audio);
-
-            ToDisplay += "\r\n\r\nGet with Stream=General and Parameter='AudioCount'\r\n";
-            ToDisplay += MI.Get(StreamKind.General, 0, "AudioCount");
-
-            ToDisplay += "\r\n\r\nGet with Stream=Audio and Parameter='StreamCount'\r\n";
-            ToDisplay += MI.Get(StreamKind.Audio, 0, "StreamCount");
-
-            ToDisplay += "\r\n\r\nClose\r\n";
-            MI.Close();
-            richTextBox1.Text = ToDisplay;
-            Console.WriteLine(ToDisplay);
-            */
+            HeaderText.Text = "Add Music";          
         }
 
-        Track track = null;
+        //Track track = null;
         List<Audio> audioList = null;
 
-
-
-        public void ShowdataForMediaLibInfo(String path) {
-
-            String ToDisplay;
-            MediaInfo MI = new MediaInfo();
-
-            ToDisplay = MI.Option("Info_Version", "0.7.0.0;MediaInfoDLL_Example_CS;0.7.0.0");
-            if (ToDisplay.Length == 0)
-            {
-                richTextBox1.Text = "MediaInfo.Dll: this version of the DLL is not compatible";
-                return;
-            }
-
-            //Information about MediaInfo
-            ToDisplay += "\r\n\r\nInfo_Parameters\r\n";
-            ToDisplay += MI.Option("Info_Parameters");
-
-            ToDisplay += "\r\n\r\nInfo_Capacities\r\n";
-            ToDisplay += MI.Option("Info_Capacities");
-
-            ToDisplay += "\r\n\r\nInfo_Codecs\r\n";
-            ToDisplay += MI.Option("Info_Codecs");
-
-            //An example of how to use the library
-            ToDisplay += "\r\n\r\nOpen\r\n";
-            MI.Open(path);
-
-            ToDisplay += "\r\n\r\nInform with Complete=false\r\n";
-            MI.Option("Complete");
-            ToDisplay += MI.Inform();
-
-            ToDisplay += "\r\n\r\nInform with Complete=true\r\n";
-            MI.Option("Complete", "1");
-            ToDisplay += MI.Inform();
-
-            ToDisplay += "\r\n\r\nCustom Inform\r\n";
-            MI.Option("Inform", "General;File size is %FileSize% bytes");
-            ToDisplay += MI.Inform();
-
-            ToDisplay += "\r\n\r\nGet with Stream=General and Parameter='FileSize'\r\n";
-            ToDisplay += MI.Get(0, 0, "FileSize");
-
-            ToDisplay += "\r\n\r\nGet with Stream=General and Parameter=46\r\n";
-            ToDisplay += MI.Get(0, 0, 46);
-
-            ToDisplay += "\r\n\r\nCount_Get with StreamKind=Stream_Audio\r\n";
-            ToDisplay += MI.Count_Get(StreamKind.Audio);
-
-            ToDisplay += "\r\n\r\nGet with Stream=General and Parameter='AudioCount'\r\n";
-            ToDisplay += MI.Get(StreamKind.General, 0, "AudioCount");
-
-            ToDisplay += "\r\n\r\nGet with Stream=Audio and Parameter='StreamCount'\r\n";
-            ToDisplay += MI.Get(StreamKind.Audio, 0, "StreamCount");
-
-            ToDisplay += "\r\n\r\nClose\r\n";
-            MI.Close();
-            richTextBox1.Text = ToDisplay;
-            Console.WriteLine(ToDisplay);
-
-
-        }
+        
 
         private void Browse_Click(object sender, RoutedEventArgs e)
         {
@@ -151,14 +33,14 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
             if (openFileDialog.ShowDialog() == true)
             {
                 audioList = new List<Audio>();
-                track = new Track(openFileDialog.FileName);
-                ShowdataForMediaLibInfo(track.ToString());
-                string title = track.Title;
-                string fileNames = track.Path;
-                int fileSize = 0000;
-                string fType = " audio/mpeg ";
-                string filePath = track.Path;
-                string times = track.DurationMs.ToString();
+                MediaInfo.MediaInfoWrapper track = new MediaInfo.MediaInfoWrapper(openFileDialog.FileName);
+
+                string title = track.Tags.Title;
+                string fileNames = openFileDialog.FileName;
+                int fileSize = (int)track.Size;
+                string fType = track.ToString();
+                string filePath = track.Tags.SubTrack;
+                string times = track.Duration.ToString();
 
                 byte[] fileDataBytes = File.ReadAllBytes(System.IO.Path.GetFullPath(openFileDialog.FileNames[0]));
                 String fileDataBase64 = Convert.ToBase64String(fileDataBytes);
@@ -175,11 +57,11 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 audioList.Add(new Audio()
                 {
                     UID = "000",
-                    Title = track.Title,
-                    FileName = track.Title,
+                    Title = track.Tags.Title,
+                    FileName = track.Tags.Title,
                     Filesize = 0,
                     Filetype = "audio",
-                    Filepath = track.Path,
+                    Filepath = filePath,
                     Duration = TimeSpan.FromSeconds(track.Duration),
                     Track = fileDataBase64,
                     Trim_Start = TimeSpan.FromSeconds(0),

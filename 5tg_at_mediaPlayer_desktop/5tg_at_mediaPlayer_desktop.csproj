@@ -29,6 +29,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,11 +52,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ATL">
-      <HintPath>..\..\..\..\..\Desktop\ATL.dll</HintPath>
-    </Reference>
     <Reference Include="CsvHelper, Version=18.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.18.0.0\lib\net47\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="MediaInfo.Wrapper, Version=20.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediaInfo.Wrapper.20.9.2\lib\net45\MediaInfo.Wrapper.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -89,6 +91,10 @@
     <Reference Include="WPFToolkit.Extended">
       <HintPath>..\..\..\..\..\Desktop\WPFToolkit.Extended.dll</HintPath>
     </Reference>
+    <Reference Include="WPFToolkit.Extended%281%29, Version=1.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WPFToolkit.Extended(1).dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -102,8 +108,8 @@
     <Compile Include="connection\DbModel.cs" />
     <Compile Include="connection\Global_Log.cs" />
     <Compile Include="connection\PlayBack.cs" />
-    <Compile Include="FM\FM.xaml.cs">
-      <DependentUpon>FM.xaml</DependentUpon>
+    <Compile Include="FM\FM_Custom.xaml.cs">
+      <DependentUpon>FM_Custom.xaml</DependentUpon>
     </Compile>
     <Compile Include="LogHistory\LogHistory.xaml.cs">
       <DependentUpon>LogHistory.xaml</DependentUpon>
@@ -144,7 +150,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FM\FM.xaml">
+    <Page Include="FM\FM_Custom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,14 +253,6 @@
     <Resource Include="Top_search_bar\Assets\closeBtn_MouseOver.png" />
     <Resource Include="Assets\pause.png" />
     <Resource Include="All_Songs\Assets\play.png" />
-    <Content Include="Assets\1st.mp3" />
-    <Resource Include="Assets\playlist.png" />
-    <Resource Include="Assets\features.png" />
-    <Resource Include="Assets\loghistory.png" />
-    <Resource Include="Assets\streaming.png" />
-    <Resource Include="Assets\audiorouting.png" />
-    <Resource Include="Assets\commands.png" />
-    <Content Include="Assets\test.mkv" />
     <Resource Include="Navigation_Bar\Assets\pl.png" />
     <Resource Include="Navigation_Bar\Assets\tgBtn_default.png" />
     <Resource Include="Navigation_Bar\Assets\tgBtn_MouseOver.png" />
@@ -266,6 +264,12 @@
     <Resource Include="Bottom_Media_Control\Assets\stop.png" />
     <Resource Include="Bottom_Media_Control\Assets\volume.png" />
     <Resource Include="FM\Assets\back.jpg" />
+    <Resource Include="Assets\home.png" />
+    <Resource Include="Assets\youtube.png" />
+    <Resource Include="Assets\audiorouting.png" />
+    <Resource Include="Assets\streaming.png" />
+    <Resource Include="Assets\features.png" />
+    <Resource Include="Assets\commands.png" />
     <Resource Include="Extras\Extra Notification.txt" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
@@ -282,12 +286,10 @@
     <Resource Include="Assets\img_message.png" />
     <Resource Include="Assets\img_setting.png" />
     <Resource Include="Assets\img_signout.png" />
-    <Resource Include="Assets\pl.png" />
     <Resource Include="Assets\search.png" />
     <Resource Include="Assets\search1.png" />
     <Resource Include="Assets\tgBtn_default.png" />
     <Resource Include="Assets\tgBtn_MouseOver.png" />
-    <Resource Include="Assets\user.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -317,4 +319,11 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MediaInfo.Native.20.9.0\build\MediaInfo.Native.targets" Condition="Exists('..\packages\MediaInfo.Native.20.9.0\build\MediaInfo.Native.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MediaInfo.Native.20.9.0\build\MediaInfo.Native.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MediaInfo.Native.20.9.0\build\MediaInfo.Native.targets'))" />
+  </Target>
 </Project>
