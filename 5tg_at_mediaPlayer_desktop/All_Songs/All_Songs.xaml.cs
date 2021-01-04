@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Data;
 using System.Windows;
 using System.Windows.Input;
@@ -139,7 +138,10 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
 
         }
 
-        
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
