@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Popup"
-       
+        xmlns:trim ="clr-namespace:_5tg_at_mediaPlayer_desktop.Trim"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Track_Metadata" Height="450" Width="800">
+        WindowState="Maximized"
+        Title="Track_Metadata" Height="650" Width="800">
 
     <Window.Resources>
         <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
@@ -93,7 +94,7 @@
 				<RowDefinition Height="20*"></RowDefinition>
 				<RowDefinition Height="20*"></RowDefinition>
 				<RowDefinition Height="20*"></RowDefinition>
-                <RowDefinition Height="80*"></RowDefinition>
+                <RowDefinition Height="280*"></RowDefinition>
                 <!--<RowDefinition Height="20*"></RowDefinition>
                 <RowDefinition Height="20*"></RowDefinition>
                 <RowDefinition Height="30*"></RowDefinition>-->
@@ -141,7 +142,9 @@
             <TextBox Grid.Row="8"  Width="200" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding End, RelativeSource={RelativeSource AncestorType=Window}}"/>
            -->
 
-            <TextBlock x:Name="richTextBox1" Grid.Column="2" Grid.Row="7"></TextBlock>
+            <Grid Grid.Row="7" Grid.Column="2">
+                <trim:Trim></trim:Trim>
+            </Grid>
             
         
         </Grid>

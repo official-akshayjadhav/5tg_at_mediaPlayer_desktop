@@ -33,7 +33,7 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
             if (openFileDialog.ShowDialog() == true)
             {
                 audioList = new List<Audio>();
-                MediaInfo.MediaInfoWrapper track = new MediaInfo.MediaInfoWrapper(openFileDialog.FileName);
+                MediaInfoWrapper track = new MediaInfoWrapper(openFileDialog.FileName);
 
                 string title = track.Tags.Title;
                 string fileNames = openFileDialog.FileName;

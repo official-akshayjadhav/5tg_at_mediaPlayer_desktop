@@ -166,8 +166,10 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         public void playSong(string trakString, string title)
         {
             song.Text = title;
-            string path = "D:\\song.mp3";
-            Uri musicPath = new Uri("D:\\song.mp3");
+            //string path = "D:\\song.mp3";
+            //Uri musicPath = new Uri("D:\\song.mp3");
+            String path = "C:\\Users\\shubh\\Desktop\\part time\\1st.mp3";
+            Uri musicPath = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
             byte[] songByte = Convert.FromBase64String(trakString);
             mediaPlayer.Stop();
             
