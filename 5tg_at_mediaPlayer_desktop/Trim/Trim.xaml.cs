@@ -144,7 +144,11 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
             }
         }
 
-        
+        private void PlayMedia_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
         private void max_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             max1 = max_slider.Value;

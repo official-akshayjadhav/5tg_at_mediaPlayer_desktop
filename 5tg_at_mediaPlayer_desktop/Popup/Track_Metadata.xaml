@@ -114,11 +114,10 @@
             
             <TextBlock Text="Minimum: " Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
             <TextBlock Text="Maximum: " Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-<!---
-            <TextBlock Text="Start Time: " Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-			<TextBlock Text="End Time  : " Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
--->
-			<Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
+
+            <TextBlock Text="Trim: " Grid.Row="7" Grid.Column="1" Margin="0,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" />
+
+            <Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="50*"></ColumnDefinition>
 					<ColumnDefinition Width="40*"></ColumnDefinition>

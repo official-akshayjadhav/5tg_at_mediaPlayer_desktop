@@ -242,6 +242,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Trim\Assets\play.png" />
     <Resource Include="Trim\Assets\back.png" />
     <Resource Include="Top_search_bar\Assets\search.png" />
     <Resource Include="Top_search_bar\Assets\user1.png" />
@@ -268,6 +269,7 @@
     <Resource Include="Assets\commands.png" />
     <Resource Include="Extras\Extra Notification.txt" />
     <Resource Include="Playlist\Assets\home.jpg" />
+    <Resource Include="Assets\pl.png" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>
