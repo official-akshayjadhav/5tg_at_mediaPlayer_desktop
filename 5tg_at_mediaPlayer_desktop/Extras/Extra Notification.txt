@@ -11,10 +11,5 @@ select * from Logs
 select lg.LID, lg.LogTime, a.ID, a.UID, a.Title, a.duration, ps.name  from Logs lg inner join Audio a on lg.AID=a.ID
 inner join playlists ps on ps.PID=lg.PID
 
-
-=> alter AirTime column with default current data n time
-=> alter table playlists add AirTime dateTime default current_timestamp
-
-
-Nuget packgae
-=>Install-Package MediaInfo.DotNetWrapper -Version 1.0.7
+Update_SVP_412021
+Global_Log.bottom_Media_Control.playSong _Search Given Line

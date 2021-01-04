@@ -19,6 +19,7 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public static Audio audio;
         public static Playlists playlists;
         public static PlaylistAudio playlistAudio;
+        public static Bottom_Media_Control.Bottom_Media_Control bottom_Media_Control;
         public static string cartId;
 
         public static int pID;

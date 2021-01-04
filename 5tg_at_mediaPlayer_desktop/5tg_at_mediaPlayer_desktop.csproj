@@ -55,8 +55,8 @@
     <Reference Include="CsvHelper, Version=18.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.18.0.0\lib\net47\CsvHelper.dll</HintPath>
     </Reference>
-    <Reference Include="MediaInfo.DotNetWrapper, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MediaInfo.DotNetWrapper.1.0.7\lib\net40\MediaInfo.DotNetWrapper.dll</HintPath>
+    <Reference Include="MediaInfo.Wrapper, Version=20.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediaInfo.Wrapper.20.9.2\lib\net45\MediaInfo.Wrapper.dll</HintPath>
     </Reference>
     <Reference Include="MediaInfo.Wrapper, Version=20.9.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MediaInfo.Wrapper.20.9.2\lib\net45\MediaInfo.Wrapper.dll</HintPath>
