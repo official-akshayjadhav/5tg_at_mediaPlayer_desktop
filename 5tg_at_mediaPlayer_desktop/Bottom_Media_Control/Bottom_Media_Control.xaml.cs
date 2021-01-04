@@ -38,7 +38,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             InitializeComponent();
             
             {
-                /*Uri music = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
+                Uri music = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
 
                 mediaPlayer.Open(music);
                 song.Text = music.ToString();
@@ -46,7 +46,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                 timer.Interval = TimeSpan.FromSeconds(1);
                 timer.Tick += timer_Tick;
                 timer.Start();
-                */
+                
             }
 
 

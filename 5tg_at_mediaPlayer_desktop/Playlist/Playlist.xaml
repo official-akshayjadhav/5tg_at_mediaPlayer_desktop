@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
              mc:Ignorable="d" 
-			 Background="Azure"
+             Background="White"
              d:DesignHeight="768" d:DesignWidth="1366">
     <UserControl.Resources>
         <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
@@ -71,193 +71,337 @@
     </UserControl.Resources>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="1.5*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
         </Grid.RowDefinitions>
-        <!---All Playlist -->
+
+        <Grid>
+
+
+            <Image Grid.Column="0" Grid.ColumnSpan="1" Margin="10" Source="Assets/home.jpg" Width="1300" >
+                <Image.OpacityMask>
+                    <LinearGradientBrush EndPoint=".5,1" StartPoint=".5,.1">
+                        <GradientStop Color="Black" Offset="0"></GradientStop>
+                        <GradientStop Offset="2"></GradientStop>
+                    </LinearGradientBrush>
+                </Image.OpacityMask>
+            </Image>
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid
+                    Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="all_playlist1" Margin="40" Text="All Playlist" FontSize="24px" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="DemiBold"></TextBlock>
+                    <TextBlock Margin="40,0,0,20" Text="Listen Playlist" FontSize="16px" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
+                    <Grid
+                        Grid.Column="1">
+                        <Button Name="create" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40" Content="Create Playlist" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                            Foreground="White" Style="{DynamicResource RoundCorner}" Click="Create_Click" />
+                    </Grid>
+                    <Grid
+                        Grid.Column="2">
+                        <Button Name="view_all" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40" Content="View All" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                            Foreground="White" Style="{DynamicResource RoundCorner}" Click="Create_Click" />
+                    </Grid>
+                </Grid>
+
+                <Grid
+                    Grid.Column="1">
+                    <TextBlock Margin="40" Text="Song Detail" FontSize="24px" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="DemiBold"></TextBlock>
+
+                </Grid>
+                
+            </Grid>
+            
+        </Grid>
+        
         <Grid
-			Background="LightBlue"
+              Grid.Row="1" 
+            >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!---All Playlist -->
+            <Grid
 				Grid.Row="0"
 				Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid>
-                <TextBlock Name="all_playlist" Text="All Playlist" FontSize="24px" HorizontalAlignment="Left" FontWeight="DemiBold" Margin="10,10,0,-10"></TextBlock>
-                <!---
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <!---
 				<ListBox HorizontalAlignment="Left" Height="25" Margin="20,99,0,0" VerticalAlignment="Top" Width="254">
 					<ListBoxItem Content="Playlist 1"></ListBoxItem>
 					<ListBoxItem Content="Playlist 2"></ListBoxItem>
 					<ListBoxItem Content="Playlist 3"></ListBoxItem>
 				</ListBox>
 				-->
-                <!---<Button FontSize="14" Name="create" Content="Create Playlist" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="101" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="10,60,0,0"/>-->
-                <!--<Button FontSize="16" Name="sort" Content="Sort" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="98" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="57,19,0,0" Grid.Column="1"/>
+                    <!---<Button FontSize="14" Name="create" Content="Create Playlist" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="101" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="10,60,0,0"/>-->
+                    <!--<Button FontSize="16" Name="sort" Content="Sort" Background="Orange" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="98" Height="27" MouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" Margin="57,19,0,0" Grid.Column="1"/>
                     -->
-                <Grid Margin="10">
+                    <!--<Grid Margin="10">
 
-                    <Button Name="create" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Content="Create Playlist" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                        <Button Name="create" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Content="Create Playlist" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                    Foreground="White" Style="{DynamicResource RoundCorner}" Click="Create_Click" />
 
+                    </Grid>-->
                 </Grid>
-            </Grid>
 
-            <!---Show Playlist-->
-            <Grid
+                <!---Show Playlist-->
+                <Grid
 				Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <!--<RowDefinition Height="5*"></RowDefinition>-->
-                </Grid.RowDefinitions>
-                <Grid
-					Grid.Row="0" Margin="0,-73,0.333,72">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="209*"/>
-                        <ColumnDefinition Width="13*"/>
-                        <ColumnDefinition Width="235*"/>
-                    </Grid.ColumnDefinitions>
-                    <!--
-                    <Label Content="Sort By" Margin="72,-10,103,320" Grid.Column="2"/>
-                    <ComboBox Margin="72,19,43,0" VerticalAlignment="Top" Height="27" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0" Grid.Column="2">
-                        <ComboBoxItem Content="Name"></ComboBoxItem>
-                        <ComboBoxItem Content="Duration"></ComboBoxItem>
-                        <ComboBoxItem Content="Last Modified"></ComboBoxItem>
-                        <ComboBoxItem Content="Date added"></ComboBoxItem>
-
-                    </ComboBox>
-                    -->
-                </Grid>
-                <Grid
-					Grid.Row="1">
-                    <DataGrid Name="allPlaylist" CanUserResizeColumns="True"
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid
+					Grid.Row="0">
+                        <DataGrid Name="allPlaylist" CanUserResizeColumns="True"
                               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"
 							  AutoGenerateColumns="False" Margin="10,10,10,10" 
 							  CanUserAddRows="False"
+                                  Background="White"
                               AlternationCount="2"
+                                  VerticalAlignment="Top"
                               AlternatingRowBackground="Azure">
-
-                        <!--<DataGrid.Resources>
-                            <Style TargetType="{x:Type DataGridColumnHeader}">
-                                <Setter Property="Background" Value="SlateBlue"></Setter>
-                                <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
-                                <Setter Property="FontSize" Value="20"></Setter>
-                                <Setter Property="Height" Value="auto"></Setter>
-                                --><!--<Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                -->
-                                <!--<Setter Property="BorderBrush" Value="Azure"></Setter>
-                            </Style>
-                            <Style TargetType="{x:Type DataGridCell}">
-                                <Setter Property="Background" Value="White"></Setter>
-                                <Setter Property="Foreground" Value="Black"></Setter>
-                            </Style>
-                        </DataGrid.Resources>-->
-                        <DataGrid.Columns>
-                            <!--<DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="2*"></DataGridTextColumn>
+                            <DataGrid.Columns>
+                                <!--<DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="2*"></DataGridTextColumn>
 							-->
-                            <DataGridTextColumn MinWidth="70" Header="PID" Binding="{Binding PID}" Width="2*"></DataGridTextColumn>
-                            <DataGridTextColumn MinWidth="150" Header="Name" Binding="{Binding Name}" Width="2*"></DataGridTextColumn>
-                            <DataGridTextColumn MinWidth="150" Header="Total Songs" Binding="{Binding TotalSong}" Width="2*"></DataGridTextColumn>
-                            <DataGridTextColumn MinWidth="100" Header="Date Created" Binding="{Binding Date}" Width="2*"></DataGridTextColumn>
-                            <DataGridTemplateColumn Header="Controls" x:Name="column_Edit" MinWidth="100" Width="1*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <ComboBox Name="EditComboBox" Text="Action" SelectionChanged="ComboBox_SelectionChanged" Tag="{Binding}">
-                                            <ComboBox.Resources>
-                                                <!-- color of ComboBoxItem -->
-                                                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="White" />
-                                                <!-- Mouse over color of ComboBoxItem -->
-                                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
-                                            </ComboBox.Resources>
-                                            <ComboBoxItem HorizontalContentAlignment="Center">Update</ComboBoxItem>
-                                            <ComboBoxItem HorizontalContentAlignment="Center">Delete</ComboBoxItem>
-                                            <ComboBoxItem HorizontalContentAlignment="Center">View</ComboBoxItem>
-                                            <ComboBoxItem HorizontalContentAlignment="Center">Schedule</ComboBoxItem>
-                                            
-                                        </ComboBox>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
+                                <DataGridTextColumn MinWidth="70" Header="PID" Binding="{Binding PID}" Width="2*"></DataGridTextColumn>
+                                <DataGridTextColumn MinWidth="150" Header="Name" Binding="{Binding Name}" Width="2*"></DataGridTextColumn>
+                                <DataGridTextColumn MinWidth="150" Header="Total Songs" Binding="{Binding TotalSong}" Width="2*"></DataGridTextColumn>
+                                <DataGridTextColumn MinWidth="100" Header="Date Created" Binding="{Binding Date}" Width="2*"></DataGridTextColumn>
+                                <DataGridTemplateColumn Header="Controls" x:Name="column_Edit" MinWidth="100" Width="1*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox Name="EditComboBox" Text="Action" SelectionChanged="ComboBox_SelectionChanged" Tag="{Binding}">
+                                                <ComboBox.Resources>
+                                                    <!-- color of ComboBoxItem -->
+                                                    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="White" />
+                                                    <!-- Mouse over color of ComboBoxItem -->
+                                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
+                                                </ComboBox.Resources>
+                                                <ComboBoxItem HorizontalContentAlignment="Center">Update</ComboBoxItem>
+                                                <ComboBoxItem HorizontalContentAlignment="Center">Delete</ComboBoxItem>
+                                                <ComboBoxItem HorizontalContentAlignment="Center">View</ComboBoxItem>
+                                                <ComboBoxItem HorizontalContentAlignment="Center">Schedule</ComboBoxItem>
 
-                    </DataGrid>
+                                            </ComboBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid
+                        Grid.Row="1">
+                        <DataGrid Name="PlaylistSong" AutoGenerateColumns="False" CanUserResizeColumns="True" 
+                                  CanUserAddRows="False" Margin="10,10,10,10"
+                                  Background="White" GridLinesVisibility="Horizontal"
+                                  AlternationCount="2" AlternatingRowBackground="Azure" Grid.ColumnSpan="2">
+
+                            <DataGrid.Columns>
+                                <!--<DataGridTextColumn MinWidth="70" Width="*" Header="PID" x:Name="PID" Binding="{Binding PID}" ></DataGridTextColumn>-->
+                                <DataGridTextColumn MinWidth="70" Width="*" Header="AID" x:Name="AID" Binding="{Binding AID}" ></DataGridTextColumn>
+                                <DataGridTextColumn MinWidth="150" Width="*" Header="AirTime" x:Name="AirTime" Binding="{Binding AirTime}" ></DataGridTextColumn>
+                                <DataGridTextColumn MinWidth="100" Width="*" Header="Name" x:Name="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                                <DataGridTextColumn MinWidth="100" Width="*" Header="Duration" x:Name="Duration" Binding="{Binding Duration}" ></DataGridTextColumn>
+                                <DataGridTemplateColumn Header="Controls" MinWidth="100" Width="1*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox Name="playlistSongEdit" SelectionChanged="PlaylistSongEdit_SelectionChanged" Tag="{Binding}">
+                                                <ComboBox.Resources>
+                                                    <!-- color of ComboBoxItem -->
+                                                    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="White" />
+                                                    <!-- Mouse over color of ComboBoxItem -->
+                                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
+                                                </ComboBox.Resources>
+                                                <ComboBoxItem HorizontalContentAlignment="Center">Play</ComboBoxItem>
+                                                <ComboBoxItem HorizontalContentAlignment="Center">Delete</ComboBoxItem>
+                                                <ComboBoxItem HorizontalContentAlignment="Center">Update Sort ID</ComboBoxItem>
+                                            </ComboBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!---Song Details-->
+            <Grid
+			Grid.Row="0"
+			Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid
+				Grid.Row="0">
+                    <Button Name="btnExport" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Content="Export" Height="35" Width="100" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                   Foreground="White" Style="{DynamicResource RoundCorner}" Click="btnExport_Click" />
+                    <Button Name="btnImport" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,0,10,60" Content="Import" Height="35" Width="100" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                   Foreground="White" Style="{DynamicResource RoundCorner}" Click="btnImport_Click" />
+
                 </Grid>
             </Grid>
         </Grid>
 
-        <!---Song Details-->
+
         <Grid
-			Grid.Row="0"
-			Grid.Column="1">
+            Grid.Row="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid
-				Grid.Row="0">
-                <TextBlock Padding="15" Name="song_name" Text="Songs" FontSize="24px" FontWeight="DemiBold"></TextBlock>
+			Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid
+				Grid.Column="0">
 
-                <Button Name="btnExport" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Content="Export" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                   Foreground="White" Style="{DynamicResource RoundCorner}" Click="btnExport_Click" />
-                <Button Name="btnImport" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10" Content="Import" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                   Foreground="White" Style="{DynamicResource RoundCorner}" Click="btnImport_Click" />
+                    <TextBlock Margin="20,10,0,0" Width="200" HorizontalAlignment="Left" FontSize="24" FontWeight="UltraBlack">All Songs</TextBlock>
+                    <TextBlock Margin="20,40,0,0" Width="200" HorizontalAlignment="Left" FontSize="20" FontWeight="Regular"	>Listen Free Music</TextBlock>
+                </Grid>
+
+                <Grid
+				Grid.Column="1">
+                    <!--<ComboBox VerticalAlignment="Center" Background="SlateBlue" Height="27" SelectionChanged="ComboBox_SelectionChanged" FontSize="16" SelectedIndex="0" HorizontalContentAlignment="Center">
+					<ComboBox.Resources>
+						<!- color of ComboBoxItem ->
+						<SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="White" />
+						<!- Mouse over color of ComboBoxItem ->
+						<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
+					</ComboBox.Resources>
+					<ComboBoxItem Content="Sort By" IsEnabled="False"></ComboBoxItem>
+					<ComboBoxItem Content="Name"></ComboBoxItem>
+					<ComboBoxItem Content="Duration"></ComboBoxItem>
+					<ComboBoxItem Content="Last Modified"></ComboBoxItem>
+					<ComboBoxItem Content="Date added"></ComboBoxItem>
+
+				</ComboBox>-->
+                </Grid>
+
+                <!--<Grid
+				Grid.Column="2">
+
+                    <Button Name="AddSong" Margin="20 0 20 0" Content="Add Song" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                   Foreground="White" Style="{DynamicResource RoundCorner}" PreviewMouseLeftButtonDown="AddSong_PreviewMouseLeftButtonDown" />
+                </Grid>-->
+
+
+                <Grid
+				Grid.Column="3">
+
+                    <Button Name="ViewAll" Margin="20 0 20 0" Content="Refresh" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Right" 
+                   Foreground="White" Style="{DynamicResource RoundCorner}" PreviewMouseLeftButtonDown="View_all_playlist_MouseLeftButtonDown" />
+                </Grid>
 
             </Grid>
             <Grid
-				Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="79*"/>
-                    <ColumnDefinition Width="116*"/>
-                </Grid.ColumnDefinitions>
+			Grid.Row="1">
 
-                <DataGrid Name="PlaylistSong" AutoGenerateColumns="False" CanUserResizeColumns="True" 
-                          CanUserAddRows="False" Margin="10,10,10,10"
-                          AlternationCount="2" AlternatingRowBackground="Azure" Grid.ColumnSpan="2">
+                <DataGrid Margin="20" 
+					  x:Name="datagrid"
+					  AlternationCount="2"
+                      Background="White"
+					  AlternatingRowBackground="#6c757d"
+                      GridLinesVisibility="Horizontal"
+					  AutoGenerateColumns="False"
+					  CanUserAddRows="False"
+                      BorderBrush="#dee2e6"
+                      BorderThickness="1"
+                      CanUserResizeColumns="True">
 
-                    <!--<DataGrid.Resources>
-                        <Style TargetType="{x:Type DataGridColumnHeader}">
-                            <Setter Property="Background" Value="SlateBlue"></Setter>
-                            <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
-                            <Setter Property="FontSize" Value="20"></Setter>
-                            <Setter Property="Height" Value="28"></Setter>
-                            <Setter Property="BorderBrush" Value="Azure"></Setter>
-                        </Style>
-                        <Style TargetType="{x:Type DataGridCell}">
-                            <Setter Property="Background" Value="White"></Setter>
-                            <Setter Property="Foreground" Value="Black"></Setter>
-                        </Style>
-                    </DataGrid.Resources>-->
+                    
                     <DataGrid.Columns>
-                        <!--<DataGridTextColumn MinWidth="70" Width="*" Header="PID" x:Name="PID" Binding="{Binding PID}" ></DataGridTextColumn>-->
-                        <DataGridTextColumn MinWidth="70" Width="*" Header="AID" x:Name="AID" Binding="{Binding AID}" ></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="150" Width="*" Header="AirTime" x:Name="AirTime" Binding="{Binding AirTime}" ></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="100" Width="*" Header="Name" x:Name="Name" Binding="{Binding Name}"></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="100" Width="*" Header="Duration" x:Name="Duration" Binding="{Binding Duration}" ></DataGridTextColumn>
-                        <DataGridTemplateColumn Header="Controls" MinWidth="100" Width="1*">
+
+                        <DataGridTemplateColumn Width=".5*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox Name="playlistSongEdit" SelectionChanged="PlaylistSongEdit_SelectionChanged" Tag="{Binding}">
+                                    <Image Source="{Binding Image}"></Image>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn MinWidth="70" Width="1*" Header="UID" Binding="{Binding UID}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="180" Width="1*" Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="180" Width="1*" Header="FileName" Binding="{Binding FileName}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="70" Width="1*" Header="Filesize" Binding="{Binding Filesize}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="70" Width="1*" Header="Filetype" Binding="{Binding Filetype}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="180" Width="1*" Header="Filepath" Binding="{Binding Filepath}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="70" Width="1*" Header="Duration" Binding="{Binding Duration}"></DataGridTextColumn>
+
+                        <DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_Start" Binding="{Binding Trim_Start}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_End" Binding="{Binding Trim_End}"></DataGridTextColumn>
+
+                        <DataGridTemplateColumn  Header="Controls" x:Name="column_Edit1" MinWidth="100" Width="1*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox Name="EditComboBox" Text="Action" SelectionChanged="ComboBox_SelectionChanged_1" Tag="{Binding}">
                                         <ComboBox.Resources>
                                             <!-- color of ComboBoxItem -->
                                             <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="White" />
                                             <!-- Mouse over color of ComboBoxItem -->
                                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
                                         </ComboBox.Resources>
-                                        <ComboBoxItem HorizontalContentAlignment="Center">Play</ComboBoxItem>
-                                        <ComboBoxItem HorizontalContentAlignment="Center">Delete</ComboBoxItem>
-                                        <ComboBoxItem HorizontalContentAlignment="Center">Update Sort ID</ComboBoxItem>
+                                        <ComboBoxItem Content="Action" HorizontalContentAlignment="Center" IsEnabled="False"></ComboBoxItem>
+                                        <ComboBoxItem Content="Update" HorizontalContentAlignment="Center"></ComboBoxItem>
+                                        <ComboBoxItem Content="Delete"  HorizontalContentAlignment="Center"></ComboBoxItem>
+                                        <ComboBoxItem Content="Add to Playlist" HorizontalContentAlignment="Center"></ComboBoxItem>
                                     </ComboBox>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
+
                     </DataGrid.Columns>
+                    <!--
+				<DataGrid.RowDetailsTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Details}"></TextBlock>
+					</DataTemplate>
+				</DataGrid.RowDetailsTemplate>
+				-->
+                    <!--
+				<local:songs AirTime="abc" CartID="abc" Item="abc" Duration="abc" Chain="abc"></local:songs>
+
+				<local:songs AirTime="abc" CartID="abc" Item="abc" Duration="abc" Chain="abc" Dot="..."></local:songs>
+				<local:songs AirTime="abc" CartID="abc" Item="abc" Duration="abc" Chain="abc" Dot="..."></local:songs>
+				<local:songs AirTime="abc" CartID="abc" Item="abc" Duration="abc" Chain="abc" Dot="..."></local:songs>
+				<local:songs AirTime="abc" CartID="abc" Item="abc" Duration="abc" Chain="abc" Dot="..."></local:songs>
+				<local:songs AirTime="abc" CartID="abc" Item="abc" Duration="abc" Chain="abc" Dot="..."></local:songs>
+				<local:songs AirTime="abc" CartID="abc" Item="abc" Duration="abc" Chain="abc" Dot="..."></local:songs>
+				<local:songs AirTime="abc" CartID="abc" Item="abc" Duration="abc" Chain="abc" Dot="..."></local:songs>
+				<local:songs AirTime="abc" CartID="abc" Item="abc" Duration="abc" Chain="abc" Dot="..."></local:songs>
+			-->
                 </DataGrid>
 
             </Grid>
         </Grid>
+    
+    
     </Grid>
 </UserControl>

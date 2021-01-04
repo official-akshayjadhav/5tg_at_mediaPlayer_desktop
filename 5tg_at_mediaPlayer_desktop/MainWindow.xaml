@@ -11,7 +11,6 @@
         xmlns:LogHistory="clr-namespace:_5tg_at_mediaPlayer_desktop.LogHistory"
 		mc:Ignorable="d"
         WindowState="Maximized"
-        
         Title="MainWindow" Height="768" Width="1366">
 
 
@@ -85,7 +84,6 @@
 
 								<Setter Property="Background"
                                         TargetName="border"
-                                        
                                         Value="{StaticResource tb_mouse_over}"/>
 
 								<Setter Property="BorderBrush"
@@ -120,7 +118,7 @@
 
 	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
 		<!--// Background Color //-->
-		<Grid Background="White">
+		<Grid>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width=".1*"></ColumnDefinition>
 				<ColumnDefinition Width="10*"></ColumnDefinition>
@@ -156,7 +154,7 @@
 								<DropShadowEffect  BlurRadius="3"
                                                    ShadowDepth="1"
                                                    Direction="-90"
-                                                   Color="#753fdc"/>
+                                                   Color="Black"/>
 
 							</TextBlock.Effect>
 
@@ -241,8 +239,8 @@
 					<!--// ListView with menu list items //-->
 
 					<ListView  x:Name="LV"
-                               Background="Transparent"
-                               BorderBrush="Transparent"
+                               Background="#f8f9fa"
+                               BorderBrush="#f8f9fa"                              
                                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
 						<!--// Home //-->
@@ -270,7 +268,7 @@
 							<ListViewItem.ToolTip>
 
 								<ToolTip x:Name="tt_home"
-                                         Content="Playlist"
+                                         Content="Home"
                                          Style="{StaticResource tt_style}"/>
 
 							</ListViewItem.ToolTip>
