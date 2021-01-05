@@ -139,9 +139,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             string time = "";
             if (dt != null)
             {
-                time = dt.Rows[0][1].ToString();
-                
-                
+                time = dt.Rows[0][1].ToString();                               
             }
             for (int i = 0; i < count; i++)
             {
