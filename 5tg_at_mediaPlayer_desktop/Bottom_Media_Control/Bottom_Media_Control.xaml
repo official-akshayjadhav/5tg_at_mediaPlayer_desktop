@@ -57,7 +57,7 @@
 							</Setter>
 							<Style.Triggers>
 								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Opacity" Value=".10"></Setter>
+									<Setter Property="Opacity" Value=".50"></Setter>
 								</Trigger>
 							</Style.Triggers>
 						</Style>
@@ -66,38 +66,64 @@
 						<ImageBrush ImageSource="Assets/previous.png"/>
 					</Button.Background>
 				</Button>
-				<Button x:Name="PlayMedia"
+
+                <Grid>
+                    <Ellipse
+                        Width="30"
+                        Height="30"
+                        Margin="5"
+                        Fill="White"
+                        Canvas.Left="10"
+                        Canvas.Top="25">
+                        <Ellipse.Style>
+                            <Style TargetType="{x:Type Ellipse}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Fill" Value="SlateBlue"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Ellipse.Style>
+                    </Ellipse>
+                    <Button x:Name="PlayMedia"
 					Height="30"
-					Width="30"
-						Margin="5"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+					Width="33"
+				    Margin="5"
 					BorderThickness="0"
 						PreviewMouseLeftButtonDown="PlayMedia_PreviewMouseLeftButtonDown"
 					>
-					<Button.Style>
-						<Style TargetType="{x:Type Button}">
-							<Setter Property="Background" Value="White"></Setter>
-							<Setter Property="Template">
-								<Setter.Value>
-									<ControlTemplate TargetType="{x:Type Button}">
-										<Border Background="{TemplateBinding Background}">
-											<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-										</Border>
-									</ControlTemplate>
-								</Setter.Value>
-							</Setter>
-							<Style.Triggers>
-								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Opacity" Value=".10"></Setter>
-								</Trigger>
-							</Style.Triggers>
-						</Style>
-					</Button.Style>
-                    <Button.Background>
-                        <ImageBrush ImageSource="Assets/play.png"/>
-                    </Button.Background>
-                </Button>
-				
-				<Button x:Name="PauseMedia"
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="White"></Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <!--<Setter Property="Background">
+                                            <Setter.Value>
+                                                <ImageBrush ImageSource="Assets/play1.png"></ImageBrush>
+                                            </Setter.Value>
+                                        </Setter>-->
+                                        <Setter Property="Opacity" Value=".50"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Background>
+                            <ImageBrush ImageSource="Assets/play.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+                <Button x:Name="PauseMedia"
 					Height="30"
 					Width="30"
 						Margin="5"
@@ -148,7 +174,7 @@
 							</Setter>
 							<Style.Triggers>
 								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Opacity" Value=".10"></Setter>
+									<Setter Property="Opacity" Value=".50"></Setter>
 								</Trigger>
 							</Style.Triggers>
 						</Style>
@@ -178,7 +204,7 @@
 							</Setter>
 							<Style.Triggers>
 								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Opacity" Value=".10"></Setter>
+									<Setter Property="Opacity" Value=".50"></Setter>
 								</Trigger>
 							</Style.Triggers>
 						</Style>

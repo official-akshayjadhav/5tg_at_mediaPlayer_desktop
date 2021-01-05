@@ -253,10 +253,7 @@
     <Resource Include="Navigation_Bar\Assets\pl.png" />
     <Resource Include="Navigation_Bar\Assets\tgBtn_default.png" />
     <Resource Include="Navigation_Bar\Assets\tgBtn_MouseOver.png" />
-    <Resource Include="Bottom_Media_Control\Assets\next.png" />
     <Resource Include="Bottom_Media_Control\Assets\pause.png" />
-    <Resource Include="Bottom_Media_Control\Assets\play.png" />
-    <Resource Include="Bottom_Media_Control\Assets\previous.png" />
     <Resource Include="Bottom_Media_Control\Assets\repeat.png" />
     <Resource Include="Bottom_Media_Control\Assets\stop.png" />
     <Resource Include="Bottom_Media_Control\Assets\volume.png" />
@@ -270,6 +267,10 @@
     <Resource Include="Extras\Extra Notification.txt" />
     <Resource Include="Playlist\Assets\home.jpg" />
     <Resource Include="Assets\pl.png" />
+    <Resource Include="Bottom_Media_Control\Assets\play.png" />
+    <Resource Include="Bottom_Media_Control\Assets\next.png" />
+    <Resource Include="Bottom_Media_Control\Assets\previous.png" />
+    <Resource Include="Bottom_Media_Control\Assets\play1.png" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>
