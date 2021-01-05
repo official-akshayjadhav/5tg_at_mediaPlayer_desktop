@@ -51,8 +51,8 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 File_Size.Text = fileSize.ToString();
                 Duration.Text = times;
                 Start_Time.Text = TimeSpan.FromSeconds(0).ToString();
-                End_Time.Text = TimeSpan.FromSeconds(track.Duration).ToString();
-                
+                End_Time.Text = TimeSpan.FromMilliseconds(track.Duration).ToString();
+                { } 
                
                 audioList.Add(new Audio()
                 {
@@ -62,10 +62,10 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                     Filesize = 0,
                     Filetype = "audio",
                     Filepath = filePath,
-                    Duration = TimeSpan.FromSeconds(track.Duration),
+                    Duration = TimeSpan.FromMilliseconds(track.Duration),
                     Track = fileDataBase64,
                     Trim_Start = TimeSpan.FromSeconds(0),
-                    Trim_End = TimeSpan.FromSeconds(track.Duration),
+                    Trim_End = TimeSpan.FromMilliseconds(track.Duration),
                 });
             }
         }
