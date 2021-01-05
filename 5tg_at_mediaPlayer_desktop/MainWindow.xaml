@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop"
 		xmlns:Media_Player="clr-namespace:_5tg_at_mediaPlayer_desktop.Bottom_Media_Control"
 		xmlns:Top_Seach_Bar="clr-namespace:_5tg_at_mediaPlayer_desktop.Top_search_bar"
+        xmlns:All_Playlist="clr-namespace:_5tg_at_mediaPlayer_desktop.All_Playlist"
         xmlns:All_Songs ="clr-namespace:_5tg_at_mediaPlayer_desktop.All_Songs"
 		xmlns:CP ="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
         xmlns:LogHistory="clr-namespace:_5tg_at_mediaPlayer_desktop.LogHistory"
@@ -285,8 +286,8 @@
                             <StackPanel Orientation="Horizontal"
                                         Width="230" MouseDown="OpenPlaylist">
 
-                                <Image Source="Assets/pl.png"
-                                       Stretch="None"                                       
+                                <Image Source="Assets/icon.png"
+                                       Stretch="None"
                                        Margin="12,0,0,0"/>
 
                                 <TextBlock Text="Playlist"
@@ -309,7 +310,38 @@
 
                         </ListViewItem>
 
-                        <!--// Contacts //-->
+                        <!---All Playlist -->
+                        <ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15"
+                                      >
+
+                            <StackPanel Orientation="Horizontal"
+                                        Width="230" MouseDown="OpenAllPlaylist">
+
+                                <Image Source="Assets/pl.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0" Height="30" Width="30"/>
+
+                                <TextBlock Text="All Playlist"
+                                           Margin="25,0,0,0"
+										   Foreground="Black"
+                                           Style="{StaticResource font_style}"/>
+
+                            </StackPanel>
+
+                            <!--// Tooltip //-->
+
+                            <ListViewItem.ToolTip>
+
+                                <ToolTip x:Name="tt_allplaylist"
+                                         Content="All Playlist"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </ListViewItem.ToolTip>
+
+                        </ListViewItem>
+
+                        <!--// All Songs //-->
 
                         <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15"
@@ -619,10 +651,12 @@
 					PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown">
 
                     <Grid Name="navigation">
-                        <All_Songs:All_Songs x:Name="allSongs" Loaded="Center_Playlist_Loaded" Visibility="Collapsed"></All_Songs:All_Songs>
+                        <All_Songs:All_Songs x:Name="allSongs" Visibility="Collapsed"></All_Songs:All_Songs>
                         <!--<CP:Playlist x:Name="playlist" Visibility="Visible"></CP:Playlist>
 						<Center_Playlist:Center_Playlist x:Name="playlist" Visibility="Collapsed"></Center_Playlist:Center_Playlist>
 						-->
+
+                        <All_Playlist:All_Playlist_Custom x:Name="allplaylist" Visibility="Collapsed"></All_Playlist:All_Playlist_Custom>
                         <CP:Playlist x:Name="playlist" Visibility="Collapsed"></CP:Playlist>
                         <LogHistory:LogHistory x:Name="loghistory" Visibility="Collapsed"></LogHistory:LogHistory>
                     </Grid>

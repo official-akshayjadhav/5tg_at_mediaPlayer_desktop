@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
              mc:Ignorable="d" 
              Background="White"
-             d:DesignHeight="768" d:DesignWidth="1366">
+             d:DesignHeight="768" d:DesignWidth="1366" Loaded="Window_Loaded">
     <UserControl.Resources>
         <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -210,8 +210,8 @@
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>-->
-                        <ComboBox Margin="10,10,0,13" Name="allPlaylist" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="30" FontSize="18">
-                            <ComboBoxItem Content="Playlist" IsSelected="True"></ComboBoxItem>
+                        <ComboBox Margin="40,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Name="Playlist_picker" Text="Action" 
+                       Width="250" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" FontSize="18">
                         </ComboBox>
                     </Grid>
                     <Grid

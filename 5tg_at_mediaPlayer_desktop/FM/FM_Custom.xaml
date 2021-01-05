@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.FM"
+        
         mc:Ignorable="d"
         WindowState="Maximized"
         Title="FM_Custom" Height="550" Width="800">
@@ -265,6 +266,7 @@
                     </Canvas>
 
                 </Grid>
+
                 <TextBlock Text="REMAINING Time 3:35" Foreground="White" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
             </Grid>
 

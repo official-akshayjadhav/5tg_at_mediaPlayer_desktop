@@ -84,6 +84,9 @@
                                 </Style.Triggers>
                             </Style>
                         </Ellipse.Style>
+                        <Ellipse.Effect>
+                            <DropShadowEffect Color="Gray" BlurRadius="20"></DropShadowEffect>
+                        </Ellipse.Effect>
                     </Ellipse>
                     <Button x:Name="PlayMedia"
 					Height="30"
@@ -213,7 +216,7 @@
 						<ImageBrush ImageSource="Assets/next.png"/>
 					</Button.Background>
 				</Button>
-				<Button x:Name="PlayRepeatMedia"
+				<!--<Button x:Name="PlayRepeatMedia"
 					Height="30"
 					Width="30"
 						Margin="5"
@@ -243,11 +246,11 @@
 					<Button.Background>
 						<ImageBrush ImageSource="Assets/repeat.png"/>
 					</Button.Background>
-				</Button>
+				</Button>-->
                 <!-- Volume slider. This slider allows a Volume range between 0 and 1. -->
                 <!--<TextBlock Foreground="Black" VerticalAlignment="Center" Margin="5"  ><Run Text="Volume"/></TextBlock>
 				-->
-				<Slider x:Name="volumeSlider" VerticalAlignment="Center" ValueChanged="VolumeSlider_ValueChanged" 
+				<Slider x:Name="volumeSlider" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="VolumeSlider_ValueChanged" 
        Minimum="0" Maximum="1" Value="0.5" Width="70">
 					<Slider.Style>
 					<Style TargetType="{x:Type Slider}">
@@ -318,13 +321,13 @@
 				</Slider>
 
                 <!-- Volume slider. This slider allows you to change the speed of the media playback. -->
-                <TextBlock Foreground="Black" Margin="5"  VerticalAlignment="Center"><Run Text="Speed"/></TextBlock>
+                <!--<TextBlock Foreground="Black" Margin="5"  VerticalAlignment="Center"><Run Text="Speed"/></TextBlock>
                 <Slider x:Name="speedRatioSlider" VerticalAlignment="Center" ValueChanged="SpeedRatioSlider_ValueChanged" 
-       Value="1" Width="70" />
+       Value="1" Width="70" />-->
 
                 <!-- Seek to slider. Ths slider allows you to jump to different parts of the media playback. -->
-                <TextBlock Foreground="Black" Margin="5"  VerticalAlignment="Center"><Run Text="Seek To"/></TextBlock>
-                <Slider x:Name="timelineSlider" Margin="5" ValueChanged="TimelineSlider_ValueChanged" VerticalAlignment="Center" Width="70"/>
+                <!--<TextBlock Foreground="Black" Margin="5"  VerticalAlignment="Center"><Run Text="Seek To"/></TextBlock>
+                <Slider x:Name="timelineSlider" Margin="5" ValueChanged="TimelineSlider_ValueChanged" VerticalAlignment="Center" Width="70"/>-->
 
             </StackPanel>
         </StackPanel>
