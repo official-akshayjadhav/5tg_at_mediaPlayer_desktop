@@ -1,4 +1,5 @@
 ﻿using _5tg_at_mediaPlayer_desktop.connection;
+using _5tg_at_mediaPlayer_desktop.Popup;
 using CsvHelper;
 using Microsoft.VisualBasic.FileIO;
 using System;
@@ -166,6 +167,12 @@ namespace _5tg_at_mediaPlayer_desktop.LogHistory
         public DataTable getAllLogHistory(string query)
         {
             return Global_Log.connectionClass.retriveData(query, "Logs");
+        }
+
+        private void Command_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Command command = new Command();
+            command.ShowDialog();
         }
     }
 }

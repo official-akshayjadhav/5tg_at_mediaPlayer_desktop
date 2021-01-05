@@ -13,3 +13,9 @@ inner join playlists ps on ps.PID=lg.PID
 
 Update_SVP_412021
 Global_Log.bottom_Media_Control.playSong _Search Given Line
+
+the Given is used for alter the playlist Table
+
+alter table playlist add command int null
+alter table playlist add types int default 1
+alter table playlist add TimePicker dateTime default current_timestamp

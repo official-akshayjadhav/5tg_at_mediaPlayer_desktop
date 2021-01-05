@@ -122,6 +122,9 @@
     <Compile Include="Playlist\Sorting.xaml.cs">
       <DependentUpon>Sorting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Popup\Command.xaml.cs">
+      <DependentUpon>Command.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Popup\RangeSlider\TEST_SLIDER.xaml.cs">
       <DependentUpon>TEST_SLIDER.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Playlist\Sorting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popup\Command.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
