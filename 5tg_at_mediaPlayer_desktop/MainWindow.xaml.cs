@@ -31,6 +31,7 @@ namespace _5tg_at_mediaPlayer_desktop
             // Set tooltip visibility
             if (Tg_Btn.IsChecked == true)
             {
+                tt_allplaylist.Visibility = Visibility.Collapsed;
                 tt_playlist.Visibility = Visibility.Collapsed;
                 tt_allsongs.Visibility = Visibility.Collapsed;
                 tt_audiorouting.Visibility = Visibility.Collapsed;
@@ -42,6 +43,7 @@ namespace _5tg_at_mediaPlayer_desktop
             } 
             else
             {
+                tt_allplaylist.Visibility = Visibility.Visible;
                 tt_playlist.Visibility = Visibility.Visible;
                 tt_allsongs.Visibility = Visibility.Visible;
                 tt_audiorouting.Visibility = Visibility.Visible;
@@ -69,11 +71,6 @@ namespace _5tg_at_mediaPlayer_desktop
             Tg_Btn.IsChecked = false;
         }
 
-        private void Center_Playlist_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Playlistnames_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -83,18 +80,30 @@ namespace _5tg_at_mediaPlayer_desktop
         {
             allSongs.Visibility = Visibility.Collapsed;
             loghistory.Visibility = Visibility.Collapsed;
+            allplaylist.Visibility = Visibility.Collapsed;
             playlist.Visibility = Visibility.Visible;
         }
+
+        private void OpenAllPlaylist(object sender, MouseButtonEventArgs e)
+        {
+
+            allplaylist.Visibility = Visibility.Visible;
+            allSongs.Visibility = Visibility.Collapsed;
+            loghistory.Visibility = Visibility.Collapsed;
+            playlist.Visibility = Visibility.Collapsed;
+        }
+
         private void OpenSongs(object sender, MouseButtonEventArgs e)
         {
+            allplaylist.Visibility = Visibility.Collapsed;
             playlist.Visibility = Visibility.Collapsed;
             loghistory.Visibility = Visibility.Collapsed;
             allSongs.Visibility = Visibility.Visible;
-
         }
 
         private void openloghistory(object sender, MouseButtonEventArgs e)
         {
+            allplaylist.Visibility = Visibility.Collapsed;
             playlist.Visibility = Visibility.Collapsed;
             allSongs.Visibility = Visibility.Collapsed;
             loghistory.Visibility = Visibility.Visible;

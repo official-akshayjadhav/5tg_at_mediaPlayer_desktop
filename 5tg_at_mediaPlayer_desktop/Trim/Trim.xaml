@@ -131,60 +131,95 @@
             Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height=".7*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid
                 Grid.Row="0">
-                <Button Name="play" Grid.Column="3" Content="Play" Height="25" Width="80" FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                   HorizontalAlignment="Left" Foreground="White" Style="{DynamicResource RoundCorner}" Click="end_e_Click" />
-            </Grid>
-            <Grid
-                Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height=".5*"></RowDefinition>
+                    <RowDefinition Height=".5*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid
                     Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock FontSize="14" Grid.Column="0" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Start:"></TextBlock>
-                    <Button Name="start_s" Grid.Column="1" Content="-" Height="25" Width="30" FontSize="16" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center"
-                   Foreground="White" Style="{DynamicResource RoundCorner}"  Click="start_s_Click"  />
-                    <TextBox x:Name="start_text" Grid.Column="2" Text="1" FontSize="14" TextAlignment="Center" Height="25" TextChanged="start_text_TextChanged" ></TextBox>
-                    <Button Name="start_e" Content="+" Grid.Column="3" Height="25" Width="30" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                   Foreground="White" Style="{DynamicResource RoundCorner}" Click="start_e_Click"  />
+                    <Ellipse
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Width="30"
+                    Height="30"
+                    Margin="10"
+                    Fill="#5cb85c"
+                    Canvas.Left="10"
+                    Canvas.Top="25"/>
+                    <Button x:Name="PlayMedia"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+					Height="30"
+					Width="30"
+                    Margin="11"
+					BorderThickness="0"
+				    PreviewMouseLeftButtonDown="PlayMedia_PreviewMouseLeftButtonDown"
+					>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="White"></Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Opacity" Value=".5"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Background>
+                            <ImageBrush ImageSource="Assets/play.png"/>
+                        </Button.Background>
+                    </Button>
                 </Grid>
 
                 <Grid
                     Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="14" Grid.Column="0" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Start:"></TextBlock>
+                    <Button Name="start_s" Grid.Column="1" Content="-" Height="25" Width="40" FontSize="16" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" HorizontalAlignment="Right"
+                   Foreground="White" Style="{DynamicResource RoundCorner}"  Click="start_s_Click"  />
+                    <TextBox x:Name="start_text" Grid.Column="2" Text="1" FontSize="14" TextAlignment="Center" Height="25" TextChanged="start_text_TextChanged" ></TextBox>
+                    <Button Name="start_e" Content="+" Grid.Column="3" Height="25" Width="40" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left"
+                   Foreground="White" Style="{DynamicResource RoundCorner}" Click="start_e_Click"  />
+                </Grid>
+
+                <Grid
+                    Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="5*"/>
 
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" FontSize="14" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="End:"></TextBlock>
-                    <Button Name="end_s" Grid.Column="1" Content="-" Height="25" Width="30" FontSize="16" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center"
+                    <TextBlock Grid.Column="0" FontSize="14" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Text="End:"></TextBlock>
+                    <Button Name="end_s" Grid.Column="1" Content="-" Height="25" Width="40" FontSize="16" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" HorizontalAlignment="Right"
                    Foreground="White" Style="{DynamicResource RoundCorner}" Click="end_s_Click" />
                     <TextBox x:Name="end_text" Grid.Column="2" Text="5" FontSize="14" TextAlignment="Center" Height="25" TextChanged="end_text_TextChanged" ></TextBox>
-                    <Button Name="end_e" Grid.Column="3" Content="+" Height="25" Width="30" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                    <Button Name="end_e" Grid.Column="3" Content="+" Height="25" Width="40" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left"
                    Foreground="White" Style="{DynamicResource RoundCorner}" Click="end_e_Click" />
                 </Grid>
             </Grid>
-
-            <Grid
-                Grid.Row="2">
-                <Button Name="submit" Grid.Column="3" Content="Submit >>" Height="25" Width="100" HorizontalAlignment="Right" FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                   Foreground="White" Style="{DynamicResource RoundCorner}" Click="end_e_Click" />
-            </Grid>
-            
         </Grid>
     </Grid>
 </UserControl>

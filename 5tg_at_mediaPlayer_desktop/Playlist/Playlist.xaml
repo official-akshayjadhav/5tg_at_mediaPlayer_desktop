@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Playlist"
              mc:Ignorable="d" 
              Background="White"
-             d:DesignHeight="768" d:DesignWidth="1366">
+             d:DesignHeight="768" d:DesignWidth="1366" Loaded="Window_Loaded">
     <UserControl.Resources>
         <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -81,7 +81,7 @@
         <Grid>
 
 
-            <Image Grid.Column="0" Grid.ColumnSpan="1" Margin="10" Source="Assets/home.jpg" Width="1300" >
+            <Image Grid.Column="0" Grid.ColumnSpan="1" Margin="10" Source="Assets/home.jpg" Width="1255" >
                 <Image.OpacityMask>
                     <LinearGradientBrush EndPoint=".5,1" StartPoint=".5,.1">
                         <GradientStop Color="Black" Offset="0"></GradientStop>
@@ -106,14 +106,14 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Name="all_playlist1" Margin="40" Text="All Playlist" FontSize="24px" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="DemiBold"></TextBlock>
                     <TextBlock Margin="40,0,0,20" Text="Listen Playlist" FontSize="16px" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
-                    <Grid
+                    <!--<Grid
                         Grid.Column="1">
                         <Button Name="create" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40" Content="Create Playlist" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                             Foreground="White" Style="{DynamicResource RoundCorner}" Click="Create_Click" />
-                    </Grid>
+                    </Grid>-->
                     <Grid
                         Grid.Column="2">
-                        <Button Name="view_all" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40" Content="View All" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                        <Button Name="view_all" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40" Content="Create Playlist" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                             Foreground="White" Style="{DynamicResource RoundCorner}" Click="Create_Click" />
                     </Grid>
                 </Grid>
@@ -174,7 +174,7 @@
                     
                     <Grid
 					Grid.Row="0">
-                        <DataGrid Name="allPlaylist" CanUserResizeColumns="True"
+                        <!--<DataGrid Name="allPlaylist" CanUserResizeColumns="True"
                               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"
 							  AutoGenerateColumns="False" Margin="10,10,10,10" 
 							  CanUserAddRows="False"
@@ -183,8 +183,8 @@
                                   VerticalAlignment="Top"
                               AlternatingRowBackground="Azure">
                             <DataGrid.Columns>
-                                <!--<DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="2*"></DataGridTextColumn>
-							-->
+                                --><!--<DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="2*"></DataGridTextColumn>
+							--><!--
                                 <DataGridTextColumn MinWidth="70" Header="PID" Binding="{Binding PID}" Width="2*"></DataGridTextColumn>
                                 <DataGridTextColumn MinWidth="150" Header="Name" Binding="{Binding Name}" Width="2*"></DataGridTextColumn>
                                 <DataGridTextColumn MinWidth="150" Header="Total Songs" Binding="{Binding TotalSong}" Width="2*"></DataGridTextColumn>
@@ -194,9 +194,9 @@
                                         <DataTemplate>
                                             <ComboBox Name="EditComboBox" Text="Action" SelectionChanged="ComboBox_SelectionChanged" Tag="{Binding}">
                                                 <ComboBox.Resources>
-                                                    <!-- color of ComboBoxItem -->
+                                                    --><!-- color of ComboBoxItem --><!--
                                                     <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="White" />
-                                                    <!-- Mouse over color of ComboBoxItem -->
+                                                    --><!-- Mouse over color of ComboBoxItem --><!--
                                                     <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
                                                 </ComboBox.Resources>
                                                 <ComboBoxItem HorizontalContentAlignment="Center">Update</ComboBoxItem>
@@ -209,7 +209,10 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
-                        </DataGrid>
+                        </DataGrid>-->
+                        <ComboBox Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Name="Playlist_picker" Text="Action" 
+                       Width="250" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" FontSize="18">
+                        </ComboBox>
                     </Grid>
                     <Grid
                         Grid.Row="1">
@@ -254,14 +257,14 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid
+                <!--<Grid
 				Grid.Row="0">
                     <Button Name="btnExport" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Content="Export" Height="35" Width="100" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                    Foreground="White" Style="{DynamicResource RoundCorner}" Click="btnExport_Click" />
                     <Button Name="btnImport" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,0,10,60" Content="Import" Height="35" Width="100" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                    Foreground="White" Style="{DynamicResource RoundCorner}" Click="btnImport_Click" />
 
-                </Grid>
+                </Grid>-->
             </Grid>
         </Grid>
 

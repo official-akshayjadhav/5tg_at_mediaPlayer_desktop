@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _5tg_at_mediaPlayer_desktop.connection
 {
-    class DbModel
+    class a
     {
     }
 
@@ -80,4 +80,6 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public string PlaylistName { get; set; }
         public TimeSpan Duration { get; set; }
     }
+
+    
 }

@@ -27,6 +27,29 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             LoadAllSong();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Global_Log.connectionClass == null)
+            {
+                Global_Log.connectionClass = new ConnectionClass();
+            }
+            { }
+            string query = "select * from playlists";
+            DataTable dt = Global_Log.connectionClass.retriveData(query, "playlists");
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+                { }
+                Playlist_picker.Items.Add(dr.ItemArray[1].ToString());
+
+            }
+            //String var = Playlist_picker.SelectedItem.ToString();
+            //ComboBoxItem item = (ComboBoxItem)Playlist_picker.SelectedItem;
+            //String value1 = item.Content.ToString();
+            //Console.WriteLine(value1);
+        }
+        
         public void loadPlaylist()
         {
             if (Global_Log.playBack == null)
@@ -61,8 +84,8 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                     catch (Exception ex)
                     { }
                 }
-                if (allPlaylist != null)
-                    allPlaylist.ItemsSource = list_Playlists;
+                //if (allPlaylist != null)
+                //    allPlaylist.ItemsSource = list_Playlists;
             }
             catch (Exception ex)
             { }
@@ -139,9 +162,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             string time = "";
             if (dt != null)
             {
-                time = dt.Rows[0][1].ToString();
-                
-                
+                time = dt.Rows[0][1].ToString();                               
             }
             for (int i = 0; i < count; i++)
             {
@@ -480,5 +501,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
 
             LoadAllSong();
         }
+
+        
     }
 }
