@@ -128,6 +128,9 @@
     <Compile Include="FM\FM_Custom.xaml.cs">
       <DependentUpon>FM_Custom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FM\Progress_bar\Progress_Bar.xaml.cs">
+      <DependentUpon>Progress_Bar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LogHistory\LogHistory.xaml.cs">
       <DependentUpon>LogHistory.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FM\FM_Custom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FM\Progress_bar\Progress_Bar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

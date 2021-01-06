@@ -210,7 +210,7 @@
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>-->
-                        <ComboBox Margin="40,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Name="Playlist_picker" Text="Action" 
+                        <ComboBox Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Name="Playlist_picker" Text="Action" 
                        Width="250" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" FontSize="18">
                         </ComboBox>
                     </Grid>
