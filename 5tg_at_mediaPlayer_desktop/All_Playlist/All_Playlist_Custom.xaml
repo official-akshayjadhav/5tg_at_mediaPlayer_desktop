@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="_5tg_at_mediaPlayer_desktop.All_Playlist.All_Playlist_Custom"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.All_Playlist"
+             mc:Ignorable="d" 
+             Background="White"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="White" BorderThickness="2">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                        <RadialGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                                <TranslateTransform X="0.02" Y="0.3"/>
+                                            </TransformGroup>
+                                        </RadialGradientBrush.RelativeTransform>
+                                        <GradientStop Offset="1" Color="SlateBlue"/>
+                                        <GradientStop Offset="0.3" Color="SlateBlue"/>
+
+                                        <!--<GradientStop Offset="1" Color="#00000000"/>
+                                            <GradientStop Offset="0.3" Color="#FFFFFFFF"/>-->
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Regular">
+                                </ContentPresenter>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <!--<GradientStop Color="#00000000" Offset="1"/>
+                                                <GradientStop Color="#FF303030" Offset="0.3"/>-->
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF33962B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid
+			Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid
+				Grid.Column="0">
+
+                <TextBlock Margin="20,10,0,0" Width="200" HorizontalAlignment="Left" FontSize="24" FontWeight="Bold">All Playlist</TextBlock>
+                <TextBlock Margin="20,40,0,0" Width="200" HorizontalAlignment="Left" FontSize="20" FontWeight="Regular"	>Listen Playlist</TextBlock>
+            </Grid>
+            <Grid
+				Grid.Column="3">
+
+                <Button Name="view_all" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Create Playlist" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                            Foreground="White" Style="{DynamicResource RoundCorner}" Click="Create_Click" />
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid Name="allPlaylist" CanUserResizeColumns="True"
+                      HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"
+                      Margin="20"
+                      
+                      AutoGenerateColumns="False"  
+                      CanUserAddRows="False"
+                      Background="Azure"                             
+                      AlternationCount="2"                                  
+                      VerticalAlignment="Top"
+                      AlternatingRowBackground="Azure">
+                <DataGrid.Columns>
+                    <!--<DataGridTextColumn MinWidth="70" Header="Sr.No." Binding="{Binding srno}" Width="2*"></DataGridTextColumn>-->
+                    <DataGridTextColumn MinWidth="250" Header="PID" Binding="{Binding PID}" Width="2*"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="250" Header="Name" Binding="{Binding Name}" Width="2*"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="250" Header="Total Songs" Binding="{Binding TotalSong}" Width="2*"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="250" Header="Date Created" Binding="{Binding Date}" Width="2*"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Controls" x:Name="column_Edit" MinWidth="100" Width="1*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox Name="EditComboBox" Text="Action" SelectionChanged="ComboBox_SelectionChanged" Tag="{Binding}">
+                                    <ComboBox.Resources>
+
+                                        <!--color of ComboBoxItem-->
+
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="White" />
+
+                                        <!--Mouse over color of ComboBoxItem-->
+
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
+                                    </ComboBox.Resources>
+                                    <ComboBoxItem HorizontalContentAlignment="Center">Update</ComboBoxItem>
+                                    <ComboBoxItem HorizontalContentAlignment="Center">Delete</ComboBoxItem>
+                                    <!--<ComboBoxItem HorizontalContentAlignment="Center">View</ComboBoxItem>-->
+                                    <ComboBoxItem HorizontalContentAlignment="Center">Schedule</ComboBoxItem>
+
+                                </ComboBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

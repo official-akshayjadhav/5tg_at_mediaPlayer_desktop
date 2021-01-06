@@ -233,27 +233,27 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
 
         private void SpeedRatioSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            mediaPlayer.SpeedRatio = (double)speedRatioSlider.Value;
+            //mediaPlayer.SpeedRatio = (double)speedRatioSlider.Value;
         }
 
         private void TimelineSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            int SliderValue = (int)timelineSlider.Value;
-            TimeSpan ts = new TimeSpan(0, 0, 0, 0, SliderValue);
-            mediaPlayer.Position = ts;
+            //int SliderValue = (int)timelineSlider.Value;
+            //TimeSpan ts = new TimeSpan(0, 0, 0, 0, SliderValue);
+            //mediaPlayer.Position = ts;
         }
 
 
         void InitializePropertyValues()
         {
-            mediaPlayer.Volume = (double)volumeSlider.Value;
-            mediaPlayer.SpeedRatio = (double)speedRatioSlider.Value;
+            //mediaPlayer.Volume = (double)volumeSlider.Value;
+            //mediaPlayer.SpeedRatio = (double)speedRatioSlider.Value;
            
         }
 
         private void MyMediaElement_MediaOpened(object sender, RoutedEventArgs e)
         {
-            timelineSlider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalMilliseconds;
+            //timelineSlider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalMilliseconds;
         }
 
         private void MyMediaElement_MediaEnded(object sender, RoutedEventArgs e)

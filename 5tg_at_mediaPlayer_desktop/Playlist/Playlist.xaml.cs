@@ -27,6 +27,29 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             LoadAllSong();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Global_Log.connectionClass == null)
+            {
+                Global_Log.connectionClass = new ConnectionClass();
+            }
+            { }
+            string query = "select * from playlists";
+            DataTable dt = Global_Log.connectionClass.retriveData(query, "playlists");
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+                { }
+                Playlist_picker.Items.Add(dr.ItemArray[1].ToString());
+
+            }
+            //String var = Playlist_picker.SelectedItem.ToString();
+            //ComboBoxItem item = (ComboBoxItem)Playlist_picker.SelectedItem;
+            //String value1 = item.Content.ToString();
+            //Console.WriteLine(value1);
+        }
+        
         public void loadPlaylist()
         {
             if (Global_Log.playBack == null)
@@ -61,8 +84,8 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                     catch (Exception ex)
                     { }
                 }
-                if (allPlaylist != null)
-                    allPlaylist.ItemsSource = list_Playlists;
+                //if (allPlaylist != null)
+                //    allPlaylist.ItemsSource = list_Playlists;
             }
             catch (Exception ex)
             { }
@@ -98,7 +121,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 {
                     currentPlaylist = playlists.PID;
 
-                    loadPlaylistSong(Global_Log.pID, playlists.SortId);
+                    loadPlaylistSong(playlists.SortId, Global_Log.pID);
                 }
                 else if (currentOperation == "Schedule")
                 {
@@ -111,11 +134,11 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             loadPlaylist();
         }
 
-        private void loadPlaylistSong(int playlistID, int Sorts, bool isSort = false)
+        private List<PlaylistAudio> loadPlaylistSong(int Sorts, int playlistID = 0, bool isSort = false, String playlistName = "")
         {
             List<PlaylistAudio> playlistAudio = new List<PlaylistAudio>();
             string query = "";
-            if (isSort)
+            if (playlistName == "")
             {
                 ///query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
                 //query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
@@ -128,8 +151,8 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 //query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
                 //query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
 
-                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track from Audio a inner join playlist p on " +
-                    "a.ID=p.AID inner join playlists ps on ps.PID = p.PID where p.PID =" + playlistID;
+                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID " +
+                    "= p.AID inner join playlists ps on ps.PID = p.PID where ps.name = '" + playlistName + "'";
 
             }
             DataTable dt = Global_Log.connectionClass.retriveData(query, "Audio");
@@ -139,16 +162,26 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             string time = "";
             if (dt != null)
             {
-                time = dt.Rows[0][1].ToString();                               
+                if (count!=0) { 
+                    time = dt.Rows[0][1].ToString();                               
+                }
             }
             for (int i = 0; i < count; i++)
             {
                 DataRow dr = dt.Rows[i];
                 try
                 {
-                    DateTime date1 = (DateTime)dr[1];
-                    TimeSpan time1 = (TimeSpan)dr[3];
+                    DateTime date1 = DateTime.Now;
+                    try
+                    {
+                        date1 = (DateTime)dr[1];
+                    }
+                    catch { } 
                     
+                    TimeSpan time1 = (TimeSpan)dr[3];
+                    if (time == null) {
+                        time = time1.ToString();
+                    }
                     playlistAudio.Add(new PlaylistAudio()
                     {
                         AID = Convert.ToInt32(dr[0]),
@@ -169,6 +202,8 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             PlaylistSong.ItemsSource = null;
             PlaylistSong.Items.Clear();
             PlaylistSong.ItemsSource = playlistAudio;
+
+            return playlistAudio;
         }
 
         private void PlaylistSongEdit_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -210,7 +245,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                     sorting.ShowDialog();
                 }
             }
-            loadPlaylistSong(PlaylistAudio.PID, PlaylistAudio.SortId);
+            loadPlaylistSong(PlaylistAudio.SortId, PlaylistAudio.PID);
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -477,6 +512,15 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             addMusic.ShowDialog();
 
             LoadAllSong();
+        }
+
+        private void Playlist_picker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string obj = Playlist_picker.SelectedValue.ToString();
+            { }
+            List<PlaylistAudio> obj1 = loadPlaylistSong(0, 0, false, obj);
+            { }
+            PlaylistSong.ItemsSource = obj1;
         }
     }
 }
