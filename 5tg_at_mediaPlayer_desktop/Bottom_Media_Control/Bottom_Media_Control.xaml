@@ -31,41 +31,41 @@
             </StatusBarItem>
 
             <StatusBarItem HorizontalContentAlignment="Stretch">
-				<Slider Name="sliProgress" Thumb.DragStarted="SliProgress_DragStarted"  Thumb.DragCompleted="SliProgress_DragCompleted" ValueChanged="SliProgress_ValueChanged"
+                <Slider Name="sliProgress" Thumb.DragStarted="SliProgress_DragStarted"  Thumb.DragCompleted="SliProgress_DragCompleted" ValueChanged="SliProgress_ValueChanged"
 						>
-				</Slider>
+                </Slider>
             </StatusBarItem>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-				<Button x:Name="PlayPreviousMedia"
+                <Button x:Name="PlayPreviousMedia"
 					Height="30"
 					Width="30"
 					Margin="5"
 					BorderThickness="0"
 					PreviewMouseLeftButtonDown="PlayPreviousMedia_PreviewMouseLeftButtonDown"
 					>
-					<Button.Style>
-						<Style TargetType="{x:Type Button}">
-							<Setter Property="Background" Value="White"></Setter>
-							<Setter Property="Template">
-								<Setter.Value>
-									<ControlTemplate TargetType="{x:Type Button}">
-										<Border Background="{TemplateBinding Background}">
-											<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-										</Border>
-									</ControlTemplate>
-								</Setter.Value>
-							</Setter>
-							<Style.Triggers>
-								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Opacity" Value=".50"></Setter>
-								</Trigger>
-							</Style.Triggers>
-						</Style>
-					</Button.Style>
-					<Button.Background>
-						<ImageBrush ImageSource="Assets/previous.png"/>
-					</Button.Background>
-				</Button>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="White"></Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Opacity" Value=".50"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Background>
+                        <ImageBrush ImageSource="Assets/previous.png"/>
+                    </Button.Background>
+                </Button>
 
                 <Grid>
                     <Ellipse
@@ -93,7 +93,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
 					Width="33"
-				    Margin="5"
+				    Margin="6,9,4,6"
 					BorderThickness="0"
 						PreviewMouseLeftButtonDown="PlayMedia_PreviewMouseLeftButtonDown"
 					>
@@ -133,25 +133,25 @@
 					BorderThickness="0"
 					PreviewMouseLeftButtonDown="PauseMedia_PreviewMouseLeftButtonDown"
 					>
-					<Button.Style>
-						<Style TargetType="{x:Type Button}">
-							<Setter Property="Background" Value="White"></Setter>
-							<Setter Property="Template">
-								<Setter.Value>
-									<ControlTemplate TargetType="{x:Type Button}">
-										<Border Background="{TemplateBinding Background}">
-											<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-										</Border>
-									</ControlTemplate>
-								</Setter.Value>
-							</Setter>
-							<Style.Triggers>
-								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Opacity" Value=".10"></Setter>
-								</Trigger>
-							</Style.Triggers>
-						</Style>
-					</Button.Style>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="White"></Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Opacity" Value=".10"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <Button.Background>
                         <ImageBrush ImageSource="Assets/pause.png"/>
                     </Button.Background>
@@ -163,60 +163,60 @@
 					BorderThickness="0"
 					PreviewMouseLeftButtonDown="StopMedia_PreviewMouseLeftButtonDown"
 					>
-					<Button.Style>
-						<Style TargetType="{x:Type Button}">
-							<Setter Property="Background" Value="White"></Setter>
-							<Setter Property="Template">
-								<Setter.Value>
-									<ControlTemplate TargetType="{x:Type Button}">
-										<Border Background="{TemplateBinding Background}">
-											<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-										</Border>
-									</ControlTemplate>
-								</Setter.Value>
-							</Setter>
-							<Style.Triggers>
-								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Opacity" Value=".50"></Setter>
-								</Trigger>
-							</Style.Triggers>
-						</Style>
-					</Button.Style>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="White"></Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Opacity" Value=".50"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <Button.Background>
                         <ImageBrush ImageSource="Assets/stop.png"/>
                     </Button.Background>
                 </Button>
-				<Button x:Name="PlayNextMedia"
+                <Button x:Name="PlayNextMedia"
 					Height="30"
 					Width="30"
 						Margin="5"
 					BorderThickness="0"
 					PreviewMouseLeftButtonDown="PlayNextMedia_PreviewMouseLeftButtonDown"
 					>
-					<Button.Style>
-						<Style TargetType="{x:Type Button}">
-							<Setter Property="Background" Value="White"></Setter>
-							<Setter Property="Template">
-								<Setter.Value>
-									<ControlTemplate TargetType="{x:Type Button}">
-										<Border Background="{TemplateBinding Background}">
-											<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-										</Border>
-									</ControlTemplate>
-								</Setter.Value>
-							</Setter>
-							<Style.Triggers>
-								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Opacity" Value=".50"></Setter>
-								</Trigger>
-							</Style.Triggers>
-						</Style>
-					</Button.Style>
-					<Button.Background>
-						<ImageBrush ImageSource="Assets/next.png"/>
-					</Button.Background>
-				</Button>
-				<!--<Button x:Name="PlayRepeatMedia"
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="White"></Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Opacity" Value=".50"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Background>
+                        <ImageBrush ImageSource="Assets/next.png"/>
+                    </Button.Background>
+                </Button>
+                <!--<Button x:Name="PlayRepeatMedia"
 					Height="30"
 					Width="30"
 						Margin="5"
@@ -250,75 +250,75 @@
                 <!-- Volume slider. This slider allows a Volume range between 0 and 1. -->
                 <!--<TextBlock Foreground="Black" VerticalAlignment="Center" Margin="5"  ><Run Text="Volume"/></TextBlock>
 				-->
-				<Slider x:Name="volumeSlider" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="VolumeSlider_ValueChanged" 
+                <Slider x:Name="volumeSlider" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="VolumeSlider_ValueChanged" 
        Minimum="0" Maximum="1" Value="0.5" Width="70">
-					<Slider.Style>
-					<Style TargetType="{x:Type Slider}">
-						<Setter Property="Background" Value="SlateBlue"/>
-						<Setter Property="Height" Value="20"/>
-						<Setter Property="Template">
-							<Setter.Value>
-								<ControlTemplate TargetType="{x:Type Slider}">
-									<ControlTemplate.Resources>
-										<Style TargetType="{x:Type RepeatButton}">
-											<Setter Property="OverridesDefaultStyle" Value="true"/>
-											<Setter Property="IsTabStop" Value="false"/>
-											<Setter Property="Focusable" Value="false"/>
-											<Setter Property="Template">
-												<Setter.Value>
-													<ControlTemplate TargetType="{x:Type RepeatButton}">
-														<Border Background="{TemplateBinding Background}"/>
-													</ControlTemplate>
-												</Setter.Value>
-											</Setter>
-										</Style>
-										<PathGeometry x:Key="Triangle">
-											<PathFigure StartPoint="0,1">
-												<LineSegment Point="1,1"/>
-												<LineSegment Point="1,0"/>
-												<LineSegment Point="0,1"/>
-											</PathFigure>
-										</PathGeometry>
-									</ControlTemplate.Resources>
-									<Grid>
-										<Grid>
-											<Grid.OpacityMask>
-												<DrawingBrush>
-													<DrawingBrush.Drawing>
-														<GeometryDrawing Brush="Black" Geometry="{StaticResource Triangle}"/>
-													</DrawingBrush.Drawing>
-												</DrawingBrush>
-											</Grid.OpacityMask>
-											<Track Name="PART_Track" Value="{TemplateBinding Value}">
-												<Track.Thumb>
-													<Thumb Width="10" Background="{TemplateBinding Background}">
-														<Thumb.Template>
-															<ControlTemplate TargetType="{x:Type Thumb}">
-																<Border Background="{TemplateBinding Background}"/>
-															</ControlTemplate>
-														</Thumb.Template>
-													</Thumb>
-												</Track.Thumb>
-												<Track.DecreaseRepeatButton>
-													<RepeatButton Background="{TemplateBinding Background}" Command="Slider.DecreaseLarge"/>
-												</Track.DecreaseRepeatButton>
-												<Track.IncreaseRepeatButton>
-													<RepeatButton Background="Transparent" Command="Slider.IncreaseLarge"/>
-												</Track.IncreaseRepeatButton>
-											</Track>
-										</Grid>
-										<Path
+                    <Slider.Style>
+                        <Style TargetType="{x:Type Slider}">
+                            <Setter Property="Background" Value="SlateBlue"/>
+                            <Setter Property="Height" Value="20"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Slider}">
+                                        <ControlTemplate.Resources>
+                                            <Style TargetType="{x:Type RepeatButton}">
+                                                <Setter Property="OverridesDefaultStyle" Value="true"/>
+                                                <Setter Property="IsTabStop" Value="false"/>
+                                                <Setter Property="Focusable" Value="false"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                            <Border Background="{TemplateBinding Background}"/>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                            <PathGeometry x:Key="Triangle">
+                                                <PathFigure StartPoint="0,1">
+                                                    <LineSegment Point="1,1"/>
+                                                    <LineSegment Point="1,0"/>
+                                                    <LineSegment Point="0,1"/>
+                                                </PathFigure>
+                                            </PathGeometry>
+                                        </ControlTemplate.Resources>
+                                        <Grid>
+                                            <Grid>
+                                                <Grid.OpacityMask>
+                                                    <DrawingBrush>
+                                                        <DrawingBrush.Drawing>
+                                                            <GeometryDrawing Brush="Black" Geometry="{StaticResource Triangle}"/>
+                                                        </DrawingBrush.Drawing>
+                                                    </DrawingBrush>
+                                                </Grid.OpacityMask>
+                                                <Track Name="PART_Track" Value="{TemplateBinding Value}">
+                                                    <Track.Thumb>
+                                                        <Thumb Width="10" Background="{TemplateBinding Background}">
+                                                            <Thumb.Template>
+                                                                <ControlTemplate TargetType="{x:Type Thumb}">
+                                                                    <Border Background="{TemplateBinding Background}"/>
+                                                                </ControlTemplate>
+                                                            </Thumb.Template>
+                                                        </Thumb>
+                                                    </Track.Thumb>
+                                                    <Track.DecreaseRepeatButton>
+                                                        <RepeatButton Background="{TemplateBinding Background}" Command="Slider.DecreaseLarge"/>
+                                                    </Track.DecreaseRepeatButton>
+                                                    <Track.IncreaseRepeatButton>
+                                                        <RepeatButton Background="Transparent" Command="Slider.IncreaseLarge"/>
+                                                    </Track.IncreaseRepeatButton>
+                                                </Track>
+                                            </Grid>
+                                            <Path
                         Data="{StaticResource Triangle}"
                         Stretch="Fill"
                         Stroke="Black"
                         StrokeThickness="1"/>
-									</Grid>
-								</ControlTemplate>
-							</Setter.Value>
-						</Setter>
-					</Style>
-					</Slider.Style>
-				</Slider>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Slider.Style>
+                </Slider>
 
                 <!-- Volume slider. This slider allows you to change the speed of the media playback. -->
                 <!--<TextBlock Foreground="Black" Margin="5"  VerticalAlignment="Center"><Run Text="Speed"/></TextBlock>
