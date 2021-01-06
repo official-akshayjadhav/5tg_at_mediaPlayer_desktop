@@ -1,6 +1,7 @@
 ﻿using _5tg_at_mediaPlayer_desktop.connection;
 using System;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -166,10 +167,10 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         public void playSong(string trakString, string title)
         {
             song.Text = title;
-            //string path = "D:\\song.mp3";
-            //Uri musicPath = new Uri("D:\\song.mp3");
-            String path = "C:\\Users\\shubh\\Desktop\\part time\\1st.mp3";
-            Uri musicPath = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
+            string path = "D:\\song.mp3";
+            Uri musicPath = new Uri("D:\\song.mp3");
+            //String path = "C:\\Users\\shubh\\Desktop\\part time\\1st.mp3";
+            //Uri musicPath = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
             byte[] songByte = Convert.FromBase64String(trakString);
             mediaPlayer.Stop();
             
@@ -181,8 +182,15 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         {
             mediaPlayer.Open(musicPath);
             mediaPlayer.Stop();
-            mediaPlayer.Position = new TimeSpan(0, 1, 5);
-
+            { }
+            mediaPlayer.Position = new TimeSpan(0, 1, 50);
+            TimeSpan startTime = new TimeSpan(0, 1, 50);
+            TimeSpan endTime = new TimeSpan(0, 2, 10);
+            mediaPlayer.Play();
+            TimeSpan trimTime = endTime.Subtract(startTime);
+            Thread.Sleep(trimTime);
+            mediaPlayer.Stop();
+            { }
             MediaTimeline timeline = new MediaTimeline((new TimeSpan(0, 1, 5)), (new Duration(new TimeSpan(0, 0, 10))));
             //System.Windows.Media.MediaClock clock = timeline.CreateClock();           
             //mediaPlayer.Clock = clock;
