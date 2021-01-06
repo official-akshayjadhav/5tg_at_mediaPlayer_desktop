@@ -311,6 +311,7 @@
     <Resource Include="Bottom_Media_Control\Assets\previous.png" />
     <Resource Include="Bottom_Media_Control\Assets\play1.png" />
     <Resource Include="Assets\icon.png" />
+    <Resource Include="FM\Assets\icon.png" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>
