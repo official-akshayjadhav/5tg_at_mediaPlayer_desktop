@@ -80,15 +80,16 @@
 
         <Grid>
 
-
-            <Image Grid.Column="0" Grid.ColumnSpan="1" Margin="10" Source="Assets/home.jpg" Width="1255" >
-                <Image.OpacityMask>
-                    <LinearGradientBrush EndPoint=".5,1" StartPoint=".5,.1">
-                        <GradientStop Color="Black" Offset="0"></GradientStop>
-                        <GradientStop Offset="2"></GradientStop>
-                    </LinearGradientBrush>
-                </Image.OpacityMask>
-            </Image>
+            <Grid>
+                <Image Grid.Column="0" Grid.ColumnSpan="1" Margin="10" Source="Assets/home.jpg" Width="1265">
+                    <Image.OpacityMask>
+                        <LinearGradientBrush EndPoint=".5,1" StartPoint=".5,.1">
+                            <GradientStop Color="Black" Offset="0"></GradientStop>
+                            <GradientStop Offset="2"></GradientStop>
+                        </LinearGradientBrush>
+                    </Image.OpacityMask>
+                </Image>
+            </Grid>
 
 
             <Grid>
@@ -211,7 +212,7 @@
                             </DataGrid.Columns>
                         </DataGrid>-->
                         <ComboBox Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Name="Playlist_picker" Text="Action" 
-                       Width="250" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" FontSize="18">
+                       Width="250" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" FontSize="18" SelectionChanged="Playlist_picker_SelectionChanged">
                         </ComboBox>
                     </Grid>
                     <Grid
