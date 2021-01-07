@@ -282,11 +282,12 @@
                             <RadialGradientBrush>
                                 <GradientStop Color="#89ff8f"/>
                                 <GradientStop Color="Black" Offset="0.889"/>
-                                <GradientStop Color="#89ff8f" Offset="1"/>
+                                <!--<GradientStop Color="#89ff8f" Offset="1"/>-->
+								<GradientStop Color="#89ff8f" Offset="1"/>
                             </RadialGradientBrush>
                         </progress_bar:Progress_Bar.ProgressBorderBrush>
                     </progress_bar:Progress_Bar>
-                    <TextBlock x:Name="progress_value" Margin="3,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">50%</TextBlock>
+                    <TextBlock x:Name="progress_value" Margin="3,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="30" FontWeight="DemiBold">50%</TextBlock>
                 </Grid>
                 <Grid Grid.Row="2" Grid.Column="1">
                     <TextBlock Text="REMAINING Time 3:35" Foreground="White" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>

@@ -125,6 +125,9 @@
     <Compile Include="connection\DbModel.cs" />
     <Compile Include="connection\Global_Log.cs" />
     <Compile Include="connection\PlayBack.cs" />
+    <Compile Include="Fade_in_out\Fade_in_out.xaml.cs">
+      <DependentUpon>Fade_in_out.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FM\FM_Custom.xaml.cs">
       <DependentUpon>FM_Custom.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Bottom_Media_Control\Bottom_Media_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fade_in_out\Fade_in_out.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -312,6 +319,8 @@
     <Resource Include="Bottom_Media_Control\Assets\play1.png" />
     <Resource Include="Assets\icon.png" />
     <Resource Include="FM\Assets\icon.png" />
+    <Resource Include="Fade_in_out\Assets\back.png" />
+    <Resource Include="Fade_in_out\Assets\play.png" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>

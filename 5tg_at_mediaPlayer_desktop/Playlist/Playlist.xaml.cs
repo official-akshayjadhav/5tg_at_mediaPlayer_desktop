@@ -237,12 +237,16 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                     string query = "delete playlist where PID =" + PlaylistAudio.PID + "and AID = " + PlaylistAudio.AID;
                     Global_Log.connectionClass.insertData(query);
                 }
-                else if (currentOperation == "Update Sort ID")
-                {
-                    Global_Log.playlistAudio = PlaylistAudio;
+                //else if (currentOperation == "Update Sort ID")
+                //{
+                //    Global_Log.playlistAudio = PlaylistAudio;
 
-                    Sorting sorting = new Sorting();
-                    sorting.ShowDialog();
+                //    Sorting sorting = new Sorting();
+                //    sorting.ShowDialog();
+                //}
+                else if (currentOperation == "Update") {
+                    Track_Metadata addMusic = new Track_Metadata();
+                    addMusic.updateSong();
                 }
             }
             loadPlaylistSong(PlaylistAudio.SortId, PlaylistAudio.PID);
