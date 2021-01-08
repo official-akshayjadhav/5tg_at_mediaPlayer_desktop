@@ -283,7 +283,7 @@
                                 <GradientStop Color="#89ff8f"/>
                                 <GradientStop Color="Black" Offset="0.889"/>
                                 <!--<GradientStop Color="#89ff8f" Offset="1"/>-->
-								<GradientStop Color="#89ff8f" Offset="1"/>
+								<!--<GradientStop Color="#89ff8f" Offset="1"/>-->
                             </RadialGradientBrush>
                         </progress_bar:Progress_Bar.ProgressBorderBrush>
                     </progress_bar:Progress_Bar>

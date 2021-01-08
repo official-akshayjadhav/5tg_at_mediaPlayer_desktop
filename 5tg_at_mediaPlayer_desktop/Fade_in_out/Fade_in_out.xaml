@@ -193,7 +193,7 @@
 						<ColumnDefinition Width="1*"/>
 						<ColumnDefinition Width="5*"/>
 					</Grid.ColumnDefinitions>
-					<TextBlock FontSize="14" Grid.Column="0" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Start:"></TextBlock>
+					<TextBlock FontSize="14" Grid.Column="0" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Fade In:"></TextBlock>
 					<Button Name="start_s" Grid.Column="1" Content="-" Height="25" Width="40" FontSize="16" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" HorizontalAlignment="Right"
                    Foreground="White" Style="{DynamicResource RoundCorner}"  Click="start_s_Click"  />
 					<TextBox x:Name="start_text" Grid.Column="2" Text="1" FontSize="14" TextAlignment="Center" Height="25" TextChanged="start_text_TextChanged" ></TextBox>
@@ -211,7 +211,7 @@
 						<ColumnDefinition Width="5*"/>
 
 					</Grid.ColumnDefinitions>
-					<TextBlock Grid.Column="0" FontSize="14" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Text="End:"></TextBlock>
+					<TextBlock Grid.Column="0" FontSize="14" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Fade Out:"></TextBlock>
 					<Button Name="end_s" Grid.Column="1" Content="-" Height="25" Width="40" FontSize="16" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" HorizontalAlignment="Right"
                    Foreground="White" Style="{DynamicResource RoundCorner}" Click="end_s_Click" />
 					<TextBox x:Name="end_text" Grid.Column="2" Text="5" FontSize="14" TextAlignment="Center" Height="25" TextChanged="end_text_TextChanged" ></TextBox>

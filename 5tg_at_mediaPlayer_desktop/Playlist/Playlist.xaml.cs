@@ -223,7 +223,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 Create_Playlist create_Playlist = new Create_Playlist();
                 Global_Log.pID = PlaylistAudio.PID;
                 Global_Log.playlistName = PlaylistAudio.Name;
-
+                
                 if (currentOperation == "Play")
                 {
                     if (Global_Log.bottom_Media_Control == null)
@@ -231,6 +231,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                         Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                     }
                     Global_Log.bottom_Media_Control.playSong(PlaylistAudio.track, PlaylistAudio.Name);
+
                 }
                 else if (currentOperation == "Delete")
                 {

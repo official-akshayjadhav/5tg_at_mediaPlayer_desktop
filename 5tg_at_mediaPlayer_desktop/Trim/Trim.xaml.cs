@@ -9,10 +9,26 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
 
     public partial class Trim : UserControl
     {
-        double max_time_of_song = 5;
+        //double max_time_of_song = 5;
+        static double max_time_of_song=0;
+        
+
         public Trim()
         {
             InitializeComponent();
+            end_text.Text = "0";
+            //max_slider.Maximum = 0;
+        }
+
+        public Trim(string time) {
+
+            InitializeComponent();
+            max_time_of_song = double.Parse(time);
+            if (end_text != null)
+            {
+                max_slider.Maximum = max_time_of_song;
+                end_text.Text = max_time_of_song.ToString();
+            }
         }
 
         private void start_s_Click(object sender, RoutedEventArgs e)
