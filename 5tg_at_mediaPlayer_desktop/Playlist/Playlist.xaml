@@ -81,7 +81,7 @@
         <Grid>
 
             <Grid>
-                <Image Grid.Column="0" Grid.ColumnSpan="1" Margin="10" Source="Assets/home.jpg" Width="1265">
+                <Image Grid.Column="0" Grid.ColumnSpan="1" Margin="0" Source="Assets/home.jpg" Width="1350">
                     <Image.OpacityMask>
                         <LinearGradientBrush EndPoint=".5,1" StartPoint=".5,.1">
                             <GradientStop Color="Black" Offset="0"></GradientStop>
