@@ -64,8 +64,8 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 {
                     Global_Log.connectionClass = new ConnectionClass();
                 }
-                DataTable dt = Global_Log.connectionClass.retriveData("select PID,name,CAST(createdDate as date), TotalSong from playlists", "playlists");
-
+                DataTable dt = Global_Log.connectionClass.retriveData("select PID,name,CAST(Schedule as date), TotalSong from playlists", "playlists");
+                //createdDate  = Schedule
                 int count = dt.Rows.Count;
                 Playlists playlists = new Playlists();
                 for (int i = 0; i < count; i++)
@@ -246,6 +246,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 }
             }
             loadPlaylistSong(PlaylistAudio.SortId, PlaylistAudio.PID);
+            Playlist_picker_SelectionChanged(null, null);
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -514,7 +515,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             LoadAllSong();
         }
 
-        private void Playlist_picker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void Playlist_picker_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string obj = Playlist_picker.SelectedValue.ToString();
             { }

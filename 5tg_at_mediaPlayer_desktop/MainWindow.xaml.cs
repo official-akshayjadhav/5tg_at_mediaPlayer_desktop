@@ -18,6 +18,8 @@ namespace _5tg_at_mediaPlayer_desktop
            // allSongs.Visibility = Visibility.Visible;
         }
 
+        public string SelectedPlayList { get; set; }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //Center_Playlist_Loaded();

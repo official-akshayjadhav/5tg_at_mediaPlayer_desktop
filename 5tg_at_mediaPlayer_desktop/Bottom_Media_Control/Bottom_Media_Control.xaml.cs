@@ -38,7 +38,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         public Bottom_Media_Control()
         {
             InitializeComponent();
-            
+
             {
                 //Uri music = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
                 //Uri music = new Uri("D:\\MP3\\07_Rin_Rin_Ringa(256k).mp3");
@@ -139,7 +139,8 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                 }*/
             }
         }
-        public Bottom_Media_Control(String AID) 
+
+        public Bottom_Media_Control(String AID)
         {
             InitializeComponent();
             if (AID != null)
@@ -159,21 +160,34 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             }
             //InitializePropertyValues();
         }
-        public void PlayMediaFunction() {
+        public void PlayMediaFunction()
+        {
             mediaPlayer.Play();
             InitializePropertyValues();
         }
 
         public void playSong(string trakString, string title)
         {
+            mediaPlayer.Stop();
+
+            string rootFolder = @"D:\";
+            string authorsFile = "song.mp3";
+
+            if (File.Exists(Path.Combine(rootFolder, authorsFile)))
+                File.Delete(Path.Combine(rootFolder, authorsFile));
+            { }
+
             song.Text = title;
             string path = "D:\\song.mp3";
             Uri musicPath = new Uri("D:\\song.mp3");
             //String path = "C:\\Users\\shubh\\Desktop\\part time\\1st.mp3";
             //Uri musicPath = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
             byte[] songByte = Convert.FromBase64String(trakString);
-            mediaPlayer.Stop();
-            
+            File.Delete(path);
+            { }
+
+
+            //File.Replace()
             File.WriteAllBytes(path, songByte);
             LoadSong(musicPath);
         }
@@ -194,7 +208,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             MediaTimeline timeline = new MediaTimeline((new TimeSpan(0, 1, 5)), (new Duration(new TimeSpan(0, 0, 10))));
             //System.Windows.Media.MediaClock clock = timeline.CreateClock();           
             //mediaPlayer.Clock = clock;
-            
+
             mediaPlayer.Play();
 
             mediaPlayer.Volume = 0.3;//// (double)volumeSlider.Value;
@@ -248,7 +262,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         {
             //mediaPlayer.Volume = (double)volumeSlider.Value;
             //mediaPlayer.SpeedRatio = (double)speedRatioSlider.Value;
-           
+
         }
 
         private void MyMediaElement_MediaOpened(object sender, RoutedEventArgs e)
@@ -297,15 +311,11 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         }*/
 
 
-        private void PlayPreviousMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
         public void PlayMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             mediaPlayer.Play();
             InitializePropertyValues();
-            
+
         }
 
         private void PauseMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -318,9 +328,20 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             mediaPlayer.Stop();
         }
 
+        //public event OnNext (object sender);
         private void PlayNextMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            
 
+            Global_Log.allSongTrack = true;
+            Global_Log.playlistSongTrack = true;
+        }
+        private void PlayPreviousMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+         
+
+            Global_Log.allSongTrack = true;
+            Global_Log.playlistSongTrack = true;
         }
 
         private void PlayRepeatMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

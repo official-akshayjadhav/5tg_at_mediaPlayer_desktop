@@ -28,7 +28,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            int i = datagrid.SelectedIndex;
         }
 
         //public object ConfigurationManager { get; private set; }
@@ -182,7 +182,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                 }
                 else if (currentOperation == "Play Song")
                 {
-                    if(Global_Log.bottom_Media_Control==null)
+                    if (Global_Log.bottom_Media_Control == null)
                     {
                         Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                     }
@@ -211,6 +211,30 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void datagrid_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Global_Log.audio = datagrid.Items[0] as Audio;
+            { }
+
+        }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+
+
+        private void datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void datagrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
 
         }
