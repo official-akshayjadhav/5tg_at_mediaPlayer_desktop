@@ -49,7 +49,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             //String value1 = item.Content.ToString();
             //Console.WriteLine(value1);
         }
-        
+
         public void loadPlaylist()
         {
             if (Global_Log.playBack == null)
@@ -162,8 +162,9 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             string time = "";
             if (dt != null)
             {
-                if (count!=0) { 
-                    time = dt.Rows[0][1].ToString();                               
+                if (count != 0)
+                {
+                    time = dt.Rows[0][1].ToString();
                 }
             }
             for (int i = 0; i < count; i++)
@@ -176,10 +177,11 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                     {
                         date1 = (DateTime)dr[1];
                     }
-                    catch { } 
-                    
+                    catch { }
+
                     TimeSpan time1 = (TimeSpan)dr[3];
-                    if (time == null) {
+                    if (time == null)
+                    {
                         time = time1.ToString();
                     }
                     playlistAudio.Add(new PlaylistAudio()
@@ -208,6 +210,8 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
 
         private void PlaylistSongEdit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var sa = this.LogicalChildren;
+            { }
             var image = e.AddedItems[0] as ComboBoxItem;
             string currentOperation = image.Content.ToString();
 
@@ -223,9 +227,20 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 Create_Playlist create_Playlist = new Create_Playlist();
                 Global_Log.pID = PlaylistAudio.PID;
                 Global_Log.playlistName = PlaylistAudio.Name;
-                
+
+                selectedIndexValue = 0;
+
+                plays = new List<PlaylistAudio>();
+                foreach (PlaylistAudio item in PlaylistSong.Items)
+                {
+                    plays.Add(item);
+                }
+
                 if (currentOperation == "Play")
                 {
+                    //PlaylistSong
+                    Global_Log.allSongTrack = false;
+
                     if (Global_Log.bottom_Media_Control == null)
                     {
                         Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
@@ -245,7 +260,8 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 //    Sorting sorting = new Sorting();
                 //    sorting.ShowDialog();
                 //}
-                else if (currentOperation == "Update") {
+                else if (currentOperation == "Update")
+                {
                     Track_Metadata addMusic = new Track_Metadata();
                     addMusic.updateSong();
                 }
@@ -338,6 +354,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 }
             }
         }
+
         private void ComboSorts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var image = e.AddedItems[0] as ComboBoxItem;
@@ -352,8 +369,95 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             //loadPlaylistSong(int playlistID, int Sorts, true)
         }
 
+        public static int selectedIndexValue = 0;
+        public static List<PlaylistAudio> plays;
+        public static List<Audio> playAllSong;
 
+        public void nextSong()
+        {
+            PlaylistAudio track;
+            Audio track1;
+            selectedIndexValue += 1;
+            if (Global_Log.allSongTrack)
+            {
+                if (selectedIndexValue >= playAllSong.Count)
+                {
+                    selectedIndexValue = 0;
+                    track1 = playAllSong[0];
+                }
+                else
+                {
+                    track1 = playAllSong[selectedIndexValue];
+                }
+                if (Global_Log.bottom_Media_Control == null)
+                {
+                    Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+                }
+                Global_Log.bottom_Media_Control.playSong(track1.Track, track1.Title);
+            }
+            else if (Global_Log.allSongTrack == false)
+            {
+                if (selectedIndexValue >= plays.Count)
+                {
+                    selectedIndexValue = 0;
+                    track = plays[0];
+                }
+                else
+                {
+                    track = plays[selectedIndexValue];
+                }
+                if (Global_Log.bottom_Media_Control == null)
+                {
+                    Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+                }
+                Global_Log.bottom_Media_Control.playSong(track.track, track.Name);
+            }
+        }
 
+        internal void previousSong()
+        {
+            PlaylistAudio track;
+            Audio track1;
+            selectedIndexValue -= 1;
+
+            if (Global_Log.allSongTrack)
+            {
+                if (selectedIndexValue >= playAllSong.Count)
+                {
+                    selectedIndexValue = 0;
+                    track1 = playAllSong[0];
+                }
+                else
+                {
+                    track1 = playAllSong[selectedIndexValue];
+                }
+                if (Global_Log.bottom_Media_Control == null)
+                {
+                    Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+                }
+                Global_Log.bottom_Media_Control.playSong(track1.Track, track1.Title);
+            }
+            else if (Global_Log.allSongTrack == false)
+            {
+                {
+                    selectedIndexValue -= 1;
+                    if (selectedIndexValue >= plays.Count)
+                    {
+                        track = plays[0];
+                    }
+                    else
+                    {
+                        track = plays[selectedIndexValue];
+                    }
+
+                    if (Global_Log.bottom_Media_Control == null)
+                    {
+                        Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+                    }
+                    Global_Log.bottom_Media_Control.playSong(track.track, track.Name);
+                }
+            }
+        }
 
         /// All Songs  datagrid Code
         /// 
@@ -432,7 +536,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                             Filetype = dr.ItemArray[5].ToString(),
                             Filepath = dr.ItemArray[6].ToString(),
                             Duration = (TimeSpan)dr.ItemArray[7],
-                            //Track = dr.ItemArray[8].ToString(),
+                            Track = dr.ItemArray[8].ToString(),
                             Trim_Start = (TimeSpan)dr.ItemArray[9],
                             Trim_End = (TimeSpan)dr.ItemArray[10],
 
@@ -485,6 +589,15 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             if (audio != null)
             {
                 Global_Log.audio = audio;
+
+                selectedIndexValue = datagrid.SelectedIndex;
+                { }
+                playAllSong = new List<Audio>();
+                foreach (Audio item in datagrid.Items)
+                {
+                    playAllSong.Add(item);
+                }
+
                 if (currentOperation == "Update")
                 {
                     Track_Metadata addMusic = new Track_Metadata();
@@ -499,6 +612,21 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 {
                     Add_To_Playlist add_To_Playlist = new Add_To_Playlist();
                     add_To_Playlist.ShowDialog();
+                }
+                else if (currentOperation == "Play")
+                {
+                    //datagrid
+
+                    Global_Log.allSongTrack = true;
+
+                    int listcount = datagrid.Items.Count - 1;
+                    int selectedtrackIndex = datagrid.SelectedIndex;
+
+                    if (Global_Log.bottom_Media_Control == null)
+                    {
+                        Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+                    }
+                    Global_Log.bottom_Media_Control.playSong(audio.Track, audio.Title);
                 }
             }
             LoadAllSong();

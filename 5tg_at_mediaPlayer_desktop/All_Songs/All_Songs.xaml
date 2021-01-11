@@ -134,7 +134,8 @@
 					  AlternatingRowBackground="Azure"
 					  AutoGenerateColumns="False"
 					  CanUserAddRows="False"
-                      CanUserResizeColumns="True"                      
+                      CanUserResizeColumns="True"
+                      MouseRightButtonUp="dgTrack_MouseRightButtonUp"
                       >
 
                 <DataGrid.Columns>

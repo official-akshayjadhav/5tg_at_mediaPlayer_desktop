@@ -171,12 +171,14 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             string rootFolder = @"D:\";
             string authorsFile = "song.mp3";
 
+
+
             if (File.Exists(Path.Combine(rootFolder, authorsFile)))
                 File.Delete(Path.Combine(rootFolder, authorsFile));
             { }
 
             song.Text = title;
-            string path   = "D:\\song.mp3";
+            string path = "D:\\song.mp3";
             Uri musicPath = new Uri("D:\\song.mp3");
             //String path = "C:\\Users\\shubh\\Desktop\\part time\\1st.mp3";
             //Uri musicPath = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
@@ -184,23 +186,22 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             File.Delete(path);
             { }
 
-
-            //File.Replace()
+            
             File.WriteAllBytes(path, songByte);
             LoadSong(musicPath);
         }
 
         private void LoadSong(Uri musicPath)
         {
-            mediaPlayer.Open(musicPath);
             mediaPlayer.Stop();
-            { }
+            mediaPlayer.Close();
+            mediaPlayer.Open(musicPath);
             mediaPlayer.Position = new TimeSpan(0, 1, 50);
             TimeSpan startTime = new TimeSpan(0, 1, 50);
             TimeSpan endTime = new TimeSpan(0, 2, 10);
             mediaPlayer.Play();
             TimeSpan trimTime = endTime.Subtract(startTime);
-            Thread.Sleep(trimTime);
+            //Thread.Sleep(trimTime);
             mediaPlayer.Stop();
             { }
             MediaTimeline timeline = new MediaTimeline((new TimeSpan(0, 1, 5)), (new Duration(new TimeSpan(0, 0, 10))));
@@ -208,8 +209,8 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             //mediaPlayer.Clock = clock;
 
             mediaPlayer.Play();
-
-            mediaPlayer.Volume = 0.3;//// (double)volumeSlider.Value;
+            { }
+            mediaPlayer.Volume = 1;//// (double)volumeSlider.Value;
             mediaPlayer.SpeedRatio = 1;// (double)speedRatioSlider.Value;
         }
 
@@ -329,17 +330,18 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         //public event OnNext (object sender);
         private void PlayNextMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            
+            Playlist.Playlist playlist = new Playlist.Playlist();
+            playlist.nextSong();
 
-            Global_Log.allSongTrack = true;
-            Global_Log.playlistSongTrack = true;
+            //Global_Log.allSongTrack      = true;
+            //Global_Log.playlistSongTrack = true;
         }
         private void PlayPreviousMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-         
+            Playlist.Playlist playlist = new Playlist.Playlist();
+            playlist.previousSong();
 
             Global_Log.allSongTrack = true;
-            Global_Log.playlistSongTrack = true;
         }
 
         private void PlayRepeatMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

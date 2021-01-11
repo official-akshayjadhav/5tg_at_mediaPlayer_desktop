@@ -377,6 +377,7 @@
                                         <ComboBoxItem Content="Update" HorizontalContentAlignment="Center"></ComboBoxItem>
                                         <ComboBoxItem Content="Delete"  HorizontalContentAlignment="Center"></ComboBoxItem>
                                         <ComboBoxItem Content="Add to Playlist" HorizontalContentAlignment="Center"></ComboBoxItem>
+                                        <ComboBoxItem Content="Play" HorizontalContentAlignment="Center"></ComboBoxItem>
                                     </ComboBox>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -404,6 +405,8 @@
 			-->
                 </DataGrid>
 
+                <!--datagrid-->
+                
             </Grid>
         </Grid>
     

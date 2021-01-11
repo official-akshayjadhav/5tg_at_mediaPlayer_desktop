@@ -238,5 +238,10 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
         {
 
         }
+
+        private void dgTrack_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
