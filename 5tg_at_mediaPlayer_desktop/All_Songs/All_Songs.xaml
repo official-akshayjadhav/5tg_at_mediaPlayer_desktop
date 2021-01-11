@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.All_Songs"
              mc:Ignorable="d" 
 			 Background="White"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="1300">
 
 	<UserControl.Resources>
         <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
@@ -148,17 +148,17 @@
                     </DataGridTemplateColumn>
 
                     <DataGridTextColumn MinWidth="70" Width="1*" Header="UID" Binding="{Binding UID}"></DataGridTextColumn>
-                    <DataGridTextColumn MinWidth="180" Width="1*" Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
-                    <DataGridTextColumn MinWidth="180" Width="1*" Header="FileName" Binding="{Binding FileName}"></DataGridTextColumn>
-                    <DataGridTextColumn MinWidth="70" Width="1*" Header="Filesize" Binding="{Binding Filesize}"></DataGridTextColumn>
-                    <DataGridTextColumn MinWidth="70" Width="1*" Header="Filetype" Binding="{Binding Filetype}"></DataGridTextColumn>
-                    <DataGridTextColumn MinWidth="180" Width="1*" Header="Filepath" Binding="{Binding Filepath}"></DataGridTextColumn>
-                    <DataGridTextColumn MinWidth="70" Width="1*" Header="Duration" Binding="{Binding Duration}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="250" Width="1*" Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="250" Width="1*" Header="FileName" Binding="{Binding FileName}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="90" Width="1*" Header="Filesize" Binding="{Binding Filesize}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="90" Width="1*" Header="Filetype" Binding="{Binding Filetype}"></DataGridTextColumn>
+                    <!--<DataGridTextColumn MinWidth="180" Width="1*" Header="Filepath" Binding="{Binding Filepath}"></DataGridTextColumn>-->
+                    <DataGridTextColumn MinWidth="90" Width="1*" Header="Duration" Binding="{Binding Duration}"></DataGridTextColumn>
 
-                    <DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_Start" Binding="{Binding Trim_Start}"></DataGridTextColumn>
-                    <DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_End" Binding="{Binding Trim_End}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="90" Width="1*" Header="Trim_Start" Binding="{Binding Trim_Start}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="90" Width="1*" Header="Trim_End" Binding="{Binding Trim_End}"></DataGridTextColumn>
 
-                    <DataGridTemplateColumn  Header="Controls" x:Name="column_Edit" MinWidth="100" Width="1*">
+                    <DataGridTemplateColumn  Header="Controls" x:Name="column_Edit" MinWidth="145" Width="1*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox Name="EditComboBox" Text="Action" SelectionChanged="ComboBox_SelectionChanged_1" Tag="{Binding}">

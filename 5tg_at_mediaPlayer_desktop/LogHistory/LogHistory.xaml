@@ -158,11 +158,11 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTextColumn MinWidth="70" Width="1*" Header="AirTime" Binding="{Binding AirTime}"></DataGridTextColumn>
-                    <DataGridTextColumn MinWidth="180" Width="1*" Header="Cart ID" Binding="{Binding CartId}"></DataGridTextColumn>
-                    <DataGridTextColumn MinWidth="180" Width="1*" Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
-                    <DataGridTextColumn MinWidth="180" Width="1*" Header="Duration" Binding="{Binding Duration}"></DataGridTextColumn>
-                    <DataGridTextColumn MinWidth="100" Width="1*" Header="PlaylistName" Binding="{Binding PlaylistName}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="150" Width="1*" Header="AirTime" Binding="{Binding AirTime}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="270" Width="1*" Header="Cart ID" Binding="{Binding CartId}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="270" Width="1*" Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="270" Width="1*" Header="Duration" Binding="{Binding Duration}"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="195" Width="1*" Header="PlaylistName" Binding="{Binding PlaylistName}"></DataGridTextColumn>
                     
                 </DataGrid.Columns>
             </DataGrid>
