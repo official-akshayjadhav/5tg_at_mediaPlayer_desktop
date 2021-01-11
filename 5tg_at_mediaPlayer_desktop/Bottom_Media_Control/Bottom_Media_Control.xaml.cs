@@ -146,10 +146,8 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             if (AID != null)
             {
                 //AID = Convert.ToInt32(AID);
-
-                string getfilepath = "Select filepath from Audio where ID =" + AID;
+                string getfilepath = "Select filepath,Title from Audio where ID =" + AID;
                 String songpath = Global_Log.connectionClass.getsongfilepath(getfilepath);
-
                 Uri music = new Uri(songpath);
                 mediaPlayer.Open(music);
                 //song.Text = music.ToString();
@@ -178,7 +176,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             { }
 
             song.Text = title;
-            string path = "D:\\song.mp3";
+            string path   = "D:\\song.mp3";
             Uri musicPath = new Uri("D:\\song.mp3");
             //String path = "C:\\Users\\shubh\\Desktop\\part time\\1st.mp3";
             //Uri musicPath = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");

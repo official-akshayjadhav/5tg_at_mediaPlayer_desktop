@@ -223,7 +223,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 Create_Playlist create_Playlist = new Create_Playlist();
                 Global_Log.pID = PlaylistAudio.PID;
                 Global_Log.playlistName = PlaylistAudio.Name;
-
+                
                 if (currentOperation == "Play")
                 {
                     if (Global_Log.bottom_Media_Control == null)
@@ -231,18 +231,23 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                         Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                     }
                     Global_Log.bottom_Media_Control.playSong(PlaylistAudio.track, PlaylistAudio.Name);
+
                 }
                 else if (currentOperation == "Delete")
                 {
                     string query = "delete playlist where PID =" + PlaylistAudio.PID + "and AID = " + PlaylistAudio.AID;
                     Global_Log.connectionClass.insertData(query);
                 }
-                else if (currentOperation == "Update Sort ID")
-                {
-                    Global_Log.playlistAudio = PlaylistAudio;
+                //else if (currentOperation == "Update Sort ID")
+                //{
+                //    Global_Log.playlistAudio = PlaylistAudio;
 
-                    Sorting sorting = new Sorting();
-                    sorting.ShowDialog();
+                //    Sorting sorting = new Sorting();
+                //    sorting.ShowDialog();
+                //}
+                else if (currentOperation == "Update") {
+                    Track_Metadata addMusic = new Track_Metadata();
+                    addMusic.updateSong();
                 }
             }
             loadPlaylistSong(PlaylistAudio.SortId, PlaylistAudio.PID);

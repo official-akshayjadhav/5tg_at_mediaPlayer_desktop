@@ -65,6 +65,7 @@ namespace _5tg_at_mediaPlayer_desktop.connection
             try
             {
                 dt = connectionClass.retriveData("select * from Audio", "Audio");
+                { }
             }
             catch (Exception ex)
             {
