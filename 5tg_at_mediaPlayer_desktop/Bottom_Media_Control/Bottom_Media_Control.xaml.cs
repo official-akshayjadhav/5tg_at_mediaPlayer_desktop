@@ -1,4 +1,5 @@
 ﻿using _5tg_at_mediaPlayer_desktop.connection;
+using NAudio.Wave;
 using System;
 using System.IO;
 using System.Threading;
@@ -186,19 +187,28 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             File.Delete(path);
             { }
 
-            
+
             File.WriteAllBytes(path, songByte);
-            LoadSong(musicPath);
+            LoadSong(musicPath, path);
         }
 
-        private void LoadSong(Uri musicPath)
+        public void LoadSong(Uri musicPath, string path)
         {
             mediaPlayer.Stop();
             mediaPlayer.Close();
-            mediaPlayer.Open(musicPath);
-            mediaPlayer.Position = new TimeSpan(0, 1, 50);
+            //mediaPlayer.Open(musicPath);
+            //mediaPlayer.Position = new TimeSpan(0, 1, 50);
             TimeSpan startTime = new TimeSpan(0, 1, 50);
             TimeSpan endTime = new TimeSpan(0, 2, 10);
+            { }
+            string path1 = "D:\\trimSong.mp3";
+
+            Uri musicPath1 = new Uri("D:\\trimSong.mp3");
+
+            //TrimWavFile(path, path1, startTime, endTime);
+            TrimMp3(path, path1, startTime, endTime);
+            { }
+            mediaPlayer.Open(musicPath);
             mediaPlayer.Play();
             TimeSpan trimTime = endTime.Subtract(startTime);
             //Thread.Sleep(trimTime);
@@ -213,6 +223,69 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             mediaPlayer.Volume = 1;//// (double)volumeSlider.Value;
             mediaPlayer.SpeedRatio = 1;// (double)speedRatioSlider.Value;
         }
+
+        #region Try to trim
+
+        public void TrimMp3(string inputPath, string outputPath, TimeSpan? begin, TimeSpan? end)
+        {
+            if (begin.HasValue && end.HasValue && begin > end)
+                throw new ArgumentOutOfRangeException("end", "end should be greater than begin");
+
+            using (var reader = new Mp3FileReader(inputPath))
+            using (var writer = File.Create(outputPath))
+            {
+                Mp3Frame frame;
+                while ((frame = reader.ReadNextFrame()) != null)
+                    if (reader.CurrentTime >= begin || !begin.HasValue)
+                    {
+                        if (reader.CurrentTime <= end || !end.HasValue)
+                            writer.Write(frame.RawData, 0, frame.RawData.Length);
+                        else break;
+                    }
+            }
+        }
+
+        //public void T+3625149+rimWavFile(string inPath, string outPath, TimeSpan cutFromStart, TimeSpan cutFromEnd)
+        //{
+        //    using (WaveFileReader reader = new WaveFileReader(inPath))
+        //    {
+        //        using (WaveFileWriter writer = new WaveFileWriter(outPath, reader.WaveFormat))
+        //        {
+        //            int bytesPerMillisecond = reader.WaveFormat.AverageBytesPerSecond / 1000;
+
+        //            int startPos = (int)cutFromStart.TotalMilliseconds * bytesPerMillisecond;
+        //            startPos = startPos - startPos % reader.WaveFormat.BlockAlign;
+
+        //            int endBytes = (int)cutFromEnd.TotalMilliseconds * bytesPerMillisecond;
+        //            endBytes = endBytes - endBytes % reader.WaveFormat.BlockAlign;
+        //            int endPos = (int)reader.Length - endBytes;
+
+        //            TrimWavFile(reader, writer, startPos, endPos);
+        //        }
+        //    }
+        //}
+
+        //private void TrimWavFile(WaveFileReader reader, WaveFileWriter writer, int startPos, int endPos)
+        //{
+        //    reader.Position = startPos;
+        //    byte[] buffer = new byte[1024];
+        //    while (reader.Position < endPos)
+        //    {
+        //        int bytesRequired = (int)(endPos - reader.Position);
+        //        if (bytesRequired > 0)
+        //        {
+        //            int bytesToRead = Math.Min(bytesRequired, buffer.Length);
+        //            int bytesRead = reader.Read(buffer, 0, bytesToRead);
+        //            if (bytesRead > 0)
+        //            {
+        //                writer.WriteData(buffer, 0, bytesRead);
+        //            }
+        //        }
+        //    }
+        //}
+
+        #endregion
+
 
         //play the media
 
