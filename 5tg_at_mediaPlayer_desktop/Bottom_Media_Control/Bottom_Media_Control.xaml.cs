@@ -1,6 +1,7 @@
 ﻿using _5tg_at_mediaPlayer_desktop.connection;
 using NAudio.Wave;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Windows;
@@ -208,6 +209,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             //TrimWavFile(path, path1, startTime, endTime);
             TrimMp3(path, path1, startTime, endTime);
             { }
+
             mediaPlayer.Open(musicPath);
             mediaPlayer.Play();
             TimeSpan trimTime = endTime.Subtract(startTime);
@@ -243,6 +245,34 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                         else break;
                     }
             }
+        }
+        List<PlaylistAudio> currentPlayList { get; set; }
+        int currentPlayListIndex { get; set; }
+
+        internal void AutoPlaySong(List<PlaylistAudio> autoPlaylist)
+        {
+            if (autoPlaylist.Count > 0) {
+                currentPlayList = autoPlaylist;
+                mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+                currentPlayListIndex = 0;
+                PlaylistAudio song1 = currentPlayList[currentPlayListIndex];
+                playSong(song1.track, song1.Name);
+                //mediaPlayer.MediaEnded
+            } }
+
+        private void MediaPlayer_MediaEnded(object sender, EventArgs e)
+        {
+            if (currentPlayList.Count > currentPlayListIndex)
+            {
+                currentPlayListIndex++;
+                PlaylistAudio song1 = currentPlayList[currentPlayListIndex];
+                playSong(song1.track, song1.Name);
+            }
+            else
+            {
+                mediaPlayer.MediaEnded -= MediaPlayer_MediaEnded;
+            }
+
         }
 
         //public void T+3625149+rimWavFile(string inPath, string outPath, TimeSpan cutFromStart, TimeSpan cutFromEnd)
