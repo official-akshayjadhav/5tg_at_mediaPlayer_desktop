@@ -1,35 +1,30 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace _5tg_at_mediaPlayer_desktop.Trim
+namespace _5tg_at_mediaPlayer_desktop.Fade_in_out
 {
     /// <summary>
-    /// Interaction logic for Trim.xaml
+    /// Interaction logic for Fade_in_out.xaml
     /// </summary>
-
-    public partial class Trim : UserControl
+    public partial class Fade_in_out : UserControl
     {
-        //double max_time_of_song = 5;
-        static double max_time_of_song=0;
-        
-
-        public Trim()
+        public Fade_in_out()
         {
             InitializeComponent();
-            end_text.Text = "0";
-            //max_slider.Maximum = 0;
         }
-
-        public Trim(string time) {
-
-            InitializeComponent();
-            max_time_of_song = double.Parse(time);
-            if (end_text != null)
-            {
-                max_slider.Maximum = max_time_of_song;
-                end_text.Text = max_time_of_song.ToString();
-            }
-        }
+        double max_time_of_song = 5;
 
         private void start_s_Click(object sender, RoutedEventArgs e)
         {
@@ -40,7 +35,8 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
                 start_text.Text = start_s1.ToString();
                 min_slider.Value = start_s1;
             }
-            else {
+            else
+            {
                 start_text.Text = "0";
                 min_slider.Value = 0;
             }
@@ -63,7 +59,8 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
         {
             double end_s1 = double.Parse(end_text.Text);
             double start_e1 = double.Parse(start_text.Text);
-            if (end_s1 > start_e1) {
+            if (end_s1 > start_e1)
+            {
                 end_s1 -= 1;
                 end_text.Text = end_s1.ToString();
                 max_slider.Value = end_s1;
@@ -106,7 +103,8 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
                     min_slider.Value = 0;
                 }
             }
-            catch {
+            catch
+            {
                 start_text.Text = "0";
             }
         }

@@ -9,7 +9,7 @@
              mc:Ignorable="d"
               x:Name="_this"
              d:DesignHeight="800" d:DesignWidth="800">
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <local:ValueToAngleConverter x:Key="ValueToAngleConverter"/>
     </UserControl.Resources>
     <Grid>
@@ -27,7 +27,7 @@
             <Path.Effect>
                 <DropShadowEffect ShadowDepth="2" BlurRadius="2" />
             </Path.Effect>
-        </Path>
-        
-    </Grid>
+        </Path>-->
+
+    <!--</Grid>-->
 </UserControl>

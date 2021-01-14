@@ -81,7 +81,7 @@
         <Grid>
 
             <Grid>
-                <Image Grid.Column="0" Grid.ColumnSpan="1" Margin="10" Source="Assets/home.jpg" Width="1265">
+                <Image Grid.Column="0" Grid.ColumnSpan="1" Margin="0" Source="Assets/home.jpg" Width="1350">
                     <Image.OpacityMask>
                         <LinearGradientBrush EndPoint=".5,1" StartPoint=".5,.1">
                             <GradientStop Color="Black" Offset="0"></GradientStop>
@@ -224,11 +224,11 @@
 
                             <DataGrid.Columns>
                                 <!--<DataGridTextColumn MinWidth="70" Width="*" Header="PID" x:Name="PID" Binding="{Binding PID}" ></DataGridTextColumn>-->
-                                <DataGridTextColumn MinWidth="70" Width="*" Header="AID" x:Name="AID" Binding="{Binding AID}" ></DataGridTextColumn>
+                                <DataGridTextColumn MinWidth="90" Width="*" Header="AID" x:Name="AID" Binding="{Binding AID}" ></DataGridTextColumn>
                                 <DataGridTextColumn MinWidth="150" Width="*" Header="AirTime" x:Name="AirTime" Binding="{Binding AirTime}" ></DataGridTextColumn>
-                                <DataGridTextColumn MinWidth="100" Width="*" Header="Name" x:Name="Name" Binding="{Binding Name}"></DataGridTextColumn>
-                                <DataGridTextColumn MinWidth="100" Width="*" Header="Duration" x:Name="Duration" Binding="{Binding Duration}" ></DataGridTextColumn>
-                                <DataGridTemplateColumn Header="Controls" MinWidth="100" Width="1*">
+                                <DataGridTextColumn MinWidth="200" Width="*" Header="Name" x:Name="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                                <DataGridTextColumn MinWidth="120" Width="*" Header="Duration" x:Name="Duration" Binding="{Binding Duration}" ></DataGridTextColumn>
+                                <DataGridTemplateColumn Header="Controls" MinWidth="120" Width="1*">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ComboBox Name="playlistSongEdit" SelectionChanged="PlaylistSongEdit_SelectionChanged" Tag="{Binding}">
@@ -240,7 +240,8 @@
                                                 </ComboBox.Resources>
                                                 <ComboBoxItem HorizontalContentAlignment="Center">Play</ComboBoxItem>
                                                 <ComboBoxItem HorizontalContentAlignment="Center">Delete</ComboBoxItem>
-                                                <ComboBoxItem HorizontalContentAlignment="Center">Update Sort ID</ComboBoxItem>
+                                                <!--<ComboBoxItem HorizontalContentAlignment="Center">Update Sort ID</ComboBoxItem>-->
+												<ComboBoxItem HorizontalContentAlignment="Center">Update</ComboBoxItem>
                                             </ComboBox>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -352,17 +353,17 @@
                         </DataGridTemplateColumn>
 
                         <DataGridTextColumn MinWidth="70" Width="1*" Header="UID" Binding="{Binding UID}"></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="180" Width="1*" Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="180" Width="1*" Header="FileName" Binding="{Binding FileName}"></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="70" Width="1*" Header="Filesize" Binding="{Binding Filesize}"></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="70" Width="1*" Header="Filetype" Binding="{Binding Filetype}"></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="180" Width="1*" Header="Filepath" Binding="{Binding Filepath}"></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="70" Width="1*" Header="Duration" Binding="{Binding Duration}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="250" Width="1*" Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="250" Width="1*" Header="FileName" Binding="{Binding FileName}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="100" Width="1*" Header="Filesize" Binding="{Binding Filesize}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="100" Width="1*" Header="Filetype" Binding="{Binding Filetype}"></DataGridTextColumn>
+                        <!--<DataGridTextColumn MinWidth="180" Width="1*" Header="Filepath" Binding="{Binding Filepath}"></DataGridTextColumn>-->
+                        <DataGridTextColumn MinWidth="100" Width="1*" Header="Duration" Binding="{Binding Duration}"></DataGridTextColumn>
 
-                        <DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_Start" Binding="{Binding Trim_Start}"></DataGridTextColumn>
-                        <DataGridTextColumn MinWidth="70" Width="1*" Header="Trim_End" Binding="{Binding Trim_End}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="100" Width="1*" Header="Trim_Start" Binding="{Binding Trim_Start}"></DataGridTextColumn>
+                        <DataGridTextColumn MinWidth="100" Width="1*" Header="Trim_End" Binding="{Binding Trim_End}"></DataGridTextColumn>
 
-                        <DataGridTemplateColumn  Header="Controls" x:Name="column_Edit1" MinWidth="100" Width="1*">
+                        <DataGridTemplateColumn  Header="Controls" x:Name="column_Edit1" MinWidth="180" Width="1*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <ComboBox Name="EditComboBox" Text="Action" SelectionChanged="ComboBox_SelectionChanged_1" Tag="{Binding}">
@@ -376,6 +377,7 @@
                                         <ComboBoxItem Content="Update" HorizontalContentAlignment="Center"></ComboBoxItem>
                                         <ComboBoxItem Content="Delete"  HorizontalContentAlignment="Center"></ComboBoxItem>
                                         <ComboBoxItem Content="Add to Playlist" HorizontalContentAlignment="Center"></ComboBoxItem>
+                                        <ComboBoxItem Content="Play" HorizontalContentAlignment="Center"></ComboBoxItem>
                                     </ComboBox>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -403,6 +405,8 @@
 			-->
                 </DataGrid>
 
+                <!--datagrid-->
+                
             </Grid>
         </Grid>
     

@@ -22,6 +22,8 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public static Bottom_Media_Control.Bottom_Media_Control bottom_Media_Control;
         public static string cartId;
 
+        public static bool allSongTrack = false;
+
         public static int pID;
         public static string playlistName;
 

@@ -15,8 +15,16 @@ namespace _5tg_at_mediaPlayer_desktop
         {
             InitializeComponent();
             playlist.Visibility = Visibility.Visible;
-           // allSongs.Visibility = Visibility.Visible;
+            // allSongs.Visibility = Visibility.Visible;
+               
         }
+
+         public void playSong(string trakString, string title)
+        {
+            mediacontrols.playSong(trakString, title);
+        }
+
+        public string SelectedPlayList { get; set; }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

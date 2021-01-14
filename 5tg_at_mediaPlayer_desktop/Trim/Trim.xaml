@@ -124,7 +124,7 @@
                 Minimum="0" Maximum="5" IsSelectionRangeEnabled="True"
                 TickPlacement="BottomRight" ValueChanged="min_slider_ValueChanged" />
             <Slider x:Name="max_slider" Margin="10,0,10,10" Foreground="Blue" VerticalAlignment="Bottom"
-                    Minimum="0" Maximum="5" IsSelectionRangeEnabled="True"
+                    Minimum="0" Maximum="50"
                     TickPlacement="TopLeft" ValueChanged="max_slider_ValueChanged"/>
         </Grid>
         <Grid
@@ -215,7 +215,7 @@
                     <TextBlock Grid.Column="0" FontSize="14" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Text="End:"></TextBlock>
                     <Button Name="end_s" Grid.Column="1" Content="-" Height="25" Width="40" FontSize="16" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" HorizontalAlignment="Right"
                    Foreground="White" Style="{DynamicResource RoundCorner}" Click="end_s_Click" />
-                    <TextBox x:Name="end_text" Grid.Column="2" Text="5" FontSize="14" TextAlignment="Center" Height="25" TextChanged="end_text_TextChanged" ></TextBox>
+                    <TextBox x:Name="end_text" Grid.Column="2" Text="" FontSize="14" TextAlignment="Center" Height="25" TextChanged="end_text_TextChanged" ></TextBox>
                     <Button Name="end_e" Grid.Column="3" Content="+" Height="25" Width="40" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left"
                    Foreground="White" Style="{DynamicResource RoundCorner}" Click="end_e_Click" />
                 </Grid>

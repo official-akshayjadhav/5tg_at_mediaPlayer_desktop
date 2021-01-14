@@ -1,5 +1,7 @@
 ﻿using _5tg_at_mediaPlayer_desktop.connection;
+using NAudio.Wave;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Windows;
@@ -38,7 +40,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         public Bottom_Media_Control()
         {
             InitializeComponent();
-            
+
             {
                 //Uri music = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
                 //Uri music = new Uri("D:\\MP3\\07_Rin_Rin_Ringa(256k).mp3");
@@ -139,16 +141,15 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                 }*/
             }
         }
-        public Bottom_Media_Control(String AID) 
+
+        public Bottom_Media_Control(String AID)
         {
             InitializeComponent();
             if (AID != null)
             {
                 //AID = Convert.ToInt32(AID);
-
-                string getfilepath = "Select filepath from Audio where ID =" + AID;
+                string getfilepath = "Select filepath,Title from Audio where ID =" + AID;
                 String songpath = Global_Log.connectionClass.getsongfilepath(getfilepath);
-
                 Uri music = new Uri(songpath);
                 mediaPlayer.Open(music);
                 //song.Text = music.ToString();
@@ -159,47 +160,162 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             }
             //InitializePropertyValues();
         }
-        public void PlayMediaFunction() {
+        public void PlayMediaFunction()
+        {
             mediaPlayer.Play();
             InitializePropertyValues();
         }
 
         public void playSong(string trakString, string title)
         {
+            mediaPlayer.Stop();
+
+            string rootFolder = @"D:\";
+            string authorsFile = "song.mp3";
+
+
+
+            if (File.Exists(Path.Combine(rootFolder, authorsFile)))
+                File.Delete(Path.Combine(rootFolder, authorsFile));
+            { }
+
             song.Text = title;
             string path = "D:\\song.mp3";
             Uri musicPath = new Uri("D:\\song.mp3");
             //String path = "C:\\Users\\shubh\\Desktop\\part time\\1st.mp3";
             //Uri musicPath = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
             byte[] songByte = Convert.FromBase64String(trakString);
-            mediaPlayer.Stop();
-            
+            File.Delete(path);
+            { }
+
+
             File.WriteAllBytes(path, songByte);
-            LoadSong(musicPath);
+            LoadSong(musicPath, path);
         }
 
-        private void LoadSong(Uri musicPath)
+        public void LoadSong(Uri musicPath, string path)
         {
-            mediaPlayer.Open(musicPath);
             mediaPlayer.Stop();
-            { }
-            mediaPlayer.Position = new TimeSpan(0, 1, 50);
+            mediaPlayer.Close();
+            //mediaPlayer.Open(musicPath);
+            //mediaPlayer.Position = new TimeSpan(0, 1, 50);
             TimeSpan startTime = new TimeSpan(0, 1, 50);
             TimeSpan endTime = new TimeSpan(0, 2, 10);
+            { }
+            string path1 = "D:\\trimSong.mp3";
+
+            Uri musicPath1 = new Uri("D:\\trimSong.mp3");
+
+            //TrimWavFile(path, path1, startTime, endTime);
+            TrimMp3(path, path1, startTime, endTime);
+            { }
+
+            mediaPlayer.Open(musicPath);
             mediaPlayer.Play();
             TimeSpan trimTime = endTime.Subtract(startTime);
-            Thread.Sleep(trimTime);
+            //Thread.Sleep(trimTime);
             mediaPlayer.Stop();
             { }
             MediaTimeline timeline = new MediaTimeline((new TimeSpan(0, 1, 5)), (new Duration(new TimeSpan(0, 0, 10))));
             //System.Windows.Media.MediaClock clock = timeline.CreateClock();           
             //mediaPlayer.Clock = clock;
-            
-            mediaPlayer.Play();
 
-            mediaPlayer.Volume = 0.3;//// (double)volumeSlider.Value;
+            mediaPlayer.Play();
+            { }
+            mediaPlayer.Volume = 1;//// (double)volumeSlider.Value;
             mediaPlayer.SpeedRatio = 1;// (double)speedRatioSlider.Value;
         }
+
+        #region Try to trim
+
+        public void TrimMp3(string inputPath, string outputPath, TimeSpan? begin, TimeSpan? end)
+        {
+            if (begin.HasValue && end.HasValue && begin > end)
+                throw new ArgumentOutOfRangeException("end", "end should be greater than begin");
+
+            using (var reader = new Mp3FileReader(inputPath))
+            using (var writer = File.Create(outputPath))
+            {
+                Mp3Frame frame;
+                while ((frame = reader.ReadNextFrame()) != null)
+                    if (reader.CurrentTime >= begin || !begin.HasValue)
+                    {
+                        if (reader.CurrentTime <= end || !end.HasValue)
+                            writer.Write(frame.RawData, 0, frame.RawData.Length);
+                        else break;
+                    }
+            }
+        }
+        List<PlaylistAudio> currentPlayList { get; set; }
+        int currentPlayListIndex { get; set; }
+
+        internal void AutoPlaySong(List<PlaylistAudio> autoPlaylist)
+        {
+            if (autoPlaylist.Count > 0) {
+                currentPlayList = autoPlaylist;
+                mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+                currentPlayListIndex = 0;
+                PlaylistAudio song1 = currentPlayList[currentPlayListIndex];
+                playSong(song1.track, song1.Name);
+                //mediaPlayer.MediaEnded
+            } }
+
+        private void MediaPlayer_MediaEnded(object sender, EventArgs e)
+        {
+            if (currentPlayList.Count > currentPlayListIndex)
+            {
+                currentPlayListIndex++;
+                PlaylistAudio song1 = currentPlayList[currentPlayListIndex];
+                playSong(song1.track, song1.Name);
+            }
+            else
+            {
+                mediaPlayer.MediaEnded -= MediaPlayer_MediaEnded;
+            }
+
+        }
+
+        //public void T+3625149+rimWavFile(string inPath, string outPath, TimeSpan cutFromStart, TimeSpan cutFromEnd)
+        //{
+        //    using (WaveFileReader reader = new WaveFileReader(inPath))
+        //    {
+        //        using (WaveFileWriter writer = new WaveFileWriter(outPath, reader.WaveFormat))
+        //        {
+        //            int bytesPerMillisecond = reader.WaveFormat.AverageBytesPerSecond / 1000;
+
+        //            int startPos = (int)cutFromStart.TotalMilliseconds * bytesPerMillisecond;
+        //            startPos = startPos - startPos % reader.WaveFormat.BlockAlign;
+
+        //            int endBytes = (int)cutFromEnd.TotalMilliseconds * bytesPerMillisecond;
+        //            endBytes = endBytes - endBytes % reader.WaveFormat.BlockAlign;
+        //            int endPos = (int)reader.Length - endBytes;
+
+        //            TrimWavFile(reader, writer, startPos, endPos);
+        //        }
+        //    }
+        //}
+
+        //private void TrimWavFile(WaveFileReader reader, WaveFileWriter writer, int startPos, int endPos)
+        //{
+        //    reader.Position = startPos;
+        //    byte[] buffer = new byte[1024];
+        //    while (reader.Position < endPos)
+        //    {
+        //        int bytesRequired = (int)(endPos - reader.Position);
+        //        if (bytesRequired > 0)
+        //        {
+        //            int bytesToRead = Math.Min(bytesRequired, buffer.Length);
+        //            int bytesRead = reader.Read(buffer, 0, bytesToRead);
+        //            if (bytesRead > 0)
+        //            {
+        //                writer.WriteData(buffer, 0, bytesRead);
+        //            }
+        //        }
+        //    }
+        //}
+
+        #endregion
+
 
         //play the media
 
@@ -248,7 +364,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         {
             //mediaPlayer.Volume = (double)volumeSlider.Value;
             //mediaPlayer.SpeedRatio = (double)speedRatioSlider.Value;
-           
+
         }
 
         private void MyMediaElement_MediaOpened(object sender, RoutedEventArgs e)
@@ -297,15 +413,11 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         }*/
 
 
-        private void PlayPreviousMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
         public void PlayMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             mediaPlayer.Play();
             InitializePropertyValues();
-            
+
         }
 
         private void PauseMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -318,9 +430,21 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             mediaPlayer.Stop();
         }
 
+        //public event OnNext (object sender);
         private void PlayNextMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            Playlist.Playlist playlist = new Playlist.Playlist();
+            playlist.nextSong();
 
+            //Global_Log.allSongTrack      = true;
+            //Global_Log.playlistSongTrack = true;
+        }
+        private void PlayPreviousMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Playlist.Playlist playlist = new Playlist.Playlist();
+            playlist.previousSong();
+
+            Global_Log.allSongTrack = true;
         }
 
         private void PlayRepeatMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

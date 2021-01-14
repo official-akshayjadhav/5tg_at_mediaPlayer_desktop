@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_5tg_at_mediaPlayer_desktop.Popup"
         xmlns:trim ="clr-namespace:_5tg_at_mediaPlayer_desktop.Trim"
+		xmlns:Fade ="clr-namespace:_5tg_at_mediaPlayer_desktop.Fade_in_out"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
@@ -74,66 +75,69 @@
 		</Style>
 
     </Window.Resources>
-   
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="10*"></RowDefinition>
-			<RowDefinition Height="70*"></RowDefinition>
-			<RowDefinition Height="10*"></RowDefinition>
-		</Grid.RowDefinitions>
 
-		<Grid Grid.Row="0" Background="#FFDCD9D9" >
-			<TextBlock Name="HeaderText" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold" />
-		</Grid>
-		<Grid Grid.Row="1" Background="White">
+	<ScrollViewer>
+		<Grid>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="25*"></RowDefinition>
+				<RowDefinition Height="10*"></RowDefinition>
+				<RowDefinition Height="70*"></RowDefinition>
 				<RowDefinition Height="20*"></RowDefinition>
-				<RowDefinition Height="20*"></RowDefinition>
-				<RowDefinition Height="20*"></RowDefinition>
-				<RowDefinition Height="20*"></RowDefinition>
-				<RowDefinition Height="20*"></RowDefinition>
-				<RowDefinition Height="20*"></RowDefinition>
-                <RowDefinition Height="280*"></RowDefinition>
-                <!--<RowDefinition Height="20*"></RowDefinition>
+				<RowDefinition Height="10*"></RowDefinition>
+			</Grid.RowDefinitions>
+
+			<Grid Grid.Row="0" Background="#FFDCD9D9" >
+				<TextBlock Name="HeaderText" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold" />
+			</Grid>
+			<Grid Grid.Row="1" Background="White">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="25*"></RowDefinition>
+					<RowDefinition Height="20*"></RowDefinition>
+					<RowDefinition Height="20*"></RowDefinition>
+					<RowDefinition Height="20*"></RowDefinition>
+					<RowDefinition Height="20*"></RowDefinition>
+					<RowDefinition Height="20*"></RowDefinition>
+					<RowDefinition Height="20*"></RowDefinition>
+					<RowDefinition Height="280*"></RowDefinition>
+					<RowDefinition Height="280*"></RowDefinition>
+					<!--<RowDefinition Height="20*"></RowDefinition>
                 <RowDefinition Height="20*"></RowDefinition>
                 <RowDefinition Height="30*"></RowDefinition>-->
-            </Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="10*"></ColumnDefinition>
-				<ColumnDefinition Width="15*"></ColumnDefinition>
-				<ColumnDefinition Width="45*"></ColumnDefinition>
-				<ColumnDefinition Width="10*"></ColumnDefinition>
-			</Grid.ColumnDefinitions>
-
-			<TextBlock Text="Song File : " Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-			<TextBlock Text="Song Name : " Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-			<TextBlock Text="File Type : " Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-			<TextBlock Text="File Size : " Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-			<TextBlock Text="Duration  : " Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-            
-            <TextBlock Text="Minimum: " Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-            <TextBlock Text="Maximum: " Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-
-            <TextBlock Text="Trim: " Grid.Row="7" Grid.Column="1" Margin="0,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" />
-
-            <Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
+				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="50*"></ColumnDefinition>
-					<ColumnDefinition Width="40*"></ColumnDefinition>
+					<ColumnDefinition Width="10*"></ColumnDefinition>
+					<ColumnDefinition Width="15*"></ColumnDefinition>
+					<ColumnDefinition Width="45*"></ColumnDefinition>
+					<ColumnDefinition Width="10*"></ColumnDefinition>
 				</Grid.ColumnDefinitions>
-				<TextBox Name="fileName" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" Width="240" HorizontalAlignment="Left" Margin="0,6,0,8"/>
-				<Button Name="Browse" Margin="270,6,0,4" Width="100" HorizontalAlignment="Left" Content="Browse" Foreground="White" HorizontalContentAlignment="Center"
+
+				<TextBlock Text="Song File : " Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+				<TextBlock Text="Song Name : " Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+				<TextBlock Text="File Type : " Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+				<TextBlock Text="File Size : " Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+				<TextBlock Text="Duration  : " Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+
+				<TextBlock Text="Minimum: " Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+				<TextBlock Text="Maximum: " Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+
+				<TextBlock Text="Trim: " Grid.Row="7" Grid.Column="1" Margin="0,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" />
+
+				<Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="50*"></ColumnDefinition>
+						<ColumnDefinition Width="40*"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<TextBox Name="fileName" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" Width="240" HorizontalAlignment="Left" Margin="0,6,0,8"/>
+					<Button Name="Browse" Margin="270,6,0,4" Width="100" HorizontalAlignment="Left" Content="Browse" Foreground="White" HorizontalContentAlignment="Center"
                         FontSize="15" Style="{DynamicResource RoundCorner}" Click="Browse_Click" Grid.ColumnSpan="2" />
-			</Grid>
-			<TextBox    IsEnabled="False" Width="240" Name="Song_Name"  Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-			<TextBlock  IsEnabled="False" Width="240" Name="File_Type"  Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-			<TextBlock  IsEnabled="False" Width="240" Name="File_Size"  Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-			<TextBlock  IsEnabled="False" Width="240" Name="Duration"   Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-			<TextBox    IsEnabled="False" Width="240" Name="Start_Time" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-			<TextBox    IsEnabled="False" Width="240" Name="End_Time"   Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
-            
-            <!--
+				</Grid>
+				<TextBox    IsEnabled="False" Width="240" Name="Song_Name"  Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+				<TextBlock  IsEnabled="False" Width="240" Name="File_Type"  Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+				<TextBlock  IsEnabled="False" Width="240" Name="File_Size"  Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+				<TextBlock  IsEnabled="False" Width="240" Name="Duration"   Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+				<TextBox    IsEnabled="False" Width="240" Name="Start_Time" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+				<TextBox    IsEnabled="False" Width="240" Name="End_Time"   Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" />
+
+				<!--
             <TextBox Grid.Row="5"  Width="200" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Min, RelativeSource={RelativeSource AncestorType=Window}}"/>
             <TextBox Grid.Row="6"  Width="200" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Max, RelativeSource={RelativeSource AncestorType=Window}}"/>
 
@@ -141,15 +145,29 @@
             <TextBox Grid.Row="8"  Width="200" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding End, RelativeSource={RelativeSource AncestorType=Window}}"/>
            -->
 
-            <Grid Grid.Row="7" Grid.Column="2">
-                <trim:Trim></trim:Trim>
-            </Grid>
-            
-        
-        </Grid>
-		<Grid Grid.Row="2" Background="#FFDCD9D9">
-			<Button Name="AddSong" Margin="20 0 20 0" Content="Upload Audio" Height="35" Width="300" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+				<Grid Grid.Row="7" Grid.Column="2">
+					<trim:Trim></trim:Trim>
+				</Grid>
+			</Grid>
+			<Grid Grid.Row="2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="10*"></ColumnDefinition>
+					<ColumnDefinition Width="15*"></ColumnDefinition>
+					<ColumnDefinition Width="45*"></ColumnDefinition>
+					<ColumnDefinition Width="10*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<TextBlock Text="Fade IN/OUT: " Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" />
+
+				<Grid Grid.Column="2">
+					<Fade:Fade_in_out></Fade:Fade_in_out>
+				</Grid>
+			</Grid>
+			<Grid Grid.Row="3" Background="#FFDCD9D9">
+				<Button Name="AddSong" Margin="20 0 20 0" Content="Upload Audio" Height="35" Width="300" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                    Foreground="White" Style="{DynamicResource RoundCorner}" Click="AddSong_Click" />
+			</Grid>
+			
 		</Grid>
-	</Grid>
+		
+	</ScrollViewer>
 </Window>
