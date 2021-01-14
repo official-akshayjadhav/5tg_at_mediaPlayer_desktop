@@ -665,7 +665,7 @@
                 <!---// Media Control//-->
                 <Grid
 					Grid.Row="3">
-                    <Media_Player:Bottom_Media_Control></Media_Player:Bottom_Media_Control>
+                    <Media_Player:Bottom_Media_Control x:Name = "mediacontrols"></Media_Player:Bottom_Media_Control>
                 </Grid>
             </Grid>
         </Grid>

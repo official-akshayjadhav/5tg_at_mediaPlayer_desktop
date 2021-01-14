@@ -107,7 +107,10 @@
 					<ComboBoxItem Content="Date added"></ComboBoxItem>
 
 				</ComboBox>-->
-			</Grid>
+                <Button Name="AutoPlay" Margin="20 0 20 0" Content="AutoPlay" Height="35" Width="150" FontSize="16" VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" Foreground="White" Style="{DynamicResource RoundCorner}"
+                        PreviewMouseLeftButtonDown="AutoPlay_PreviewMouseLeftButtonDown" />
+            </Grid>
 			
 			<Grid
 				Grid.Column="2">
@@ -134,7 +137,7 @@
 					  AlternatingRowBackground="Azure"
 					  AutoGenerateColumns="False"
 					  CanUserAddRows="False"
-                      CanUserResizeColumns="True"                      
+                      CanUserResizeColumns="True"
                       >
 
                 <DataGrid.Columns>

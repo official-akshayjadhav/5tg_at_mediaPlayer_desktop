@@ -26,9 +26,16 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
         }
 
         private void DateTme_Click(object sender, RoutedEventArgs e)
-        {           
-            String sch = DateTimePicker1.Value.ToString();   //("yyyy-MM-dd HH:mm:ss");           
-            string query = "update playlists set Schedule = '" + sch + "' where PID = " + Global_Log.pID + " and name = '" + Global_Log.playlistName + "'";
+        {
+            String sch = DateTimePicker1.Value.ToString();   //("yyyy-MM-dd HH:mm:ss");
+            DateTime dt = DateTimePicker1.Value.Value;
+            { }
+            string format = "yyyy-MM-dd HH:mm:ss";
+            string str = dt.ToString(format);
+            { }
+            //string query = "update playlists set Schedule = '" + sch + "' where PID = " + Global_Log.pID + " and name = '" + Global_Log.playlistName + "'";
+            string query = "update playlists set Schedule = '" + str + "' where PID = " + Global_Log.pID + " and name = '" + Global_Log.playlistName + "'";
+
             Global_Log.connectionClass.insertData(query);
 
             MessageBox.Show("Schedule Successfully Updated");
