@@ -44,7 +44,8 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                     DataRow dr = dt.Rows[i];
                     CheckBox chb = new CheckBox();
                     chb.Content = dr[1].ToString();
-                    stackpanal_Playlist.Children.Add(chb);
+                    //stackpanal_Playlist.Children.Add(chb);
+                    stackpanal_Playlist.Items.Add(chb);
                 }
             }
             catch (Exception ex)
@@ -53,7 +54,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
 
         private void AddPlaylist_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in stackpanal_Playlist.Children)
+            foreach (var item in stackpanal_Playlist.Items)
             {
                 CheckBox chk = (CheckBox)item;
                 if (chk.IsChecked == true)
