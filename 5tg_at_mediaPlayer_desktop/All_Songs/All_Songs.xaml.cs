@@ -283,7 +283,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
         private void timer_Tick(object sender, EventArgs e)
         {
             DateTime currentDateTime = DateTime.Now;
-            Console.WriteLine(currentDateTime.ToString() + " = " + autoplayTime.ToString());
+            //Console.WriteLine(currentDateTime.ToString() + " = " + autoplayTime.ToString());
             string curTime = currentDateTime.ToString();
             string AutoTime = autoplayTime.ToString();
 
