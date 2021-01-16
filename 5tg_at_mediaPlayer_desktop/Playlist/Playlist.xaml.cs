@@ -142,7 +142,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             {
                 ///query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
                 //query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
-                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track from Audio a inner join playlist p on " +
+                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track, a.trimStart, a.trimEnd from Audio a inner join playlist p on " +
                     "a.ID=p.AID inner join playlists ps on ps.PID = p.PID where p.PID =" + playlistID;
 
             }
@@ -151,7 +151,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 //query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
                 //query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
 
-                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID " +
+                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track, a.trimStart, a.trimEnd from Audio a inner join playlist p on a.ID " +
                     "= p.AID inner join playlists ps on ps.PID = p.PID where ps.name = '" + playlistName + "'";
 
             }
@@ -192,7 +192,9 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                         SortId = Sorts,
                         Name = dr[2].ToString(),
                         track = dr[4].ToString(),
-                        Duration = (TimeSpan)dr[3]
+                        Duration = (TimeSpan)dr[3],
+                        Trim_Start = (TimeSpan)dr[5],
+                        Trim_End = (TimeSpan)dr[6]
                     });
 
                     DateTime combined = date1.Add(time1);
@@ -245,7 +247,8 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                     {
                         Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                     }
-                    Global_Log.bottom_Media_Control.playSong(PlaylistAudio.track, PlaylistAudio.Name);
+                    Global_Log.bottom_Media_Control.playSong(PlaylistAudio.track, PlaylistAudio.Name,
+                        PlaylistAudio.Trim_Start, PlaylistAudio.Trim_End);
 
                 }
                 else if (currentOperation == "Delete")
@@ -393,7 +396,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 {
                     Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                 }
-                Global_Log.bottom_Media_Control.playSong(track1.Track, track1.Title);
+                Global_Log.bottom_Media_Control.playSong(track1.Track, track1.Title, track1.Trim_Start, track1.Trim_End);
             }
             else if (Global_Log.allSongTrack == false)
             {
@@ -410,7 +413,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 {
                     Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                 }
-                Global_Log.bottom_Media_Control.playSong(track.track, track.Name);
+                Global_Log.bottom_Media_Control.playSong(track.track, track.Name, track.Trim_Start, track.Trim_End);
             }
         }
 
@@ -429,33 +432,35 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 }
                 else
                 {
+                    if (selectedIndexValue == -1)
+                    {
+                        selectedIndexValue = playAllSong.Count - 1;
+                    }
                     track1 = playAllSong[selectedIndexValue];
                 }
                 if (Global_Log.bottom_Media_Control == null)
                 {
                     Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                 }
-                Global_Log.bottom_Media_Control.playSong(track1.Track, track1.Title);
+                Global_Log.bottom_Media_Control.playSong(track1.Track, track1.Title, track1.Trim_Start, track1.Trim_End);
             }
             else if (Global_Log.allSongTrack == false)
             {
+                selectedIndexValue -= 1;
+                if (selectedIndexValue >= plays.Count)
                 {
-                    selectedIndexValue -= 1;
-                    if (selectedIndexValue >= plays.Count)
-                    {
-                        track = plays[0];
-                    }
-                    else
-                    {
-                        track = plays[selectedIndexValue];
-                    }
-
-                    if (Global_Log.bottom_Media_Control == null)
-                    {
-                        Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
-                    }
-                    Global_Log.bottom_Media_Control.playSong(track.track, track.Name);
+                    track = plays[0];
                 }
+                else
+                {
+                    track = plays[selectedIndexValue];
+                }
+
+                if (Global_Log.bottom_Media_Control == null)
+                {
+                    Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+                }
+                Global_Log.bottom_Media_Control.playSong(track.track, track.Name, track.Trim_Start, track.Trim_End);
             }
         }
 
@@ -517,34 +522,37 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             try
             {
                 DataTable dt = Global_Log.playBack.getAllSong();
-
-                int count = dt.Rows.Count;
-                Audio info = new Audio();
-                for (int i = 0; i < count; i++)
+                if (dt != null)
                 {
-                    DataRow dr = dt.Rows[i];
-                    try
+                    int count = dt.Rows.Count;
+                    Audio info = new Audio();
+                    for (int i = 0; i < count; i++)
                     {
-                        audioList.Add(new Audio()
+                        DataRow dr = dt.Rows[i];
+                        try
                         {
-                            ID = Convert.ToInt32(dr.ItemArray[0]),
+                            audioList.Add(new Audio()
+                            {
+                                ID = Convert.ToInt32(dr.ItemArray[0]),
 
-                            UID = dr.ItemArray[1].ToString(),
-                            Title = dr.ItemArray[2].ToString(),
-                            FileName = dr.ItemArray[3].ToString(),
-                            Filesize = Convert.ToInt32(dr.ItemArray[4]),
-                            Filetype = dr.ItemArray[5].ToString(),
-                            Filepath = dr.ItemArray[6].ToString(),
-                            Duration = (TimeSpan)dr.ItemArray[7],
-                            Track = dr.ItemArray[8].ToString(),
-                            Trim_Start = (TimeSpan)dr.ItemArray[9],
-                            Trim_End = (TimeSpan)dr.ItemArray[10],
+                                UID = dr.ItemArray[1].ToString(),
+                                Title = dr.ItemArray[2].ToString(),
+                                FileName = dr.ItemArray[3].ToString(),
+                                Filesize = Convert.ToInt32(dr.ItemArray[4]),
+                                Filetype = dr.ItemArray[5].ToString(),
+                                Filepath = dr.ItemArray[6].ToString(),
+                                Duration = (TimeSpan)dr.ItemArray[7],
+                                Track = dr.ItemArray[8].ToString(),
+                                Trim_Start = (TimeSpan)dr.ItemArray[9],
+                                Trim_End = (TimeSpan)dr.ItemArray[10],
 
-                        });
-                    }
-                    catch (Exception ex)
-                    {
-                        Global_Log.EXC_WriteIn_LOGfile(ex.StackTrace);
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            Global_Log.EXC_WriteIn_LOGfile(ex.StackTrace);
+                        }
+
                     }
                 }
             }
@@ -626,7 +634,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                     {
                         Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                     }
-                    Global_Log.bottom_Media_Control.playSong(audio.Track, audio.Title);
+                    Global_Log.bottom_Media_Control.playSong(audio.Track, audio.Title, audio.Trim_Start, audio.Trim_End);
                 }
             }
             LoadAllSong();

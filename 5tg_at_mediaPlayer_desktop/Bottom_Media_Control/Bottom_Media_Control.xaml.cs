@@ -166,30 +166,33 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             InitializePropertyValues();
         }
 
-        public void playSong(string trakString, string title)
+        public void playSong(string trakString, string title, TimeSpan startTime, TimeSpan endSpan)
         {
             mediaPlayer.Stop();
 
             string rootFolder = @"D:\";
             string authorsFile = "song.mp3";
 
-
-
             if (File.Exists(Path.Combine(rootFolder, authorsFile)))
                 File.Delete(Path.Combine(rootFolder, authorsFile));
             { }
 
             song.Text = title;
+            string trimPath = "D:\\Tsong.mp3";
             string path = "D:\\song.mp3";
-            Uri musicPath = new Uri("D:\\song.mp3");
-            //String path = "C:\\Users\\shubh\\Desktop\\part time\\1st.mp3";
-            //Uri musicPath = new Uri("C:\\Users\\shubh\\Desktop\\part time\\1st.mp3");
+
+            
+
             byte[] songByte = Convert.FromBase64String(trakString);
+            File.Delete(trimPath);
             File.Delete(path);
+
+            File.WriteAllBytes(trimPath, songByte);
+
+            TrimMp3(trimPath, path, startTime, endSpan);
             { }
 
-
-            File.WriteAllBytes(path, songByte);
+            Uri musicPath = new Uri("D:\\song.mp3");
             LoadSong(musicPath, path);
         }
 
@@ -197,31 +200,10 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         {
             mediaPlayer.Stop();
             mediaPlayer.Close();
-            //mediaPlayer.Open(musicPath);
-            //mediaPlayer.Position = new TimeSpan(0, 1, 50);
-            TimeSpan startTime = new TimeSpan(0, 1, 50);
-            TimeSpan endTime = new TimeSpan(0, 2, 10);
-
-            string path1 = "D:\\trimSong.mp3";
-
-            Uri musicPath1 = new Uri("D:\\trimSong.mp3");
-
-            //TrimWavFile(path, path1, startTime, endTime);
-            //TrimMp3(path, path1, startTime, endTime);
-            { }
-
+            
             mediaPlayer.Open(musicPath);
             mediaPlayer.Play();
-            TimeSpan trimTime = endTime.Subtract(startTime);
-            //Thread.Sleep(trimTime);
-            mediaPlayer.Stop();
-            { }
-            MediaTimeline timeline = new MediaTimeline((new TimeSpan(0, 1, 5)), (new Duration(new TimeSpan(0, 0, 10))));
-            //System.Windows.Media.MediaClock clock = timeline.CreateClock();           
-            //mediaPlayer.Clock = clock;
 
-            mediaPlayer.Play();
-            { }
             mediaPlayer.Volume = 1;//// (double)volumeSlider.Value;
             mediaPlayer.SpeedRatio = 1;// (double)speedRatioSlider.Value;
         }
@@ -245,20 +227,21 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                         else break;
                     }
             }
-        } 
+        }
         List<PlaylistAudio> currentPlayList { get; set; }
         int currentPlayListIndex { get; set; }
 
         internal void AutoPlaySong(List<PlaylistAudio> autoPlaylist)
         {
-            if (autoPlaylist.Count > 0) {
+            if (autoPlaylist.Count > 0)
+            {
                 currentPlayList = autoPlaylist;
                 mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
                 currentPlayListIndex = 0;
                 PlaylistAudio song1 = currentPlayList[currentPlayListIndex];
-                playSong(song1.track, song1.Name);
-                //mediaPlayer.MediaEnded
-            } }
+                playSong(song1.track, song1.Name, song1.Trim_Start, song1.Trim_End);
+            }
+        }
 
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
         {
@@ -266,7 +249,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             {
                 currentPlayListIndex++;
                 PlaylistAudio song1 = currentPlayList[currentPlayListIndex];
-                playSong(song1.track, song1.Name);
+                playSong(song1.track, song1.Name, song1.Trim_Start, song1.Trim_End);
             }
             else
             {

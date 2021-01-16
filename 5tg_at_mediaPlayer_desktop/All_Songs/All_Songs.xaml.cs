@@ -83,34 +83,39 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
             try
             {
                 DataTable dt = Global_Log.playBack.getAllSong();
-
-                int count = dt.Rows.Count;
-                Audio info = new Audio();
-                for (int i = 0; i < count; i++)
+                if (dt != null)
                 {
-                    DataRow dr = dt.Rows[i];
-                    try
+                    int count = dt.Rows.Count;
+                    if (count != 0)
                     {
-                        audioList.Add(new Audio()
+                        Audio info = new Audio();
+                        for (int i = 0; i < count; i++)
                         {
-                            ID = Convert.ToInt32(dr.ItemArray[0]),
+                            DataRow dr = dt.Rows[i];
+                            try
+                            {
+                                audioList.Add(new Audio()
+                                {
+                                    ID = Convert.ToInt32(dr.ItemArray[0]),
 
-                            UID = dr.ItemArray[1].ToString(),
-                            Title = dr.ItemArray[2].ToString(),
-                            FileName = dr.ItemArray[3].ToString(),
-                            Filesize = Convert.ToInt32(dr.ItemArray[4]),
-                            Filetype = dr.ItemArray[5].ToString(),
-                            Filepath = dr.ItemArray[6].ToString(),
-                            Duration = (TimeSpan)dr.ItemArray[7],
-                            Track = dr.ItemArray[8].ToString(),
-                            Trim_Start = (TimeSpan)dr.ItemArray[9],
-                            Trim_End = (TimeSpan)dr.ItemArray[10],
+                                    UID = dr.ItemArray[1].ToString(),
+                                    Title = dr.ItemArray[2].ToString(),
+                                    FileName = dr.ItemArray[3].ToString(),
+                                    Filesize = Convert.ToInt32(dr.ItemArray[4]),
+                                    Filetype = dr.ItemArray[5].ToString(),
+                                    Filepath = dr.ItemArray[6].ToString(),
+                                    Duration = (TimeSpan)dr.ItemArray[7],
+                                    Track = dr.ItemArray[8].ToString(),
+                                    Trim_Start = (TimeSpan)dr.ItemArray[9],
+                                    Trim_End = (TimeSpan)dr.ItemArray[10],
 
-                        });
-                    }
-                    catch (Exception ex)
-                    {
-                        Global_Log.EXC_WriteIn_LOGfile(ex.StackTrace);
+                                });
+                            }
+                            catch (Exception ex)
+                            {
+                                Global_Log.EXC_WriteIn_LOGfile(ex.StackTrace);
+                            }
+                        }
                     }
                 }
             }
@@ -187,7 +192,8 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                     {
                         Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                     }
-                    Global_Log.bottom_Media_Control.playSong(Global_Log.audio.Track, Global_Log.audio.Title);
+                    Global_Log.bottom_Media_Control.playSong(Global_Log.audio.Track, Global_Log.audio.Title,
+                        Global_Log.audio.Trim_Start, Global_Log.audio.Trim_End);
 
                 }
             }
@@ -230,8 +236,8 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                     int currentPlaylistID = Convert.ToInt32(dr.ItemArray[0]);
                     autoplayTime = (DateTime)dr.ItemArray[1];
                     { }
-                    query = "select p.PID,p.AID,a.Title,a.track,a.duration from playlist p join audio a on p.AID=a.ID where " +
-                        "PID = " + currentPlaylistID + " and AID is not null";
+                    query = "select p.PID,p.AID, a.Title, a.track, a.duration, a.trimStart, a.trimEnd from playlist p join audio a on " +
+                        "p.AID=a.ID where PID = " + currentPlaylistID + " and AID is not null";
                     { }
                     dt = Global_Log.connectionClass.retriveData(query, "playlist");
                     { }
@@ -252,6 +258,8 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                                     Name = dr.ItemArray[2].ToString(),
                                     track = dr.ItemArray[3].ToString(),
                                     Duration = (TimeSpan)dr.ItemArray[4],
+                                    Trim_Start = (TimeSpan)dr.ItemArray[5],
+                                    Trim_End = (TimeSpan)dr.ItemArray[6],
                                     AirTime = "",
                                     SortId = 0
                                 });
@@ -288,7 +296,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                 }
                 Global_Log.bottom_Media_Control.AutoPlaySong(autoPlaylist);
             }
-            
+
 
         }
     }

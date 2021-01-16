@@ -60,6 +60,8 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public string Name { get; set; }
         public string track { get; set; }
         public TimeSpan Duration { get; set; }
+        public TimeSpan Trim_Start { get; set; }
+        public TimeSpan Trim_End { get; set; }
     }
 
     public class AudioIE
