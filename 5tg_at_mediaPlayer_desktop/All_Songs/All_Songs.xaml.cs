@@ -222,55 +222,64 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
             { }
             if (dt != null)
             {
-                DataRow dr = dt.Rows[0];
-                { }
-
-                int currentPlaylistID = Convert.ToInt32(dr.ItemArray[0]);
-                autoplayTime = (DateTime)dr.ItemArray[1];
-                { }
-                query = "select p.PID,p.AID,a.Title,a.track,a.duration from playlist p join audio a on p.AID=a.ID where " +
-                    "PID = " + currentPlaylistID + " and AID is not null";
-                { }
-                dt = Global_Log.connectionClass.retriveData(query, "playlist");
-                { }
-                if (dt != null)
+                if (dt.Rows.Count != 0)
                 {
-                    autoPlaylist = new List<PlaylistAudio>();
+                    DataRow dr = dt.Rows[0];
+                    { }
 
-                    int count = dt.Rows.Count;
-                    for (int i = 0; i < count; i++)
+                    int currentPlaylistID = Convert.ToInt32(dr.ItemArray[0]);
+                    autoplayTime = (DateTime)dr.ItemArray[1];
+                    { }
+                    query = "select p.PID,p.AID,a.Title,a.track,a.duration from playlist p join audio a on p.AID=a.ID where " +
+                        "PID = " + currentPlaylistID + " and AID is not null";
+                    { }
+                    dt = Global_Log.connectionClass.retriveData(query, "playlist");
+                    { }
+                    if (dt != null)
                     {
-                        dr = dt.Rows[i];
-                        try
+                        autoPlaylist = new List<PlaylistAudio>();
+
+                        int count = dt.Rows.Count;
+                        for (int i = 0; i < count; i++)
                         {
-                            autoPlaylist.Add(new PlaylistAudio()
+                            dr = dt.Rows[i];
+                            try
                             {
-                                PID = Convert.ToInt32(dr.ItemArray[0]),
-                                AID = Convert.ToInt32(dr.ItemArray[0]),
-                                Name = dr.ItemArray[2].ToString(),
-                                track = dr.ItemArray[3].ToString(),
-                                Duration = (TimeSpan)dr.ItemArray[4],
-                                AirTime = "",
-                                SortId = 0
-                            });
+                                autoPlaylist.Add(new PlaylistAudio()
+                                {
+                                    PID = Convert.ToInt32(dr.ItemArray[0]),
+                                    AID = Convert.ToInt32(dr.ItemArray[0]),
+                                    Name = dr.ItemArray[2].ToString(),
+                                    track = dr.ItemArray[3].ToString(),
+                                    Duration = (TimeSpan)dr.ItemArray[4],
+                                    AirTime = "",
+                                    SortId = 0
+                                });
+                            }
+                            catch (Exception ex)
+                            { }
                         }
-                        catch (Exception ex)
-                        { }
                     }
+                    autoPlay.IsEnabled = true;
+                    autoPlay.Interval = TimeSpan.FromMilliseconds(1);
+                    autoPlay.Tick += timer_Tick;
+                    autoPlay.Start();
+                }
+                else
+                {
+                    MessageBox.Show("No Schedule Records");
                 }
             }
-
-            autoPlay.IsEnabled = true;
-            autoPlay.Interval = TimeSpan.FromMilliseconds(250);
-            autoPlay.Tick += timer_Tick;
-            autoPlay.Start();
-
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             DateTime currentDateTime = DateTime.Now;
-            if (currentDateTime == autoplayTime)
+            Console.WriteLine(currentDateTime.ToString() + " = " + autoplayTime.ToString());
+            string curTime = currentDateTime.ToString();
+            string AutoTime = autoplayTime.ToString();
+
+            if (curTime == AutoTime)
             {
                 autoPlay.IsEnabled = false;
                 if (Global_Log.bottom_Media_Control == null)

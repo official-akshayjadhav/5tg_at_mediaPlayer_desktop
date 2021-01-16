@@ -36,10 +36,16 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
             //string query = "update playlists set Schedule = '" + sch + "' where PID = " + Global_Log.pID + " and name = '" + Global_Log.playlistName + "'";
             string query = "update playlists set Schedule = '" + str + "' where PID = " + Global_Log.pID + " and name = '" + Global_Log.playlistName + "'";
 
-            Global_Log.connectionClass.insertData(query);
-
-            MessageBox.Show("Schedule Successfully Updated");
-            this.Close();
+            int count = Global_Log.connectionClass.insertData(query);
+            if (count == 0)
+            {
+                MessageBox.Show("Please ReSchedule");
+            }
+            else
+            {
+                MessageBox.Show("Schedule Successfully Updated");
+                this.Close();
+            }
         }
     }
 }

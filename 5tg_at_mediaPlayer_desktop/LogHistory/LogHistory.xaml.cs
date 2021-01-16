@@ -66,6 +66,7 @@ namespace _5tg_at_mediaPlayer_desktop.LogHistory
                         Duration = TimeSpan.Parse(fields[5])                        
                     });
                 }
+
             }
         }
 
@@ -103,21 +104,6 @@ namespace _5tg_at_mediaPlayer_desktop.LogHistory
                 csv.WriteRecords(writeCsvData);
             }
 
-            //    string strSeperator = ",";
-            //StringBuilder sbOutput = new StringBuilder();
-
-            //for (int i = 0; i < dt.Rows.Count; i++)
-            //{
-            //    string s0 = writeCsvData[i].LogID.ToString();
-            //    string s1 = writeCsvData[i].AirTime.ToString();
-            //    string s2 = writeCsvData[i].UID.ToString();
-            //    string s3 = writeCsvData[i].Title.ToString();
-            //    string s4 = writeCsvData[i].Duration.ToString();
-            //    string s5 = writeCsvData[i].PlaylistName.ToString();
-
-            //    String s = s0 + s1 + "," + s2 + "," + s3 + "," + s4 + "," + s5 + Environment.NewLine;
-            //    File.AppendAllText(strFilePath, s);
-            //}
             MessageBox.Show("All Songs Export");
         }
 

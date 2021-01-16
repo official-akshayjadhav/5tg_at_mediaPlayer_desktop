@@ -201,13 +201,13 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             //mediaPlayer.Position = new TimeSpan(0, 1, 50);
             TimeSpan startTime = new TimeSpan(0, 1, 50);
             TimeSpan endTime = new TimeSpan(0, 2, 10);
-            { }
+
             string path1 = "D:\\trimSong.mp3";
 
             Uri musicPath1 = new Uri("D:\\trimSong.mp3");
 
             //TrimWavFile(path, path1, startTime, endTime);
-            TrimMp3(path, path1, startTime, endTime);
+            //TrimMp3(path, path1, startTime, endTime);
             { }
 
             mediaPlayer.Open(musicPath);
@@ -245,7 +245,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                         else break;
                     }
             }
-        }
+        } 
         List<PlaylistAudio> currentPlayList { get; set; }
         int currentPlayListIndex { get; set; }
 
