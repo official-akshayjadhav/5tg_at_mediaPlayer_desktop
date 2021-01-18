@@ -222,7 +222,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
 
         private void AutoPlay_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            string query = "select top 1 PID,Schedule from playlists where Schedule >= GETDATE() order by Schedule desc";
+            string query = "select top 1 PID, name ,Schedule from playlists where Schedule >= GETDATE() order by Schedule desc";
 
             DataTable dt = Global_Log.connectionClass.retriveData(query, "playlist");
             { }
@@ -234,7 +234,8 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                     { }
 
                     int currentPlaylistID = Convert.ToInt32(dr.ItemArray[0]);
-                    autoplayTime = (DateTime)dr.ItemArray[1];
+                    string autoplayName = dr.ItemArray[1].ToString();
+                    autoplayTime = (DateTime)dr.ItemArray[2];
                     { }
                     query = "select p.PID,p.AID, a.Title, a.track, a.duration, a.trimStart, a.trimEnd from playlist p join audio a on " +
                         "p.AID=a.ID where PID = " + currentPlaylistID + " and AID is not null";
@@ -272,6 +273,9 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                     autoPlay.Interval = TimeSpan.FromMilliseconds(1);
                     autoPlay.Tick += timer_Tick;
                     autoPlay.Start();
+
+                    
+                    MessageBox.Show(autoplayName + " Records is Schedule");
                 }
                 else
                 {

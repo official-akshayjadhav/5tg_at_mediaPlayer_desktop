@@ -180,7 +180,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             string trimPath = "D:\\Tsong.mp3";
             string path = "D:\\song.mp3";
 
-            
+
 
             byte[] songByte = Convert.FromBase64String(trakString);
             File.Delete(trimPath);
@@ -199,7 +199,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         {
             mediaPlayer.Stop();
             mediaPlayer.Close();
-            
+
             mediaPlayer.Open(musicPath);
             mediaPlayer.Play();
 
@@ -226,9 +226,11 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                         else break;
                     }
             }
-        }   
+        }
         List<PlaylistAudio> currentPlayList { get; set; }
         int currentPlayListIndex { get; set; }
+
+        public static DispatcherTimer autoPlayTick = new DispatcherTimer();
 
         internal void AutoPlaySong(List<PlaylistAudio> autoPlaylist)
         {
@@ -236,11 +238,20 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             {
                 currentPlayList = autoPlaylist;
                 mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-                currentPlayListIndex = 0;
+                currentPlayListIndex = 0;                
                 PlaylistAudio song1 = currentPlayList[currentPlayListIndex];
+                autoplaySongTime_Sec = 0;
+                getTimeInSec(song1.Duration);                
+                
                 playSong(song1.track, song1.Name, song1.Trim_Start, song1.Trim_End);
+                autoPlayTick.IsEnabled = true;
+                autoPlayTick.Interval = TimeSpan.FromSeconds(autoplaySongTime_Sec);
+                autoPlayTick.Tick += autoPlay_Timer_Tick;
+                autoPlayTick.Start();
+
             }
         }
+
 
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
         {
@@ -248,13 +259,40 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             {
                 currentPlayListIndex++;
                 PlaylistAudio song1 = currentPlayList[currentPlayListIndex];
+                autoplaySongTime_Sec = 0;
+                getTimeInSec(song1.Duration);
                 playSong(song1.track, song1.Name, song1.Trim_Start, song1.Trim_End);
+
+                autoPlayTick.IsEnabled = true;
+                autoPlayTick.Interval = TimeSpan.FromSeconds(autoplaySongTime_Sec);
+                autoPlayTick.Tick += autoPlay_Timer_Tick;
+                autoPlayTick.Start();
             }
             else
             {
                 mediaPlayer.MediaEnded -= MediaPlayer_MediaEnded;
             }
+        }
 
+        public static FM.FM_Custom fM_Custom;
+        public static double autoplaySongTime_Sec = 0;
+        public static int i = 0;
+
+
+        private void getTimeInSec(TimeSpan duration)
+        {
+            autoplaySongTime_Sec = duration.TotalSeconds / 100;
+        }
+
+        
+        private void autoPlay_Timer_Tick(object sender, EventArgs e)
+        {
+            if (fM_Custom == null)
+            {
+                fM_Custom = new FM.FM_Custom();
+            }
+
+            fM_Custom.loadProgressBar(i++);
         }
 
         //public void T+3625149+rimWavFile(string inPath, string outPath, TimeSpan cutFromStart, TimeSpan cutFromEnd)

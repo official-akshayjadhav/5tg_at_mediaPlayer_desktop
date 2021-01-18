@@ -22,9 +22,25 @@ namespace _5tg_at_mediaPlayer_desktop.FM
             //    circulare_ProgressBar.Value = i;
             //}
 
-            progress_value.Text = "10";
-            circulare_ProgressBar.Value = 25;
+            //progress_value.Text = "10";
+            //circulare_ProgressBar.Value = 25;
         }
+
+
+        public void loadProgressBar(int i)
+        {
+            if (i <= 100)
+            {
+                int value = i++;
+                progress_value.Text = value.ToString() + " %";
+                circulare_ProgressBar.Value = value;
+            }
+
+
+        }
+
+
+
 
         private void Live_assist_Click(object sender, RoutedEventArgs e)
         {
