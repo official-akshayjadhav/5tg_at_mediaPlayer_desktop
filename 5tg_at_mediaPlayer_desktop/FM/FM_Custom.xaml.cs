@@ -15,6 +15,17 @@ namespace _5tg_at_mediaPlayer_desktop.FM
             //Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 6 });
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //for (int i = 0; i <= 100; i++)
+            //{
+            //    circulare_ProgressBar.Value = i;
+            //}
+
+            progress_value.Text = "10";
+            circulare_ProgressBar.Value = 25;
+        }
+
         private void Live_assist_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();

@@ -7,7 +7,7 @@
         xmlns:progress_bar="clr-namespace:_5tg_at_mediaPlayer_desktop.FM.Progress_bar"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="FM_Custom" Height="512.5" Width="798.5">
+        Title="FM_Custom" Height="512.5" Width="798.5" Loaded="Window_Loaded">
 
     <Window.Resources>
         <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
@@ -277,7 +277,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="1" Grid.Column="1">
-                    <progress_bar:Progress_Bar HorizontalAlignment="Center" Value="100" VerticalAlignment="Center" BackgroundBrush="#89ff8f" IndicatorBrush="#00ff08">
+                    <progress_bar:Progress_Bar x:Name="circulare_ProgressBar" HorizontalAlignment="Center"  VerticalAlignment="Center" BackgroundBrush="#89ff8f" IndicatorBrush="#00ff08">
                         <progress_bar:Progress_Bar.ProgressBorderBrush>
                             <RadialGradientBrush>
                                 <GradientStop Color="#89ff8f"/>
@@ -287,7 +287,7 @@
                             </RadialGradientBrush>
                         </progress_bar:Progress_Bar.ProgressBorderBrush>
                     </progress_bar:Progress_Bar>
-                    <TextBlock x:Name="progress_value" Margin="3,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="30" FontWeight="DemiBold">50%</TextBlock>
+                    <TextBlock x:Name="progress_value" Margin="3,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="30" FontWeight="DemiBold"></TextBlock>
                 </Grid>
                 <Grid Grid.Row="2" Grid.Column="1">
                     <TextBlock Text="REMAINING Time 3:35" Foreground="White" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>

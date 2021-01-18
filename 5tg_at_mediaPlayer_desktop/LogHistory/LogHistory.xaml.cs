@@ -63,10 +63,51 @@ namespace _5tg_at_mediaPlayer_desktop.LogHistory
                         AirTime = fields[2],
                         Title = fields[3],
                         PlaylistName = fields[4],
-                        Duration = TimeSpan.Parse(fields[5])                        
+                        Duration = TimeSpan.Parse(fields[5])
                     });
                 }
+            }
 
+            if (writeCsvData.Count != 0)
+            {
+                foreach (Log log in writeCsvData)
+                {
+                    int logID = log.LogID;
+                    logID = 10;
+                    string logAirTime = log.AirTime;
+                    { }
+                    string updateLogTime = "update logs set LogTime = '" + logAirTime + "' where LID = " + logID;
+                    int returnLogID = Global_Log.connectionClass.insertData(updateLogTime);
+                    { }
+
+                    string query_GetPID = "select PID from playlists where name = '" + log.PlaylistName + "'";
+                    DataTable dt = Global_Log.connectionClass.retriveData(query_GetPID, "playlists");
+                    DataRow dr = dt.Rows[0];
+                    int log_PID = Convert.ToInt32(dr[0]);
+                    { }
+                    //string query_GetAID = "select * from Audio where UID = '" + log.CartId + "'";
+                    string query_GetAID = "select * from Audio where UID = " + 000;
+                    dt = Global_Log.connectionClass.retriveData(query_GetAID, "Audio");
+                    dr = dt.Rows[0];
+                    int log_AID = Convert.ToInt32(dr[0]);
+                    { }
+
+                    if (returnLogID == 0) //New Entry
+                    {
+                        //string query_SetLog = "insert into Logs(LID, LogTime, AID, PID)values(" + log.LogID + ",'" + log.AirTime + "'," + log_PID + "," + log_AID + ")";
+                        string query_SetLog = "insert into Logs( LogTime, AID, PID)values('" + log.AirTime + "'," + log_AID + "," + log_PID + ")";
+                        int cnt = Global_Log.connectionClass.insertData(query_SetLog);
+                        { }
+                    }
+                    else //Update
+                    {
+                        string query = "update Audio set Title = '" + log.Title + "'  where UID = " + log_AID;
+                        int cnt = Global_Log.connectionClass.insertData(query);
+
+                        query = "update playlists set name = '" + log.PlaylistName + "' where pid = " + log_PID;
+                        cnt = Global_Log.connectionClass.insertData(query);
+                    }
+                }
             }
         }
 

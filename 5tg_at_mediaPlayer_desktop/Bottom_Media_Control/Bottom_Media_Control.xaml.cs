@@ -10,7 +10,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-
 namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
 {
     /// <summary>
@@ -227,7 +226,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                         else break;
                     }
             }
-        }
+        }   
         List<PlaylistAudio> currentPlayList { get; set; }
         int currentPlayListIndex { get; set; }
 
