@@ -114,6 +114,7 @@
                     <DataGridTextColumn MinWidth="250" Header="PID" Binding="{Binding PID}" Width="2*"></DataGridTextColumn>
                     <DataGridTextColumn MinWidth="300" Header="Name" Binding="{Binding Name}" Width="2*"></DataGridTextColumn>
                     <DataGridTextColumn MinWidth="250" Header="Total Songs" Binding="{Binding TotalSong}" Width="2*"></DataGridTextColumn>
+                    <DataGridTextColumn MinWidth="250" Header="Schedule Date" Binding="{Binding Schedule}" Width="2*"></DataGridTextColumn>
                     <DataGridTextColumn MinWidth="250" Header="Date Created" Binding="{Binding Date}" Width="2*"></DataGridTextColumn>
                     <DataGridTemplateColumn Header="Controls" x:Name="column_Edit" MinWidth="180" Width="1*">
                         <DataGridTemplateColumn.CellTemplate>

@@ -191,9 +191,17 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             TrimMp3(trimPath, path, startTime, endSpan);
             { }
 
+            songDuration = Convert.ToInt32(endSpan.TotalSeconds);
+            { }
+
             Uri musicPath = new Uri("D:\\song.mp3");
             LoadSong(musicPath, path);
         }
+
+        public static double vol = 0.1;
+        public static bool volDown = false;
+        public static DispatcherTimer autoVolumeIncrement = new DispatcherTimer();
+        public static int songDuration;
 
         public void LoadSong(Uri musicPath, string path)
         {
@@ -203,8 +211,44 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             mediaPlayer.Open(musicPath);
             mediaPlayer.Play();
 
-            mediaPlayer.Volume = 1;//// (double)volumeSlider.Value;
+            //songDuration = mediaPlayer.NaturalDuration.TimeSpan.Seconds;
+            volDown = false;
+            songDuration -= 30;
+            { }
+            mediaPlayer.Volume = 0.1;
+            autoVolumeIncrement.IsEnabled = true;
+            autoVolumeIncrement.Interval = TimeSpan.FromSeconds(3);
+            autoVolumeIncrement.Tick += autoVolumeIncrement_Tick;
+            autoVolumeIncrement.Start();
+
+            //mediaPlayer.Volume = 1;//// (double)volumeSlider.Value;
             mediaPlayer.SpeedRatio = 1;// (double)speedRatioSlider.Value;
+        }
+
+        private void autoVolumeIncrement_Tick(object sender, EventArgs e)
+        {
+            if (volDown == false)
+            {
+                if (mediaPlayer.Volume == 1.0)
+                {
+                    autoVolumeIncrement.IsEnabled = false;
+                }
+                else
+                {
+                    mediaPlayer.Volume += 0.1;
+                }
+            }
+            else
+            {
+                if (mediaPlayer.Volume == 0)
+                {
+                    autoVolumeIncrement.IsEnabled = false;
+                }
+                else
+                {
+                    mediaPlayer.Volume -= 0.1;
+                }
+            }
         }
 
         #region Try to trim
@@ -231,6 +275,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         int currentPlayListIndex { get; set; }
 
         public static DispatcherTimer autoPlayTick = new DispatcherTimer();
+        
 
         internal void AutoPlaySong(List<PlaylistAudio> autoPlaylist)
         {
@@ -400,6 +445,22 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         private void SliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             lblProgressStatus.Text = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"hh\:mm\:ss");
+            //autoVolumeIncrement.IsEnabled = false;
+            { }
+            int currentTime = Convert.ToInt32((TimeSpan.FromSeconds(sliProgress.Value)).TotalSeconds);
+            //TimeSpan ts = mediaPlayer.
+            { }
+            //if(songDuration = )   songDuration = endSpan.TotalSeconds;
+            Console.WriteLine(currentTime.ToString());
+            if(songDuration == currentTime)
+            {
+                volDown = true;
+                autoVolumeIncrement.IsEnabled = true;
+                autoVolumeIncrement.Interval = TimeSpan.FromSeconds(1);
+            }
+
+
+
         }
 
         private void SliProgress_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)

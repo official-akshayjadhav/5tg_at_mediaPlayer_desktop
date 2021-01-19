@@ -43,9 +43,14 @@ namespace _5tg_at_mediaPlayer_desktop.All_Playlist
                 {
                     Global_Log.connectionClass = new ConnectionClass();
                 }
-                DataTable dt = Global_Log.connectionClass.retriveData("select PID,name,CAST(createdDate as date), TotalSong from playlists", "playlists");
+                //DataTable dt = Global_Log.connectionClass.retriveData("select PID,name,CAST(createdDate as date), TotalSong from playlists", "playlists");
 
-                int count = dt.Rows.Count;
+                string query = "select PID, name, CAST(createdDate as date), TotalSong, Schedule from playlists";
+
+                DataTable dt = Global_Log.connectionClass.retriveData(query, "playlists");
+                
+  
+                  int count = dt.Rows.Count;
                 Playlists playlists = new Playlists();
                 for (int i = 0; i < count; i++)
                 {
@@ -57,8 +62,9 @@ namespace _5tg_at_mediaPlayer_desktop.All_Playlist
                             PID = Convert.ToInt32(dr.ItemArray[0]),
                             Name = dr.ItemArray[1].ToString(),
                             Date = dr.ItemArray[2].ToString(),
-                            TotalSong = Convert.ToInt32(dr.ItemArray[3])
-                        });
+                            TotalSong = Convert.ToInt32(dr.ItemArray[3]),
+                            Schedule = dr.ItemArray[4].ToString()
+                        }) ;
                     }
                     catch (Exception ex)
                     { }

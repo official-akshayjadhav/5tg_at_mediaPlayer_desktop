@@ -283,7 +283,7 @@
                                 <GradientStop Color="#89ff8f"/>
                                 <GradientStop Color="Black" Offset="0.889"/>
                                 <!--<GradientStop Color="#89ff8f" Offset="1"/>-->
-								<!--<GradientStop Color="#89ff8f" Offset="1"/>-->
+                                <!--<GradientStop Color="#89ff8f" Offset="1"/>-->
                             </RadialGradientBrush>
                         </progress_bar:Progress_Bar.ProgressBorderBrush>
                     </progress_bar:Progress_Bar>
@@ -309,86 +309,89 @@
                     <TextBlock Text="#local: Station Promo - Remote Saturday! :60" Margin="0,130,0,0" FontSize="14" Foreground="LawnGreen" HorizontalAlignment="Center"></TextBlock>
                 </Grid>-->
                 <ListView VerticalAlignment="Top" Height="200" Margin="45,30,45,0" Foreground="White" Background="#343a40">
-                        <ListViewItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="01" Margin="5" VerticalAlignment="Center"/>
-                                <Ellipse Width="30" Height="30">
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="Assets/icon.png"/>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                                <TextBlock Text="Abstract - Neverland (ft. Ruth B) (Prod. Blulake)" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock Text="2017" VerticalAlignment="Center"/>
-                                <TextBlock Text="3:45" Margin="10,0" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="02" Margin="5" VerticalAlignment="Center"/>
-                                <Ellipse Width="30" Height="30">
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="Assets/icon.png"/>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                                <TextBlock Text="Steam Phunk – Grow" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock Text="2017" VerticalAlignment="Center"/>
-                                <TextBlock Text="3:20" Margin="10,0" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="03" Margin="5" VerticalAlignment="Center"/>
-                                <Ellipse Width="30" Height="30">
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="Assets/icon.png"/>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                                <TextBlock Text="MikeStud – Let Her Go" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock Text="2017" VerticalAlignment="Center"/>
-                                <TextBlock Text="2:57" Margin="10,0" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="04" Margin="5" VerticalAlignment="Center"/>
-                                <Ellipse Width="30" Height="30">
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="Assets/icon.png"/>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                                <TextBlock Text="Janji – Heroes Tonight" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock Text="2016" VerticalAlignment="Center"/>
-                                <TextBlock Text="3:28" Margin="10,0" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="05" Margin="5" VerticalAlignment="Center"/>
-                                <Ellipse Width="30" Height="30">
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="Assets/icon.png"/>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                                <TextBlock Text="Alan Walker – Force" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock Text="2017" VerticalAlignment="Center"/>
-                                <TextBlock Text="3:22" Margin="10,0" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="06" Margin="5" VerticalAlignment="Center"/>
-                                <Ellipse Width="30" Height="30">
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="Assets/icon.png"/>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                                <TextBlock Text="Krys Talk – Fly Away" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock Text="2017" VerticalAlignment="Center"/>
-                                <TextBlock Text="4:02" Margin="10,0" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListViewItem>
-                    </ListView>
-                
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="01" Margin="5" VerticalAlignment="Center"/>
+                            <Ellipse Width="30" Height="30">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="Assets/icon.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Text="Abstract - Neverland (ft. Ruth B) (Prod. Blulake)" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="2017" VerticalAlignment="Center"/>
+                            <TextBlock Text="3:45" Margin="10,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="02" Margin="5" VerticalAlignment="Center"/>
+                            <Ellipse Width="30" Height="30">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="Assets/icon.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Text="Steam Phunk – Grow" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="2017" VerticalAlignment="Center"/>
+                            <TextBlock Text="3:20" Margin="10,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="03" Margin="5" VerticalAlignment="Center"/>
+                            <Ellipse Width="30" Height="30">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="Assets/icon.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Text="MikeStud – Let Her Go" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="2017" VerticalAlignment="Center"/>
+                            <TextBlock Text="2:57" Margin="10,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="04" Margin="5" VerticalAlignment="Center"/>
+                            <Ellipse Width="30" Height="30">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="Assets/icon.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Text="Janji – Heroes Tonight" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="2016" VerticalAlignment="Center"/>
+                            <TextBlock Text="3:28" Margin="10,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="05" Margin="5" VerticalAlignment="Center"/>
+                            <Ellipse Width="30" Height="30">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="Assets/icon.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Text="Alan Walker – Force" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="2017" VerticalAlignment="Center"/>
+                            <TextBlock Text="3:22" Margin="10,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="06" Margin="5" VerticalAlignment="Center"/>
+                            <Ellipse Width="30" Height="30">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="Assets/icon.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Text="Krys Talk – Fly Away" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="2017" VerticalAlignment="Center"/>
+                            <TextBlock Text="4:02" Margin="10,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    
+                    
+                    
+                </ListView>
+
             </Grid>
 
         </Grid>

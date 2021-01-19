@@ -35,6 +35,8 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public string Date { get; set; }
         public int TotalSong { get; set; }
         public int SortId { get; set; }
+        public string Schedule { get; set; }
+        
     }
 
     public class PlaylistData

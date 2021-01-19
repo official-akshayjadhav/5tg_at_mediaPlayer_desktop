@@ -73,7 +73,7 @@ namespace _5tg_at_mediaPlayer_desktop.LogHistory
                 foreach (Log log in writeCsvData)
                 {
                     int logID = log.LogID;
-                    logID = 10;
+                    //logID = 10;
                     string logAirTime = log.AirTime;
                     { }
                     string updateLogTime = "update logs set LogTime = '" + logAirTime + "' where LID = " + logID;
