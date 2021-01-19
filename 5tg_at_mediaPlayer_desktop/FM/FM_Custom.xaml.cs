@@ -35,8 +35,6 @@ namespace _5tg_at_mediaPlayer_desktop.FM
                 progress_value.Text = value.ToString() + " %";
                 circulare_ProgressBar.Value = value;
             }
-
-
         }
 
 
