@@ -275,7 +275,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         int currentPlayListIndex { get; set; }
 
         public static DispatcherTimer autoPlayTick = new DispatcherTimer();
-        
+
 
         internal void AutoPlaySong(List<PlaylistAudio> autoPlaylist)
         {
@@ -283,11 +283,14 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             {
                 currentPlayList = autoPlaylist;
                 mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-                currentPlayListIndex = 0;                
+                currentPlayListIndex = 0;
                 PlaylistAudio song1 = currentPlayList[currentPlayListIndex];
                 autoplaySongTime_Sec = 0;
-                getTimeInSec(song1.Duration);                
-                
+                getTimeInSec(song1.Duration);
+
+                val = 0;
+                val1 = 0;
+
                 playSong(song1.track, song1.Name, song1.Trim_Start, song1.Trim_End);
                 autoPlayTick.IsEnabled = true;
                 autoPlayTick.Interval = TimeSpan.FromSeconds(autoplaySongTime_Sec);
@@ -308,6 +311,9 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                 getTimeInSec(song1.Duration);
                 playSong(song1.track, song1.Name, song1.Trim_Start, song1.Trim_End);
 
+                val = 0;
+                val1 = 0;
+
                 autoPlayTick.IsEnabled = true;
                 autoPlayTick.Interval = TimeSpan.FromSeconds(autoplaySongTime_Sec);
                 autoPlayTick.Tick += autoPlay_Timer_Tick;
@@ -319,7 +325,6 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             }
         }
 
-        public static FM.FM_Custom fM_Custom;
         public static double autoplaySongTime_Sec = 0;
         public static int i = 0;
 
@@ -329,15 +334,18 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             autoplaySongTime_Sec = duration.TotalSeconds / 100;
         }
 
-        
+        static int val = 0;
+        static int val1 = 0;
+
         private void autoPlay_Timer_Tick(object sender, EventArgs e)
         {
-            if (fM_Custom == null)
+            if (Global_Log.fM_Custom == null)
             {
-                fM_Custom = new FM.FM_Custom();
+                Global_Log.fM_Custom = new FM.FM_Custom();
             }
+            val += 2;
 
-            fM_Custom.loadProgressBar(i++);
+            Global_Log.fM_Custom.loadProgressBar(val1++, val);
         }
 
         //public void T+3625149+rimWavFile(string inPath, string outPath, TimeSpan cutFromStart, TimeSpan cutFromEnd)
@@ -446,21 +454,19 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         {
             lblProgressStatus.Text = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"hh\:mm\:ss");
             //autoVolumeIncrement.IsEnabled = false;
-            { }
+
             int currentTime = Convert.ToInt32((TimeSpan.FromSeconds(sliProgress.Value)).TotalSeconds);
             //TimeSpan ts = mediaPlayer.
-            { }
+
             //if(songDuration = )   songDuration = endSpan.TotalSeconds;
-            Console.WriteLine(currentTime.ToString());
-            if(songDuration == currentTime)
+
+            //Console.WriteLine(currentTime.ToString());
+            if (songDuration == currentTime)
             {
                 volDown = true;
                 autoVolumeIncrement.IsEnabled = true;
                 autoVolumeIncrement.Interval = TimeSpan.FromSeconds(1);
             }
-
-
-
         }
 
         private void SliProgress_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
@@ -494,19 +500,37 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         }*/
 
 
+        public void playSong() 
+        {
+            mediaPlayer.Play();
+            autoPlayTick.IsEnabled = true;
+        }
+
+        public void pauseSong()
+        {
+            mediaPlayer.Pause();
+            autoPlayTick.IsEnabled = false;
+        }
+
+        public void stopSong() 
+        {
+            mediaPlayer.Stop();
+            autoPlayTick.IsEnabled = false;
+            val = val1 = 0;
+        }
+
         public void PlayMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             mediaPlayer.Play();
             InitializePropertyValues();
-
         }
 
-        private void PauseMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        public void PauseMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             mediaPlayer.Pause();
         }
 
-        private void StopMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        public void StopMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             mediaPlayer.Stop();
         }

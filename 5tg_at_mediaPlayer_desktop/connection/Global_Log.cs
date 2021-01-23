@@ -20,7 +20,10 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public static Playlists playlists;
         public static PlaylistAudio playlistAudio;
         public static Bottom_Media_Control.Bottom_Media_Control bottom_Media_Control;
+        public static FM.FM_Custom fM_Custom;
+        public static List<connection.PlaylistAudio> autoPlaylist = new List<PlaylistAudio>();
         public static string cartId;
+
 
         public static bool allSongTrack = false;
 

@@ -74,6 +74,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+
+        <Style x:Key="myHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -124,14 +129,14 @@
                 </Grid.ColumnDefinitions>
                 <Border Background="Transparent" Margin="4" Opacity=".40" Grid.ColumnSpan="2">
                 </Border>
-                <Button Name="play"  Content="PLAY" Style="{DynamicResource RoundCorner}" Grid.ColumnSpan="2" />
+                <Button Name="play" Click="play_Click" Content="PLAY" Style="{DynamicResource RoundCorner}" Grid.ColumnSpan="2" />
             </Grid>
 
             <Grid
 				Grid.Row="4">
                 <Border Background="Transparent" Margin="4" Opacity=".40">
                 </Border>
-                <Button Name="pause"  Content="PAUSE" Style="{DynamicResource RoundCorner}" />
+                <Button Name="pause" Click="pause_Click" Content="PAUSE" Style="{DynamicResource RoundCorner}" />
             </Grid>
 
             <Grid
@@ -145,7 +150,7 @@
 				Grid.Row="6">
                 <Border Background="Transparent" Margin="4" Opacity=".40">
                 </Border>
-                <Button Name="stop" Content="STOP" Style="{DynamicResource RoundCorner}" />
+                <Button Name="stop" Click="stop_Click" Content="STOP" Style="{DynamicResource RoundCorner}" />
             </Grid>
         </Grid>
 
@@ -308,15 +313,29 @@
                     <TextBlock Text="#local: Station Promo - Remote Saturday! :60" Margin="0,110,0,0" FontSize="14" Foreground="LawnGreen" HorizontalAlignment="Center"></TextBlock>
                     <TextBlock Text="#local: Station Promo - Remote Saturday! :60" Margin="0,130,0,0" FontSize="14" Foreground="LawnGreen" HorizontalAlignment="Center"></TextBlock>
                 </Grid>-->
-                <ListView VerticalAlignment="Top" Height="200" Margin="45,30,45,0" Foreground="White" Background="#343a40">
+
+                <ListView x:Name="loadPlaylistSong" VerticalAlignment="Top" Height="200" Margin="45,30,45,0" Foreground="White" Background="#343a40">
+                    <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">
+                            <GridViewColumn DisplayMemberBinding="{Binding SortId}" />
+                            <GridViewColumn Header="Validated">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="Assets/icon.png" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Duration}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <!--<ListView VerticalAlignment="Top" Height="200" Margin="45,30,45,0" Foreground="White" Background="#343a40">
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="01" Margin="5" VerticalAlignment="Center"/>
-                            <Ellipse Width="30" Height="30">
-                                <Ellipse.Fill>
-                                    <ImageBrush ImageSource="Assets/icon.png"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
+                            
                             <TextBlock Text="Abstract - Neverland (ft. Ruth B) (Prod. Blulake)" Margin="10,0" VerticalAlignment="Center" Width="100" TextTrimming="CharacterEllipsis"/>
                             <TextBlock Text="2017" VerticalAlignment="Center"/>
                             <TextBlock Text="3:45" Margin="10,0" VerticalAlignment="Center"/>
@@ -388,9 +407,9 @@
                         </StackPanel>
                     </ListViewItem>
                     
-                    
-                    
-                </ListView>
+                </ListView>-->
+
+
 
             </Grid>
 

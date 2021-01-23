@@ -1,5 +1,7 @@
-﻿using _5tg_at_mediaPlayer_desktop.FM;
+﻿using _5tg_at_mediaPlayer_desktop.connection;
+using _5tg_at_mediaPlayer_desktop.FM;
 using _5tg_at_mediaPlayer_desktop.Popup;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,7 +18,7 @@ namespace _5tg_at_mediaPlayer_desktop
             InitializeComponent();
             playlist.Visibility = Visibility.Visible;
             // allSongs.Visibility = Visibility.Visible;
-               
+
         }
 
         public string SelectedPlayList { get; set; }
@@ -43,7 +45,7 @@ namespace _5tg_at_mediaPlayer_desktop
                 tt_commands.Visibility = Visibility.Collapsed;
                 tt_loghistory.Visibility = Visibility.Collapsed;
                 tt_addmusic.Visibility = Visibility.Collapsed;
-            } 
+            }
             else
             {
                 tt_allplaylist.Visibility = Visibility.Visible;
@@ -78,7 +80,7 @@ namespace _5tg_at_mediaPlayer_desktop
         {
 
         }
-        
+
         private void OpenPlaylist(object sender, MouseButtonEventArgs e)
         {
             allSongs.Visibility = Visibility.Collapsed;
@@ -114,8 +116,22 @@ namespace _5tg_at_mediaPlayer_desktop
 
         private void OpenHome(object sender, MouseButtonEventArgs e)
         {
-            FM_Custom obj = new FM_Custom();
-            obj.Show();
+            //FM_Custom obj = new FM_Custom();
+            //obj.Show();
+            try
+            {
+                if (Global_Log.fM_Custom == null)
+                {
+                    Global_Log.fM_Custom = new FM.FM_Custom();
+                }
+
+                Global_Log.fM_Custom.Show();
+            }
+            catch (Exception ex)
+            {
+                Global_Log.fM_Custom = new FM.FM_Custom();
+                Global_Log.fM_Custom.Show();
+            }
             this.Close();
         }
 

@@ -269,6 +269,12 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                             { }
                         }
                     }
+                    if (Global_Log.fM_Custom == null)
+                    {
+                        Global_Log.fM_Custom = new FM.FM_Custom();
+                    }
+                    Global_Log.fM_Custom.loadPlaylistSongs(autoPlaylist);
+
                     autoPlay.IsEnabled = true;
                     autoPlay.Interval = TimeSpan.FromMilliseconds(1);
                     autoPlay.Tick += timer_Tick;
