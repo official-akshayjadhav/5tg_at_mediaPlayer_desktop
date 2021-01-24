@@ -32,14 +32,22 @@ namespace _5tg_at_mediaPlayer_desktop.FM
             //loadPlaylistSongs(Global_Log.autoPlaylist);
         }
 
-
         public void loadProgressBar(int i, int j)
         {
-
             if (i <= 100)
             {
                 progress_value.Text = i.ToString() + " %";
                 circulare_ProgressBar.Value = j;
+
+                 
+
+                if (i >= 0 && i <= 10)
+                { circulare_ProgressBar.IndicatorBrush = Brushes.Yellow; }
+                else if (i >= 10 && i <= 90)
+                { circulare_ProgressBar.IndicatorBrush = Brushes.Green; }
+                else if (i >= 90 && i <= 100)
+                { circulare_ProgressBar.IndicatorBrush = Brushes.Red; }
+
             }
         }
 

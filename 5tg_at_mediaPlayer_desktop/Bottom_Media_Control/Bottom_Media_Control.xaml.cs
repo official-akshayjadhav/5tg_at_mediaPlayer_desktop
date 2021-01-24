@@ -181,7 +181,6 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             string path = "D:\\song.mp3";
 
 
-
             byte[] songByte = Convert.FromBase64String(trakString);
             File.Delete(trimPath);
             File.Delete(path);
@@ -344,8 +343,9 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                 Global_Log.fM_Custom = new FM.FM_Custom();
             }
             val += 2;
-
-            Global_Log.fM_Custom.loadProgressBar(val1++, val);
+            val1 += 1;
+            
+            Global_Log.fM_Custom.loadProgressBar(val1, val);
         }
 
         //public void T+3625149+rimWavFile(string inPath, string outPath, TimeSpan cutFromStart, TimeSpan cutFromEnd)

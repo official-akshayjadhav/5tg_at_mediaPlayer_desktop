@@ -85,25 +85,28 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
         {
             try
             {
-                double start_txt = double.Parse(start_text.Text);
-                double end_txt = double.Parse(end_text.Text);
-                if (start_txt > 0)
+                if (end_text != null)
                 {
-                    if (start_txt < end_txt)
+                    double start_txt = double.Parse(start_text.Text);
+                    double end_txt = double.Parse(end_text.Text);
+                    if (start_txt > 0)
                     {
-                        min_slider.Value = start_txt;
+                        if (start_txt < end_txt)
+                        {
+                            min_slider.Value = start_txt;
+                        }
+                        else
+                        {
+                            start_text.Text = end_txt.ToString();
+                            min_slider.Value = end_txt;
+                        }
                     }
                     else
                     {
-                        start_text.Text = end_txt.ToString();
-                        min_slider.Value = end_txt;
-                    }
-                }
-                else
-                {
 
-                    start_text.Text = "0";
-                    min_slider.Value = 0;
+                        start_text.Text = "0";
+                        min_slider.Value = 0;
+                    }
                 }
             }
             catch {
