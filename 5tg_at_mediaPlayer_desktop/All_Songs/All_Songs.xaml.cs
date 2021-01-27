@@ -105,9 +105,12 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                                     Filetype = dr.ItemArray[5].ToString(),
                                     Filepath = dr.ItemArray[6].ToString(),
                                     Duration = (TimeSpan)dr.ItemArray[7],
-                                    Track = dr.ItemArray[8].ToString(),
-                                    Trim_Start = (TimeSpan)dr.ItemArray[9],
-                                    Trim_End = (TimeSpan)dr.ItemArray[10],
+                                    Chain = dr.ItemArray[8].ToString(),
+                                    Track = dr.ItemArray[9].ToString(),
+                                    Trim_Start = (TimeSpan)dr.ItemArray[10],
+                                    Trim_End = (TimeSpan)dr.ItemArray[11],
+                                    Intro = (TimeSpan)dr.ItemArray[12],
+                                    EOM = (TimeSpan)dr.ItemArray[13]
 
                                 });
                             }
@@ -193,8 +196,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                         Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                     }
                     Global_Log.bottom_Media_Control.playSong(Global_Log.audio.Track, Global_Log.audio.Title,
-                        Global_Log.audio.Trim_Start, Global_Log.audio.Trim_End);
-
+                        Global_Log.audio.Trim_Start, Global_Log.audio.Trim_End, Global_Log.audio.Intro, Global_Log.audio.EOM);
                 }
             }
             LoadAllSong();
@@ -222,7 +224,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
 
         private void AutoPlay_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            string query = "select top 1 PID, name ,Schedule from playlists where Schedule >= GETDATE() order by Schedule desc";
+            string query = "select top 1 PID, name ,Schedule from playlists where Schedule >= GETDATE() order by Schedule";
 
             DataTable dt = Global_Log.connectionClass.retriveData(query, "playlist");
             { }
@@ -237,7 +239,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                     string autoplayName = dr.ItemArray[1].ToString();
                     autoplayTime = (DateTime)dr.ItemArray[2];
                     { }
-                    query = "select p.PID,p.AID, a.Title, a.track, a.duration, a.trimStart, a.trimEnd from playlist p join audio a on " +
+                    query = "select p.PID,p.AID, a.Title, a.track, a.duration, a.trimIn, a.trimOut from playlist p join audio a on " +
                         "p.AID=a.ID where PID = " + currentPlaylistID + " and AID is not null";
                     { }
                     dt = Global_Log.connectionClass.retriveData(query, "playlist");
@@ -269,18 +271,13 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                             { }
                         }
                     }
-                    if (Global_Log.fM_Custom == null)
-                    {
-                        Global_Log.fM_Custom = new FM.FM_Custom();
-                    }
-                    Global_Log.fM_Custom.loadPlaylistSongs(autoPlaylist);
-
+                    
                     autoPlay.IsEnabled = true;
                     autoPlay.Interval = TimeSpan.FromMilliseconds(1);
                     autoPlay.Tick += timer_Tick;
                     autoPlay.Start();
 
-                    
+
                     MessageBox.Show(autoplayName + " Records is Schedule");
                 }
                 else
@@ -300,14 +297,18 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
             if (curTime == AutoTime)
             {
                 autoPlay.IsEnabled = false;
+
+                if (Global_Log.fM_Custom == null)
+                {
+                    Global_Log.fM_Custom = new FM.FM_Custom();
+                }
+                Global_Log.fM_Custom.loadPlaylistSongs(autoPlaylist);
                 if (Global_Log.bottom_Media_Control == null)
                 {
                     Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                 }
                 Global_Log.bottom_Media_Control.AutoPlaySong(autoPlaylist);
             }
-
-
         }
     }
 }

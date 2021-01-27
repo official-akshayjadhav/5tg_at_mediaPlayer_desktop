@@ -165,7 +165,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             InitializePropertyValues();
         }
 
-        public void playSong(string trakString, string title, TimeSpan startTime, TimeSpan endSpan)
+        public void playSong(string trakString, string title, TimeSpan startTime, TimeSpan endSpan, TimeSpan intro, TimeSpan eOM)
         {
             mediaPlayer.Stop();
 
@@ -190,11 +190,11 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             TrimMp3(trimPath, path, startTime, endSpan);
             { }
 
-            songDuration = Convert.ToInt32(endSpan.TotalSeconds);
+            songDuration = Convert.ToInt32(eOM.TotalSeconds);
             { }
 
             Uri musicPath = new Uri("D:\\song.mp3");
-            LoadSong(musicPath, path);
+            LoadSong(musicPath, path, intro);
         }
 
         public static double vol = 0.1;
@@ -202,21 +202,25 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         public static DispatcherTimer autoVolumeIncrement = new DispatcherTimer();
         public static int songDuration;
 
-        public void LoadSong(Uri musicPath, string path)
+        public void LoadSong(Uri musicPath, string path, TimeSpan intro)
         {
             mediaPlayer.Stop();
             mediaPlayer.Close();
-
-            mediaPlayer.Open(musicPath);
-            mediaPlayer.Play();
-
-            //songDuration = mediaPlayer.NaturalDuration.TimeSpan.Seconds;
-            volDown = false;
-            songDuration -= 30;
             { }
+            int intervalVolume = ((Convert.ToInt32(intro.TotalSeconds)) / 10);
+
+            {
+            }
+            mediaPlayer.Open(musicPath);
             mediaPlayer.Volume = 0.1;
+
+
+            mediaPlayer.Play();
+            
+            volDown = false;            
+            
             autoVolumeIncrement.IsEnabled = true;
-            autoVolumeIncrement.Interval = TimeSpan.FromSeconds(3);
+            autoVolumeIncrement.Interval = TimeSpan.FromSeconds(intervalVolume);
             autoVolumeIncrement.Tick += autoVolumeIncrement_Tick;
             autoVolumeIncrement.Start();
 
@@ -290,7 +294,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                 val = 0;
                 val1 = 0;
 
-                playSong(song1.track, song1.Name, song1.Trim_Start, song1.Trim_End);
+                playSong(song1.track, song1.Name, song1.Trim_Start, song1.Trim_End, song1.Intro, song1.EOM);
                 autoPlayTick.IsEnabled = true;
                 autoPlayTick.Interval = TimeSpan.FromSeconds(autoplaySongTime_Sec);
                 autoPlayTick.Tick += autoPlay_Timer_Tick;
@@ -308,7 +312,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
                 PlaylistAudio song1 = currentPlayList[currentPlayListIndex];
                 autoplaySongTime_Sec = 0;
                 getTimeInSec(song1.Duration);
-                playSong(song1.track, song1.Name, song1.Trim_Start, song1.Trim_End);
+                playSong(song1.track, song1.Name, song1.Trim_Start, song1.Trim_End, song1.Intro, song1.EOM);
 
                 val = 0;
                 val1 = 0;
@@ -344,7 +348,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             }
             val += 2;
             val1 += 1;
-            
+
             Global_Log.fM_Custom.loadProgressBar(val1, val);
         }
 
@@ -500,7 +504,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         }*/
 
 
-        public void playSong() 
+        public void playSong()
         {
             mediaPlayer.Play();
             autoPlayTick.IsEnabled = true;
@@ -512,7 +516,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             autoPlayTick.IsEnabled = false;
         }
 
-        public void stopSong() 
+        public void stopSong()
         {
             mediaPlayer.Stop();
             autoPlayTick.IsEnabled = false;

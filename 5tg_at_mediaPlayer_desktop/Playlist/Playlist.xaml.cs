@@ -142,7 +142,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             {
                 ///query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
                 //query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
-                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track, a.trimStart, a.trimEnd from Audio a inner join playlist p on " +
+                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track, a.trimIn, a.trimOut from Audio a inner join playlist p on " +
                     "a.ID=p.AID inner join playlists ps on ps.PID = p.PID where p.PID =" + playlistID;
 
             }
@@ -151,7 +151,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 //query = "select ID, title, duration, track from Audio where ID in(select AID from playlist where PID = " + playlistID + ")";
                 //query = "select a.ID, a.title, a.duration, a.track from Audio a inner join playlist p on a.ID=p.AID where p.PID =" + playlistID;
 
-                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track, a.trimStart, a.trimEnd from Audio a inner join playlist p on a.ID " +
+                query = "select a.ID, ps.Schedule, a.title, a.duration, a.track, a.trimIn, a.trimOut from Audio a inner join playlist p on a.ID " +
                     "= p.AID inner join playlists ps on ps.PID = p.PID where ps.name = '" + playlistName + "'";
 
             }
@@ -248,7 +248,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                         Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                     }
                     Global_Log.bottom_Media_Control.playSong(PlaylistAudio.track, PlaylistAudio.Name,
-                        PlaylistAudio.Trim_Start, PlaylistAudio.Trim_End);
+                        PlaylistAudio.Trim_Start, PlaylistAudio.Trim_End, PlaylistAudio.Intro, PlaylistAudio.EOM);
 
                 }
                 else if (currentOperation == "Delete")
@@ -396,7 +396,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 {
                     Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                 }
-                Global_Log.bottom_Media_Control.playSong(track1.Track, track1.Title, track1.Trim_Start, track1.Trim_End);
+                Global_Log.bottom_Media_Control.playSong(track1.Track, track1.Title, track1.Trim_Start, track1.Trim_End, track1.Intro, track1.EOM);
             }
             else if (Global_Log.allSongTrack == false)
             {
@@ -413,7 +413,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 {
                     Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                 }
-                Global_Log.bottom_Media_Control.playSong(track.track, track.Name, track.Trim_Start, track.Trim_End);
+                Global_Log.bottom_Media_Control.playSong(track.track, track.Name, track.Trim_Start, track.Trim_End, track.Intro, track.EOM);
             }
         }
 
@@ -442,7 +442,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 {
                     Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                 }
-                Global_Log.bottom_Media_Control.playSong(track1.Track, track1.Title, track1.Trim_Start, track1.Trim_End);
+                Global_Log.bottom_Media_Control.playSong(track1.Track, track1.Title, track1.Trim_Start, track1.Trim_End, track1.Intro, track1.EOM);
             }
             else if (Global_Log.allSongTrack == false)
             {
@@ -460,7 +460,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 {
                     Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                 }
-                Global_Log.bottom_Media_Control.playSong(track.track, track.Name, track.Trim_Start, track.Trim_End);
+                Global_Log.bottom_Media_Control.playSong(track.track, track.Name, track.Trim_Start, track.Trim_End, track.Intro, track.EOM);
             }
         }
 
@@ -542,9 +542,12 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                                 Filetype = dr.ItemArray[5].ToString(),
                                 Filepath = dr.ItemArray[6].ToString(),
                                 Duration = (TimeSpan)dr.ItemArray[7],
-                                Track = dr.ItemArray[8].ToString(),
-                                Trim_Start = (TimeSpan)dr.ItemArray[9],
-                                Trim_End = (TimeSpan)dr.ItemArray[10],
+                                Chain = dr.ItemArray[8].ToString(),
+                                Track = dr.ItemArray[9].ToString(),
+                                Trim_Start = (TimeSpan)dr.ItemArray[10],
+                                Trim_End = (TimeSpan)dr.ItemArray[11],
+                                Intro = (TimeSpan)dr.ItemArray[12],
+                                EOM = (TimeSpan)dr.ItemArray[13],
 
                             });
                         }
@@ -634,7 +637,7 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                     {
                         Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
                     }
-                    Global_Log.bottom_Media_Control.playSong(audio.Track, audio.Title, audio.Trim_Start, audio.Trim_End);
+                    Global_Log.bottom_Media_Control.playSong(audio.Track, audio.Title, audio.Trim_Start, audio.Trim_End, audio.Intro, audio.EOM);
                 }
             }
             LoadAllSong();

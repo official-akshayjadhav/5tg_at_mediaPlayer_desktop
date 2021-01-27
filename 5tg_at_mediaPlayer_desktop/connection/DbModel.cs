@@ -20,12 +20,13 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public int Filesize { get; set; }
         public string Filetype { get; set; }
         public string Filepath { get; set; }
+        public string Chain { get; set; }
         public TimeSpan Duration { get; set; }
         public string Track { get; set; }
         public TimeSpan Trim_Start { get; set; }
         public TimeSpan Trim_End { get; set; }
-        //public List<string> controls { get; set; }
-        //public OrderStatus status { get; set; }
+        public TimeSpan Intro { get; set; }
+        public TimeSpan EOM { get; set; }
     }
 
     public class Playlists
@@ -36,7 +37,7 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public int TotalSong { get; set; }
         public int SortId { get; set; }
         public string Schedule { get; set; }
-        
+
     }
 
     public class PlaylistData
@@ -64,6 +65,8 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public TimeSpan Duration { get; set; }
         public TimeSpan Trim_Start { get; set; }
         public TimeSpan Trim_End { get; set; }
+        public TimeSpan Intro { get; set; }
+        public TimeSpan EOM { get; set; }
     }
 
     public class AudioIE
@@ -84,6 +87,4 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public string PlaylistName { get; set; }
         public TimeSpan Duration { get; set; }
     }
-
-    
 }

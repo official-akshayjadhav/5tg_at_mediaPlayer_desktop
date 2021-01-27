@@ -18,13 +18,13 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
         public Track_Metadata()
         {
             InitializeComponent();
-            HeaderText.Text = "Add Music";          
+            HeaderText.Text = "Add Music";
         }
 
         //Track track = null;
         List<Audio> audioList = null;
 
-        
+
 
         private void Browse_Click(object sender, RoutedEventArgs e)
         {
@@ -36,13 +36,22 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 MediaInfoWrapper track = new MediaInfoWrapper(openFileDialog.FileName);
 
                 string title = track.Tags.Title;
+
                 string fileNames = openFileDialog.FileName;
                 int fileSize = (int)track.Size;
                 string fType = track.ToString();
                 string filePath = track.Tags.SubTrack;
                 string times = track.Duration.ToString();
 
-                Trim.Trim obj = new Trim.Trim(times);
+                TimeSpan tt = TimeSpan.FromMilliseconds(track.Duration);
+                { }
+
+                Global_Log.startTimeInSec = 0;
+                Global_Log.endTimeInSec = Convert.ToInt32(tt.TotalSeconds);
+                { }
+
+                //Trim.Trim obj = new Trim.Trim(times);
+                Trim.Trim obj = new Trim.Trim();
 
                 byte[] fileDataBytes = File.ReadAllBytes(System.IO.Path.GetFullPath(openFileDialog.FileNames[0]));
                 String fileDataBase64 = Convert.ToBase64String(fileDataBytes);
@@ -54,8 +63,12 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 Duration.Text = times;
                 Start_Time.Text = TimeSpan.FromSeconds(0).ToString();
                 End_Time.Text = TimeSpan.FromMilliseconds(track.Duration).ToString();
-                { } 
-               
+                { }
+
+                { }
+                TimeSpan ttt = TimeSpan.FromSeconds(Global_Log.endTimeInSec - 10);
+                { }
+
                 audioList.Add(new Audio()
                 {
                     UID = "000",
@@ -68,6 +81,8 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                     Track = fileDataBase64,
                     Trim_Start = TimeSpan.FromSeconds(0),
                     Trim_End = TimeSpan.FromMilliseconds(track.Duration),
+                    Intro = TimeSpan.FromSeconds(10),
+                    EOM = TimeSpan.FromSeconds(Global_Log.endTimeInSec - 10)
                 });
             }
         }
@@ -86,12 +101,12 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 }
                 else if (HeaderText.Text == "Update Music")
                 {
-                    audio = Global_Log.audio;                    
+                    audio = Global_Log.audio;
                     audio.FileName = fileName.Text;
                     audio.Title = Song_Name.Text;
                     //audio.Trim_Start = Start_Time.Text;
                     //audio.Trim_End = End_Time.Text;
-                    Global_Log.playBack.insertSong(audio, false);                    
+                    Global_Log.playBack.insertSong(audio, false);
                 }
             }
             catch (Exception ex)

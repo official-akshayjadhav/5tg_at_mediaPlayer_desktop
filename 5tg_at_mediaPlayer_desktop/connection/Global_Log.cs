@@ -24,6 +24,8 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public static List<connection.PlaylistAudio> autoPlaylist = new List<PlaylistAudio>();
         public static string cartId;
 
+        public static int startTimeInSec;
+        public static int endTimeInSec;
 
         public static bool allSongTrack = false;
 

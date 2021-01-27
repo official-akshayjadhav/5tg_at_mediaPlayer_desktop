@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using _5tg_at_mediaPlayer_desktop.connection;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace _5tg_at_mediaPlayer_desktop.Trim
@@ -10,26 +12,42 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
     public partial class Trim : UserControl
     {
         //double max_time_of_song = 5;
-        static double max_time_of_song=0;
-        
+        static double max_time_of_song = 0;
+
 
         public Trim()
         {
             InitializeComponent();
-            end_text.Text = "0";
-            //max_slider.Maximum = 0;
+            { }
+            string val= Global_Log.endTimeInSec.ToString();
+            { }
+            max_slider.Maximum = Global_Log.endTimeInSec;
+            end_text.Text = Convert.ToString(Global_Log.endTimeInSec);
+            
+            end_text.Text = val;
+            { }
         }
 
-        public Trim(string time) {
-
+        public Trim(string time)
+        {
             InitializeComponent();
             max_time_of_song = double.Parse(time);
             if (end_text != null)
             {
-                max_slider.Maximum = max_time_of_song;
+                //max_slider.Maximum = max_time_of_song;
+                max_slider.Maximum = Global_Log.endTimeInSec;
                 end_text.Text = max_time_of_song.ToString();
             }
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            start_text.Text = "0";
+            end_text.Text = Global_Log.endTimeInSec.ToString();
+            max_slider.Maximum = Global_Log.endTimeInSec;
+
+        }
+        
 
         private void start_s_Click(object sender, RoutedEventArgs e)
         {
@@ -40,7 +58,8 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
                 start_text.Text = start_s1.ToString();
                 min_slider.Value = start_s1;
             }
-            else {
+            else
+            {
                 start_text.Text = "0";
                 min_slider.Value = 0;
             }
@@ -63,7 +82,8 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
         {
             double end_s1 = double.Parse(end_text.Text);
             double start_e1 = double.Parse(start_text.Text);
-            if (end_s1 > start_e1) {
+            if (end_s1 > start_e1)
+            {
                 end_s1 -= 1;
                 end_text.Text = end_s1.ToString();
                 max_slider.Value = end_s1;
@@ -108,8 +128,13 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
                         min_slider.Value = 0;
                     }
                 }
+                else
+                {
+                    //Global_Log
+                }
             }
-            catch {
+            catch
+            {
                 start_text.Text = "0";
             }
         }
@@ -118,6 +143,8 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
         {
             try
             {
+                //max_slider.Value = Global_Log.endTimeInSec;
+
                 double end_txt = double.Parse(end_text.Text);
                 double start_txt = double.Parse(start_text.Text);
                 if (end_txt < max_time_of_song)
@@ -168,9 +195,10 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
 
         }
 
+
         private void max_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            max1 = max_slider.Value;
+            max1 = Convert.ToInt32(max_slider.Value);
             if (max1 > min1)
             {
                 end_text.Text = max1.ToString();
