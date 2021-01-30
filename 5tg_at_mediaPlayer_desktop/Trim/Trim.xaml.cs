@@ -19,6 +19,7 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
         {
             InitializeComponent();
             { }
+            max_time_of_song = Global_Log.endTimeInSec;
             string val= Global_Log.endTimeInSec.ToString();
             { }
             max_slider.Maximum = Global_Log.endTimeInSec;
@@ -32,20 +33,23 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
         {
             InitializeComponent();
             max_time_of_song = double.Parse(time);
-            if (end_text != null)
+            //if (end_text != null)
             {
                 //max_slider.Maximum = max_time_of_song;
                 max_slider.Maximum = Global_Log.endTimeInSec;
                 end_text.Text = max_time_of_song.ToString();
+
+                max_slider.Value = Global_Log.endTimeInSec;
             }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            start_text.Text = "0";
+            start_text.Text = Global_Log.startTimeInSec.ToString();
+            min_slider.Maximum = Global_Log.startTimeInSec;
+
             end_text.Text = Global_Log.endTimeInSec.ToString();
             max_slider.Maximum = Global_Log.endTimeInSec;
-
         }
         
 
@@ -80,6 +84,7 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
 
         private void end_s_Click(object sender, RoutedEventArgs e)
         {
+            { }
             double end_s1 = double.Parse(end_text.Text);
             double start_e1 = double.Parse(start_text.Text);
             if (end_s1 > start_e1)
@@ -127,11 +132,9 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
                         start_text.Text = "0";
                         min_slider.Value = 0;
                     }
+                    Global_Log.startTimeInSec = Convert.ToInt32(min_slider.Value);
                 }
-                else
-                {
-                    //Global_Log
-                }
+
             }
             catch
             {
@@ -164,6 +167,7 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
                     end_text.Text = max_time_of_song.ToString();
                     max_slider.Value = max_time_of_song;
                 }
+                Global_Log.endTimeInSec = Convert.ToInt32(max_slider.Value);
             }
             catch
             {

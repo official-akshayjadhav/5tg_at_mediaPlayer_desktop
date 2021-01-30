@@ -114,6 +114,14 @@ namespace _5tg_at_mediaPlayer_desktop.All_Playlist
                     Schedular schedular = new Schedular();
                     schedular.ShowDialog();
                     //loadPlaylistSong(Global_Log.pID, playlists.SortId);
+
+                    if (Global_Log.fM_Custom == null)
+                    {
+                        Global_Log.fM_Custom = new FM.FM_Custom();
+                    }
+                    Global_Log.fM_Custom.AutoPlay_PreviewMouseLeftButtonDown();
+
+
                 }
             }
             loadPlaylist();

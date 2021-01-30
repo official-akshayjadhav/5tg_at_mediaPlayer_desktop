@@ -36,13 +36,13 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 MediaInfoWrapper track = new MediaInfoWrapper(openFileDialog.FileName);
 
                 string title = track.Tags.Title;
-
+                
                 string fileNames = openFileDialog.FileName;
                 int fileSize = (int)track.Size;
                 string fType = track.ToString();
                 string filePath = track.Tags.SubTrack;
                 string times = track.Duration.ToString();
-
+                
                 TimeSpan tt = TimeSpan.FromMilliseconds(track.Duration);
                 { }
 
@@ -50,8 +50,7 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 Global_Log.endTimeInSec = Convert.ToInt32(tt.TotalSeconds);
                 { }
 
-                //Trim.Trim obj = new Trim.Trim(times);
-                Trim.Trim obj = new Trim.Trim();
+                Trim.Trim obj = new Trim.Trim(times);
 
                 byte[] fileDataBytes = File.ReadAllBytes(System.IO.Path.GetFullPath(openFileDialog.FileNames[0]));
                 String fileDataBase64 = Convert.ToBase64String(fileDataBytes);
@@ -79,10 +78,10 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                     Filepath = filePath,
                     Duration = TimeSpan.FromMilliseconds(track.Duration),
                     Track = fileDataBase64,
-                    Trim_Start = TimeSpan.FromSeconds(0),
-                    Trim_End = TimeSpan.FromMilliseconds(track.Duration),
-                    Intro = TimeSpan.FromSeconds(10),
-                    EOM = TimeSpan.FromSeconds(Global_Log.endTimeInSec - 10)
+                    Trim_Start = TimeSpan.FromSeconds(Global_Log.startTimeInSec),
+                    Trim_End = TimeSpan.FromMilliseconds(Global_Log.endTimeInSec),
+                    Intro = TimeSpan.FromSeconds(0),
+                    EOM = TimeSpan.FromSeconds(Global_Log.endTimeInSec)
                 });
             }
         }

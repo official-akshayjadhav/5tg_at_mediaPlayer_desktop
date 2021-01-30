@@ -21,6 +21,7 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
     public partial class All_Songs : UserControl
     {
         public OrderStatus status;
+
         public All_Songs()
         {
             InitializeComponent();
@@ -32,9 +33,6 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
             int i = datagrid.SelectedIndex;
         }
 
-        //public object ConfigurationManager { get; private set; }
-
-        //Track track = null;
         List<Audio> audioList = null;
 
         private void View_all_playlist_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -310,5 +308,6 @@ namespace _5tg_at_mediaPlayer_desktop.All_Songs
                 Global_Log.bottom_Media_Control.AutoPlaySong(autoPlaylist);
             }
         }
+
     }
 }

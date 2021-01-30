@@ -152,7 +152,6 @@ namespace _5tg_at_mediaPlayer_desktop.Fade_in_out
             if (min1 < max1)
             {
                 start_text.Text = min1.ToString();
-
             }
             else
             {
