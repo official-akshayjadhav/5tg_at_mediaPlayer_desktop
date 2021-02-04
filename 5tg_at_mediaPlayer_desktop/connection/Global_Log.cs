@@ -29,6 +29,9 @@ namespace _5tg_at_mediaPlayer_desktop.connection
         public static int startTimeInSec;
         public static int endTimeInSec;
 
+        public static int startFadeInSec;
+        public static int endFadeInSec;
+
         public static bool allSongTrack = false;
 
         public static int pID;

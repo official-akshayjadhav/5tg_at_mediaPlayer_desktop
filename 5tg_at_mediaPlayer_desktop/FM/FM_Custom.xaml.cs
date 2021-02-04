@@ -25,9 +25,12 @@ namespace _5tg_at_mediaPlayer_desktop.FM
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            RemainingTime.Text = "00:00";
+
             if (Global_Log.onlyForStart)
             {
                 AutoPlay_PreviewMouseLeftButtonDown();
+                RemainingTime.Text = "00:00";
                 Global_Log.onlyForStart = false;
             }
         }
@@ -122,7 +125,7 @@ namespace _5tg_at_mediaPlayer_desktop.FM
             {//For Minute
                 gTime = string.Format("{0}:{1:00}", (int)time.TotalMinutes, time.Seconds);
             }
-
+            RemainingTime.UpdateLayout();
             RemainingTime.Text = gTime;
             { }
 

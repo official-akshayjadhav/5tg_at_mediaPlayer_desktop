@@ -295,8 +295,8 @@
                     <TextBlock x:Name="progress_value" Margin="3,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="30" FontWeight="DemiBold"></TextBlock>
                 </Grid>
                 <Grid Grid.Row="2" Grid.Column="1">
-                    <TextBlock Text="REMAINING TIME:" Foreground="White" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-                    <TextBlock x:Name="RemainingTime" Text="00:00" Foreground="White" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Text="REMAINING TIME:" Foreground="White" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock x:Name="RemainingTime" Foreground="White" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
                 </Grid>
             </Grid>
 

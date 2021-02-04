@@ -1,10 +1,10 @@
-﻿using _5tg_at_mediaPlayer_desktop.connection;
+﻿using System;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Controls;
 using _5tg_at_mediaPlayer_desktop.FM;
 using _5tg_at_mediaPlayer_desktop.Popup;
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+using _5tg_at_mediaPlayer_desktop.connection;
 
 namespace _5tg_at_mediaPlayer_desktop
 {
