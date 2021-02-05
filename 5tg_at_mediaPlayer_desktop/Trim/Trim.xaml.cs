@@ -90,6 +90,11 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
                 max_slider.Value = max_time_of_song;
             }
 
+            if (max_slider.Value <= min_slider.Value)
+            {
+                max_slider.Value = min_slider.Value;
+            }
+
             setTxtValue();
             max_slider.Maximum = max_time_of_song;
             Global_Log.endTimeInSec = Convert.ToInt32(max_slider.Value);

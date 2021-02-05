@@ -76,34 +76,65 @@ namespace _5tg_at_mediaPlayer_desktop.Fade_in_out
 
         private void max_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (temp == false)
+            try
             {
-                temp = true;
-                max_slider.Value = max_time_of_song;
-            }
+                max_slider.Maximum = max_time_of_song;
 
-            max_slider.Maximum = max_time_of_song;
-            Global_Log.endFadeInSec = Convert.ToInt32(max_slider.Value);
+                if (temp == false)
+                {
+                    temp = true;
+                    max_slider.Value = max_time_of_song;
+                }
+
+                if (Global_Log.startTimeInSec >= max_slider.Value)
+                {
+                    max_slider.Value = Global_Log.startTimeInSec;
+                }
+
+                //max_slider.Maximum = max_time_of_song;
+                if (max_slider.Value <= min_slider.Value)
+                {
+                    max_slider.Value = min_slider.Value;
+                }
+
+                if (max_slider.Value >= Global_Log.endTimeInSec)
+                {
+                    max_slider.Value = Global_Log.endTimeInSec;
+                }
+
+                Global_Log.endFadeInSec = Convert.ToInt32(max_slider.Value);
+            }
+            catch (Exception ex)
+            { }
         }
+
         private void min_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            min_slider.Maximum = max_time_of_song;
-
-            if (max_slider.Value < min_slider.Value)
+            try
             {
-                start_text.Text = max_slider.Value.ToString();
-                min_slider.Value = max_slider.Value;
-            }
+                min_slider.Maximum = max_time_of_song;
 
-            Global_Log.startFadeInSec = Convert.ToInt32(min_slider.Value);
+                if (max_slider.Value < min_slider.Value)
+                {
+                    start_text.Text = max_slider.Value.ToString();
+                    min_slider.Value = max_slider.Value;
+                }
+                { }//15<= 50
+                if (min_slider.Value <= Global_Log.startTimeInSec)
+                {
+                    min_slider.Value = Global_Log.startTimeInSec;
+                }
+
+                Global_Log.startFadeInSec = Convert.ToInt32(min_slider.Value);
+            }
+            catch (Exception ex)
+            { }
         }
 
         private void PlayMedia_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
 
         }
-
-
 
 
 

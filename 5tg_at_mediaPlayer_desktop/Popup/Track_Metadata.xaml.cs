@@ -51,7 +51,7 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 { }
 
                 Trim.Trim obj_Trim = new Trim.Trim(Global_Log.endTimeInSec);
-
+                { }
                 Fade_in_out.Fade_in_out obj_Fade_in_out = new Fade_in_out.Fade_in_out(Global_Log.endTimeInSec);
 
                 byte[] fileDataBytes = File.ReadAllBytes(System.IO.Path.GetFullPath(openFileDialog.FileNames[0]));
@@ -81,7 +81,7 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                     Duration = TimeSpan.FromMilliseconds(track.Duration),
                     Track = fileDataBase64,
                     Trim_Start = TimeSpan.FromSeconds(Global_Log.startTimeInSec),
-                    Trim_End = TimeSpan.FromMilliseconds(track.Duration),
+                    Trim_End = TimeSpan.FromSeconds(Global_Log.endTimeInSec),
                     Intro = TimeSpan.FromSeconds(Global_Log.startFadeInSec),
                     EOM = TimeSpan.FromSeconds(Global_Log.endFadeInSec)
                 });
