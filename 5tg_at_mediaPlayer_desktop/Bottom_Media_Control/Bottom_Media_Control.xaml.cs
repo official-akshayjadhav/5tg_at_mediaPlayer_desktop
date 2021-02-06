@@ -181,12 +181,24 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             byte[] songByte = Convert.FromBase64String(trakString);
             File.Delete(trimPath);
             File.Delete(path);
-
             File.WriteAllBytes(trimPath, songByte);
-
             TrimMp3(trimPath, path, startTime, endSpan);
 
-            songDuration = Convert.ToInt32(eOM.TotalSeconds);
+            {
+                int intr = Convert.ToInt32(eOM.TotalSeconds);
+                int startTimes = Convert.ToInt32(startTime.TotalSeconds);
+                double val = intr - startTimes;
+                startInterval = val / 10;
+            }
+
+            {
+
+                songDuration = Convert.ToInt32(eOM.TotalSeconds);
+                int endTime = Convert.ToInt32(endSpan.TotalSeconds);
+                double val = (endTime - songDuration);
+                endInterval = val / 10;
+            }
+
 
             Uri musicPath = new Uri("D:\\song.mp3");
             LoadSong(musicPath, path, intro);
@@ -197,25 +209,21 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         public static DispatcherTimer autoVolumeIncrement = new DispatcherTimer();
         public static int songDuration;
 
+        public static double startInterval;
+        public static double endInterval;
+
         public void LoadSong(Uri musicPath, string path, TimeSpan intro)
         {
             mediaPlayer.Stop();
             mediaPlayer.Close();
-            { }
-            int intervalVolume = ((Convert.ToInt32(intro.TotalSeconds)) / 10);
-
-            {
-            }
             mediaPlayer.Open(musicPath);
+
             mediaPlayer.Volume = 0.1;
-
-
-            mediaPlayer.Play();
-            
+            mediaPlayer.Play();           
             volDown = false;            
             
             autoVolumeIncrement.IsEnabled = true;
-            autoVolumeIncrement.Interval = TimeSpan.FromSeconds(intervalVolume);
+            autoVolumeIncrement.Interval = TimeSpan.FromSeconds(startInterval);
             autoVolumeIncrement.Tick += autoVolumeIncrement_Tick;
             autoVolumeIncrement.Start();
 
@@ -463,7 +471,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             {
                 volDown = true;
                 autoVolumeIncrement.IsEnabled = true;
-                autoVolumeIncrement.Interval = TimeSpan.FromSeconds(1);
+                autoVolumeIncrement.Interval = TimeSpan.FromSeconds(endInterval);
             }
         }
 

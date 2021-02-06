@@ -99,6 +99,7 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
             max_slider.Maximum = max_time_of_song;
             Global_Log.endTimeInSec = Convert.ToInt32(max_slider.Value);
         }
+
         private void min_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             min_slider.Maximum = max_time_of_song;
@@ -114,15 +115,29 @@ namespace _5tg_at_mediaPlayer_desktop.Trim
 
         private void PlayMedia_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            //Global_Log.newSongTrack
 
+            if (Global_Log.bottom_Media_Control == null)
+            {
+                Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+            }
+
+            TimeSpan Trim_Start = TimeSpan.FromSeconds(Global_Log.startTimeInSec);
+            TimeSpan Trim_End = TimeSpan.FromSeconds(Global_Log.endTimeInSec);
+            TimeSpan Intro = TimeSpan.FromSeconds(Global_Log.startFadeInSec);
+            TimeSpan EOM = TimeSpan.FromSeconds(Global_Log.endFadeInSec);
+
+            { }
+            Global_Log.bottom_Media_Control.playSong(Global_Log.newSongTrack, "", Trim_Start, Trim_End, Intro, EOM);
         }
+
+
 
         private void setTxtValue()
         {
             //max_time_of_song = max_slider.Value;
             //end_text.Text = (Convert.ToInt32(max_slider.Value)).ToString();
         }
-
 
         #region Comment For Temp....////////////////////////////////////....////////////////////////////////////....////////////////////////////////////
 

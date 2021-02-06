@@ -133,7 +133,17 @@ namespace _5tg_at_mediaPlayer_desktop.Fade_in_out
 
         private void PlayMedia_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (Global_Log.bottom_Media_Control == null)
+            {
+                Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+            }
 
+            TimeSpan Trim_Start = TimeSpan.FromSeconds(Global_Log.startTimeInSec);
+            TimeSpan Trim_End = TimeSpan.FromSeconds(Global_Log.endTimeInSec);
+            TimeSpan Intro = TimeSpan.FromSeconds(Global_Log.startFadeInSec);
+            TimeSpan EOM = TimeSpan.FromSeconds(Global_Log.endFadeInSec);
+
+            Global_Log.bottom_Media_Control.playSong(Global_Log.newSongTrack, "", Trim_Start, Trim_End, Intro, EOM);
         }
 
 

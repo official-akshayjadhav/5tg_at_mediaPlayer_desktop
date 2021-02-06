@@ -25,7 +25,6 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
         List<Audio> audioList = null;
 
 
-
         private void Browse_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -36,8 +35,6 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 MediaInfoWrapper track = new MediaInfoWrapper(openFileDialog.FileName);
 
                 string title = track.Tags.Title;
-                title = "Takk Launi Baghatoya Aina";
-
                 string fileNames = openFileDialog.FileName;
                 int fileSize = (int)track.Size;
                 string fType = track.ToString();
@@ -48,14 +45,15 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
 
                 Global_Log.startTimeInSec = 0;
                 Global_Log.endTimeInSec = Convert.ToInt32(tt.TotalSeconds);
-                { }
-
-                Trim.Trim obj_Trim = new Trim.Trim(Global_Log.endTimeInSec);
-                { }
-                Fade_in_out.Fade_in_out obj_Fade_in_out = new Fade_in_out.Fade_in_out(Global_Log.endTimeInSec);
 
                 byte[] fileDataBytes = File.ReadAllBytes(System.IO.Path.GetFullPath(openFileDialog.FileNames[0]));
                 String fileDataBase64 = Convert.ToBase64String(fileDataBytes);
+
+                Global_Log.newSongTrack = fileDataBase64;
+
+                Trim.Trim obj_Trim = new Trim.Trim(Global_Log.endTimeInSec);
+                Fade_in_out.Fade_in_out obj_Fade_in_out = new Fade_in_out.Fade_in_out(Global_Log.endTimeInSec);
+
 
                 fileName.Text = fileNames;
                 Song_Name.Text = title;
@@ -64,11 +62,8 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 Duration.Text = times;
                 Start_Time.Text = TimeSpan.FromSeconds(0).ToString();
                 End_Time.Text = TimeSpan.FromMilliseconds(track.Duration).ToString();
-                { }
 
-                { }
                 TimeSpan ttt = TimeSpan.FromSeconds(Global_Log.endTimeInSec - 10);
-                { }
 
                 audioList.Add(new Audio()
                 {
@@ -92,6 +87,13 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
         {
             try
             {
+                if (Global_Log.bottom_Media_Control == null)
+                {
+                    Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+                }
+
+                Global_Log.bottom_Media_Control.stopSong();
+
                 Audio audio = null;
                 if (HeaderText.Text == "Add Music")
                 {
