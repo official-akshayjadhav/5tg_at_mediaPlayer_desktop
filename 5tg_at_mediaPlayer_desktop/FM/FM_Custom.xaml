@@ -296,7 +296,8 @@
                 </Grid>
                 <Grid Grid.Row="2" Grid.Column="1">
                     <TextBlock Text="REMAINING TIME:" Foreground="White" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-                    <TextBlock x:Name="RemainingTime" Foreground="White" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                    <!--<TextBlock x:Name="RemainingTime" Foreground="White" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>-->
+                    <Label x:Name="RemainingTime" Foreground="White" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center" />
                 </Grid>
             </Grid>
 
@@ -315,19 +316,19 @@
                     <TextBlock Text="#local: Station Promo - Remote Saturday! :60" Margin="0,130,0,0" FontSize="14" Foreground="LawnGreen" HorizontalAlignment="Center"></TextBlock>
                 </Grid>-->
 
-                <ListView x:Name="loadPlaylistSong" VerticalAlignment="Top" Height="200" Margin="45,30,45,0" Foreground="White" Background="#343a40">
+                <ListView x:Name="loadPlaylistSong" HorizontalContentAlignment="Center" VerticalAlignment="Top" Height="200" Margin="45,30,45,0" Foreground="White" Background="#343a40">
                     <ListView.View>
                         <GridView ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">
-                            <GridViewColumn DisplayMemberBinding="{Binding SortId}" />
-                            <GridViewColumn Header="Validated">
+                            <!--<GridViewColumn DisplayMemberBinding="{Binding SortId}" />-->
+                            <!--<GridViewColumn Header="Validated">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <Image Source="Assets/icon.png" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
+                            </GridViewColumn>-->
                             <GridViewColumn DisplayMemberBinding="{Binding Name}" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Duration}" />
+                            <!--<GridViewColumn DisplayMemberBinding="{Binding Duration}" />-->
                         </GridView>
                     </ListView.View>
                 </ListView>

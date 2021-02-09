@@ -442,7 +442,6 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             //mediaPlayer.Position = ts;
         }
 
-
         void InitializePropertyValues()
         {
             //mediaPlayer.Volume = (double)volumeSlider.Value;
@@ -485,10 +484,12 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         {
             userIsDraggingSlider = true;
         }
+
         private void Grid_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             mediaPlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
         }
+
         private void timer_Tick(object sender, EventArgs e)
         {
             if ((mediaPlayer.Source != null) && (mediaPlayer.NaturalDuration.HasTimeSpan) && (!userIsDraggingSlider))
@@ -543,6 +544,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             //Global_Log.allSongTrack      = true;
             //Global_Log.playlistSongTrack = true;
         }
+
         private void PlayPreviousMedia_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Playlist.Playlist playlist = new Playlist.Playlist();

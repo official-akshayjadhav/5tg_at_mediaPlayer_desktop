@@ -16,31 +16,31 @@ namespace _5tg_at_mediaPlayer_desktop.FM
     /// </summary>
     public partial class FM_Custom : Window
     {
+        public static DateTime autoplayTime;
+        public static List<PlaylistAudio> autoPlaylist;
+        public static DispatcherTimer autoPlay = new DispatcherTimer();
+
         public FM_Custom()
         {
             InitializeComponent();
             //Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 6 });
         }
 
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            RemainingTime.Text = "00:00";
+            RemainingTime.Content = "00:00";
 
             if (Global_Log.onlyForStart)
             {
                 AutoPlay_PreviewMouseLeftButtonDown();
-                RemainingTime.Text = "00:00";
+                RemainingTime.Content = "00:00";
                 Global_Log.onlyForStart = false;
             }
         }
 
-        public static DateTime autoplayTime;
-        public static List<PlaylistAudio> autoPlaylist;
-        public static DispatcherTimer autoPlay = new DispatcherTimer();
-
         public void AutoPlay_PreviewMouseLeftButtonDown()
         {
+            var FM = new FM_Custom();
             string query = "select top 1 PID, name ,Schedule from playlists where Schedule >= GETDATE() order by Schedule";
 
             DataTable dt = Global_Log.connectionClass.retriveData(query, "playlist");
@@ -105,29 +105,41 @@ namespace _5tg_at_mediaPlayer_desktop.FM
         private void timer_Tick(object sender, EventArgs e)
         {
             DateTime currentDateTime = DateTime.Now;
-            //Console.WriteLine(currentDateTime.ToString() + " = " + autoplayTime.ToString());
+
+            string gTime = "";
             string curTime = currentDateTime.ToString();
             string AutoTime = autoplayTime.ToString();
 
-            string format = "mm:ss";
-            //String time = (autoplayTime - currentDateTime).ToString();
-
-
             TimeSpan time = autoplayTime.Subtract(currentDateTime);
-            { }
-            string gTime = "";
             TimeSpan t1 = new TimeSpan(1, 0, 0);
+
             if (time > t1)
             {//For Hour
-                gTime = string.Format("{00}:{1:00}", (int)time.Hours, time.Minutes);
+                string H = time.Hours.ToString("00");
+                string M = time.Minutes.ToString("00");
+                string S = time.Seconds.ToString("00");
+                gTime = H + " : " + M + " : " + S;
             }
             else
             {//For Minute
-                gTime = string.Format("{0}:{1:00}", (int)time.TotalMinutes, time.Seconds);
+                string M = time.Minutes.ToString("00");
+                string S = time.Seconds.ToString("00");
+
+                gTime = M + " : " + S;
             }
+
+            //((MainWindow)System.Windows.Application.Current.MainWindow).UpdateLayout();
+
+            RemainingTime.Content = gTime;
+
+            UpdateLayout();
+            RemainingTime.Refresh();
             RemainingTime.UpdateLayout();
-            RemainingTime.Text = gTime;
-            { }
+            RemainingTime.Content = gTime;
+
+            RemainingTime.Content = gTime;
+
+            //RemainingTime.Text = gTime;
 
             if (curTime == AutoTime)
             {
@@ -146,7 +158,6 @@ namespace _5tg_at_mediaPlayer_desktop.FM
                 Global_Log.bottom_Media_Control.AutoPlaySong(autoPlaylist);
             }
         }
-
 
         public void loadProgressBar(int i, int j)
         {
@@ -202,7 +213,6 @@ namespace _5tg_at_mediaPlayer_desktop.FM
             mainWindow.Show();
             this.Close();
         }
-
 
         private void play_Click(object sender, RoutedEventArgs e)
         {

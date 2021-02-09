@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="connection\connectionClass.cs" />
     <Compile Include="connection\DbModel.cs" />
+    <Compile Include="connection\ExtensionMethods.cs" />
     <Compile Include="connection\Global_Log.cs" />
     <Compile Include="connection\PlayBack.cs" />
     <Compile Include="Fade_in_out\Fade_in_out.xaml.cs">
