@@ -124,7 +124,6 @@ namespace _5tg_at_mediaPlayer_desktop
                 {
                     Global_Log.fM_Custom = new FM.FM_Custom();
                 }
-
                 Global_Log.fM_Custom.Show();
             }
             catch (Exception ex)

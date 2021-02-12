@@ -31,7 +31,8 @@ namespace _5tg_at_mediaPlayer_desktop.connection
                 con.Open();
         }
 
-        public String getsongfilepath(String query) {
+        public String getsongfilepath(String query)
+        {
             String filepath = "";
             try
             {
@@ -41,7 +42,8 @@ namespace _5tg_at_mediaPlayer_desktop.connection
                 cmd.CommandType = CommandType.Text;
                 //cmd.Parameters.AddWithValue();
                 var sqlreturnfilepath = cmd.ExecuteScalar();
-                if (filepath!=null) {
+                if (filepath != null)
+                {
                     filepath = sqlreturnfilepath.ToString();
                 }
                 checkConnection();
@@ -49,7 +51,7 @@ namespace _5tg_at_mediaPlayer_desktop.connection
             catch { }
             return filepath;
         }
-        
+
 
 
         public int insertData(String quary)

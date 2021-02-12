@@ -17,6 +17,7 @@ namespace _5tg_at_mediaPlayer_desktop.FM
     public partial class FM_Custom : Window
     {
         public static DateTime autoplayTime;
+        public static bool playlistLoad = false;
         public static List<PlaylistAudio> autoPlaylist;
         public static DispatcherTimer autoPlay = new DispatcherTimer();
 
@@ -24,6 +25,10 @@ namespace _5tg_at_mediaPlayer_desktop.FM
         {
             InitializeComponent();
             //Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 6 });
+            autoPlay.IsEnabled = true;
+            autoPlay.Interval = TimeSpan.FromMilliseconds(10);
+            autoPlay.Tick += timer_Tick;
+            autoPlay.Start();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -40,7 +45,6 @@ namespace _5tg_at_mediaPlayer_desktop.FM
 
         public void AutoPlay_PreviewMouseLeftButtonDown()
         {
-            var FM = new FM_Custom();
             string query = "select top 1 PID, name ,Schedule from playlists where Schedule >= GETDATE() order by Schedule";
 
             DataTable dt = Global_Log.connectionClass.retriveData(query, "playlist");
@@ -88,15 +92,16 @@ namespace _5tg_at_mediaPlayer_desktop.FM
                         }
                     }
 
-                    autoPlay.IsEnabled = true;
-                    autoPlay.Interval = TimeSpan.FromMilliseconds(1);
-                    autoPlay.Tick += timer_Tick;
-                    autoPlay.Start();
-
+                    //autoPlay.IsEnabled = true;
+                    //autoPlay.Interval = TimeSpan.FromMilliseconds(1);
+                    //autoPlay.Tick += timer_Tick;
+                    //autoPlay.Start();
+                    playlistLoad = true;
                     MessageBox.Show(autoplayName + " Records is Schedule");
                 }
                 else
                 {
+                    playlistLoad = false;
                     MessageBox.Show("No Schedule Records");
                 }
             }
@@ -128,17 +133,17 @@ namespace _5tg_at_mediaPlayer_desktop.FM
                 gTime = M + " : " + S;
             }
 
-            //((MainWindow)System.Windows.Application.Current.MainWindow).UpdateLayout();
+            if (playlistLoad)
+            {
+                RemainingTime.Content = gTime;
 
-            RemainingTime.Content = gTime;
+                UpdateLayout();
+                RemainingTime.Refresh();
+                RemainingTime.UpdateLayout();
+                RemainingTime.Content = gTime;
 
-            UpdateLayout();
-            RemainingTime.Refresh();
-            RemainingTime.UpdateLayout();
-            RemainingTime.Content = gTime;
-
-            RemainingTime.Content = gTime;
-
+                RemainingTime.Content = gTime;
+            }
             //RemainingTime.Text = gTime;
 
             if (curTime == AutoTime)
@@ -161,6 +166,7 @@ namespace _5tg_at_mediaPlayer_desktop.FM
 
         public void loadProgressBar(int i, int j)
         {
+            
             if (i <= 100)
             {
                 progress_value.Text = i.ToString() + " %";
@@ -174,6 +180,7 @@ namespace _5tg_at_mediaPlayer_desktop.FM
                 { circulare_ProgressBar.IndicatorBrush = Brushes.Red; }
 
             }
+            loadPlaylistSongs(autoPlaylist);
         }
 
         public void loadPlaylistSongs(List<connection.PlaylistAudio> autoPlaylist)
