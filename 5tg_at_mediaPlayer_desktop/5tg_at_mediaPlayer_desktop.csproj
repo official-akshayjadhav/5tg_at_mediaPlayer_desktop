@@ -59,6 +59,10 @@
     <Reference Include="MediaInfo.Wrapper, Version=20.9.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MediaInfo.Wrapper.20.9.2\lib\net45\MediaInfo.Wrapper.dll</HintPath>
     </Reference>
+    <Reference Include="MediaToolkit, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MediaToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -133,6 +137,7 @@
     <Compile Include="LogHistory\LogHistory.xaml.cs">
       <DependentUpon>LogHistory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="opus\FfmpegHandler.cs" />
     <Compile Include="Playlist\Add_To_Playlist.xaml.cs">
       <DependentUpon>Add_To_Playlist.xaml</DependentUpon>
     </Compile>
@@ -317,6 +322,7 @@
     <Resource Include="FM\Assets\icon.png" />
     <Resource Include="Fade_in_out\Assets\back.png" />
     <Resource Include="Fade_in_out\Assets\play.png" />
+    <Content Include="opus\ffmpeg.exe" />
     <Content Include="ReleaseNotes.css" />
   </ItemGroup>
   <ItemGroup>

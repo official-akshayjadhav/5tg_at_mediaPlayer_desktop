@@ -182,6 +182,23 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             File.Delete(trimPath);
             File.Delete(path);
             File.WriteAllBytes(trimPath, songByte);
+            { }
+            { }
+
+            //ConvertFileDetails convertFileDetails = new ConvertFileDetails();
+            //convertFileDetails.InputFilePath = trimPath;
+            //{ }
+            //convertFileDetails.OutputFilePath = path;
+            //{ }
+            //string outputFileName = FfmpegHandler.convertFile2(convertFileDetails, 0);
+            //{ }
+            //trimPath = "D:\\Tsong.mp3";
+            //songByte = Convert.FromBase64String(trakString);
+            //File.Delete(trimPath);
+            //File.Delete(path);
+            //File.WriteAllBytes(trimPath, songByte);
+
+            { }
             TrimMp3(trimPath, path, startTime, endSpan);
 
             {

@@ -46,9 +46,21 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 Global_Log.startTimeInSec = 0;
                 Global_Log.endTimeInSec = Convert.ToInt32(tt.TotalSeconds);
 
-                byte[] fileDataBytes = File.ReadAllBytes(System.IO.Path.GetFullPath(openFileDialog.FileNames[0]));
-                String fileDataBase64 = Convert.ToBase64String(fileDataBytes);
+                ConvertFileDetails convertFileDetails = new ConvertFileDetails();
+                convertFileDetails.InputFilePath = System.IO.Path.GetFullPath(openFileDialog.FileNames[0]);
+                { }
+                convertFileDetails.OutputFilePath = title + ".opus";
+                { }
+                string outputFileName = FfmpegHandler.convertFile2(convertFileDetails, 0);
+                { }
 
+                //convertFileDetails.InputFilePath = System.IO.Path.GetFullPath(openFileDialog.FileNames[0]);
+
+
+                //byte[] fileDataBytes = File.ReadAllBytes(System.IO.Path.GetFullPath(openFileDialog.FileNames[0]));
+                //String fileDataBase64 = Convert.ToBase64String(fileDataBytes);
+
+                String fileDataBase64 = outputFileName;
                 Global_Log.newSongTrack = fileDataBase64;
 
                 Trim.Trim obj_Trim = new Trim.Trim(Global_Log.endTimeInSec);

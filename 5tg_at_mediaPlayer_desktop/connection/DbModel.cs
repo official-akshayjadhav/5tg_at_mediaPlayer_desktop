@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace _5tg_at_mediaPlayer_desktop.connection
 {
-    class a
-    {
-    }
-
+    
     public class Audio
     {
         public int ID { get; set; }
