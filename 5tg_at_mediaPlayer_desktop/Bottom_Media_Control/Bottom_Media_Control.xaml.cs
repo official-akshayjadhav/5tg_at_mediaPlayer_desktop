@@ -183,8 +183,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             File.Delete(path);
             File.WriteAllBytes(trimPath, songByte);
             { }
-            { }
-
+            
             //ConvertFileDetails convertFileDetails = new ConvertFileDetails();
             //convertFileDetails.InputFilePath = trimPath;
             //{ }
