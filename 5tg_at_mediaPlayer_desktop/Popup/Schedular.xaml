@@ -71,7 +71,7 @@
 	</Window.Resources>
     <Grid>
         <wpfx:DateTimePicker Height="25" HorizontalAlignment="Center" Margin="50" Name="DateTimePicker1" VerticalAlignment="Top" Width="250" />
-		<Button Content="DateTime" Height="38" Margin="0 75 0 0" Style="{DynamicResource RoundCorner}" Foreground="White"
+		<Button Content="Date Time Schedule" Height="38" Margin="0 75 0 0" Style="{DynamicResource RoundCorner}" Foreground="White"
 				HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Click="DateTme_Click" />
     </Grid>
 </Window>

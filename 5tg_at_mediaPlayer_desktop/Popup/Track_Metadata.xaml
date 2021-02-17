@@ -156,7 +156,7 @@
 					<ColumnDefinition Width="45*"></ColumnDefinition>
 					<ColumnDefinition Width="10*"></ColumnDefinition>
 				</Grid.ColumnDefinitions>
-				<TextBlock Text="Fade IN/OUT: " Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" />
+				<TextBlock Text="INTRO / EOM: " Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" />
 
 				<Grid Grid.Column="2">
 					<Fade:Fade_in_out></Fade:Fade_in_out>

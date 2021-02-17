@@ -33,12 +33,12 @@ namespace _5tg_at_mediaPlayer_desktop.FM
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            RemainingTime.Content = "00:00";
+            RemainingTime.Content = "REMAINING TIME  :  00:00";
 
             if (Global_Log.onlyForStart)
             {
                 AutoPlay_PreviewMouseLeftButtonDown();
-                RemainingTime.Content = "00:00";
+                RemainingTime.Content = "REMAINING TIME  :  00:00";
                 Global_Log.onlyForStart = false;
             }
         }
@@ -107,6 +107,7 @@ namespace _5tg_at_mediaPlayer_desktop.FM
             }
         }
 
+        int i = 0;
         private void timer_Tick(object sender, EventArgs e)
         {
             DateTime currentDateTime = DateTime.Now;
@@ -127,28 +128,44 @@ namespace _5tg_at_mediaPlayer_desktop.FM
             }
             else
             {//For Minute
-                string M = time.Minutes.ToString("00");
-                string S = time.Seconds.ToString("00");
+                string M = (Math.Abs(time.Minutes)).ToString("00");
+                string S = (Math.Abs(time.Seconds)).ToString("00");
 
                 gTime = M + " : " + S;
             }
 
-            if (playlistLoad)
+            //if (i == 50)
+            //{
+            //    i = 0;
+            //    Global_Log.isSongPlay = false;
+                
+            //}
+            //i++;
+            if (Global_Log.isSongPlay)
             {
-                RemainingTime.Content = gTime;
+                if (Global_Log.currentPlayTime != null)
+                {
+                    string tim = Global_Log.currentPlayTime.ToString();
+                    RemainingTime.Content = "REMAINING TIME : " + tim;
+                }
+            }
+            else
+            {
+                if (playlistLoad)
+                {
+                    RemainingTime.Content = "REMAINING TIME :    " + gTime;
 
-                UpdateLayout();
-                RemainingTime.Refresh();
-                RemainingTime.UpdateLayout();
-                RemainingTime.Content = gTime;
+                    UpdateLayout();
+                    RemainingTime.Refresh();
+                    RemainingTime.UpdateLayout();
 
-                RemainingTime.Content = gTime;
+                }
             }
             //RemainingTime.Text = gTime;
 
             if (curTime == AutoTime)
             {
-                autoPlay.IsEnabled = false;
+                //autoPlay.IsEnabled = false;
 
                 if (Global_Log.fM_Custom == null)
                 {
@@ -166,7 +183,7 @@ namespace _5tg_at_mediaPlayer_desktop.FM
 
         public void loadProgressBar(int i, int j)
         {
-            
+
             if (i <= 100)
             {
                 progress_value.Text = i.ToString() + " %";

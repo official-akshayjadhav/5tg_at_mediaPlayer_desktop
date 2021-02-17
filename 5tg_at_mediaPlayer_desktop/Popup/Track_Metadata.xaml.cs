@@ -49,7 +49,7 @@ namespace _5tg_at_mediaPlayer_desktop.Popup
                 ConvertFileDetails convertFileDetails = new ConvertFileDetails();
                 convertFileDetails.InputFilePath = System.IO.Path.GetFullPath(openFileDialog.FileNames[0]);
                 { }
-                convertFileDetails.OutputFilePath = title + ".opus";
+                convertFileDetails.OutputFilePath = title + ".shd";
                 { }
                 string outputFileName = FfmpegHandler.convertFile2(convertFileDetails, 0);
                 { }

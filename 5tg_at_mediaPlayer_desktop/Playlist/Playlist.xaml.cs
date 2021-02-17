@@ -400,20 +400,25 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
             }
             else if (Global_Log.allSongTrack == false)
             {
-                if (selectedIndexValue >= plays.Count)
+                try
                 {
-                    selectedIndexValue = 0;
-                    track = plays[0];
+                    if (selectedIndexValue >= plays.Count)
+                    {
+                        selectedIndexValue = 0;
+                        track = plays[0];
+                    }
+                    else
+                    {
+                        track = plays[selectedIndexValue];
+                    }
+                    if (Global_Log.bottom_Media_Control == null)
+                    {
+                        Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
+                    }
+                    Global_Log.bottom_Media_Control.playSong(track.track, track.Name, track.Trim_Start, track.Trim_End, track.Intro, track.EOM);
                 }
-                else
-                {
-                    track = plays[selectedIndexValue];
-                }
-                if (Global_Log.bottom_Media_Control == null)
-                {
-                    Global_Log.bottom_Media_Control = new Bottom_Media_Control.Bottom_Media_Control();
-                }
-                Global_Log.bottom_Media_Control.playSong(track.track, track.Name, track.Trim_Start, track.Trim_End, track.Intro, track.EOM);
+                catch(Exception ex)
+                { }
             }
         }
 
