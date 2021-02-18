@@ -19,6 +19,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
     {
         private static MediaPlayer mediaPlayer = new MediaPlayer();
         private bool userIsDraggingSlider = false;
+        //public DispatcherTimer autoPlayTick = null;
 
         public void GetURIOfSong(int AID)
         {
@@ -171,8 +172,6 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             string rootFolder = @"D:\";
             string authorsFile = "song.mp3";
 
-
-
             if (File.Exists(Path.Combine(rootFolder, authorsFile)))
                 File.Delete(Path.Combine(rootFolder, authorsFile));
 
@@ -197,11 +196,11 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             //    string opVal = FfmpegHandler.convertFile2(convertFileDetails, 0);
             //    { }
 
-            //    songByte = Convert.FromBase64String(trakString);
-            //    File.WriteAllBytes(output, songByte);
+            //    //songByte = Convert.FromBase64String(trakString);
+            //    //File.WriteAllBytes(output, songByte);
             //    { }
-
-            //    mediaPlayer.Open(new Uri("D:\\song.mp3"));
+            //    Uri uri = new Uri("D:\\song.mp3");
+            //    mediaPlayer.Open(uri);
             //    mediaPlayer.Play();
             //    mediaPlayer.Volume = 1;
             //}
@@ -247,10 +246,12 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             Uri musicPath = new Uri("D:\\song.mp3");
             LoadSong(musicPath, path, intro);
 
-            autoPlayTick.IsEnabled = true;
-            autoPlayTick.Interval = TimeSpan.FromSeconds(autoplaySongTime_Sec);
-            autoPlayTick.Tick += autoPlay_Timer_Tick;
-            autoPlayTick.Start();
+
+            //autoPlayTick = new DispatcherTimer();
+            //autoPlayTick.IsEnabled = true;
+            //autoPlayTick.Interval = TimeSpan.FromSeconds(autoplaySongTime_Sec);
+            //autoPlayTick.Tick += autoPlay_Timer_Tick;
+            //autoPlayTick.Start();
         }
 
         public static double vol = 0.1;
@@ -271,6 +272,10 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             mediaPlayer.Play();
             volDown = false;
 
+            if(startInterval<=0)
+            {
+                startInterval = 0.1;
+            }
             autoVolumeIncrement.IsEnabled = true;
             autoVolumeIncrement.Interval = TimeSpan.FromSeconds(startInterval);
             autoVolumeIncrement.Tick += autoVolumeIncrement_Tick;
@@ -334,8 +339,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
         List<PlaylistAudio> currentPlayList { get; set; }
         int currentPlayListIndex { get; set; }
 
-        //public static DispatcherTimer autoPlayTick = new DispatcherTimer();
-        public DispatcherTimer autoPlayTick = new DispatcherTimer();
+        public static DispatcherTimer autoPlayTick = new DispatcherTimer();
 
         internal void AutoPlaySong(List<PlaylistAudio> autoPlaylist)
         {
@@ -353,16 +357,18 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
 
                 playSong(song1.track, song1.Name, song1.Trim_Start, song1.Trim_End, song1.Intro, song1.EOM);
 
-
+                autoPlayTick.IsEnabled = true;
+                autoPlayTick.Interval = TimeSpan.FromSeconds(autoplaySongTime_Sec);
+                autoPlayTick.Tick += autoPlay_Timer_Tick;
+                autoPlayTick.Start();
             }
         }
 
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
         {
 
-            autoPlayTick.Tick -= autoPlayTick_Ended;
+            //autoPlayTick.Tick -= autoPlayTick_Ended;
 
-            autoPlayTick.Stop();
             Global_Log.fM_Custom.loadProgressBar(0, 0);
             Global_Log.isSongPlay = false;
 
@@ -381,8 +387,6 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             }
             else
             {
-                mediaPlayer.MediaEnded -= MediaPlayer_MediaEnded;
-
                 Global_Log.fM_Custom.loadProgressBar(0, 0);
 
                 if (Global_Log.fM_Custom == null)
@@ -395,7 +399,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
 
         private void autoPlayTick_Ended(object sender, EventArgs e)
         {
-            autoPlayTick.Stop();
+            //autoPlayTick.Stop();
             Global_Log.fM_Custom.loadProgressBar(0, 0);
         }
 
