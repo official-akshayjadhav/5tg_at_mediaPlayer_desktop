@@ -98,6 +98,7 @@ namespace _5tg_at_mediaPlayer_desktop.FM
                     //autoPlay.Start();
                     playlistLoad = true;
                     MessageBox.Show(autoplayName + " Records is Schedule");
+
                 }
                 else
                 {

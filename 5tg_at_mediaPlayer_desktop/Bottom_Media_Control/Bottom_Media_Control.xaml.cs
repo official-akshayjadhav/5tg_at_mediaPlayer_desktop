@@ -389,7 +389,7 @@ namespace _5tg_at_mediaPlayer_desktop.Bottom_Media_Control
             {
                 Global_Log.fM_Custom.loadProgressBar(0, 0);
 
-                if (Global_Log.fM_Custom == null)
+                //if (Global_Log.fM_Custom == null)
                 {
                     Global_Log.fM_Custom = new FM.FM_Custom();
                 }
