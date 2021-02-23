@@ -138,6 +138,9 @@
       <DependentUpon>LogHistory.xaml</DependentUpon>
     </Compile>
     <Compile Include="opus\FfmpegHandler.cs" />
+    <Compile Include="Playlist\AddToPlaylistWindow.xaml.cs">
+      <DependentUpon>AddToPlaylistWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Playlist\Add_To_Playlist.xaml.cs">
       <DependentUpon>Add_To_Playlist.xaml</DependentUpon>
     </Compile>
@@ -212,6 +215,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Navigation_Bar\Navigation_Bar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Playlist\AddToPlaylistWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

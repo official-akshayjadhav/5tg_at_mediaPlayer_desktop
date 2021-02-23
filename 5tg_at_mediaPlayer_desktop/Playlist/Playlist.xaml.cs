@@ -626,7 +626,10 @@ namespace _5tg_at_mediaPlayer_desktop.Playlist
                 }
                 else if (currentOperation == "Add to Playlist")
                 {
-                    Add_To_Playlist add_To_Playlist = new Add_To_Playlist();
+                    //Add_To_Playlist add_To_Playlist = new Add_To_Playlist();
+                    //add_To_Playlist.ShowDialog();
+
+                    AddToPlaylistWindow add_To_Playlist = new AddToPlaylistWindow();
                     add_To_Playlist.ShowDialog();
                 }
                 else if (currentOperation == "Play")

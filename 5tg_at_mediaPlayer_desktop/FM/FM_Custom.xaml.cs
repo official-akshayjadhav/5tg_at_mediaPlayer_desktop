@@ -282,8 +282,8 @@ namespace _5tg_at_mediaPlayer_desktop.FM
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
-            Application.Current.Shutdown();
+            //Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+            //Application.Current.Shutdown();
         }
     }
 }
