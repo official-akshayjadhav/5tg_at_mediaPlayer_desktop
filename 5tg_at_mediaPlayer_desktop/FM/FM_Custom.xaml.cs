@@ -21,10 +21,15 @@ namespace _5tg_at_mediaPlayer_desktop.FM
         public static List<PlaylistAudio> autoPlaylist;
         public static DispatcherTimer autoPlay = new DispatcherTimer();
 
+        public static string SongStatusIS = "Now Playing...";
+
         public FM_Custom()
         {
             InitializeComponent();
             //Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 6 });
+
+            SongStatus.Content = SongStatusIS.ToString();
+
             autoPlay.IsEnabled = true;
             autoPlay.Interval = TimeSpan.FromMilliseconds(10);
             autoPlay.Tick += timer_Tick;
@@ -225,7 +230,7 @@ namespace _5tg_at_mediaPlayer_desktop.FM
 
                     i++;
                 }
-                { }
+
                 loadPlaylistSong.ItemsSource = null;
                 loadPlaylistSong.Items.Clear();
                 loadPlaylistSong.ItemsSource = autoPlaylistData;
@@ -241,18 +246,28 @@ namespace _5tg_at_mediaPlayer_desktop.FM
 
         private void play_Click(object sender, RoutedEventArgs e)
         {
+            SongStatusIS = "Now Playing...";
+            SongStatus.Content = SongStatusIS.ToString();
+
             checkObj();
             Global_Log.bottom_Media_Control.playSong();
         }
 
         private void pause_Click(object sender, RoutedEventArgs e)
         {
+            SongStatusIS = "Paused...";
+            SongStatus.Content = SongStatusIS.ToString();
+
             checkObj();
             Global_Log.bottom_Media_Control.pauseSong();
+
         }
 
         private void stop_Click(object sender, RoutedEventArgs e)
         {
+            SongStatusIS = "Stoped...";
+            SongStatus.Content = SongStatusIS.ToString();
+
             checkObj();
             Global_Log.bottom_Media_Control.stopSong();
         }
@@ -265,5 +280,10 @@ namespace _5tg_at_mediaPlayer_desktop.FM
             }
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+            Application.Current.Shutdown();
+        }
     }
 }
